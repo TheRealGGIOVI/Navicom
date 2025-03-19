@@ -1,4 +1,4 @@
-﻿namespace UnoOnline.Interfaces
+﻿namespace NavicomInformatica.Interfaces
 {
     public interface IPasswordHasher
     {

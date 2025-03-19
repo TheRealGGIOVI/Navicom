@@ -1,4 +1,4 @@
-﻿namespace UnoOnline.Models
+﻿namespace NavicomInformatica.Models
 {
     public class LoginResult
     {

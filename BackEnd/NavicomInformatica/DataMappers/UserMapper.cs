@@ -1,7 +1,7 @@
-﻿using UnoOnline.DTO;
-using UnoOnline.Models;
+﻿using NavicomInformatica.DTO;
+using NavicomInformatica.Models;
 
-namespace UnoOnline.DataMappers
+namespace NavicomInformatica.DataMappers
 {
     public class UserMapper
     {
@@ -10,8 +10,9 @@ namespace UnoOnline.DataMappers
             return new UserDTO
             {
                 Id = user.Id,
-                Apodo = user.Apodo,
+                Apodo = user.Nombre,
                 Email = user.Email,
+                Rol = user.Rol
             };
         }
 

@@ -1,8 +1,8 @@
 ﻿using System.Text;
 using System.Security.Cryptography;
-using UnoOnline.Interfaces;
+using NavicomInformatica.Interfaces;
 
-namespace UnoOnline.Models
+namespace NavicomInformatica.Models
 {
     internal class PasswordHasher : IPasswordHasher
     {

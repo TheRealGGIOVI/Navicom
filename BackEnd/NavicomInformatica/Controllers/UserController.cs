@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using UnoOnline.DataMappers;
-using UnoOnline.DTO;
-using UnoOnline.Interfaces;
-using UnoOnline.Models;
+using NavicomInformatica.DataMappers;
+using NavicomInformatica.DTO;
+using NavicomInformatica.Interfaces;
+using NavicomInformatica.Models;
 
-namespace UnoOnline.Controllers
+namespace NavicomInformatica.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -105,7 +105,7 @@ namespace UnoOnline.Controllers
 
             if (existingApodolUser != null)
             {
-                return Conflict("Apodo existente, por favor introduzca otro Apodo.");
+                return Conflict("Nombre existente, por favor introduzca otro Nombre.");
             }
 
             try
@@ -113,9 +113,10 @@ namespace UnoOnline.Controllers
                 var userToAdd = new User
                 {
                     Id = newUser.Id,
-                    Apodo = newUser.Apodo,
+                    Nombre = newUser.Apodo,
                     Email = newUser.Email,
-                    Password = newUser.Password
+                    Password = newUser.Password,
+                    Rol = newUser.Rol
                 };
 
                 var passwordHasher = new PasswordHasher();

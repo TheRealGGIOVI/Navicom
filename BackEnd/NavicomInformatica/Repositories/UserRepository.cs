@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using UnoOnline.Data;
-using UnoOnline.Interfaces;
-using UnoOnline.Models;
-namespace UnoOnline.Repositories
+using NavicomInformatica.Data;
+using NavicomInformatica.Interfaces;
+using NavicomInformatica.Models;
+namespace NavicomInformatica.Repositories
 {
     public class UserRepository : IUserRepository
     {
@@ -28,7 +28,7 @@ namespace UnoOnline.Repositories
 
         public async Task<User> GetUserByApodoAsync(string apodo)
         {
-            return await _context.Users.FirstOrDefaultAsync(u => u.Apodo == apodo);
+            return await _context.Users.FirstOrDefaultAsync(u => u.Nombre == apodo);
         }
 
         public async Task<User> GetUserByIdAsync(long id)

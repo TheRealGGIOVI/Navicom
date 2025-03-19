@@ -1,6 +1,6 @@
-﻿using UnoOnline.Models;
+﻿using NavicomInformatica.Models;
 
-namespace UnoOnline.Interfaces
+namespace NavicomInformatica.Interfaces
 {
     public interface IUserRepository
     {

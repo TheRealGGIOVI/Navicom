@@ -5,12 +5,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using UnoOnline.Data;
-using UnoOnline.Interfaces;
-using UnoOnline.Models;
+using NavicomInformatica.Data;
+using NavicomInformatica.Interfaces;
+using NavicomInformatica.Models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-namespace UnoOnline.Controllers
+namespace NavicomInformatica.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -34,7 +34,7 @@ namespace UnoOnline.Controllers
             string hashedPassword = _passwordHash.Hash(model.Password);
 
             var user = await _context.Users
-                .FirstOrDefaultAsync(u =>(u.Email == model.Identificador && u.Password == hashedPassword) || (u.Apodo == model.Identificador && u.Password == hashedPassword));
+                .FirstOrDefaultAsync(u =>(u.Email == model.Identificador && u.Password == hashedPassword) || (u.Nombre == model.Identificador && u.Password == hashedPassword));
 
             if (user != null)
             {
@@ -43,7 +43,7 @@ namespace UnoOnline.Controllers
                     Claims = new Dictionary<string, object>
                     {
                         { "Id", user.Id },
-                        { "Apodo", user.Apodo },
+                        { "Nombre", user.Nombre },
                         { "Email", user.Email },
                     },
                     Expires = DateTime.UtcNow.AddHours(2),

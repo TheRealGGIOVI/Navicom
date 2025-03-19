@@ -89,3 +89,4 @@ C:\Users\abust\Desktop\Navicom\BackEnd\NavicomInformatica\obj\Debug\net8.0\ref\N
 C:\Users\abust\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Scrutor.dll
 C:\Users\abust\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.dll
 C:\Users\abust\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
+C:\Users\abust\Desktop\Navicom\BackEnd\NavicomInformatica\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
