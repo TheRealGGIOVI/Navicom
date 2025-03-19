@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|c:\\users\\abust\\desktop\\navicom\\backend\\navicominformatica\\interfaces\\iproductorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|solutionrelative:interfaces\\iproductorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|c:\\users\\abust\\desktop\\navicom\\backend\\navicominformatica\\controllers\\productocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|solutionrelative:controllers\\productocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|c:\\users\\abust\\desktop\\navicom\\backend\\navicominformatica\\repositories\\productorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|solutionrelative:repositories\\productorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|c:\\users\\abust\\desktop\\navicom\\backend\\navicominformatica\\data\\seeder\\seeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|solutionrelative:data\\seeder\\seeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -31,18 +43,6 @@
       "RelativeMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|c:\\users\\abust\\desktop\\navicom\\backend\\navicominformatica\\interfaces\\iproductorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|solutionrelative:interfaces\\iproductorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|c:\\users\\abust\\desktop\\navicom\\backend\\navicominformatica\\repositories\\productorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|solutionrelative:repositories\\productorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|c:\\users\\abust\\desktop\\navicom\\backend\\navicominformatica\\controllers\\productocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|solutionrelative:controllers\\productocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|c:\\users\\abust\\desktop\\navicom\\backend\\navicominformatica\\models\\producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|solutionrelative:models\\producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -62,19 +62,94 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAFcAAAAAAAAAAAAiwGkAAAAIAAAAAAAAAA==",
+              "DocumentIndex": 9,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T09:45:57.785Z",
+              "WhenOpened": "2025-03-19T09:02:11.519Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Seeder.cs",
+              "DocumentMoniker": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Data\\Seeder\\Seeder.cs",
+              "RelativeDocumentMoniker": "Data\\Seeder\\Seeder.cs",
+              "ToolTip": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Data\\Seeder\\Seeder.cs",
+              "RelativeToolTip": "Data\\Seeder\\Seeder.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAB0AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T08:59:05.705Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ProductoDTO.cs",
+              "DocumentMoniker": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\DTO\\ProductoDTO.cs",
+              "RelativeDocumentMoniker": "DTO\\ProductoDTO.cs",
+              "ToolTip": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\DTO\\ProductoDTO.cs",
+              "RelativeToolTip": "DTO\\ProductoDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAYAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T09:11:32.48Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DataBaseContext.cs",
+              "DocumentMoniker": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Data\\DataBaseContext.cs",
+              "RelativeDocumentMoniker": "Data\\DataBaseContext.cs",
+              "ToolTip": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Data\\DataBaseContext.cs",
+              "RelativeToolTip": "Data\\DataBaseContext.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAUwB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T09:29:29.578Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProductoController.cs",
+              "DocumentMoniker": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Controllers\\ProductoController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProductoController.cs",
+              "ToolTip": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Controllers\\ProductoController.cs",
+              "RelativeToolTip": "Controllers\\ProductoController.cs",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAIwKYAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T09:15:11.33Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "IProductoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Interfaces\\IProductoRepository.cs",
+              "RelativeDocumentMoniker": "Interfaces\\IProductoRepository.cs",
+              "ToolTip": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Interfaces\\IProductoRepository.cs",
+              "RelativeToolTip": "Interfaces\\IProductoRepository.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwBUAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T09:20:07.84Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProductoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Repositories\\ProductoRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\ProductoRepository.cs",
+              "ToolTip": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Repositories\\ProductoRepository.cs",
+              "RelativeToolTip": "Repositories\\ProductoRepository.cs",
+              "ViewState": "AgIAAJQAAAAAAAAAAAAEwJ4AAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T09:19:39.972Z",
               "EditorCaption": ""
             },
             {
@@ -87,77 +162,23 @@
               "RelativeToolTip": "Models\\Producto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T09:13:47.189Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Models\\User.cs",
-              "RelativeDocumentMoniker": "Models\\User.cs",
-              "ToolTip": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Models\\User.cs",
-              "RelativeToolTip": "Models\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T09:02:11.519Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Seeder.cs",
-              "DocumentMoniker": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Data\\Seeder\\Seeder.cs",
-              "RelativeDocumentMoniker": "Data\\Seeder\\Seeder.cs",
-              "ToolTip": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Data\\Seeder\\Seeder.cs*",
-              "RelativeToolTip": "Data\\Seeder\\Seeder.cs*",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAQwB0AAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T08:59:05.705Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-19T09:13:47.189Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "ProductoDTO.cs",
-              "DocumentMoniker": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\DTO\\ProductoDTO.cs",
-              "RelativeDocumentMoniker": "DTO\\ProductoDTO.cs",
-              "ToolTip": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\DTO\\ProductoDTO.cs",
-              "RelativeToolTip": "DTO\\ProductoDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAYAAAAXAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAiwGkAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T09:11:32.48Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-19T09:45:57.785Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DataBaseContext.cs",
-              "DocumentMoniker": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Data\\DataBaseContext.cs",
-              "RelativeDocumentMoniker": "Data\\DataBaseContext.cs",
-              "ToolTip": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Data\\DataBaseContext.cs",
-              "RelativeToolTip": "Data\\DataBaseContext.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAUwB0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T09:29:29.578Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ProductoController.cs",
-              "DocumentMoniker": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Controllers\\ProductoController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ProductoController.cs",
-              "ToolTip": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Controllers\\ProductoController.cs",
-              "RelativeToolTip": "Controllers\\ProductoController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T09:15:11.33Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "UserCreateDTO.cs",
               "DocumentMoniker": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\DTO\\UserCreateDTO.cs",
               "RelativeDocumentMoniker": "DTO\\UserCreateDTO.cs",
@@ -165,12 +186,11 @@
               "RelativeToolTip": "DTO\\UserCreateDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T09:00:29.555Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-19T09:00:29.555Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "ProductoMapper.cs",
               "DocumentMoniker": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\DataMappers\\ProductoMapper.cs",
               "RelativeDocumentMoniker": "DataMappers\\ProductoMapper.cs",
@@ -178,34 +198,7 @@
               "RelativeToolTip": "DataMappers\\ProductoMapper.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAsAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T09:23:48.248Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ProductoRepository.cs",
-              "DocumentMoniker": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Repositories\\ProductoRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\ProductoRepository.cs",
-              "ToolTip": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Repositories\\ProductoRepository.cs",
-              "RelativeToolTip": "Repositories\\ProductoRepository.cs",
-              "ViewState": "AgIAADwAAAAAAAAAAAD4v08AAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T09:19:39.972Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "IProductoRepository.cs",
-              "DocumentMoniker": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Interfaces\\IProductoRepository.cs",
-              "RelativeDocumentMoniker": "Interfaces\\IProductoRepository.cs",
-              "ToolTip": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Interfaces\\IProductoRepository.cs",
-              "RelativeToolTip": "Interfaces\\IProductoRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T09:20:07.84Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-19T09:23:48.248Z"
             },
             {
               "$type": "Document",
@@ -217,8 +210,7 @@
               "RelativeToolTip": "Controllers\\AuthController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T09:00:53.843Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-19T09:00:53.843Z"
             },
             {
               "$type": "Document",
@@ -230,8 +222,7 @@
               "RelativeToolTip": "Controllers\\UserController.cs",
               "ViewState": "AgIAAFsAAAAAAAAAAAAkwGsAAABXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-18T09:17:00.474Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-18T09:17:00.474Z"
             }
           ]
         }

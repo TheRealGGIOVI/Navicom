@@ -19,5 +19,6 @@ namespace NavicomInformatica.Interfaces
         Task UpdateStockAsync(long ProductId, int stockRestar);
         Task UpdateAllAsync(ProductDTO product);
         Task<string> StoreImageAsync(IFormFile file, string modelName);
+        Task DeleteProductAsync(long id);
     }
 }

@@ -150,6 +150,16 @@ namespace NavicomInformatica.Repositories
 
             _context.SaveChanges();
         }
+
+        public async Task DeleteProductAsync(long id)
+        {
+            var product = await _context.Set<Producto>().FindAsync(id);
+            if (product != null)
+            {
+                _context.Set<Producto>().Remove(product);
+                await _context.SaveChangesAsync();
+            }
+        }
         public async Task UpdateAllAsync(ProductDTO product)
         {
             // Obtener el producto de la base de datos
