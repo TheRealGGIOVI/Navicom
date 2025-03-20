@@ -1,4 +1,9 @@
 import { useState } from "react";
+import { validation } from "../utils/validationForm"; 
+import { LOGIN_ENDPOINT } from "../../config";
+import { jwtDecode } from "jwt-decode";
+
+
 
 function Login(){
 
@@ -8,11 +13,12 @@ function Login(){
     const [emailError, setEmailError] = useState(null);
     const [passwordError, setPasswordError] = useState(null);
     const [isLoading, setIsLoading] = useState(null);
+    const [promesaError, setPromesaError] = useState(null);
 
     const handleSubmit = (event) => {
         event.preventDefault();
         
-        const emailValue = email.current.value;
+        const emailValue = email;
         if (!validation.isValidEmail(emailValue)) {
             setEmailError("Por favor, introduce un formato de email válido.");
             return;
@@ -20,7 +26,7 @@ function Login(){
             setEmailError(null);
         }
 
-        const passwordValue = password.current.value;
+        const passwordValue = password;
         if (!validation.isValidPassword(passwordValue)) {
             setPasswordError(
                 "La contraseña debe tener al menos 8 caracteres, incluyendo mayúsculas, minúsculas, números y caracteres especiales."
@@ -31,7 +37,7 @@ function Login(){
         }
 
         const objetoBackend = {
-            email: emailValue,
+            identificador: emailValue,
             password: passwordValue
         };
 
@@ -40,8 +46,8 @@ function Login(){
     }
 
     function reseteoForm() {
-        email.current.value = "";
-        password.current.value = "";
+        setEmail("");
+        setPassword("");
     }
 
     async function fetchingData(url, data) {
@@ -59,6 +65,7 @@ function Login(){
                 const datosPromesa = await response.json();
                 const token = datosPromesa.accessToken;
                 const decodedToken = jwtDecode(token);
+                console.log("Funciona el login");
 
                 if (decodedToken) {
                     const userInfo = {
