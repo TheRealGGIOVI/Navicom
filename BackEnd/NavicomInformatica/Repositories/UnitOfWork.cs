@@ -1,17 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using NavicomInformatica.Data;
 using NavicomInformatica.Interfaces;
 
 namespace NavicomInformatica.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly DbContext _context;
+        private readonly DataBaseContext _context;
 
         public IProductoRepository Productos { get; private set; }
         public IUserRepository Users { get; private set; }
         //public IReseñasRepository Reseñas { get; private set; }
 
-        public UnitOfWork(DbContext context, IProductoRepository productoRepository, IUserRepository userRepository) //IReseñasRepository reseñasRepository
+        public UnitOfWork(DataBaseContext context, IProductoRepository productoRepository, IUserRepository userRepository) //IReseñasRepository reseñasRepository
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
             Productos = productoRepository ?? throw new ArgumentNullException(nameof(productoRepository));

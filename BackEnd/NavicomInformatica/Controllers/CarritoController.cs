@@ -34,6 +34,8 @@ namespace NavicomInformatica.Controllers
             return User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         }
 
+       
+
         [HttpGet("ListarCarrito")]
         [AllowAnonymous]
         public async Task<IActionResult> ObtenerCarrito(string correo = null)
@@ -117,11 +119,13 @@ namespace NavicomInformatica.Controllers
             {
                 return BadRequest(new { error = ex.Message });
             }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { error = "Ocurrió un error inesperado.", detalle = ex.Message });
-            }
+            //catch (Exception ex)
+            //{
+            //    return StatusCode(500, new { error = "Ocurrió un error inesperado.", detalle = ex.Message });
+            //}
         }
+
+
 
         [HttpDelete("eliminar/{idProducto}")]
         public async Task<IActionResult> EliminarProductoDelCarrito(int idProducto)

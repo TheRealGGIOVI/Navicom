@@ -32,11 +32,14 @@ public class Program
         builder.Services.AddControllers();
         builder.Services.AddScoped<IUserRepository, UserRepository>();
         builder.Services.AddScoped<IProductoRepository, ProductRepository>(); // Registro de IProductoRepository
+        builder.Services.AddScoped<ICarritoRepository, CarritoRepository>();
         builder.Services.AddScoped<UserMapper>();
         builder.Services.AddScoped<ProductoMapper>(); // Registro de ProductoMapper
         builder.Services.AddTransient<IPasswordHasher, PasswordHasher>(); // Registro de PasswordHasher
         builder.Services.AddScoped<DataBaseContext>();
         builder.Services.AddScoped<Seeder>();
+        builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
 
 
 

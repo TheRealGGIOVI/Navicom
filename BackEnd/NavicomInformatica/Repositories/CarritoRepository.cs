@@ -1,21 +1,22 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NavicomInformatica.Models;
 using NavicomInformatica.Interfaces;
+using NavicomInformatica.Data;
 
 namespace NavicomInformatica.Repositories
 {
     public class CarritoRepository : ICarritoRepository
     {
-        private readonly DbContext _context;
+        private readonly DataBaseContext _context;
 
-        public CarritoRepository(DbContext context)
+        public CarritoRepository(DataBaseContext context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         public async Task<Carrito> ObtenerCarritoPorUsuarioIdAsync(int idUsuario)
         {
-            return await _context.Set<Carrito>()
+            return await _context.Carritos
                 .Include(c => c.Items)
                 .ThenInclude(item => item.Producto)
                 .FirstOrDefaultAsync(c => c.UserId == idUsuario);
@@ -26,7 +27,7 @@ namespace NavicomInformatica.Repositories
             if (carrito == null || cantidad <= 0)
                 throw new ArgumentException("El carrito es nulo o la cantidad no es válida.");
 
-            var producto = await _context.Set<Producto>().FindAsync(idProducto);
+            var producto = await _context.Products.FindAsync(idProducto);
             if (producto == null)
             {
                 throw new InvalidOperationException($"El producto con ID {idProducto} no existe.");
@@ -42,7 +43,7 @@ namespace NavicomInformatica.Repositories
                     CarritoId = carrito.CarritoId
                 };
 
-                _context.Set<CarritoItem>().Add(nuevoItem);
+                _context.CarritoItems.Add(nuevoItem);
                 carrito.Items.Add(nuevoItem);
             }
             else
@@ -82,7 +83,7 @@ namespace NavicomInformatica.Repositories
 
         public async Task<bool> UsuarioHaCompradoProductoAsync(int idUsuario, int idProductos)
         {
-            return await _context.Set<Carrito>()
+            return await _context.Carritos
                 .Include(c => c.Items)
                 .AnyAsync(c => c.UserId == idUsuario && c.Items.Any(item => item.idProducto == idProductos && item.Comprado));
         }
@@ -102,7 +103,7 @@ namespace NavicomInformatica.Repositories
 
         public async Task<Carrito> ObtenerOCrearCarritoPorUsuarioIdAsync(int idUsuario)
         {
-            var carrito = await _context.Set<Carrito>()
+            var carrito = await _context.Carritos
                 .Include(c => c.Items)
                 .ThenInclude(item => item.Producto)
                 .FirstOrDefaultAsync(c => c.UserId == idUsuario);
@@ -110,7 +111,7 @@ namespace NavicomInformatica.Repositories
             if (carrito == null)
             {
                 carrito = new Carrito { UserId = idUsuario };
-                _context.Set<Carrito>().Add(carrito);
+                _context.Carritos.Add(carrito);
                 await _context.SaveChangesAsync();
             }
 
@@ -130,9 +131,11 @@ namespace NavicomInformatica.Repositories
 
             Console.WriteLine($"Producto encontrado: {item.idProducto}, actualizando la cantidad a {nuevaCantidad}.");
             item.Cantidad = nuevaCantidad;
-            _context.Set<CarritoItem>().Update(item);
+            _context.CarritoItems.Update(item);
             await _context.SaveChangesAsync();
             return true;
         }
+
+
     }
 }
