@@ -34,7 +34,7 @@ namespace NavicomInformatica.Controllers
             string hashedPassword = _passwordHash.Hash(model.Password);
 
             var user = await _context.Users
-                .FirstOrDefaultAsync(u =>(u.Email == model.Identificador && u.Password == hashedPassword) || (u.Nombre == model.Identificador && u.Password == hashedPassword));
+                .FirstOrDefaultAsync(u =>(u.Email == model.Email && u.Password == hashedPassword));
 
             if (user != null)
             {

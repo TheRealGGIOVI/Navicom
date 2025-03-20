@@ -365,7 +365,7 @@
         "IsRequired": false
       },
       {
-        "Name": "Apodo",
+        "Name": "Nombre",
         "Type": "System.String",
         "IsRequired": false
       },

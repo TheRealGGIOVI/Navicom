@@ -97,7 +97,7 @@ namespace NavicomInformatica.Controllers
             }
 
             var existingEmailUser = await _userRepository.GetUserByEmailAsync(newUser.Email);
-            var existingApodolUser = await _userRepository.GetUserByApodoAsync(newUser.Apodo);
+            var existingApodolUser = await _userRepository.GetUserByApodoAsync(newUser.Nombre);
             if (existingEmailUser != null)
             {
                 return Conflict("Email existente, por favor introduzca otro Email.");
@@ -113,7 +113,7 @@ namespace NavicomInformatica.Controllers
                 var userToAdd = new User
                 {
                     Id = newUser.Id,
-                    Nombre = newUser.Apodo,
+                    Nombre = newUser.Nombre,
                     Email = newUser.Email,
                     Password = newUser.Password,
                     Rol = newUser.Rol
