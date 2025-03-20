@@ -26,6 +26,106 @@
     ]
   },
   {
+    "ContainingType": "NavicomInformatica.Controllers.CarritoController",
+    "Method": "ActualizarCantidadProducto",
+    "RelativePath": "api/Carrito/ActualizarCantidad",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "datos",
+        "Type": "NavicomInformatica.DTO.CarritoItemActualizarDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NavicomInformatica.Controllers.CarritoController",
+    "Method": "AgregarProductoAlCarrito",
+    "RelativePath": "api/Carrito/agregar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "itemDto",
+        "Type": "NavicomInformatica.DTO.CarritoItemAgregarDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NavicomInformatica.Controllers.CarritoController",
+    "Method": "EliminarProductoDelCarrito",
+    "RelativePath": "api/Carrito/eliminar/{idProducto}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idProducto",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NavicomInformatica.Controllers.CarritoController",
+    "Method": "ObtenerCarrito",
+    "RelativePath": "api/Carrito/ListarCarrito",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "correo",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NavicomInformatica.Controllers.CarritoController",
+    "Method": "SincronizarCarrito",
+    "RelativePath": "api/Carrito/Sincronizar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "items",
+        "Type": "System.Collections.Generic.List\u00601[[NavicomInformatica.DTO.CarritoItemAgregarDto, NavicomInformatica, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NavicomInformatica.Controllers.CarritoController",
+    "Method": "VaciarCarrito",
+    "RelativePath": "api/Carrito/vaciar",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NavicomInformatica.Controllers.CarritoController",
+    "Method": "VerificarOCrearCarrito",
+    "RelativePath": "api/Carrito/verificar-o-crear",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "NavicomInformatica.Controllers.NavicomInformatica.Controllers.ProductController",
     "Method": "AddProductAsync",
     "RelativePath": "api/Product/AddProduct",
@@ -49,7 +149,7 @@
         "IsRequired": false
       },
       {
-        "Name": "Original_Price",
+        "Name": "Precio",
         "Type": "System.Nullable\u00601[[System.Double, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
       },
@@ -188,7 +288,7 @@
         "IsRequired": false
       },
       {
-        "Name": "Original_Price",
+        "Name": "Precio",
         "Type": "System.Nullable\u00601[[System.Double, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
       },

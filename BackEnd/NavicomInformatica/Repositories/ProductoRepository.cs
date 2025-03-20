@@ -64,7 +64,7 @@ namespace NavicomInformatica.Repositories
             {
                 Brand = productDto.Brand,
                 Model = productDto.Model,
-                Original_Price = productDto.Original_Price,
+                Precio = productDto.Precio,
                 Discount_Price = productDto.Discount_Price,
                 Stock = productDto.Stock,
                 Description = productDto.Description,
@@ -112,13 +112,13 @@ namespace NavicomInformatica.Repositories
         public async Task<ICollection<Producto>> AscPriceProduct()
         {
             var productos = await _context.Products.ToListAsync();
-            return productos.OrderBy(p => p.Original_Price).ToList();
+            return productos.OrderBy(p => p.Precio).ToList();
         }
 
         public async Task<ICollection<Producto>> DescPriceProduct()
         {
             var productos = await _context.Products.ToListAsync();
-            return productos.OrderByDescending(p => p.Original_Price).ToList();
+            return productos.OrderByDescending(p => p.Precio).ToList();
         }
 
         public Task<ICollection<Producto>> AtoZProductAsync()
@@ -176,9 +176,9 @@ namespace NavicomInformatica.Repositories
                 throw new ArgumentException("No se puede poner menos de 0 de stock.");
             }
 
-            if (product.Original_Price < 0 || product.Discount_Price < 0)
+            if (product.Precio < 0 || product.Discount_Price < 0)
             {
-                throw new ArgumentException("El precio no puede ser negativo.");
+                throw new ArgumentException("El Precio no puede ser negativo.");
             }
 
             // Actualización de campos si los valores son válidos
@@ -192,9 +192,9 @@ namespace NavicomInformatica.Repositories
                 productVariado.Model = product.Model.Trim();
             }
 
-            if (product.Original_Price > 0)
+            if (product.Precio > 0)
             {
-                productVariado.Original_Price = product.Original_Price;
+                productVariado.Precio = product.Precio;
             }
 
             if (product.Discount_Price >= 0)

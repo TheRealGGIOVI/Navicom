@@ -10,6 +10,8 @@ namespace NavicomInformatica.Data
 
         public DbSet<User> Users { get; set; }
         public DbSet<Producto> Products { get; set; }
+        public DbSet<Carrito> Carritos { get; set; }
+        public DbSet<CarritoItem> CarritoItems { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -24,6 +26,16 @@ namespace NavicomInformatica.Data
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.Email)
                 .IsUnique();
+
+            modelBuilder.Entity<Carrito>()
+              .HasMany(c => c.Items)
+              .WithOne()
+              .HasForeignKey(ci => ci.CarritoId)
+              .OnDelete(DeleteBehavior.Cascade);
+
+            
+
+
         }
     }
 }
