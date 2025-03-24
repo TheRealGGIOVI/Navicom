@@ -135,7 +135,7 @@
     "Parameters": [
       {
         "Name": "Id",
-        "Type": "System.Int64",
+        "Type": "System.Int32",
         "IsRequired": false
       },
       {
@@ -274,7 +274,7 @@
       },
       {
         "Name": "Id",
-        "Type": "System.Int64",
+        "Type": "System.Int32",
         "IsRequired": false
       },
       {

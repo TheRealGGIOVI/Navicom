@@ -101,19 +101,8 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
           }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
+        }
       }
     },
     "/api/Carrito/eliminar/{idProducto}": {
@@ -334,7 +323,7 @@
                 "properties": {
                   "Id": {
                     "type": "integer",
-                    "format": "int64"
+                    "format": "int32"
                   },
                   "Brand": {
                     "type": "string"
@@ -481,7 +470,7 @@
                 "properties": {
                   "Id": {
                     "type": "integer",
-                    "format": "int64"
+                    "format": "int32"
                   },
                   "Brand": {
                     "type": "string"

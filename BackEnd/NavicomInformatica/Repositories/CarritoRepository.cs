@@ -8,10 +8,13 @@ namespace NavicomInformatica.Repositories
     public class CarritoRepository : ICarritoRepository
     {
         private readonly DataBaseContext _context;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public CarritoRepository(DataBaseContext context)
+
+        public CarritoRepository(DataBaseContext context, IHttpContextAccessor httpContextAccessor)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<Carrito> ObtenerCarritoPorUsuarioIdAsync(int idUsuario)
@@ -19,7 +22,7 @@ namespace NavicomInformatica.Repositories
             return await _context.Carritos
                 .Include(c => c.Items)
                 .ThenInclude(item => item.Producto)
-                .FirstOrDefaultAsync(c => c.UserId == idUsuario);
+                .FirstOrDefaultAsync(c => c.IdUsuario == idUsuario);
         }
 
         public async Task AgregarProductoAlCarritoAsync(Carrito carrito, int idProducto, int cantidad)
@@ -67,6 +70,126 @@ namespace NavicomInformatica.Repositories
             return true;
         }
 
+        public async Task AddCarritoItemAsync(CarritoItem carritoItem)
+        {
+            // Verificar que el carrito exista
+            var carrito = await _context.Carritos.FindAsync(carritoItem.CarritoId);
+            if (carrito == null)
+            {
+                throw new InvalidOperationException($"El carrito con ID {carritoItem.CarritoId} no existe.");
+            }
+
+            // Verificar que el producto exista
+            var producto = await _context.Products.FindAsync(carritoItem.idProducto);
+            if (producto == null)
+            {
+                throw new InvalidOperationException($"El producto con ID {carritoItem.idProducto} no existe.");
+            }
+
+            // Verificar que la cantidad sea válida
+            if (carritoItem.Cantidad <= 0)
+            {
+                throw new ArgumentException("La cantidad debe ser mayor que cero.");
+            }
+
+            // Asignar el producto al carritoItem (opcional, pero útil para ciertas operaciones)
+            carritoItem.Producto = producto;
+
+            // Agregar el carritoItem al contexto
+            await _context.CarritoItems.AddAsync(carritoItem);
+
+            try
+            {
+                // Guardar los cambios en la base de datos
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                // Registrar la excepción interna para depuración
+                Console.WriteLine($"Error al agregar el carritoItem: {ex.InnerException?.Message}");
+                throw;
+            }
+        }
+
+
+
+
+        public async Task SincronizarCarritoAlAutenticarAsync(int idUsuarioAutenticado)
+        {
+            // Obtener el ID del carrito temporal desde la cookie
+            var carritoIdCookie = _httpContextAccessor.HttpContext.Request.Cookies["CarritoId"];
+
+            if (string.IsNullOrEmpty(carritoIdCookie) || !int.TryParse(carritoIdCookie, out int carritoIdTemporal))
+            {
+                // No hay carrito temporal que sincronizar
+                return;
+            }
+
+            // Buscar el carrito temporal en la base de datos
+            var carritoTemporal = await _context.Carritos
+                .Include(c => c.Items)
+                .FirstOrDefaultAsync(c => c.CarritoId == carritoIdTemporal && c.IdUsuario == 0 && c.Estado == "Temporal");
+
+            if (carritoTemporal == null)
+            {
+                // El carrito temporal no existe
+                return;
+            }
+
+            // Obtener o crear el carrito del usuario autenticado
+            var carritoUsuario = await ObtenerOCrearCarritoPorUsuarioIdAsync(idUsuarioAutenticado);
+
+            // Fusionar los ítems del carrito temporal con el carrito del usuario
+            foreach (var itemTemporal in carritoTemporal.Items)
+            {
+                var itemExistente = carritoUsuario.Items.FirstOrDefault(i => i.idProducto == itemTemporal.idProducto);
+                if (itemExistente != null)
+                {
+                    // Si el producto ya está en el carrito, sumar la cantidad
+                    itemExistente.Cantidad += itemTemporal.Cantidad;
+                }
+                else
+                {
+                    // Si no existe, agregar el ítem al carrito del usuario
+                    var nuevoItem = new CarritoItem
+                    {
+                        idProducto = itemTemporal.idProducto,
+                        Cantidad = itemTemporal.Cantidad,
+                        CarritoId = carritoUsuario.CarritoId
+                    };
+                    carritoUsuario.Items.Add(nuevoItem);
+                }
+            }
+
+            // Eliminar el carrito temporal
+            _context.Carritos.Remove(carritoTemporal);
+
+            // Guardar los cambios en la base de datos
+            await _context.SaveChangesAsync();
+
+            // Eliminar la cookie del carrito temporal
+            _httpContextAccessor.HttpContext.Response.Cookies.Delete("CarritoId");
+        }
+
+        public async Task DeleteCarritoItemAsync(int id)
+        {
+            var carritoItem = await _context.CarritoItems.FindAsync(id);
+            if (carritoItem != null)
+            {
+                _context.CarritoItems.Remove(carritoItem);
+                try
+                {
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateException ex)
+                {
+                    // Registrar la excepción interna para obtener más detalles
+                    Console.WriteLine(ex.InnerException?.Message);
+                    throw;
+                }
+            }
+        }
+
         public async Task VaciarCarritoAsync(Carrito carrito)
         {
             if (carrito == null)
@@ -85,7 +208,7 @@ namespace NavicomInformatica.Repositories
         {
             return await _context.Carritos
                 .Include(c => c.Items)
-                .AnyAsync(c => c.UserId == idUsuario && c.Items.Any(item => item.idProducto == idProductos && item.Comprado));
+                .AnyAsync(c => c.IdUsuario == idUsuario && c.Items.Any(item => item.idProducto == idProductos && item.Comprado));
         }
 
         public async Task ComprarCarritoAsync(Carrito carrito)
@@ -103,19 +226,30 @@ namespace NavicomInformatica.Repositories
 
         public async Task<Carrito> ObtenerOCrearCarritoPorUsuarioIdAsync(int idUsuario)
         {
-            var carrito = await _context.Carritos
-                .Include(c => c.Items)
-                .ThenInclude(item => item.Producto)
-                .FirstOrDefaultAsync(c => c.UserId == idUsuario);
+            // Intentar obtener el carrito existente del usuario
+            var carritoExistente = await _context.Carritos
+                .Include(c => c.Items) // Incluir los ítems del carrito si los necesitas
+                .FirstOrDefaultAsync(c => c.IdUsuario == idUsuario && c.Estado == "Activo");
 
-            if (carrito == null)
+            if (carritoExistente != null)
             {
-                carrito = new Carrito { UserId = idUsuario };
-                _context.Carritos.Add(carrito);
-                await _context.SaveChangesAsync();
+                return carritoExistente; // Devolver el carrito existente si lo encontramos
             }
 
-            return carrito;
+            // Si no existe un carrito activo, crear uno nuevo
+            var nuevoCarrito = new Carrito
+            {
+                IdUsuario = idUsuario,
+                Estado = "Activo",
+                FechaCreacion = DateTime.UtcNow,
+                Items = new List<CarritoItem>() // Inicializar la lista de ítems
+            };
+
+            // Agregar el nuevo carrito al contexto
+            _context.Carritos.Add(nuevoCarrito);
+            await _context.SaveChangesAsync();
+
+            return nuevoCarrito; // Devolver el carrito recién creado
         }
 
         public async Task<bool> ActualizarCantidadProductoAsync(Carrito carrito, int idProducto, int nuevaCantidad)
@@ -136,6 +270,71 @@ namespace NavicomInformatica.Repositories
             return true;
         }
 
+        public async Task<Carrito> ObtenerOCrearCarritoParaUsuarioNoAutenticadoAsync()
+        {
+            // Obtener el identificador de la cookie del carrito
+            var carritoIdCookie = _httpContextAccessor.HttpContext.Request.Cookies["CarritoId"];
 
+            Carrito carrito;
+
+            if (string.IsNullOrEmpty(carritoIdCookie) || !int.TryParse(carritoIdCookie, out int carritoId))
+            {
+                // Si no hay cookie o no es válida, crear un nuevo carrito
+                carrito = new Carrito
+                {
+                    IdUsuario = 0, // Indica que es un carrito temporal para usuario no autenticado
+                    Estado = "Temporal",
+                    FechaCreacion = DateTime.UtcNow,
+                    Items = new List<CarritoItem>()
+                };
+
+                // Guarda el carrito en la base de datos
+                _context.Carritos.Add(carrito);
+                await _context.SaveChangesAsync();
+
+                // Establecer una cookie con el ID del carrito
+                _httpContextAccessor.HttpContext.Response.Cookies.Append("CarritoId", carrito.CarritoId.ToString(), new CookieOptions
+                {
+                    Expires = DateTimeOffset.UtcNow.AddDays(30), // La cookie expira en 30 días
+                    HttpOnly = true, // Para mayor seguridad, no accesible desde JavaScript
+                    Secure = true, // Solo enviar en HTTPS
+                    SameSite = SameSiteMode.Strict // Prevenir CSRF
+                });
+            }
+            else
+            {
+                // Si hay una cookie válida, obtener el carrito de la base de datos
+                carrito = await _context.Carritos
+                    .Include(c => c.Items)
+                    .FirstOrDefaultAsync(c => c.CarritoId == carritoId && c.IdUsuario == 0 && c.Estado == "Temporal");
+
+                if (carrito == null)
+                {
+                    // Si no se encuentra el carrito, crear uno nuevo
+                    carrito = new Carrito
+                    {
+                        IdUsuario = 0,
+                        Estado = "Temporal",
+                        FechaCreacion = DateTime.UtcNow,
+                        Items = new List<CarritoItem>()
+                    };
+
+                    // Guarda el carrito en la base de datos
+                    _context.Carritos.Add(carrito);
+                    await _context.SaveChangesAsync();
+
+                    // Actualizar la cookie con el nuevo ID del carrito
+                    _httpContextAccessor.HttpContext.Response.Cookies.Append("CarritoId", carrito.CarritoId.ToString(), new CookieOptions
+                    {
+                        Expires = DateTimeOffset.UtcNow.AddDays(30),
+                        HttpOnly = true,
+                        Secure = true,
+                        SameSite = SameSiteMode.Strict
+                    });
+                }
+            }
+
+            return carrito;
+        }
     }
 }

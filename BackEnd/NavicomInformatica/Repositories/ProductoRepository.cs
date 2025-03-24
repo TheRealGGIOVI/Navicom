@@ -15,14 +15,13 @@ namespace NavicomInformatica.Repositories
             _context = context;
         }
 
-        //Devuelve todos los productos sin paginación
+        // Devuelve todos los productos sin paginación
         public async Task<ICollection<Producto>> GetProductsAsync()
         {
             return await _context.Products.OrderBy(u => u.Id).ToListAsync();
         }
 
-
-        //Devuelve productos según el offset y el límite
+        // Devuelve productos según el offset y el límite
         public async Task<ICollection<Producto>> GetProductsAsync(int offset, int limit)
         {
             // Aplica la paginación a la consulta
@@ -31,6 +30,20 @@ namespace NavicomInformatica.Repositories
                 .Skip(offset)         // Salta el número de elementos determinado por el offset
                 .Take(limit)          // Toma el número de elementos determinado por el límite
                 .ToListAsync();
+        }
+
+        private void SaveChanges()
+        {
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+                // Registrar la excepción interna para obtener más detalles
+                Console.WriteLine(ex.InnerException?.Message);
+                throw;
+            }
         }
 
         public async Task<string> StoreImageAsync(IFormFile file, string modelName)
@@ -83,17 +96,35 @@ namespace NavicomInformatica.Repositories
                 }
             }
 
-
             await _context.Products.AddAsync(product);
 
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                // Registrar la excepción interna para obtener más detalles
+                Console.WriteLine(ex.InnerException?.Message);
+                throw;
+            }
         }
 
         public async Task AddProductsAsync(IEnumerable<Producto> products)
         {
             _context.Products.AddRange(products);
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                // Registrar la excepción interna para obtener más detalles
+                Console.WriteLine(ex.InnerException?.Message);
+                throw;
+            }
         }
+
         public async Task<Producto> GetProductByIdAsync(long id)
         {
             return await _context.Products.FirstOrDefaultAsync(u => u.Id == id);
@@ -121,20 +152,9 @@ namespace NavicomInformatica.Repositories
             return productos.OrderByDescending(p => p.Precio).ToList();
         }
 
-        public Task<ICollection<Producto>> AtoZProductAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<ICollection<Producto>> ZtoAProductAsync()
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task UpdateStockAsync(long ProductId, int stockRestar)
         {
             var productVariado = _context.Products.FirstOrDefault(p => p.Id == ProductId);
-
 
             if (productVariado == null)
             {
@@ -148,7 +168,16 @@ namespace NavicomInformatica.Repositories
 
             productVariado.Stock -= stockRestar;
 
-            _context.SaveChanges();
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+                // Registrar la excepción interna para obtener más detalles
+                Console.WriteLine(ex.InnerException?.Message);
+                throw;
+            }
         }
 
         public async Task DeleteProductAsync(long id)
@@ -157,9 +186,19 @@ namespace NavicomInformatica.Repositories
             if (product != null)
             {
                 _context.Set<Producto>().Remove(product);
-                await _context.SaveChangesAsync();
+                try
+                {
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateException ex)
+                {
+                    // Registrar la excepción interna para obtener más detalles
+                    Console.WriteLine(ex.InnerException?.Message);
+                    throw;
+                }
             }
         }
+
         public async Task UpdateAllAsync(ProductDTO product)
         {
             // Obtener el producto de la base de datos
@@ -240,8 +279,16 @@ namespace NavicomInformatica.Repositories
 
             // Guardar cambios en la base de datos
             _context.Products.Update(productVariado);
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                // Registrar la excepción interna para obtener más detalles
+                Console.WriteLine(ex.InnerException?.Message);
+                throw;
+            }
         }
-
     }
 }

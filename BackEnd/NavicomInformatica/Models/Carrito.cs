@@ -4,19 +4,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace NavicomInformatica.Models
 {
-   
-  public class Carrito
-  {
-      [Key]
-      public int CarritoId { get; set; }
 
-      [Required]
-      public int UserId { get; set; }
+    public class Carrito
+    {
+        public int CarritoId { get; set; }
+        public int IdUsuario { get; set; }
+        public string Estado { get; set; }
+        public DateTime FechaCreacion { get; set; }
+        public ICollection<CarritoItem> Items { get; set; }
+    }
 
-      public ICollection<CarritoItem> Items { get; set; } = new List<CarritoItem>();
-
-      [NotMapped]
-      public double Total => Items?.Sum(item => item.Subtotal) ?? 0;
-  }
-    
 }

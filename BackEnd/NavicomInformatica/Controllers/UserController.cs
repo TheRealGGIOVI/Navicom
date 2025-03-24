@@ -97,15 +97,9 @@ namespace NavicomInformatica.Controllers
             }
 
             var existingEmailUser = await _userRepository.GetUserByEmailAsync(newUser.Email);
-            var existingApodolUser = await _userRepository.GetUserByApodoAsync(newUser.Nombre);
             if (existingEmailUser != null)
             {
                 return Conflict("Email existente, por favor introduzca otro Email.");
-            }
-
-            if (existingApodolUser != null)
-            {
-                return Conflict("Nombre existente, por favor introduzca otro Nombre.");
             }
 
             try
@@ -131,5 +125,7 @@ namespace NavicomInformatica.Controllers
                 return StatusCode(500, "Internal server error: " + ex.Message);
             }
         }
+
+
     }
 }

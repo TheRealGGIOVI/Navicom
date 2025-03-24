@@ -39,6 +39,8 @@ public class Program
         builder.Services.AddScoped<DataBaseContext>();
         builder.Services.AddScoped<Seeder>();
         builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+        builder.Services.AddHttpContextAccessor();
+
 
 
 
