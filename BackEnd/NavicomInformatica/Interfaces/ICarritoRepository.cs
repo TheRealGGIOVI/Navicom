@@ -23,7 +23,7 @@ namespace NavicomInformatica.Interfaces
         Task<bool> ActualizarCantidadProductoAsync(Carrito carrito, int idProducto, int nuevaCantidad);
         Task<Carrito> ObtenerOCrearCarritoParaUsuarioNoAutenticadoAsync();
 
-        Task AddCarritoItemAsync(CarritoItem carritoItem);
+        Task AddCarritoItemAsync(int usuarioId, int idProducto, int cantidad);
 
         Task SincronizarCarritoAlAutenticarAsync(int idUsuarioAutenticado);
 

@@ -29,7 +29,7 @@ namespace NavicomInformatica.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<string>> Login([FromBody] LoginModel model)
+        public async Task<ActionResult<string>> Login([FromForm] LoginModel model)
         {
             string hashedPassword = _passwordHash.Hash(model.Password);
 

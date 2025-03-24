@@ -70,45 +70,33 @@ namespace NavicomInformatica.Repositories
             return true;
         }
 
-        public async Task AddCarritoItemAsync(CarritoItem carritoItem)
+        public async Task AddCarritoItemAsync(int usuarioId, int idProducto, int cantidad)
         {
-            // Verificar que el carrito exista
-            var carrito = await _context.Carritos.FindAsync(carritoItem.CarritoId);
+            // Obtener o crear un carrito
+            var carrito = await _context.Carritos.FirstOrDefaultAsync(c => c.IdUsuario == usuarioId);
             if (carrito == null)
             {
-                throw new InvalidOperationException($"El carrito con ID {carritoItem.CarritoId} no existe.");
+                carrito = new Carrito { IdUsuario = usuarioId, Estado = "Activo" };
+                _context.Carritos.Add(carrito);
+                await _context.SaveChangesAsync();
             }
 
             // Verificar que el producto exista
-            var producto = await _context.Products.FindAsync(carritoItem.idProducto);
+            var producto = await _context.Products.FindAsync(idProducto);
             if (producto == null)
             {
-                throw new InvalidOperationException($"El producto con ID {carritoItem.idProducto} no existe.");
+                throw new Exception($"El producto con ID {idProducto} no existe.");
             }
 
-            // Verificar que la cantidad sea válida
-            if (carritoItem.Cantidad <= 0)
+            // Agregar el CarritoItem
+            var item = new CarritoItem
             {
-                throw new ArgumentException("La cantidad debe ser mayor que cero.");
-            }
-
-            // Asignar el producto al carritoItem (opcional, pero útil para ciertas operaciones)
-            carritoItem.Producto = producto;
-
-            // Agregar el carritoItem al contexto
-            await _context.CarritoItems.AddAsync(carritoItem);
-
-            try
-            {
-                // Guardar los cambios en la base de datos
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException ex)
-            {
-                // Registrar la excepción interna para depuración
-                Console.WriteLine($"Error al agregar el carritoItem: {ex.InnerException?.Message}");
-                throw;
-            }
+                CarritoId = carrito.CarritoId,
+                idProducto = idProducto,
+                Cantidad = cantidad
+            };
+            _context.CarritoItems.Add(item);
+            await _context.SaveChangesAsync();
         }
 
 

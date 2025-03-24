@@ -142,10 +142,11 @@ namespace NavicomInformatica.Controllers
                     return BadRequest(new { error = "El ID del producto no puede ser nulo o cero." });
                 }
 
-                await _carritoRepository.AddCarritoItemAsync(carritoItem);
+                await _carritoRepository.AddCarritoItemAsync(carritoItem.CarritoId, carritoItem.idProducto, carritoItem.Cantidad);
                 await _unitOfWork.SaveChangesAsync();
 
                 return Ok(new { success = true, message = "El producto se ha añadido al carrito exitosamente." });
+                
             }
             catch (DbUpdateException ex)
             {
