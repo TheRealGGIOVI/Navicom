@@ -358,6 +358,32 @@
   },
   {
     "ContainingType": "NavicomInformatica.Controllers.UserController",
+    "Method": "ActualizarPerfilUsuario",
+    "RelativePath": "api/User/actualizar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "datosUsuario",
+        "Type": "NavicomInformatica.DTO.UserDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NavicomInformatica.Controllers.UserController",
+    "Method": "EliminarCuentaUsuario",
+    "RelativePath": "api/User/eliminar",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NavicomInformatica.Controllers.UserController",
     "Method": "AddUserAsync",
     "RelativePath": "api/User/register",
     "HttpMethod": "POST",
@@ -371,6 +397,11 @@
       },
       {
         "Name": "Nombre",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Apellidos",
         "Type": "System.String",
         "IsRequired": false
       },

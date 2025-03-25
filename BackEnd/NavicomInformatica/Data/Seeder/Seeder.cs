@@ -28,12 +28,12 @@ namespace NavicomInformatica.Data.Seeder
 
             User[] users =
             {
-                new User { Nombre = "Christian", Email = "christian@gmail.com", Password = passwordHashedChristian, Rol = "admin" },
-                new User { Nombre = "Kilian", Email = "kilian@gmail.com", Password = passwordHashedKilian, Rol = "admin" },
-                new User { Nombre = "Josemi", Email = "josemi@gmail.com", Password = passwordHashedJosemi, Rol = "admin" },
-                new User { Nombre = "Juanjo", Email = "juanjo@gmail.com", Password = passwordHashedJuanjo, Rol = "admin" },
-                new User { Nombre = "José", Email = "jose@gmail.com", Password = passwordHashedJose, Rol = "admin" },
-                new User { Nombre = "Pruebas", Email = "pruebas@gmail.com", Password = passwordHashedPruebas, Rol = "none" }
+                new User { Nombre = "Christian", Apellidos = "Lara", Email = "christian@gmail.com", Password = passwordHashedChristian, Rol = "admin" },
+                new User { Nombre = "Kilian", Apellidos = "Mbappe", Email = "kilian@gmail.com", Password = passwordHashedKilian, Rol = "admin" },
+                new User { Nombre = "Josemi", Apellidos = "Toro", Email = "josemi@gmail.com", Password = passwordHashedJosemi, Rol = "admin" },
+                new User { Nombre = "Juanjo", Apellidos = "Buenavista", Email = "juanjo@gmail.com", Password = passwordHashedJuanjo, Rol = "admin" },
+                new User { Nombre = "José", Apellidos = "Santos", Email = "jose@gmail.com", Password = passwordHashedJose, Rol = "admin" },
+                new User { Nombre = "Pruebas", Apellidos = "1234", Email = "pruebas@gmail.com", Password = passwordHashedPruebas, Rol = "none" }
     };
 
             _dbContext.Set<User>().AddRange(users);
