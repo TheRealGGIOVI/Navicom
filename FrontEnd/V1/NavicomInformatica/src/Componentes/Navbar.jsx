@@ -1,26 +1,33 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
-import Usuario from "../img/usuario.png"
+import Usuario from "../img/usuario.png";
+import "./styles/Module.Navbar.css"; 
 
 const Navbar = () => {
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="flex justify-between items-center p-4 bg-gray-900 text-white">
-      <ul className="flex gap-6">
-        <li>
-          <Link to="/">Inicio</Link>
-        </li>
-        <li>
-          <Link to="/sobre-nosotros">Sobre Nosotros</Link>
-        </li>
-      </ul>
-
-      <div className="flex items-center gap-4">
-        <Link to={user ? "/Perfil" : "/InicioSesion"}>
-          <img src={Usuario} alt="Perfil" className="w-8 h-8" />
-        </Link>
+    <nav className="navbar">
+      <div className="navbar-container">
+        <button className="menu-btn" onClick={() => setIsOpen(!isOpen)}>
+          ☰
+        </button>
+        <ul className={`nav-links ${isOpen ? "open" : ""}`}>
+          <li>
+            <Link to="/" onClick={() => setIsOpen(false)}>Inicio</Link>
+          </li>
+          <li>
+            <Link to="/sobre-nosotros" onClick={() => setIsOpen(false)}>Sobre Nosotros</Link>
+          </li>
+        </ul>
+        
+        <div className="profile">
+          <Link to={user ? "/Perfil" : "/InicioSesion"}>
+            <img src={Usuario} alt="Perfil" className="user-icon" />
+          </Link>
+        </div>
       </div>
     </nav>
   );
