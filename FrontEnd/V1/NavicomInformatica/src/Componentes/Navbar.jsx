@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
-import Usuario from "../img/usuario.png";
+import Usuario from "../img/icons8-usuario-30.png";
 import "./styles/Module.Navbar.css"; 
 
 const Navbar = () => {

@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #0157CA; /* Color de fondo */
+    background-color: var(--primary);
     color: white;
   }
   
@@ -14,7 +14,6 @@
   }
   
   .logo {
-    width: 40px;
     height: 40px;
   }
   
