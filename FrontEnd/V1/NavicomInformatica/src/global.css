@@ -1,0 +1,24 @@
+#root {
+  /* #6CAAF1  
+  #0157CA */
+}
+
+html {
+  font-size: 90%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Helvetica;
+  
+}
+
+.primary-button{
+  background-color: #0157CA;
+}
+
+.primary-button:hover{
+  background-color: #6CAAF1 ;
+}

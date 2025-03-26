@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { validation } from "../utils/validationForm"; 
 import { LOGIN_ENDPOINT, REGISTER_ENDPOINT } from "../../config";
-import { jwtDecode } from "jwt-decode";
+import { AuthContext } from "../context/AuthProvider";
+import "./styles/Module.LoginRegister.css"
+
 
 function LoginRegister() {
     const [isLogin, setIsLogin] = useState(true);
@@ -15,6 +17,8 @@ function LoginRegister() {
     const [nameError, setNameError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [promesaError, setPromesaError] = useState(null);
+    const [rememberMe, setRememberMe] = useState(false);
+    const { login } = useContext(AuthContext);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -71,17 +75,23 @@ function LoginRegister() {
         setEmail("");
         setPassword("");
         setConfirmPassword("");
+        setRememberMe(false);
     }
 
     async function fetchingData(url, userData) {
         try {
             setIsLoading(true);
-
             const formData = new FormData();
-            formData.append("Id", userData.id);
-            formData.append("Nombre", userData.name);
-            formData.append("Email", userData.email);
-            formData.append("Password", userData.password);
+
+            if (isLogin) {
+                formData.append("Email", userData.email);
+                formData.append("Password", userData.password);
+            }else{
+                formData.append("Id", userData.id);
+                formData.append("Nombre", userData.name);
+                formData.append("Email", userData.email);
+                formData.append("Password", userData.password);
+            }
 
             const response = await fetch(url, {
                 method: "POST",
@@ -94,18 +104,10 @@ function LoginRegister() {
                 
                 if (isLogin) {
                     const token = datosPromesa.accessToken;
-                    const decodedToken = jwtDecode(token);
                     console.log("Inicio de sesión exitoso");
 
-                    if (decodedToken) {
-                        const userInfo = {
-                            id: decodedToken.Id,
-                            name: decodedToken.Name,
-                            email: decodedToken.Email,
-                            rol: decodedToken.Rol
-                        };
-                        // login(userInfo, token);
-                    }
+                    
+                    login(token, rememberMe);
                 } else {
                     console.log("Registro exitoso");
                 }
@@ -170,19 +172,29 @@ function LoginRegister() {
                     </>
                 )}
 
-                <button type="submit" disabled={isLoading}>
+                {isLogin && (
+                    <label>
+                        <input
+                            type="checkbox"
+                            checked={rememberMe}
+                            onChange={() => setRememberMe(!rememberMe)}
+                        />
+                        Mantener sesión iniciada
+                    </label>
+                )}
+
+                <button type="submit" className="primary-button" disabled={isLoading}>
                     {isLoading ? "Cargando..." : isLogin ? "Iniciar Sesión" : "Registrarse"}
+                </button>
+                
+                {isLogin ? "¿No tienes cuenta?" : "¿Ya tienes cuenta?"}{" "}
+                <button className="primary-button" onClick={() => setIsLogin(!isLogin)}>
+                    {isLogin ? "Regístrate" : "Inicia Sesión"}
                 </button>
             </form>
 
             {promesaError && <p>{promesaError}</p>}
-
-            <p>
-                {isLogin ? "¿No tienes cuenta?" : "¿Ya tienes cuenta?"}{" "}
-                <button onClick={() => setIsLogin(!isLogin)}>
-                    {isLogin ? "Regístrate" : "Inicia Sesión"}
-                </button>
-            </p>
+                
         </div>
     );
 }
