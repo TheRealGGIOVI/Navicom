@@ -1,0 +1,75 @@
+.footer-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px; /* Aumenté un poco el padding para que haya más espacio */
+    background-color: var(--primary);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: grid; /* Usamos CSS Grid para las columnas */
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas de igual ancho */
+    gap: 20px; /* Espacio entre las columnas */
+}
+
+.footer-column {
+    text-align: left; /* Alineamos el texto a la izquierda para que se vea más profesional */
+}
+
+.footer-column h2 {
+    font-size: 1.8rem;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.footer-column p {
+    font-size: 1rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+/* Estilos para la sección de Información */
+.footer-column.info ul {
+    list-style: none; /* Quitamos los puntos de la lista */
+    padding: 0;
+}
+
+.footer-column.info ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column.info ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-column.info ul li a:hover {
+    color: #ffffff;
+}
+
+/* Estilos para la sección de Redes Sociales */
+.footer-column.social-media a {
+    margin: 0 10px;
+    color: #ffffff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-column.social-media a:hover {
+    color: #ffffff;
+}
+
+/* Responsividad: en pantallas pequeñas, las columnas se apilan */
+@media (max-width: 600px) {
+    .footer-container {
+        width: 100%;
+        max-width: none;
+        grid-template-columns: 1fr; /* Una sola columna en pantallas pequeñas */
+        gap: 30px; /* Más espacio entre las secciones apiladas */
+    }
+
+    .footer-column {
+        text-align: center; /* Centramos el texto en pantallas pequeñas */
+    }
+}
