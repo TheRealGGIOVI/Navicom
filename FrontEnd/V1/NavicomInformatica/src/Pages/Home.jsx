@@ -4,11 +4,9 @@ import Footer from "../Componentes/Footer";
 function Home(){
     return(
         <>
-        <Header/>
         <div className="main-content">
-                {/* Aquí va el contenido de la página */}
+                <p>Contenido de prueba</p>
         </div>
-        <Footer/>
         </>
     );
 }
