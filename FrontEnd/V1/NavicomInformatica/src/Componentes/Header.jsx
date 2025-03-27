@@ -5,11 +5,7 @@ import "./styles/Module.Header.css";
 
 const Header = () => {
   // Lista de enlaces para pasar al Navbar
-  const navLinks = [
-    { name: "Servicios", path: "/servicios" },
-    { name: "Contacto", path: "/contacto" },
-    { name: "Sobre Nosotros", path: "/sobre-nosotros" },
-  ];
+  
 
   return (
     <header className="header">
@@ -17,7 +13,7 @@ const Header = () => {
         <img src={Logo} alt="Logo" className="logo" />
         <h1 className="site-title">Navicom Informática</h1>
       </div>
-      <Navbar links={navLinks} />
+      <Navbar />
     </header>
   );
 };
