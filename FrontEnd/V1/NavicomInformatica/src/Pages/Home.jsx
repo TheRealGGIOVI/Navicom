@@ -5,11 +5,6 @@ import "./styles/Module.Home.css";
 function Home() {
     return (
         <>
-<<<<<<< Updated upstream
-        <div className="main-content">
-                {/* Aquí va el contenido de la página */}
-        </div>
-=======
             <Header />
             <div className="main-content">
                 {/* Sección de Bienvenida */}
@@ -55,7 +50,6 @@ function Home() {
                 </section>
             </div>
             <Footer />
->>>>>>> Stashed changes
         </>
     );
 }
