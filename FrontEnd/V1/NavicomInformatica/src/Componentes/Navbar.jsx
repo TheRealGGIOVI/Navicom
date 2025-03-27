@@ -34,7 +34,7 @@ const Navbar = () => {
         <div className="profile">
           <Link to={user ? "/Perfil" : "/InicioSesion"} onClick={() => setIsOpen(false)}>
             <img src={Usuario} alt="Perfil de usuario" className="user-icon" />
-            <p>{user ? "Perfil" : "Inicio Sesión"}</p>
+            <p>{user ? "Ver Perfil" : "Inicio Sesión"}</p>
           </Link>
         </div>
       </div>
