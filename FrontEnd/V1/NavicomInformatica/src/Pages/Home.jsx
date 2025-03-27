@@ -5,7 +5,7 @@ function Home(){
     return(
         <>
         <div className="main-content">
-                <p>Contenido de prueba</p>
+                {/* Aquí va el contenido de la página */}
         </div>
         </>
     );

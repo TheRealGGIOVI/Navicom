@@ -26,6 +26,7 @@ const Navbar = () => {
         <div className="profile">
           <Link to={user ? "/Perfil" : "/InicioSesion"}>
             <img src={Usuario} alt="Perfil" className="user-icon" />
+            <p>{user ? "Perfil" : "Inicio Sesión"}</p>
           </Link>
         </div>
       </div>
