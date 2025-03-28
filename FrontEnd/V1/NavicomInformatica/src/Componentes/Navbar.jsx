@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
 import Usuario from "../img/icons8-usuario-30.png";
+import Carrito from "../img/carrito.png";
 import "./styles/Module.Navbar.css";
 
 const Navbar = () => {
@@ -35,6 +36,11 @@ const Navbar = () => {
           <Link to={user ? "/Perfil" : "/InicioSesion"} onClick={() => setIsOpen(false)}>
             <img src={Usuario} alt="Perfil de usuario" className="user-icon" />
             <p>{user ? "Ver Perfil" : "Inicio Sesión"}</p>
+          </Link>
+        </div>
+        <div className="carrito">
+          <Link to="/Carrito" onClick={() => setIsOpen(false)}>
+          <img src={Carrito} alt="Carrito" className="cart-icon" />
           </Link>
         </div>
       </div>

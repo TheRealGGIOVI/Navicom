@@ -4,7 +4,7 @@ import Logo from "../img/Logo.jpg";
 import "./styles/Module.Header.css";
 
 const Header = () => {
-  // Lista de enlaces para pasar al Navbar
+  
   
 
   return (

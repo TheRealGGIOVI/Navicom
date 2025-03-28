@@ -1,15 +1,12 @@
 import { createContext, useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 
-// Crear el contexto de autenticación
 export const AuthContext = createContext();
 
-// Proveedor de autenticación
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [token, setToken] = useState(null);
 
-    // Cargar el usuario si hay un token en localStorage
     useEffect(() => {
         const storedToken = sessionStorage.getItem("token") || localStorage.getItem("token");
         if (storedToken) {
@@ -24,9 +21,9 @@ export const AuthProvider = ({ children }) => {
         }
     }, []);
 
-    // Función para iniciar sesión
     const login = (token, rememberMe) => {
         const decodedUser = jwtDecode(token);
+        console.log("Usuario decodificado:", decodedUser);
         setUser(decodedUser);
         setToken(token);
         if (rememberMe) {
@@ -36,7 +33,6 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
-    // Función para cerrar sesión
     const logout = () => {
         setUser(null);
         setToken(null);

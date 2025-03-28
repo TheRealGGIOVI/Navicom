@@ -1,7 +1,8 @@
 import './global.css'
+import { Route, Routes } from 'react-router-dom'
 import Home from "./Pages/Home";
 import LoginRegister from "./Pages/LoginRegister"
-import { Route, Routes } from 'react-router-dom'
+import Perfil from "./Pages/Perfil"
 import BigLayout from './utils/BigLayout';
 import SobreNosotros from './Pages/SobreNosotros';
 import Contacto from './Pages/Contacto';
@@ -12,6 +13,7 @@ function App() {
       <Route path="/" element={<BigLayout />}>
         <Route index element={<Home />} />
         <Route path="/InicioSesion" element={<LoginRegister />}/>
+        <Route path="/Perfil" element={<Perfil />}/>
         <Route path="/sobre-nosotros" element={<SobreNosotros />}/>
         <Route path="/Contacto" element={<Contacto/>} />
         <Route path="*" element={<h1>404 - Página no encontrada</h1>} />
