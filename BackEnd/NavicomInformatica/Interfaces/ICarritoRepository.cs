@@ -1,32 +1,16 @@
-﻿using NavicomInformatica.Models;
+﻿using NavicomInformatica.DTO;
+using NavicomInformatica.Models;
 
 namespace NavicomInformatica.Interfaces
 {
     public interface ICarritoRepository
     {
-        Task<Carrito> ObtenerCarritoPorUsuarioIdAsync(int idUsuario);
-
-        Task<Carrito> ObtenerOCrearCarritoPorUsuarioIdAsync(int idUsuario);
-
-        Task AgregarProductoAlCarritoAsync(Carrito carrito, int idProducto, int cantidad);
-
-        Task<bool> EliminarProductoDelCarritoAsync(Carrito carrito, int idProducto);
-
-        Task VaciarCarritoAsync(Carrito carrito);
-
-        Task GuardarCambiosAsync();
-
-        Task<bool> UsuarioHaCompradoProductoAsync(int idUsuario, int idProducto);
-
-        Task ComprarCarritoAsync(Carrito carrito);
-
-        Task<bool> ActualizarCantidadProductoAsync(Carrito carrito, int idProducto, int nuevaCantidad);
-        Task<Carrito> ObtenerOCrearCarritoParaUsuarioNoAutenticadoAsync();
-
-        Task AddCarritoItemAsync(int usuarioId, int idProducto, int cantidad);
-
-        Task SincronizarCarritoAlAutenticarAsync(int idUsuarioAutenticado);
-
-        Task DeleteCarritoItemAsync(int id);
+        Task<Carrito> GetCartByIdAsync(long carritoId);
+        Task AddToCartAsync(CarritoItem productoCarrito);
+        Task SaveChangesAsync();
+        Task AddCartToUserAsync(Carrito carrito);
+        Task RemoveProductFromCartAsync(long carritoId, long productoId);
+        Task UpdateProductAsync(CarritoProductoDTO carritoProductoDTO);
+        Task RemoveAllProductsFromCartAsync(long carritoId);
     }
 }

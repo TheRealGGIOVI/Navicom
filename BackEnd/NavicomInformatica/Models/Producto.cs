@@ -5,7 +5,7 @@ namespace NavicomInformatica.Models
     public class Producto
     {
         [Key]
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string? Brand { get; set; }
         public string? Model { get; set; }
         public double? Precio { get; set; }

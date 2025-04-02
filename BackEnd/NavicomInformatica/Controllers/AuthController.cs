@@ -45,6 +45,7 @@ namespace NavicomInformatica.Controllers
                         { "Id", user.Id },
                         { "Nombre", user.Nombre },
                         { "Email", user.Email },
+                        { ClaimTypes.Role, user.Rol },
                     },
                     Expires = DateTime.UtcNow.AddHours(2),
                     SigningCredentials = new SigningCredentials(
@@ -64,11 +65,12 @@ namespace NavicomInformatica.Controllers
             }
         }
 
-        //[HttpGet("secret")]
-        //public ActionResult GetSecret()
-        //{
-        //    // Si el usuario es admin, devuelve el secreto
-        //    return Ok("Esto es un secreto que no todo el mundo debería leer");
-        //}
+        [Authorize(Roles = "admin")]
+        [HttpGet("secret")]
+        public ActionResult GetSecret()
+        {
+            // Si el usuario es admin, devuelve el secreto
+            return Ok("Esto es un secreto que no todo el mundo debería leer");
+        }
     }
 }

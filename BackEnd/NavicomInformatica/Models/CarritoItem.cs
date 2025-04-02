@@ -5,26 +5,15 @@ using System.ComponentModel.DataAnnotations;
 public class CarritoItem
 {
     [Key]
-    public int Id { get; set; }
+    public long Id { get; set; }
+    public int? Cantidad { get; set; }
+    public double? PrecioTotalProducto { get; set; }
 
-    [Required]
-    public int CarritoId { get; set; }
-
-    [ForeignKey("CarritoId")]
-    public Carrito Carrito { get; set; }
-
-    [Required]
-    public int idProducto { get; set; }
-
-    [ForeignKey("idProducto")]
+    [ForeignKey("Producto")]
+    public long ProductoId { get; set; }
     public Producto Producto { get; set; }
 
-    [Required]
-    [Range(1, int.MaxValue, ErrorMessage = "La cantidad debe ser al menos 1")]
-    public int Cantidad { get; set; }
-
-    [NotMapped]
-    public double Subtotal { get; set; }
-
-    public bool Comprado { get; set; }
+    [ForeignKey("Carrito")]
+    public long CarritoId { get; set; }
+    public Carrito Carrito { get; set; }
 }

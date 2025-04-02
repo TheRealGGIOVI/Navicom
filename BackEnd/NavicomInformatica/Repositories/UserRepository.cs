@@ -74,6 +74,11 @@ namespace NavicomInformatica.Repositories
             return await _context.Users.AnyAsync(u => u.Email == correo);
         }
 
+        public Task EliminarUsuarioAsync(long id)
+        {
+            throw new NotImplementedException();
+        }
+
         //public async Task<string> StoreImageAsync(IFormFile file, string apodo)
         //{
         //    string fileExtension = Path.GetExtension(file.FileName);

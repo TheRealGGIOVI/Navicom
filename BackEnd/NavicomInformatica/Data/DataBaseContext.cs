@@ -26,9 +26,12 @@ namespace NavicomInformatica.Data
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.Email)
                 .IsUnique();
+            modelBuilder.Entity<Carrito>()
+    .HasKey(c => c.Id);  // Asegura que 'Id' es la clave primaria
+
 
             modelBuilder.Entity<Carrito>()
-              .HasMany(c => c.Items)
+              .HasMany(c => c.Productos)
               .WithOne()
               .HasForeignKey(ci => ci.CarritoId)
               .OnDelete(DeleteBehavior.Cascade);
