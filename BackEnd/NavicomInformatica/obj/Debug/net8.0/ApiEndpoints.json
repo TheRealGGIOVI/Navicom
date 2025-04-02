@@ -42,6 +42,38 @@
   },
   {
     "ContainingType": "NavicomInformatica.Controllers.CarritoController",
+    "Method": "AddToCart",
+    "RelativePath": "api/Carrito/AddToCart",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "carritoProductoDTO",
+        "Type": "NavicomInformatica.DTO.CarritoProductoDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NavicomInformatica.Controllers.CarritoController",
+    "Method": "ClearCart",
+    "RelativePath": "api/Carrito/ClearCart/{cartId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cartId",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NavicomInformatica.Controllers.CarritoController",
     "Method": "GetCartById",
     "RelativePath": "api/Carrito/GetCart/{cartId}",
     "HttpMethod": "GET",
@@ -51,6 +83,43 @@
       {
         "Name": "cartId",
         "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NavicomInformatica.Controllers.CarritoController",
+    "Method": "RemoveFromCart",
+    "RelativePath": "api/Carrito/RemoveFromCart/{cartId}/{productId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cartId",
+        "Type": "System.Int64",
+        "IsRequired": true
+      },
+      {
+        "Name": "productId",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NavicomInformatica.Controllers.CarritoController",
+    "Method": "UpdateQuantity",
+    "RelativePath": "api/Carrito/UpdateQuantity",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "carritoProductoDTO",
+        "Type": "NavicomInformatica.DTO.CarritoProductoDTO",
         "IsRequired": true
       }
     ],

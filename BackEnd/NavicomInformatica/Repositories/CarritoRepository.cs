@@ -37,7 +37,7 @@ namespace NavicomInformatica.Repositories
 
             if (carrito == null)
             {
-                throw new Exception("Carrito no encontrado.");
+                throw new Exception($"Carrito con ID {carritoProductDTO.CarritoId} no encontrado.");
             }
 
             var product = await _context.Products
@@ -45,7 +45,7 @@ namespace NavicomInformatica.Repositories
 
             if (product == null)
             {
-                throw new Exception("Producto no encontrado.");
+                throw new Exception($"Producto con ID {carritoProductDTO.ProductoId} no encontrado.");
             }
 
             if (carritoProductDTO.Cantidad > product.Stock)
@@ -75,7 +75,15 @@ namespace NavicomInformatica.Repositories
 
                 carrito.Productos.Add(newCartProduct);
             }
-            await _context.SaveChangesAsync();
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException dbEx)
+            {
+                throw new Exception($"Error al guardar los cambios en la base de datos: {dbEx.InnerException?.Message ?? dbEx.Message}");
+            }
         }
 
         public async Task<Carrito> GetCartByIdAsync(long carritoId)

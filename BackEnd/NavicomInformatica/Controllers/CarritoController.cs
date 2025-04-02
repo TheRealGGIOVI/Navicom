@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NavicomInformatica.DataMappers;
 using NavicomInformatica.DTO;
 using NavicomInformatica.Interfaces;
 using NavicomInformatica.Models;
-using System.Security.Claims;
 
 namespace NavicomInformatica.Controllers
 {
@@ -27,7 +25,6 @@ namespace NavicomInformatica.Controllers
             _carritoMapper = carritoMapper;
         }
 
-        [Authorize(Roles = "admin")]
         [HttpGet("GetCart/{cartId}")]
         public async Task<IActionResult> GetCartById(long cartId)
         {
@@ -41,8 +38,7 @@ namespace NavicomInformatica.Controllers
             var cartDTO = new
             {
                 CartId = cart.Id,
-                UserId = cart.UserId,
-
+                cart.UserId,
                 CartProducts = cart.Productos.Select(cp => new
                 {
                     ProductId = cp.ProductoId,
@@ -58,6 +54,96 @@ namespace NavicomInformatica.Controllers
 
             return Ok(cartDTO);
         }
+
+        [HttpPost("AddToCart")]
+        public async Task<IActionResult> AddToCart([FromBody] CarritoProductoDTO carritoProductoDTO)
+        {
+            try
+            {
+                if (carritoProductoDTO == null || carritoProductoDTO.Cantidad <= 0)
+                {
+                    return BadRequest(new { message = "Datos inválidos: el DTO no puede ser nulo y la cantidad debe ser mayor a 0." });
+                }
+
+                var carritoItem = new CarritoItem
+                {
+                    CarritoId = carritoProductoDTO.CarritoId,
+                    ProductoId = carritoProductoDTO.ProductoId,
+                    Cantidad = carritoProductoDTO.Cantidad
+                };
+
+                await _carritoRepository.AddToCartAsync(carritoItem);
+                return Ok(new { message = "Producto añadido al carrito exitosamente" });
+            }
+            catch (DbUpdateException dbEx)
+            {
+                // Capturar errores específicos de Entity Framework
+                return BadRequest(new { message = "Error al guardar en la base de datos.", details = dbEx.InnerException?.Message ?? dbEx.Message });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = "Error al añadir el producto al carrito.", details = ex.Message });
+            }
+        }
+
+        [HttpDelete("RemoveFromCart/{cartId}/{productId}")]
+        public async Task<IActionResult> RemoveFromCart(long cartId, long productId)
+        {
+            try
+            {
+                var cart = await _carritoRepository.GetCartByIdAsync(cartId);
+                if (cart == null)
+                {
+                    return NotFound("Carrito no encontrado.");
+                }
+
+                await _carritoRepository.RemoveProductFromCartAsync(cartId, productId);
+                return Ok(new { message = "Producto eliminado del carrito exitosamente" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
+        [HttpDelete("ClearCart/{cartId}")]
+        public async Task<IActionResult> ClearCart(long cartId)
+        {
+            try
+            {
+                var cart = await _carritoRepository.GetCartByIdAsync(cartId);
+                if (cart == null)
+                {
+                    return NotFound("Carrito no encontrado.");
+                }
+
+                await _carritoRepository.RemoveAllProductsFromCartAsync(cartId);
+                return Ok(new { message = "Carrito vaciado exitosamente" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
+        [HttpPut("UpdateQuantity")]
+        public async Task<IActionResult> UpdateQuantity([FromBody] CarritoProductoDTO carritoProductoDTO)
+        {
+            try
+            {
+                var cart = await _carritoRepository.GetCartByIdAsync(carritoProductoDTO.CarritoId);
+                if (cart == null)
+                {
+                    return NotFound("Carrito no encontrado.");
+                }
+
+                await _carritoRepository.UpdateProductAsync(carritoProductoDTO);
+                return Ok(new { message = "Cantidad actualizada exitosamente" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
     }
 }
-

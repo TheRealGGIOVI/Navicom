@@ -59,17 +59,42 @@
         }
       }
     },
-    "/api/Carrito/ListarCarrito": {
+    "/api/Auth/secret": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/Carrito/GetCart/{cartId}": {
       "get": {
         "tags": [
           "Carrito"
         ],
         "parameters": [
           {
-            "name": "correo",
-            "in": "query",
+            "name": "cartId",
+            "in": "path",
+            "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "format": "int64"
             }
           }
         ],
@@ -80,7 +105,7 @@
         }
       }
     },
-    "/api/Carrito/agregar": {
+    "/api/Carrito/AddToCart": {
       "post": {
         "tags": [
           "Carrito"
@@ -89,17 +114,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CarritoItemAgregarDto"
+                "$ref": "#/components/schemas/CarritoProductoDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CarritoItemAgregarDto"
+                "$ref": "#/components/schemas/CarritoProductoDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CarritoItemAgregarDto"
+                "$ref": "#/components/schemas/CarritoProductoDTO"
               }
             }
           }
@@ -111,64 +136,62 @@
         }
       }
     },
-    "/api/Carrito/eliminar/{idProducto}": {
+    "/api/Carrito/RemoveFromCart/{cartId}/{productId}": {
       "delete": {
         "tags": [
           "Carrito"
         ],
         "parameters": [
           {
-            "name": "idProducto",
+            "name": "cartId",
             "in": "path",
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "int64"
+            }
+          },
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
             }
           }
         ],
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
           }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
+        }
       }
     },
-    "/api/Carrito/vaciar": {
+    "/api/Carrito/ClearCart/{cartId}": {
       "delete": {
         "tags": [
           "Carrito"
         ],
+        "parameters": [
+          {
+            "name": "cartId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
           }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
+        }
       }
     },
-    "/api/Carrito/ActualizarCantidad": {
+    "/api/Carrito/UpdateQuantity": {
       "put": {
         "tags": [
           "Carrito"
@@ -177,17 +200,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CarritoItemActualizarDTO"
+                "$ref": "#/components/schemas/CarritoProductoDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CarritoItemActualizarDTO"
+                "$ref": "#/components/schemas/CarritoProductoDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CarritoItemActualizarDTO"
+                "$ref": "#/components/schemas/CarritoProductoDTO"
               }
             }
           }
@@ -195,93 +218,8 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
           }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      }
-    },
-    "/api/Carrito/Sincronizar": {
-      "post": {
-        "tags": [
-          "Carrito"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/CarritoItemAgregarDto"
-                }
-              }
-            },
-            "text/json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/CarritoItemAgregarDto"
-                }
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/CarritoItemAgregarDto"
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      }
-    },
-    "/api/Carrito/verificar-o-crear": {
-      "post": {
-        "tags": [
-          "Carrito"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
+        }
       }
     },
     "/api/Product/ListOfProducts": {
@@ -329,7 +267,7 @@
                 "properties": {
                   "Id": {
                     "type": "integer",
-                    "format": "int32"
+                    "format": "int64"
                   },
                   "Brand": {
                     "type": "string"
@@ -476,7 +414,7 @@
                 "properties": {
                   "Id": {
                     "type": "integer",
-                    "format": "int32"
+                    "format": "int64"
                   },
                   "Brand": {
                     "type": "string"
@@ -735,36 +673,18 @@
   },
   "components": {
     "schemas": {
-      "CarritoItemActualizarDTO": {
+      "CarritoProductoDTO": {
         "type": "object",
         "properties": {
-          "idProducto": {
+          "carritoId": {
             "type": "integer",
-            "format": "int32"
+            "format": "int64"
           },
-          "nuevaCantidad": {
+          "productoId": {
             "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
-      "CarritoItemAgregarDto": {
-        "required": [
-          "cantidad",
-          "idProducto"
-        ],
-        "type": "object",
-        "properties": {
-          "idProducto": {
-            "maximum": 2147483647,
-            "minimum": 1,
-            "type": "integer",
-            "format": "int32"
+            "format": "int64"
           },
           "cantidad": {
-            "maximum": 2147483647,
-            "minimum": 1,
             "type": "integer",
             "format": "int32"
           }

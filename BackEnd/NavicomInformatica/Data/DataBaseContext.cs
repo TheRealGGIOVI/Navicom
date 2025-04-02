@@ -23,22 +23,43 @@ namespace NavicomInformatica.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            // Configuración de User
+            modelBuilder.Entity<User>()
+                .HasKey(u => u.Id);
+
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.Email)
                 .IsUnique();
+
+            // Configuración de Producto
+            modelBuilder.Entity<Producto>()
+                .HasKey(p => p.Id);
+
+            // Configuración de Carrito
             modelBuilder.Entity<Carrito>()
-    .HasKey(c => c.Id);  // Asegura que 'Id' es la clave primaria
-
+                .HasKey(c => c.Id);
 
             modelBuilder.Entity<Carrito>()
-              .HasMany(c => c.Productos)
-              .WithOne()
-              .HasForeignKey(ci => ci.CarritoId)
-              .OnDelete(DeleteBehavior.Cascade);
+                .HasOne(c => c.User)
+                .WithMany()
+                .HasForeignKey(c => c.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
 
-            
+            modelBuilder.Entity<Carrito>()
+                .HasMany(c => c.Productos)
+                .WithOne(ci => ci.Carrito)
+                .HasForeignKey(ci => ci.CarritoId)
+                .OnDelete(DeleteBehavior.Cascade);
 
+            // Configuración de CarritoItem
+            modelBuilder.Entity<CarritoItem>()
+                .HasKey(ci => ci.Id);
 
+            modelBuilder.Entity<CarritoItem>()
+                .HasOne(ci => ci.Producto)
+                .WithMany()
+                .HasForeignKey(ci => ci.ProductoId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

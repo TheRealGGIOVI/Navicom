@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "F+ZutwS/YV3qVi0gZ885/OwDDmJ67AyhhO8fCjnhNzg=",
+  "Hash": "yuMsNRnDtugNdH+4pYXk4bRwYHUayAiY5b4v5I1mVVg=",
   "Source": "NavicomInformatica",
   "BasePath": "_content/NavicomInformatica",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }
