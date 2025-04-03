@@ -15,14 +15,13 @@ namespace NavicomInformatica.Repositories
             _context = context;
         }
 
-        //Devuelve todos los productos sin paginación
+        // Devuelve todos los productos sin paginación
         public async Task<ICollection<Producto>> GetProductsAsync()
         {
             return await _context.Products.OrderBy(u => u.Id).ToListAsync();
         }
 
-
-        //Devuelve productos según el offset y el límite
+        // Devuelve productos según el offset y el límite
         public async Task<ICollection<Producto>> GetProductsAsync(int offset, int limit)
         {
             // Aplica la paginación a la consulta
@@ -31,6 +30,20 @@ namespace NavicomInformatica.Repositories
                 .Skip(offset)         // Salta el número de elementos determinado por el offset
                 .Take(limit)          // Toma el número de elementos determinado por el límite
                 .ToListAsync();
+        }
+
+        private void SaveChanges()
+        {
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+                // Registrar la excepción interna para obtener más detalles
+                Console.WriteLine(ex.InnerException?.Message);
+                throw;
+            }
         }
 
         public async Task<string> StoreImageAsync(IFormFile file, string modelName)
@@ -64,7 +77,7 @@ namespace NavicomInformatica.Repositories
             {
                 Brand = productDto.Brand,
                 Model = productDto.Model,
-                Original_Price = productDto.Original_Price,
+                Precio = productDto.Precio,
                 Discount_Price = productDto.Discount_Price,
                 Stock = productDto.Stock,
                 Description = productDto.Description,
@@ -83,17 +96,35 @@ namespace NavicomInformatica.Repositories
                 }
             }
 
-
             await _context.Products.AddAsync(product);
 
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                // Registrar la excepción interna para obtener más detalles
+                Console.WriteLine(ex.InnerException?.Message);
+                throw;
+            }
         }
 
         public async Task AddProductsAsync(IEnumerable<Producto> products)
         {
             _context.Products.AddRange(products);
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                // Registrar la excepción interna para obtener más detalles
+                Console.WriteLine(ex.InnerException?.Message);
+                throw;
+            }
         }
+
         public async Task<Producto> GetProductByIdAsync(long id)
         {
             return await _context.Products.FirstOrDefaultAsync(u => u.Id == id);
@@ -112,29 +143,18 @@ namespace NavicomInformatica.Repositories
         public async Task<ICollection<Producto>> AscPriceProduct()
         {
             var productos = await _context.Products.ToListAsync();
-            return productos.OrderBy(p => p.Original_Price).ToList();
+            return productos.OrderBy(p => p.Precio).ToList();
         }
 
         public async Task<ICollection<Producto>> DescPriceProduct()
         {
             var productos = await _context.Products.ToListAsync();
-            return productos.OrderByDescending(p => p.Original_Price).ToList();
-        }
-
-        public Task<ICollection<Producto>> AtoZProductAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<ICollection<Producto>> ZtoAProductAsync()
-        {
-            throw new NotImplementedException();
+            return productos.OrderByDescending(p => p.Precio).ToList();
         }
 
         public async Task UpdateStockAsync(long ProductId, int stockRestar)
         {
             var productVariado = _context.Products.FirstOrDefault(p => p.Id == ProductId);
-
 
             if (productVariado == null)
             {
@@ -148,8 +168,37 @@ namespace NavicomInformatica.Repositories
 
             productVariado.Stock -= stockRestar;
 
-            _context.SaveChanges();
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+                // Registrar la excepción interna para obtener más detalles
+                Console.WriteLine(ex.InnerException?.Message);
+                throw;
+            }
         }
+
+        public async Task DeleteProductAsync(long id)
+        {
+            var product = await _context.Set<Producto>().FindAsync(id);
+            if (product != null)
+            {
+                _context.Set<Producto>().Remove(product);
+                try
+                {
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateException ex)
+                {
+                    // Registrar la excepción interna para obtener más detalles
+                    Console.WriteLine(ex.InnerException?.Message);
+                    throw;
+                }
+            }
+        }
+
         public async Task UpdateAllAsync(ProductDTO product)
         {
             // Obtener el producto de la base de datos
@@ -166,9 +215,9 @@ namespace NavicomInformatica.Repositories
                 throw new ArgumentException("No se puede poner menos de 0 de stock.");
             }
 
-            if (product.Original_Price < 0 || product.Discount_Price < 0)
+            if (product.Precio < 0 || product.Discount_Price < 0)
             {
-                throw new ArgumentException("El precio no puede ser negativo.");
+                throw new ArgumentException("El Precio no puede ser negativo.");
             }
 
             // Actualización de campos si los valores son válidos
@@ -182,9 +231,9 @@ namespace NavicomInformatica.Repositories
                 productVariado.Model = product.Model.Trim();
             }
 
-            if (product.Original_Price > 0)
+            if (product.Precio > 0)
             {
-                productVariado.Original_Price = product.Original_Price;
+                productVariado.Precio = product.Precio;
             }
 
             if (product.Discount_Price >= 0)
@@ -230,8 +279,16 @@ namespace NavicomInformatica.Repositories
 
             // Guardar cambios en la base de datos
             _context.Products.Update(productVariado);
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                // Registrar la excepción interna para obtener más detalles
+                Console.WriteLine(ex.InnerException?.Message);
+                throw;
+            }
         }
-
     }
 }

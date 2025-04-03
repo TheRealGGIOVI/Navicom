@@ -10,5 +10,7 @@ namespace NavicomInformatica.Interfaces
         Task<User> GetUserByApodoAsync(string apodo);
         Task AddUserAsync(User user);
         //Task<string> StoreImageAsync(IFormFile file, string avatarName);
+        Task ActualizarUsuarioAsync(User usuario);
+        Task EliminarUsuarioAsync(long id);
     }
 }
