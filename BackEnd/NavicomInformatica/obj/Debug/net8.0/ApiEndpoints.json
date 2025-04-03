@@ -179,6 +179,11 @@
         "IsRequired": false
       },
       {
+        "Name": "Category",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
         "Name": "File",
         "Type": "Microsoft.AspNetCore.Http.IFormFile",
         "IsRequired": false
@@ -314,6 +319,11 @@
       },
       {
         "Name": "Details",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Category",
         "Type": "System.String",
         "IsRequired": false
       },

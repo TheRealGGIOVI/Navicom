@@ -17,7 +17,8 @@ namespace NavicomInformatica.DataMappers
                 Stock = producto.Stock,
                 Img_Name = producto.Img_Name,
                 Description = producto.Description,
-                Details = producto.Details
+                Details = producto.Details,
+                Category = producto.Category
             };
         }
 
@@ -38,7 +39,8 @@ namespace NavicomInformatica.DataMappers
                 Stock = productsDTO.Stock,
                 Img_Name = productsDTO.Img_Name,
                 Description = productsDTO.Description,
-                Details = productsDTO.Details
+                Details = productsDTO.Details,
+                Category = productsDTO.Category
             };
         }
 
