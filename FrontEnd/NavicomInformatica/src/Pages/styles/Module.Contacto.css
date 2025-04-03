@@ -1,0 +1,195 @@
+/* Fondo general de la página */
+body {
+  background-color: #e6f0fa; /* Tono azul claro */
+  margin: 0;
+}
+
+.main-content {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Estilo para las cajas de texto */
+.text-box {
+  background-color: #f9f9f9;
+  padding: 15px 20px;
+  margin: 10px 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra el contenido verticalmente */
+  align-items: center; /* Centra el texto horizontalmente */
+  height: 100%; /* Asegura que la caja ocupe toda la altura disponible */
+  text-align: center;
+}
+
+.text-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Sección del Título */
+.title-section {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.title-section h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+/* Sección de Información y Formulario */
+.info-form-section {
+  padding: 40px 0;
+}
+
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: stretch; /* Asegura que las columnas tengan la misma altura */
+}
+
+.column {
+  display: flex; /* Hace que el contenido interno también sea flexible */
+  min-width: 300px;
+}
+
+/* Ajuste de proporciones de las columnas */
+.column:nth-child(1) {
+  flex: 1; /* La columna de información ocupa menos espacio (40%) */
+}
+
+.column:nth-child(2) {
+  flex: 1.5; /* La columna del formulario ocupa más espacio (60%) */
+}
+
+/* Estilo para la información de contacto */
+.text-box h2 {
+  font-size: 1.8rem;
+  margin: 0 0 10px 0;
+}
+
+.text-box p {
+  font-size: 1.2rem;
+  color: #666;
+  margin: 10px 0;
+}
+
+.phone-number {
+  font-size: 1.8rem !important; /* Tamaño grande para el número de teléfono */
+  font-weight: bold;
+}
+
+/* Estilo para el formulario */
+.form-box {
+  background-color: #f9f9f9;
+  padding: 15px 20px;
+  margin: 10px 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%; /* Asegura que la caja ocupe toda la altura disponible */
+  width: 100%; /* Asegura que el formulario ocupe todo el ancho de su columna */
+}
+
+.form-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%; /* Asegura que el formulario ocupe todo el ancho disponible */
+  max-width: 600px; /* Limita el ancho máximo del formulario para que no sea demasiado ancho */
+  margin: 0 auto; /* Centra el formulario dentro de su contenedor */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Asegura que los campos ocupen todo el ancho del formulario */
+}
+
+.form-group label {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  width: 100%; /* Asegura que los campos ocupen todo el ancho disponible */
+  box-sizing: border-box; /* Evita que el padding afecte el ancho total */
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #455a64; /* Color secundario del tema */
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.submit-button {
+  padding: 10px 20px;
+  background-color: #455a64; /* Color secundario del tema */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%; /* Hace que el botón ocupe todo el ancho del formulario */
+  max-width: 200px; /* Limita el ancho máximo del botón */
+  margin: 0 auto; /* Centra el botón */
+}
+
+.submit-button:hover {
+  background-color: #607d8b;
+}
+
+/* Sección del Mapa */
+.map-section {
+  padding: 40px 0;
+}
+
+.map-box {
+  width: 100%;
+  height: 400px; /* Altura fija para el mapa */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.map-box iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Ajuste para pantallas pequeñas */
+@media (max-width: 768px) {
+  .column:nth-child(1),
+  .column:nth-child(2) {
+    flex: 1; /* En pantallas pequeñas, ambas columnas ocupan el mismo espacio */
+  }
+
+  .contact-form {
+    max-width: 100%; /* En pantallas pequeñas, el formulario ocupa todo el ancho disponible */
+  }
+}
