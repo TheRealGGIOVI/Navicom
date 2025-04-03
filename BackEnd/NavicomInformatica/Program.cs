@@ -22,22 +22,22 @@ public class Program
         {
             options.AddPolicy("AllowAllOrigins", builder =>
             {
-                builder.AllowAnyOrigin()    // Permite cualquier origen (incluyendo todos los puertos de localhost)
-                       .AllowAnyHeader()    // Permite cualquier encabezado
-                       .AllowAnyMethod();   // Permite cualquier método (GET, POST, etc.)
+                builder.AllowAnyOrigin()   
+                       .AllowAnyHeader()    
+                       .AllowAnyMethod();   
             });
         });
 
         // Add services to the container.
         builder.Services.AddControllers();
-        builder.Services.AddScoped<IUserRepository, UserRepository>();
-        builder.Services.AddScoped<IProductoRepository, ProductRepository>();
-        builder.Services.AddScoped<ICarritoRepository, CarritoRepository>();
-        builder.Services.AddScoped<UserMapper>();
-        builder.Services.AddScoped<CarritoMapper>();
-        builder.Services.AddScoped<ProductoMapper>();
-        builder.Services.AddTransient<IPasswordHasher, PasswordHasher>();
         builder.Services.AddScoped<DataBaseContext>();
+        builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
+        builder.Services.AddScoped<IUserRepository, UserRepository>();
+        builder.Services.AddScoped<UserMapper>();
+        builder.Services.AddScoped<IProductoRepository, ProductRepository>();
+        builder.Services.AddScoped<ProductoMapper>();
+        builder.Services.AddScoped<ICarritoRepository, CarritoRepository>();
+        builder.Services.AddScoped<CarritoMapper>();
         builder.Services.AddScoped<Seeder>();
 
 
@@ -72,7 +72,6 @@ public class Program
             {
                 throw new Exception("JWT_KEY variable de entorno no está configurada.");
             }
-
             options.TokenValidationParameters = new TokenValidationParameters
             {
                 ValidateIssuer = false,
@@ -81,7 +80,7 @@ public class Program
                 RoleClaimType = ClaimTypes.Role
             };
         });
-
+        
         var app = builder.Build();
 
         // Database initialization
@@ -92,6 +91,24 @@ public class Program
             var seeder = scope.ServiceProvider.GetRequiredService<Seeder>();
             seeder.Seed();
         }
+        app.Use(async (context, next) =>
+        {
+            var user = context.User;
+            if (user.Identity.IsAuthenticated)
+            {
+                Console.WriteLine("Usuario autenticado:");
+                foreach (var claim in user.Claims)
+                {
+                    Console.WriteLine($"{claim.Type}: {claim.Value}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Usuario NO autenticado");
+            }
+            await next();
+        });
+
 
         // Habilitar Swagger y CORS para desarrollo o producción
         if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
@@ -101,11 +118,10 @@ public class Program
         }
 
         app.UseCors("AllowAllOrigins"); // Aplica la política de CORS
-
+        app.UseStaticFiles();
         app.UseHttpsRedirection();
         app.UseAuthentication();
         app.UseAuthorization();
-        app.UseStaticFiles();
         app.MapControllers();
         app.Run();
     }

@@ -3,6 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\",
   "Documents": [
     {
+<<<<<<< Updated upstream
       "AbsoluteMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|c:\\users\\abust\\desktop\\navicom\\backend\\navicominformatica\\data\\seeder\\seeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|solutionrelative:data\\seeder\\seeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -25,6 +26,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|c:\\users\\abust\\desktop\\navicom\\backend\\navicominformatica\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
+      "AbsoluteMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|c:\\users\\jmtor\\documents\\navicom\\backend\\navicominformatica\\data\\seeder\\seeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|solutionrelative:data\\seeder\\seeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+>>>>>>> Stashed changes
     }
   ],
   "DocumentGroupContainers": [
@@ -40,6 +45,7 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Seeder.cs",
+<<<<<<< Updated upstream
               "DocumentMoniker": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Data\\Seeder\\Seeder.cs",
               "RelativeDocumentMoniker": "Data\\Seeder\\Seeder.cs",
               "ToolTip": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Data\\Seeder\\Seeder.cs",
@@ -108,6 +114,20 @@
               "ViewState": "AgIAABAAAAAAAAAAAAAAACgAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-02T09:14:18.068Z"
+=======
+              "DocumentMoniker": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\Data\\Seeder\\Seeder.cs",
+              "RelativeDocumentMoniker": "Data\\Seeder\\Seeder.cs",
+              "ToolTip": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\Data\\Seeder\\Seeder.cs",
+              "RelativeToolTip": "Data\\Seeder\\Seeder.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAowCgAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T07:18:50.847Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{c9c0ae26-aa77-11d2-b3f0-0000f87570ee}"
+>>>>>>> Stashed changes
             }
           ]
         }
