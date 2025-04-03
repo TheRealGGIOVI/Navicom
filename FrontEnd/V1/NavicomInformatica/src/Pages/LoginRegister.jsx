@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+// import { useNavigate } from "react-router-dom";
 import { validation } from "../utils/validationForm"; 
 import { LOGIN_ENDPOINT, REGISTER_ENDPOINT } from "../../config";
 import { AuthContext } from "../context/AuthProvider";
@@ -8,6 +9,7 @@ import "./styles/Module.LoginRegister.css"
 function LoginRegister() {
     const [isLogin, setIsLogin] = useState(true);
     const [name, setName] = useState("");
+    const [apellido, setApellido] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -15,6 +17,7 @@ function LoginRegister() {
     const [passwordError, setPasswordError] = useState(null);
     const [confirmPasswordError, setConfirmPasswordError] = useState(null);
     const [nameError, setNameError] = useState(null);
+    const [apellidoError, setApellidoError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [promesaError, setPromesaError] = useState(null);
     const [rememberMe, setRememberMe] = useState(false);
@@ -22,7 +25,8 @@ function LoginRegister() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        
+        //Error
+        const navigate = useNavigate();
         // Validar email
         if (!validation.isValidEmail(email)) {
             setEmailError("Por favor, introduce un formato de email válido.");
@@ -55,6 +59,19 @@ function LoginRegister() {
             setNameError(null);
         }
 
+        if (!isLogin && apellido.trim().length < 2) {
+            setApellidoError("El nombre debe tener al menos 3 caracteres.");
+            return;
+        } else {
+            setApellidoError(null);
+        }
+        
+        if (!isLogin && promesaError == null) {
+            setIsLoading = true;
+        }
+        if (isLogin && promesaError == null) {
+            navigate("/Perfil");
+        }
         const userData = {
             email: email,
             password: password
@@ -62,7 +79,8 @@ function LoginRegister() {
 
         if (!isLogin) {
             userData.id = 0;
-            userData.name = name; // Agregar el nombre solo en registro
+            userData.name = name;
+            userData.apellido = apellido;
         }
 
         const endpoint = isLogin ? LOGIN_ENDPOINT : REGISTER_ENDPOINT;
@@ -72,6 +90,7 @@ function LoginRegister() {
 
     function resetForm() {
         setName("");
+        setApellido("");
         setEmail("");
         setPassword("");
         setConfirmPassword("");
@@ -89,6 +108,7 @@ function LoginRegister() {
             }else{
                 formData.append("Id", userData.id);
                 formData.append("Nombre", userData.name);
+                formData.append("Apellidos", userData.apellido);
                 formData.append("Email", userData.email);
                 formData.append("Password", userData.password);
             }
@@ -138,6 +158,15 @@ function LoginRegister() {
                             required
                         />
                         {nameError && <p>{nameError}</p>}
+
+                        <input
+                            type="text"
+                            placeholder="Apellidos"
+                            value={apellido}
+                            onChange={(e) => setApellido(e.target.value)}
+                            required
+                        />
+                        {apellidoError && <p>{apellidoError}</p>}
                     </>
                 )}
 

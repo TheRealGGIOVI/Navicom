@@ -19,25 +19,15 @@ namespace NavicomInformatica.Data.Seeder
         {
             try
             {
-<<<<<<< Updated upstream
                 if (!_dbContext.Users.Any())
                 {
                     string passwordHashedChristian = _passwordHasher.Hash("Christian123");
                     string passwordHashedJuanjo = _passwordHasher.Hash("Juanjo123");
-=======
-                new User { Nombre = "Christian", Apellidos = "Lara", Email = "christian@gmail.com", Password = passwordHashedChristian, Rol = "admin", Carrito = new Carrito{ Id = 0, UserId = 0} },
-                new User { Nombre = "Kilian", Apellidos = "Mbappe", Email = "kilian@gmail.com", Password = passwordHashedKilian, Rol = "admin", Carrito = new Carrito{ Id = 0, UserId = 0} },
-                new User { Nombre = "Josemi", Apellidos = "Toro", Email = "josemi@gmail.com", Password = passwordHashedJosemi, Rol = "admin", Carrito = new Carrito{ Id = 0, UserId = 0} },
-                new User { Nombre = "Juanjo", Apellidos = "Buenavista", Email = "juanjo@gmail.com", Password = passwordHashedJuanjo, Rol = "admin", Carrito = new Carrito{ Id = 0, UserId = 0} },
-                new User { Nombre = "José", Apellidos = "Santos", Email = "jose@gmail.com", Password = passwordHashedJose, Rol = "admin", Carrito = new Carrito{ Id = 0, UserId = 0} },
-                new User { Nombre = "Pruebas", Apellidos = "1234", Email = "pruebas@gmail.com", Password = passwordHashedPruebas, Rol = "none", Carrito = new Carrito{ Id = 0, UserId = 0} }
-            };
 
-            Producto[] productos = 
-            {
+                Producto[] productos =
+                {
                 new Producto { Brand = "Josemi", Model = "Toro", Precio = 0, Stock = 0, Img_Name = "admin", Description = "", Details = "" }
-            }
->>>>>>> Stashed changes
+                };
 
                     // Crear los usuarios sin asignarles un Carrito todavía
                     User[] users = [

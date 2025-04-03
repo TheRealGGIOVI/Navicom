@@ -46,6 +46,7 @@ namespace NavicomInformatica.Controllers
                         { "Id", user.Id },
                         { "Nombre", user.Nombre },
                         { "Email", user.Email },
+                        { "Apellidos", user.Apellidos },
                         { ClaimTypes.Role, user.Rol }
                     },
                     Expires = DateTime.UtcNow.AddHours(2),

@@ -105,10 +105,10 @@ namespace NavicomInformatica.Controllers
                 var userToAdd = new User
                 {
                     Id = newUser.Id,
-                    Nombre = newUser.Nombre ?? string.Empty, // Handle possible null
+                    Nombre = newUser.Nombre ?? string.Empty,
                     Apellidos = newUser.Apellidos,
                     Email = newUser.Email,
-                    Password = newUser.Password ?? string.Empty, // Handle possible null
+                    Password = newUser.Password ?? string.Empty,
                     Rol = newUser.Rol
                 };
 
