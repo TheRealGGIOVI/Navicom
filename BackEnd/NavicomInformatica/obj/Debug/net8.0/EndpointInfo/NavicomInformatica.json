@@ -296,6 +296,9 @@
                   "Details": {
                     "type": "string"
                   },
+                  "Category": {
+                    "type": "string"
+                  },
                   "File": {
                     "type": "string",
                     "format": "binary"
@@ -328,6 +331,9 @@
                   "style": "form"
                 },
                 "Details": {
+                  "style": "form"
+                },
+                "Category": {
                   "style": "form"
                 },
                 "File": {
@@ -443,6 +449,9 @@
                   "Details": {
                     "type": "string"
                   },
+                  "Category": {
+                    "type": "string"
+                  },
                   "File": {
                     "type": "string",
                     "format": "binary"
@@ -475,6 +484,9 @@
                   "style": "form"
                 },
                 "Details": {
+                  "style": "form"
+                },
+                "Category": {
                   "style": "form"
                 },
                 "File": {

@@ -45,6 +45,7 @@ namespace NavicomInformatica.Controllers
                     {
                         { "Id", user.Id },
                         { "Nombre", user.Nombre },
+                        { "Apellidos", user.Apellidos },
                         { "Email", user.Email },
                         { ClaimTypes.Role, user.Rol }
                     },

@@ -14,6 +14,7 @@ namespace NavicomInformatica.Models
         public string? Img_Name { get; set; }
         public string? Description { get; set; }
         public string? Details { get; set; }
+        public string? Category { get; set; }
 
     }
 }
