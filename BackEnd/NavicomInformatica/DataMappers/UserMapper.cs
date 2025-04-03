@@ -10,7 +10,7 @@ namespace NavicomInformatica.DataMappers
             return new UserDTO
             {
                 Id = user.Id,
-                Apodo = user.Nombre,
+                Nombre = user.Nombre,
                 Email = user.Email,
                 Rol = user.Rol
             };

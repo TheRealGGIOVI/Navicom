@@ -8,9 +8,14 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "model",
-        "Type": "NavicomInformatica.Models.LoginModel",
-        "IsRequired": true
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Password",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
@@ -24,6 +29,101 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "NavicomInformatica.Controllers.AuthController",
+    "Method": "GetSecret",
+    "RelativePath": "api/Auth/secret",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NavicomInformatica.Controllers.CarritoController",
+    "Method": "AddToCart",
+    "RelativePath": "api/Carrito/AddToCart",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "carritoProductoDTO",
+        "Type": "NavicomInformatica.DTO.CarritoProductoDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NavicomInformatica.Controllers.CarritoController",
+    "Method": "ClearCart",
+    "RelativePath": "api/Carrito/ClearCart/{cartId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cartId",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NavicomInformatica.Controllers.CarritoController",
+    "Method": "GetCartById",
+    "RelativePath": "api/Carrito/GetCart/{cartId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cartId",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NavicomInformatica.Controllers.CarritoController",
+    "Method": "RemoveFromCart",
+    "RelativePath": "api/Carrito/RemoveFromCart/{cartId}/{productId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cartId",
+        "Type": "System.Int64",
+        "IsRequired": true
+      },
+      {
+        "Name": "productId",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NavicomInformatica.Controllers.CarritoController",
+    "Method": "UpdateQuantity",
+    "RelativePath": "api/Carrito/UpdateQuantity",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "carritoProductoDTO",
+        "Type": "NavicomInformatica.DTO.CarritoProductoDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "NavicomInformatica.Controllers.NavicomInformatica.Controllers.ProductController",
@@ -49,7 +149,7 @@
         "IsRequired": false
       },
       {
-        "Name": "Original_Price",
+        "Name": "Precio",
         "Type": "System.Nullable\u00601[[System.Double, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
       },
@@ -88,28 +188,28 @@
   },
   {
     "ContainingType": "NavicomInformatica.Controllers.NavicomInformatica.Controllers.ProductController",
-    "Method": "AddProductsAsync",
-    "RelativePath": "api/Product/AddProducts",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "productsToAdd",
-        "Type": "System.Collections.Generic.List\u00601[[NavicomInformatica.Models.Producto, NavicomInformatica, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "NavicomInformatica.Controllers.NavicomInformatica.Controllers.ProductController",
     "Method": "GetProductsByDescPrice",
     "RelativePath": "api/Product/asc-price",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NavicomInformatica.Controllers.NavicomInformatica.Controllers.ProductController",
+    "Method": "DeleteProductAsync",
+    "RelativePath": "api/Product/DeleteProduct/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -188,7 +288,7 @@
         "IsRequired": false
       },
       {
-        "Name": "Original_Price",
+        "Name": "Precio",
         "Type": "System.Nullable\u00601[[System.Double, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
       },
@@ -253,6 +353,32 @@
   },
   {
     "ContainingType": "NavicomInformatica.Controllers.UserController",
+    "Method": "ActualizarPerfilUsuario",
+    "RelativePath": "api/User/actualizar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "datosUsuario",
+        "Type": "NavicomInformatica.DTO.UserDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NavicomInformatica.Controllers.UserController",
+    "Method": "EliminarCuentaUsuario",
+    "RelativePath": "api/User/eliminar",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NavicomInformatica.Controllers.UserController",
     "Method": "AddUserAsync",
     "RelativePath": "api/User/register",
     "HttpMethod": "POST",
@@ -265,7 +391,12 @@
         "IsRequired": false
       },
       {
-        "Name": "Apodo",
+        "Name": "Nombre",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Apellidos",
         "Type": "System.String",
         "IsRequired": false
       },

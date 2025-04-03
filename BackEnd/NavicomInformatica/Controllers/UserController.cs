@@ -1,19 +1,22 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using NavicomInformatica.DataMappers;
 using NavicomInformatica.DTO;
 using NavicomInformatica.Interfaces;
 using NavicomInformatica.Models;
+using System.Security.Claims;
 
 namespace NavicomInformatica.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController :ControllerBase
+    public class UserController : ControllerBase
     {
         private readonly IUserRepository _userRepository;
         private readonly UserMapper _mapper;
 
-        public UserController(IUserRepository userRepository, UserMapper userMapper)
+        public UserController(IUserRepository userRepository, UserMapper userMapper) // Change to ApplicationDbContext
         {
             _userRepository = userRepository;
             _mapper = userMapper;
@@ -22,7 +25,6 @@ namespace NavicomInformatica.Controllers
         [HttpGet]
         public async Task<IActionResult> GetUsersAsync()
         {
-            // Comprobación de errores de ModelState
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -30,23 +32,19 @@ namespace NavicomInformatica.Controllers
 
             try
             {
-                // Intentar obtener los usuarios desde el repositorio
                 var users = await _userRepository.GetUsersAsync();
 
-                // Comprobar si la lista de usuarios es nula o está vacía
                 if (users == null || !users.Any())
                 {
                     return NotFound("No users found.");
                 }
 
-                // Creación del user DTO por cada User en la base de datos
                 IEnumerable<UserDTO> usersDTO = _mapper.usersToDTO(users);
 
                 return Ok(usersDTO);
             }
             catch (Exception ex)
             {
-                // Captura cualquier error inesperado y devuelve una respuesta de error 500
                 return StatusCode(500, "Internal server error: " + ex.Message);
             }
         }
@@ -54,7 +52,6 @@ namespace NavicomInformatica.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUserAsync(long id)
         {
-            // Verificar si el ID es válido
             if (id <= 0)
             {
                 return BadRequest("Invalid user ID.");
@@ -62,23 +59,19 @@ namespace NavicomInformatica.Controllers
 
             try
             {
-                // Intentar obtener el usuario desde el repositorio
                 var user = await _userRepository.GetUserByIdAsync(id);
 
-                // Comprobar si el usuario no existe
                 if (user == null)
                 {
                     return NotFound($"User with ID {id} not found.");
                 }
 
-                // Crear UserDTO según el User encontrado
                 UserDTO userDTO = _mapper.userToDTO(user);
 
                 return Ok(userDTO);
             }
             catch (Exception ex)
             {
-                // Capturar cualquier error inesperado y devolver una respuesta de error 500
                 return StatusCode(500, "Internal server error: " + ex.Message);
             }
         }
@@ -96,16 +89,15 @@ namespace NavicomInformatica.Controllers
                 return BadRequest(ModelState);
             }
 
+            if (string.IsNullOrEmpty(newUser.Email))
+            {
+                return BadRequest("El email es obligatorio.");
+            }
+
             var existingEmailUser = await _userRepository.GetUserByEmailAsync(newUser.Email);
-            var existingApodolUser = await _userRepository.GetUserByApodoAsync(newUser.Apodo);
             if (existingEmailUser != null)
             {
                 return Conflict("Email existente, por favor introduzca otro Email.");
-            }
-
-            if (existingApodolUser != null)
-            {
-                return Conflict("Nombre existente, por favor introduzca otro Nombre.");
             }
 
             try
@@ -113,9 +105,10 @@ namespace NavicomInformatica.Controllers
                 var userToAdd = new User
                 {
                     Id = newUser.Id,
-                    Nombre = newUser.Apodo,
+                    Nombre = newUser.Nombre ?? string.Empty, // Handle possible null
+                    Apellidos = newUser.Apellidos,
                     Email = newUser.Email,
-                    Password = newUser.Password,
+                    Password = newUser.Password ?? string.Empty, // Handle possible null
                     Rol = newUser.Rol
                 };
 
@@ -130,6 +123,60 @@ namespace NavicomInformatica.Controllers
             {
                 return StatusCode(500, "Internal server error: " + ex.Message);
             }
+        }
+
+        [HttpPut("actualizar")]
+        [Authorize]
+        public async Task<IActionResult> ActualizarPerfilUsuario([FromBody] UserDTO datosUsuario)
+        {
+            var idUsuarioClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(idUsuarioClaim))
+            {
+                return BadRequest("No se pudo obtener el ID del usuario.");
+            }
+
+            int idUsuario = int.Parse(idUsuarioClaim);
+            var usuario = await _userRepository.GetUserByIdAsync(idUsuario);
+
+            if (usuario == null)
+            {
+                return NotFound(new { error = "Usuario no encontrado." });
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new { error = "Los datos proporcionados para el usuario no son válidos." });
+            }
+
+            usuario.Nombre = datosUsuario.Nombre ?? usuario.Nombre; 
+            usuario.Apellidos = datosUsuario.Apellidos;
+
+            try
+            {
+                await _userRepository.ActualizarUsuarioAsync(usuario);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                throw;
+            }
+            return NoContent();
+        }
+
+        [HttpDelete("eliminar")]
+        [Authorize]
+        public async Task<IActionResult> EliminarCuentaUsuario()
+        {
+            int idUsuario = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            var usuario = await _userRepository.GetUserByIdAsync(idUsuario);
+
+            if (usuario == null)
+            {
+                return NotFound(new { error = "Usuario no encontrado." });
+            }
+
+            await _userRepository.EliminarUsuarioAsync(idUsuario);
+
+            return Ok(new { message = "La cuenta del usuario ha sido eliminada exitosamente." });
         }
     }
 }

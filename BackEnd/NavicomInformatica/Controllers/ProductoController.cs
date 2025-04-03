@@ -96,47 +96,6 @@ namespace NavicomInformatica.Controllers
                 }
             }
 
-            [HttpPost("AddProducts")]
-            public async Task<IActionResult> AddProductsAsync([FromBody] List<Producto> productsToAdd)
-            {
-                if (productsToAdd == null || productsToAdd.Count == 0)
-                {
-                    return BadRequest("Producto data is required.");
-                }
-
-                if (!ModelState.IsValid)
-                {
-                    return BadRequest(ModelState);
-                }
-
-                var conflictingModels = new List<string>();
-
-                // Verificar si alguno de los productos ya existe
-                foreach (var product in productsToAdd)
-                {
-                    var existingProduct = await _productRepository.GetProductByModel(product.Model);
-                    if (existingProduct != null)
-                    {
-                        conflictingModels.Add(product.Model);
-                    }
-                }
-
-                if (conflictingModels.Count > 0)
-                {
-                    return Conflict(new { message = "Some products already exist with the following models:", conflictingModels });
-                }
-
-                try
-                {
-                    await _productRepository.AddProductsAsync(productsToAdd);
-                }
-                catch (Exception ex)
-                {
-                    return StatusCode(500, "Internal server error: " + ex.Message);
-                }
-
-                return Ok(new { message = "Products registered successfully" });
-            }
 
             [HttpGet("desc-price")]
             public async Task<IActionResult> GetProductsByAscPrice()
@@ -184,6 +143,26 @@ namespace NavicomInformatica.Controllers
                 catch (Exception ex)
                 {
                     return BadRequest(ex.Message);
+                }
+            }
+
+            [HttpDelete("DeleteProduct/{id}")]
+            public async Task<IActionResult> DeleteProductAsync(long id)
+            {
+                try
+                {
+                    var product = await _productRepository.GetProductByIdAsync(id);
+                    if (product == null)
+                    {
+                        return NotFound(new { message = "Producto no encontrado" });
+                    }
+
+                    await _productRepository.DeleteProductAsync(id);
+                    return Ok(new { message = "Producto eliminado con éxito" });
+                }
+                catch (Exception ex)
+                {
+                    return StatusCode(500, "Internal server error: " + ex.Message);
                 }
             }
         }

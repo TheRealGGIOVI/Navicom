@@ -14,10 +14,10 @@ namespace NavicomInformatica.Interfaces
         Task<int> GetTotalProductCountAsync();
         Task<ICollection<Producto>> AscPriceProduct();
         Task<ICollection<Producto>> DescPriceProduct();
-        Task<ICollection<Producto>> AtoZProductAsync();
-        Task<ICollection<Producto>> ZtoAProductAsync();
+       
         Task UpdateStockAsync(long ProductId, int stockRestar);
         Task UpdateAllAsync(ProductDTO product);
         Task<string> StoreImageAsync(IFormFile file, string modelName);
+        Task DeleteProductAsync(long id);
     }
 }

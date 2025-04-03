@@ -41,6 +41,44 @@ namespace NavicomInformatica.Repositories
             return await _context.Users.OrderBy(u => u.Id).ToListAsync();
         }
 
+        public async Task ActualizarUsuarioAsync(User usuario)
+        {
+            if (usuario == null)
+                throw new ArgumentNullException(nameof(usuario));
+
+            _context.Users.Update(usuario);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<User> ObtenerPorIdAsync(int id)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+        }
+
+        public async Task EliminarUsuarioAsync(int id)
+        {
+            var usuario = await ObtenerPorIdAsync(id);
+            if (usuario == null)
+                throw new InvalidOperationException("El usuario especificado no existe.");
+
+            _context.Users.Remove(usuario);
+            await _context.SaveChangesAsync();
+        }
+        
+
+        public async Task<bool> ExisteUsuarioPorCorreoAsync(string correo)
+        {
+            if (string.IsNullOrEmpty(correo))
+                throw new ArgumentException("El correo no puede ser nulo o vacío.", nameof(correo));
+
+            return await _context.Users.AnyAsync(u => u.Email == correo);
+        }
+
+        public Task EliminarUsuarioAsync(long id)
+        {
+            throw new NotImplementedException();
+        }
+
         //public async Task<string> StoreImageAsync(IFormFile file, string apodo)
         //{
         //    string fileExtension = Path.GetExtension(file.FileName);
