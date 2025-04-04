@@ -1,6 +1,28 @@
-import "./styles/Module.Home.css";
+import { useState, useEffect } from "react";
+import { PRODUCTOS_ENDPOINT } from "../../config";
 
 function Home() {
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        fetch(PRODUCTOS_ENDPOINT, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*"
+            },
+            body: JSON.stringify({})
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error HTTP: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => setProducts(data.items))
+        .catch(error => console.error("Error al obtener los productos:", error));
+    }, []);
+
     return (
         <>
             <div className="main-content">
@@ -13,17 +35,26 @@ function Home() {
                         </div>
                     </div>
                 </section>
-                {/* Sección de Productos (Carrusel Placeholder) */}
+                
+                {/* Sección de Productos */}
                 <section className="products-section">
                     <div className="section-box">
                         <div className="text-box">
                             <h2>Productos Destacados</h2>
                         </div>
-                        <div className="products-carousel">
-                            <div className="product-placeholder">Producto 1</div>
-                            <div className="product-placeholder">Producto 2</div>
-                            <div className="product-placeholder">Producto 3</div>
-                            <div className="product-placeholder">Producto 4</div>
+                        <div className="products-grid">
+                            {products.length > 0 ? (
+                                products.map(product => (
+                                    <div key={product.id} className="product-card">
+                                        <img src={product.img_name} alt={product.name} className="product-image" />
+                                        <h3>{product.brand}</h3>
+                                        <p>{product.model}</p>
+                                        <p className="product-price">{product.precio} €</p>
+                                    </div>
+                                ))
+                            ) : (
+                                <p>Cargando productos...</p>
+                            )}
                         </div>
                     </div>
                 </section>

@@ -67,7 +67,7 @@ function LoginRegister() {
         }
         
         if (!isLogin && promesaError == null) {
-            setIsLoading = true;
+            setIsLogin(true);
         }
         if (isLogin && promesaError == null) {
             navigate("/Perfil");
