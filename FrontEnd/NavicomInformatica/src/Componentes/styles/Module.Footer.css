@@ -1,6 +1,7 @@
+/* Footer */
 footer {
     width: 100%;
-    background-color: var(--primary);
+    background-color:var(--primary); /* Color primario de tu tema (reemplaza var(--primary) por el valor real) */
     padding: 20px 0;
     text-align: center;
 }
@@ -36,6 +37,7 @@ footer {
 
 .footer-column.info ul {
     list-style: none;
+    padding: 0; /* Añadimos padding: 0 para evitar márgenes no deseados */
 }
 
 .footer-column a:hover {

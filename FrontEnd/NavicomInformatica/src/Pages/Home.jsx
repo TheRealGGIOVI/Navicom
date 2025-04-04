@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { PRODUCTOS_ENDPOINT } from "../../config";
 
 function Home() {
@@ -6,12 +7,12 @@ function Home() {
 
     useEffect(() => {
         fetch(PRODUCTOS_ENDPOINT, {
-            method: "POST",
+            method: "POST", // Cambiamos a POST como espera el backend
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "*/*"
             },
-            body: JSON.stringify({})
+            body: JSON.stringify({ page: 1, limit: 30 }) // Enviamos page y limit en el cuerpo
         })
         .then(response => {
             if (!response.ok) {
@@ -19,7 +20,7 @@ function Home() {
             }
             return response.json();
         })
-        .then(data => setProducts(data.items))
+        .then(data => setProducts(data.items)) // Ajustamos según la estructura de la respuesta
         .catch(error => console.error("Error al obtener los productos:", error));
     }, []);
 
@@ -45,12 +46,14 @@ function Home() {
                         <div className="products-grid">
                             {products.length > 0 ? (
                                 products.map(product => (
-                                    <div key={product.id} className="product-card">
-                                        <img src={product.img_name} alt={product.name} className="product-image" />
-                                        <h3>{product.brand}</h3>
-                                        <p>{product.model}</p>
-                                        <p className="product-price">{product.precio} €</p>
-                                    </div>
+                                    <Link to={`/producto/${product.id}`} key={product.id}>
+                                        <div className="product-card">
+                                            <img src={product.img_name} alt={product.name} className="product-image" />
+                                            <h3>{product.brand}</h3>
+                                            <p>{product.model}</p>
+                                            <p className="product-price">{product.precio} €</p>
+                                        </div>
+                                    </Link>
                                 ))
                             ) : (
                                 <p>Cargando productos...</p>
