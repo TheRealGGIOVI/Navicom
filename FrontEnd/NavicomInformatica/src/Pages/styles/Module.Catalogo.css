@@ -1,0 +1,17 @@
+.catalogo-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.catalogo-container h1 {
+    font-size: 2.2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.catalogo-container p {
+    font-size: 1.2rem;
+    color: #666;
+}

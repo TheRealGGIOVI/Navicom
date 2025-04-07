@@ -7,6 +7,7 @@ import BigLayout from './utils/BigLayout';
 import SobreNosotros from './Pages/SobreNosotros';
 import Contacto from './Pages/Contacto';
 import ProductoDetalle from './Pages/ProductoDetalle';
+import Catalogo from './Pages/Catalogo';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="sobre-nosotros" element={<SobreNosotros />} />
         <Route path="Contacto" element={<Contacto />} />
         <Route path="producto/:id" element={<ProductoDetalle />} />
+        <Route path="catalogo" element={<Catalogo />} />
         <Route path="*" element={<h1>404 - Página no encontrada</h1>} />
       </Route>
     </Routes>

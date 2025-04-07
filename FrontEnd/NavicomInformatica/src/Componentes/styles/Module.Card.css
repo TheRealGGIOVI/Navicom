@@ -1,0 +1,92 @@
+/* Enlace que envuelve la tarjeta */
+.card-link {
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    color: inherit; /* Hereda el color del texto */
+}
+
+/* Contenedor de la tarjeta */
+.card {
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 250px; /* Ancho fijo para las tarjetas */
+    margin: 10px; /* Margen para espaciar las tarjetas */
+    overflow: hidden; /* Evita que el contenido desborde */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+}
+
+/* Contenedor de la imagen */
+.card-img-container {
+    width: 100%;
+    height: 200px; /* Altura fija para la imagen */
+    overflow: hidden; /* Evita que la imagen desborde */
+}
+
+/* Imagen de la tarjeta */
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta la imagen para que cubra el contenedor */
+    border-top-left-radius: 10px; /* Bordes redondeados en la parte superior */
+    border-top-right-radius: 10px;
+}
+
+/* Línea divisoria */
+.card hr {
+    border: 0;
+    border-top: 1px solid #e0e0e0; /* Línea gris clara */
+    margin: 0;
+}
+
+/* Contenedor de la información del producto */
+.card-info {
+    padding: 15px;
+}
+
+/* Sección superior de la información */
+.card-info-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Nombre del producto (marca y modelo) */
+.card-naming h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 0;
+}
+
+.card-naming p {
+    font-size: 1rem;
+    color: #666;
+    margin: 5px 0 0 0;
+}
+
+/* Sección inferior de la información */
+.card-info-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Stock */
+.card-stock {
+    font-size: 1rem;
+    color: #666;
+    margin: 0;
+}
+
+/* Precio */
+.card-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
