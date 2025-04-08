@@ -12,5 +12,6 @@ namespace NavicomInformatica.Interfaces
         Task RemoveProductFromCartAsync(long carritoId, long productoId);
         Task UpdateProductAsync(CarritoProductoDTO carritoProductoDTO);
         Task RemoveAllProductsFromCartAsync(long carritoId);
+        Task MergeCartAsync(CarritoMergeDTO carritoMerge);
     }
 }

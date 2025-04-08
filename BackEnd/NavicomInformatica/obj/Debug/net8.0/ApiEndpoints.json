@@ -90,6 +90,22 @@
   },
   {
     "ContainingType": "NavicomInformatica.Controllers.CarritoController",
+    "Method": "MergeCart",
+    "RelativePath": "api/Carrito/MergeCart",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "carritoMerge",
+        "Type": "NavicomInformatica.DTO.CarritoMergeDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NavicomInformatica.Controllers.CarritoController",
     "Method": "RemoveFromCart",
     "RelativePath": "api/Carrito/RemoveFromCart/{cartId}/{productId}",
     "HttpMethod": "DELETE",

@@ -155,5 +155,57 @@ namespace NavicomInformatica.Repositories
 
             await _context.SaveChangesAsync();
         }
+
+        public async Task MergeCartAsync(CarritoMergeDTO carritoMerge)
+        {
+            var carrito = await _context.Carritos
+                .Include(c => c.Productos)
+                .ThenInclude(p => p.Producto)
+                .FirstOrDefaultAsync(c => c.Id == carritoMerge.CarritoId);
+
+            if (carrito == null)
+                throw new Exception($"Carrito con ID {carritoMerge.CarritoId} no encontrado.");
+
+            foreach (var producto in carritoMerge.Productos)
+            {
+                var productoDB = await _context.Products.FirstOrDefaultAsync(p => p.Id == producto.ProductoId);
+                if (productoDB == null)
+                    throw new Exception($"Producto con ID {producto.ProductoId} no encontrado.");
+
+                int stockDisponible = productoDB.Stock ?? 0;
+                int cantidadNueva = producto.Cantidad;
+
+                if (cantidadNueva <= 0)
+                    continue;
+
+                var existente = carrito.Productos.FirstOrDefault(p => p.ProductoId == producto.ProductoId);
+
+                if (existente != null)
+                {
+                    int cantidadExistente = existente.Cantidad ?? 0;
+                    int nuevaCantidad = cantidadExistente + cantidadNueva;
+                    existente.Cantidad = Math.Min(nuevaCantidad, stockDisponible);
+                }
+                else
+                {
+                    carrito.Productos.Add(new CarritoItem
+                    {
+                        CarritoId = carrito.Id,
+                        ProductoId = producto.ProductoId,
+                        Cantidad = Math.Min(cantidadNueva, stockDisponible),
+                    });
+                }
+            }
+
+            carrito.TotalPrice = carrito.Productos.Sum(p =>
+            {
+                var precio = p.Producto?.Precio ?? 0.0;
+                var cantidad = p.Cantidad ?? 0;
+                return precio * cantidad;
+            });
+
+            await _context.SaveChangesAsync();
+        }
+
     }
 }

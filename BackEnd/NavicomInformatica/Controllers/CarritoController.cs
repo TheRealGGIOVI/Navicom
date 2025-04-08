@@ -145,5 +145,26 @@ namespace NavicomInformatica.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
+
+        [HttpPost("MergeCart")]
+        public async Task<IActionResult> MergeCart([FromBody] CarritoMergeDTO carritoMerge)
+        {
+            try
+            {
+                if (carritoMerge == null || carritoMerge.Productos == null || !carritoMerge.Productos.Any())
+                {
+                    return BadRequest(new { message = "Datos inválidos: el carrito o la lista de productos es nula o vacía." });
+                }
+
+                await _carritoRepository.MergeCartAsync(carritoMerge);
+
+                return Ok(new { message = "Carrito actualizado exitosamente con los productos proporcionados." });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = "Error durante la fusión del carrito.", details = ex.Message });
+            }
+        }
+
     }
 }
