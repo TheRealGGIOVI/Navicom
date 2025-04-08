@@ -26,7 +26,7 @@ function Home() {
             // Ordenamos los productos por ID de forma descendente y tomamos los primeros 10
             const latestProducts = data.items
                 .sort((a, b) => b.id - a.id) // Orden descendente por ID
-                .slice(0, 10); // Tomamos los primeros 10
+                .slice(0, 12); // Tomamos los primeros 10
             setProducts(latestProducts);
         })
         .catch(error => console.error("Error al obtener los productos:", error));
@@ -45,40 +45,21 @@ function Home() {
             {/* Sección de Novedades */}
             <section className="products-section">
                 <div className="text-box">
-                    <h2>Novedades</h2> {/* Cambiamos el título a "Novedades" */}
+                    <h2>Novedades</h2>
                 </div>
                 <div className="products-grid">
                     {products.length > 0 ? (
-                        <>
-                            {/* Primer grupo: primeros 8 productos */}
-                            <div className="products-grid-main">
-                                {products.slice(0, 8).map(product => (
-                                    <Card
-                                        key={product.id}
-                                        id={product.id}
-                                        brand={product.brand}
-                                        model={product.model}
-                                        precio={product.precio}
-                                        img_name={product.img_name}
-                                        stock={product.stock}
-                                    />
-                                ))}
-                            </div>
-                            {/* Segundo grupo: últimos 2 productos */}
-                            <div className="products-grid-highlight">
-                                {products.slice(8, 10).map(product => (
-                                    <Card
-                                        key={product.id}
-                                        id={product.id}
-                                        brand={product.brand}
-                                        model={product.model}
-                                        precio={product.precio}
-                                        img_name={product.img_name}
-                                        stock={product.stock}
-                                    />
-                                ))}
-                            </div>
-                        </>
+                        products.map(product => (
+                            <Card
+                                key={product.id}
+                                id={product.id}
+                                brand={product.brand}
+                                model={product.model}
+                                precio={product.precio}
+                                img_name={product.img_name}
+                                stock={product.stock}
+                            />
+                        ))
                     ) : (
                         <p>Cargando productos...</p>
                     )}
