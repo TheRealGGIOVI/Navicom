@@ -222,6 +222,37 @@
         }
       }
     },
+    "/api/Carrito/MergeCart": {
+      "post": {
+        "tags": [
+          "Carrito"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CarritoMergeDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CarritoMergeDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CarritoMergeDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Product/ListOfProducts": {
       "post": {
         "tags": [
@@ -685,6 +716,23 @@
   },
   "components": {
     "schemas": {
+      "CarritoMergeDTO": {
+        "type": "object",
+        "properties": {
+          "carritoId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "productos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductoMerge"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CarritoProductoDTO": {
         "type": "object",
         "properties": {
@@ -692,6 +740,20 @@
             "type": "integer",
             "format": "int64"
           },
+          "productoId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "cantidad": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProductoMerge": {
+        "type": "object",
+        "properties": {
           "productoId": {
             "type": "integer",
             "format": "int64"
