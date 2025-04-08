@@ -282,6 +282,22 @@
   },
   {
     "ContainingType": "NavicomInformatica.Controllers.NavicomInformatica.Controllers.ProductController",
+    "Method": "SearchProductsAsync",
+    "RelativePath": "api/Product/SearchProducts",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchParams",
+        "Type": "NavicomInformatica.DTO.ProductSearchDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NavicomInformatica.Controllers.NavicomInformatica.Controllers.ProductController",
     "Method": "UpdateProductAsync",
     "RelativePath": "api/Product/UpdateProduct/{id}",
     "HttpMethod": "PUT",

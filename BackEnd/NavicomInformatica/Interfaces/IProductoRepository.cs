@@ -19,5 +19,10 @@ namespace NavicomInformatica.Interfaces
         Task UpdateAllAsync(ProductDTO product);
         Task<string> StoreImageAsync(IFormFile file, string modelName);
         Task DeleteProductAsync(long id);
+
+        Task<IEnumerable<Producto>> SearchProductsAsync(string searchText, string sortBy, string category, int offset, int limit);
+
+        // Método para contar productos con filtros aplicados
+        Task<int> GetTotalProductCountAsync(string searchText, string category);
     }
 }

@@ -289,6 +289,72 @@ namespace NavicomInformatica.Repositories
                 Console.WriteLine(ex.InnerException?.Message);
                 throw;
             }
+
+
+        }
+
+        public async Task<IEnumerable<Producto>> SearchProductsAsync(string searchText, string sortBy, string category, int offset, int limit)
+        {
+            var query = _context.Products.AsQueryable();
+
+            // Filtrar por categoría
+            if (!string.IsNullOrEmpty(category))
+            {
+                query = query.Where(p => p.Category == category);
+            }
+
+            // Buscar por texto en Brand y Model
+            if (!string.IsNullOrEmpty(searchText))
+            {
+                var searchLower = searchText.ToLower();
+                query = query.Where(p => p.Brand.ToLower().Contains(searchLower) ||
+                                         p.Model.ToLower().Contains(searchLower));
+            }
+
+            // Ordenar
+            switch (sortBy?.ToLower())
+            {
+                case "price-asc":
+                    query = query.OrderBy(p => p.Precio);
+                    break;
+                case "price-desc":
+                    query = query.OrderByDescending(p => p.Precio);
+                    break;
+                case "alpha-asc":
+                    query = query.OrderBy(p => p.Brand).ThenBy(p => p.Model);
+                    break;
+                case "alpha-desc":
+                    query = query.OrderByDescending(p => p.Brand).ThenByDescending(p => p.Model);
+                    break;
+                default:
+                    query = query.OrderBy(p => p.Id); // Orden por defecto
+                    break;
+            }
+
+            // Paginación
+            query = query.Skip(offset).Take(limit);
+
+            return await query.ToListAsync();
+        }
+
+        // Contar productos con filtros aplicados
+        public async Task<int> GetTotalProductCountAsync(string searchText, string category)
+        {
+            var query = _context.Products.AsQueryable();
+
+            if (!string.IsNullOrEmpty(category))
+            {
+                query = query.Where(p => p.Category == category);
+            }
+
+            if (!string.IsNullOrEmpty(searchText))
+            {
+                var searchLower = searchText.ToLower();
+                query = query.Where(p => p.Brand.ToLower().Contains(searchLower) ||
+                                         p.Model.ToLower().Contains(searchLower));
+            }
+
+            return await query.CountAsync();
         }
     }
 }

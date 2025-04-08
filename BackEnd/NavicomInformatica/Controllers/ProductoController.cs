@@ -165,6 +165,53 @@ namespace NavicomInformatica.Controllers
                     return StatusCode(500, "Internal server error: " + ex.Message);
                 }
             }
+
+            [HttpPost("SearchProducts")]
+            public async Task<IActionResult> SearchProductsAsync([FromBody] ProductSearchDTO searchParams)
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                try
+                {
+                    int offset = (searchParams.Page - 1) * searchParams.Limit;
+                    var products = await _productRepository.SearchProductsAsync(
+                        searchParams.SearchText,
+                        searchParams.SortBy,
+                        searchParams.Category,
+                        offset,
+                        searchParams.Limit
+                    );
+
+                    if (products == null || !products.Any())
+                    {
+                        return NotFound("No se encontraron productos.");
+                    }
+
+                    int totalItems = await _productRepository.GetTotalProductCountAsync(
+                        searchParams.SearchText,
+                        searchParams.Category
+                    );
+
+                    int totalPages = (int)Math.Ceiling(totalItems / (double)searchParams.Limit);
+
+                    var result = new
+                    {
+                        currentPage = searchParams.Page,
+                        totalPages = totalPages,
+                        totalItems = totalItems,
+                        items = products
+                    };
+
+                    return Ok(result);
+                }
+                catch (Exception ex)
+                {
+                    return StatusCode(500, "Internal server error: " + ex.Message);
+                }
+            }
         }
     }
 }
