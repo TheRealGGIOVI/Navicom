@@ -5,6 +5,7 @@ using NavicomInformatica.DataMappers;
 using NavicomInformatica.DTO;
 using NavicomInformatica.Interfaces;
 using NavicomInformatica.Models;
+using NavicomInformatica.Data;
 using System.Security.Claims;
 
 namespace NavicomInformatica.Controllers
@@ -15,11 +16,13 @@ namespace NavicomInformatica.Controllers
     {
         private readonly IUserRepository _userRepository;
         private readonly UserMapper _mapper;
+        private readonly DataBaseContext _context;
 
-        public UserController(IUserRepository userRepository, UserMapper userMapper) // Change to ApplicationDbContext
+        public UserController(IUserRepository userRepository, UserMapper userMapper, DataBaseContext context) // Change to ApplicationDbContext
         {
             _userRepository = userRepository;
             _mapper = userMapper;
+            _context = context;
         }
 
         [HttpGet]
@@ -109,13 +112,25 @@ namespace NavicomInformatica.Controllers
                     Apellidos = newUser.Apellidos,
                     Email = newUser.Email,
                     Password = newUser.Password ?? string.Empty, // Handle possible null
-                    Rol = newUser.Rol
+                    Rol = newUser.Rol,  
                 };
 
                 var passwordHasher = new PasswordHasher();
                 userToAdd.Password = passwordHasher.Hash(userToAdd.Password);
 
                 await _userRepository.AddUserAsync(userToAdd);
+
+                var carrito = new Carrito
+                {
+                    UserId = userToAdd.Id,
+                    TotalPrice = 0.0
+                };
+
+                _context.Carritos.Add(carrito);
+                await _context.SaveChangesAsync();
+
+                userToAdd.Carrito = carrito;
+                await _context.SaveChangesAsync();
 
                 return Ok(new { message = "Usuario registrado con éxito." });
             }
