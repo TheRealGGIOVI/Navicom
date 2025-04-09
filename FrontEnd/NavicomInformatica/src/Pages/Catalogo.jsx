@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Card from "../Componentes/Card";
 import { LIST_OF_PRODUCTS_ENDPOINT, SEARCH_PRODUCTS_ENDPOINT } from "../../config";
 import "./styles/Module.Catalogo.css";
 
@@ -72,60 +73,70 @@ function Catalogo() {
     <div className="catalogo-container">
       <h1>Catálogo</h1>
       {error && <p style={{ color: "red" }}>{error}</p>}
-      <input
-        type="text"
-        placeholder="Buscar..."
-        value={searchText}
-        onChange={(e) => {
-          setSearchText(e.target.value);
-          setPage(1);
-        }}
-      />
-      <select
-        value={sortBy}
-        onChange={(e) => {
-          setSortBy(e.target.value);
-          setPage(1);
-        }}
-      >
-        <option value="">Ordenar por...</option>
-        <option value="price-asc">Precio: Menor a Mayor</option>
-        <option value="price-desc">Precio: Mayor a Menor</option>
-        <option value="alpha-asc">Alfabético: A-Z</option>
-        <option value="alpha-desc">Alfabético: Z-A</option>
-      </select>
-      <select
-        value={category}
-        onChange={(e) => {
-          setCategory(e.target.value);
-          setPage(1);
-        }}
-      >
-        <option value="">Todas las Categorías</option>
-        <option value="Laptops">Laptops</option>
-        <option value="MiniPCs">MiniPCs</option>
-        <option value="MonitorsAndAccessories">MonitorsAndAccessories</option>
-      </select>
-      <div>
+      <div className="catalogo-filters">
+        <input
+          type="text"
+          placeholder="Buscar..."
+          value={searchText}
+          onChange={(e) => {
+            setSearchText(e.target.value);
+            setPage(1);
+          }}
+        />
+        <select
+          value={sortBy}
+          onChange={(e) => {
+            setSortBy(e.target.value);
+            setPage(1);
+          }}
+        >
+          <option value="">Ordenar por...</option>
+          <option value="price-asc">Precio: Menor a Mayor</option>
+          <option value="price-desc">Precio: Mayor a Menor</option>
+          <option value="alpha-asc">Alfabético: A-Z</option>
+          <option value="alpha-desc">Alfabético: Z-A</option>
+        </select>
+        <select
+          value={category}
+          onChange={(e) => {
+            setCategory(e.target.value);
+            setPage(1);
+          }}
+        >
+          <option value="">Todas las Categorías</option>
+          <option value="Laptops">Laptops</option>
+          <option value="MiniPCs">MiniPCs</option>
+          <option value="MonitorsAndAccessories">MonitorsAndAccessories</option>
+        </select>
+      </div>
+      <div className="products-grid">
         {loading ? (
           <p>Cargando productos...</p>
         ) : products.length === 0 ? (
           <p>No se encontraron productos.</p>
         ) : (
           products.map((p) => (
-            <div className="product-item" key={p.id}>
-              {p.brand} {p.model} - ${p.precio}
-            </div>
+            <Card
+              key={p.id}
+              id={p.id}
+              brand={p.brand}
+              model={p.model}
+              precio={p.precio}
+              img_name={p.img_name}
+              stock={p.stock}
+            />
           ))
         )}
       </div>
-      <button onClick={() => setPage(page - 1)} disabled={page === 1 || loading}>
-        Anterior
-      </button>
-      <span>Página {page} de {totalPages}</span>
-      <button onClick={() => setPage(page + 1)} disabled={page === totalPages || loading}>
-        Siguiente
-      </button>
+      <div className="pagination">
+        <button onClick={() => setPage(page - 1)} disabled={page === 1 || loading}>
+          Anterior
+        </button>
+        <span>Página {page} de {totalPages}</span>
+        <button onClick={() => setPage(page + 1)} disabled={page === totalPages || loading}>
+          Siguiente
+        </button>
+      </div>
     </div>
   );
 }
