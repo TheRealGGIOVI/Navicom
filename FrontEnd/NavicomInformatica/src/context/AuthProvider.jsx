@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import { getTempCart, clearTempCart } from "../utils/cartService";
-import { API_BASE_URL } from "../../config";
+import { MERGE_CART } from "../../config";
 
 
 export const AuthContext = createContext();
@@ -37,22 +37,15 @@ export const AuthProvider = ({ children }) => {
 
         const tempCart = getTempCart();
         if (tempCart.length > 0) {
-            console.log(JSON.stringify({
-                carritoId: decodedUser.Id,
-                productos: tempCart.map(item => ({
-                    productoId: item.productoId,
-                    cantidad: item.cantidad
-                }))
-            }));
             try {
-                const response = await fetch(`${API_BASE_URL}/api/Carrito/MergeCart`, {
+                const response = await fetch(MERGE_CART, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                         "Accept": "*/*"
                     },
                     body: JSON.stringify({
-                        carritoId: decodedUser.id,
+                        carritoId: decodedUser.Id,
                         productos: tempCart.map(item => ({
                             productoId: item.productoId,
                             cantidad: item.cantidad
