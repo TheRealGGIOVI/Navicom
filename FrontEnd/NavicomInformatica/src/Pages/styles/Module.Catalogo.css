@@ -1,17 +1,43 @@
+/* Catalogo.css */
 .catalogo-container {
-    max-width: 1200px;
-    margin: 40px auto;
+    max-width: 800px;
+    margin: 0 auto;
     padding: 20px;
+  }
+  
+  .catalogo-container h1 {
     text-align: center;
-}
-
-.catalogo-container h1 {
-    font-size: 2.2rem;
-    color: #333;
     margin-bottom: 20px;
-}
-
-.catalogo-container p {
-    font-size: 1.2rem;
-    color: #666;
-}
+  }
+  
+  .catalogo-container input,
+  .catalogo-container select {
+    margin: 10px 5px;
+    padding: 8px;
+    font-size: 16px;
+  }
+  
+  .product-item {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    margin: 5px 0;
+  }
+  
+  .catalogo-container button {
+    padding: 8px 16px;
+    margin: 5px;
+    background-color: #455a64;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .catalogo-container button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
+  .catalogo-container span {
+    margin: 0 10px;
+  }

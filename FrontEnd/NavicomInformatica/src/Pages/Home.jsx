@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Card from "../Componentes/Card";
-import { PRODUCTOS_ENDPOINT } from "../../config";
+import { LIST_OF_PRODUCTS_ENDPOINT } from "../../config";
 import "./styles/Module.Home.css";
 
 function Home() {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch(PRODUCTOS_ENDPOINT, {
+        fetch(LIST_OF_PRODUCTS_ENDPOINT, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
