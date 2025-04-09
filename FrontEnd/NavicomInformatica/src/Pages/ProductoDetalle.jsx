@@ -1,7 +1,10 @@
-import { useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { API_BASE_URL } from "../../config";
+import { AuthContext } from "../context/AuthProvider";
 import "./styles/Module.ProductoDetalle.css"; // Asegúrate de importar el CSS
+
+const TEMP_CART_KEY = "tempCart";
 
 function ProductoDetalle() {
     const { id } = useParams();
@@ -9,6 +12,7 @@ function ProductoDetalle() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [cantidad, setCantidad] = useState(0);
+    const { user, token } = useContext(AuthContext);
 
     const CARRITO_ENDPOINT = `${API_BASE_URL}/api/Carrito`;
 
@@ -39,6 +43,15 @@ function ProductoDetalle() {
         fetchProduct();
     }, [id]);
 
+    const saveTempCart = (productos) => {
+        localStorage.setItem(TEMP_CART_KEY, JSON.stringify(productos));
+    };
+
+    const getTempCart = () => {
+        const data = localStorage.getItem(TEMP_CART_KEY);
+        return data ? JSON.parse(data) : [];
+    };
+
     const addToCart = async (productId) => {
         if (product.stock === 0) {
             alert("Este producto está agotado.");
@@ -55,45 +68,49 @@ function ProductoDetalle() {
             return;
         }
 
-        const cartId = 1;
+        // Usuario autenticado -> llamar al backend
+        if (user) {
+            try {
+                const response = await fetch(`${CARRITO_ENDPOINT}/AddToCart`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    },
+                    body: JSON.stringify({
+                        CarritoId: user.id, // Usamos el ID del usuario
+                        ProductoId: productId,
+                        Cantidad: cantidad
+                    })
+                });
 
-        try {
-            const response = await fetch(`${CARRITO_ENDPOINT}/AddToCart`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "*/*"
-                },
-                body: JSON.stringify({
-                    CarritoId: cartId,
-                    ProductoId: productId,
-                    Cantidad: cantidad
-                })
-            });
+                if (!response.ok) {
+                    throw new Error(`Error HTTP: ${response.status}`);
+                }
 
-            if (!response.ok) {
-                throw new Error(`Error HTTP: ${response.status}`);
+                const data = await response.json();
+                alert(data.message);
+            } catch (err) {
+                console.error("Error al añadir al carrito:", err);
+                alert("Error al añadir al carrito");
             }
-
-            const data = await response.json();
-            alert(data.message);
-        } catch (err) {
-            console.error("Error al añadir al carrito:", err);
-            alert("Error al añadir al carrito");
+        } else {
+            // Usuario no autenticado -> guardar en localStorage
+            const tempCart = getTempCart();
+            const index = tempCart.findIndex(p => p.productoId === productId);
+            if (index !== -1) {
+                tempCart[index].cantidad += cantidad;
+            } else {
+                tempCart.push({ productoId: productId, cantidad });
+            }
+            saveTempCart(tempCart);
+            alert("Producto añadido al carrito temporal.");
         }
     };
 
-    if (loading) {
-        return <p>Cargando detalles del producto...</p>;
-    }
-
-    if (error) {
-        return <p>Error: {error}</p>;
-    }
-
-    if (!product) {
-        return <p>Producto no encontrado.</p>;
-    }
+    if (loading) return <p>Cargando detalles del producto...</p>;
+    if (error) return <p>Error: {error}</p>;
+    if (!product) return <p>Producto no encontrado.</p>;
 
     return (
         <div className="producto-detalle-container">

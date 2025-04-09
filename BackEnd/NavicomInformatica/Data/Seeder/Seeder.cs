@@ -27,13 +27,13 @@ namespace NavicomInformatica.Data.Seeder
                 // Verificar si ya hay datos en la base de datos (por ejemplo, usuarios)
                 if (!_dbContext.Users.Any())
                 {
-                    string passwordHashedChristian = _passwordHasher.Hash("Christian123");
-                    string passwordHashedJuanjo = _passwordHasher.Hash("Juanjo123");
+                    string passwordHashedChristian = _passwordHasher.Hash("Josemi123.");
+                    string passwordHashedJuanjo = _passwordHasher.Hash("Giovi123.");
 
                     // Crear los usuarios sin asignarles un Carrito todavía
                     User[] users = {
-                        new User { Nombre = "Christian", Apellidos = "lara", Email = "Christian123@gmail.com", Rol="admin" },
-                        new User { Nombre = "Juanjo", Apellidos = "buenavista", Email = "Juanjo123@gmail.com", Rol="admin" },
+                        new User { Nombre = "Josemi", Apellidos = "toro", Email = "josemi@gmail.com", Rol="admin" },
+                        new User { Nombre = "Giovanni", Apellidos = "giove", Email = "giovi@gmail.com", Rol="admin" },
                     };
 
                     users[0].Password = passwordHashedChristian;

@@ -8,6 +8,7 @@ import SobreNosotros from './Pages/SobreNosotros';
 import Contacto from './Pages/Contacto';
 import ProductoDetalle from './Pages/ProductoDetalle';
 import Catalogo from './Pages/Catalogo';
+import Carrito from './Pages/Carrito';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="Contacto" element={<Contacto />} />
         <Route path="producto/:id" element={<ProductoDetalle />} />
         <Route path="catalogo" element={<Catalogo />} />
+        <Route path="Carrito" element={<Carrito />} />
         <Route path="*" element={<h1>404 - Página no encontrada</h1>} />
       </Route>
     </Routes>
