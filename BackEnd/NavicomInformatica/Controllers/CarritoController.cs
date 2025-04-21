@@ -25,6 +25,7 @@ namespace NavicomInformatica.Controllers
             _carritoMapper = carritoMapper;
         }
 
+
         [HttpGet("GetCart/{cartId}")]
         public async Task<IActionResult> GetCartById(long cartId)
         {
@@ -44,7 +45,8 @@ namespace NavicomInformatica.Controllers
                     ProductId = cp.ProductoId,
                     ProductName = cp.Producto.Model,
                     ProductPrice = cp.Producto.Precio,
-                    ProductImage = cp.Producto.Img_Name,
+                    // Usamos la primera imagen de la lista Imagenes, o una URL por defecto si no hay imágenes
+                    ProductImage = cp.Producto.Imagenes.Any() ? cp.Producto.Imagenes.First().Img_Name : "https://via.placeholder.com/150",
                     Quantity = cp.Cantidad,
                     TotalPriceObject = cp.Producto.Precio * cp.Cantidad
                 }).ToList(),

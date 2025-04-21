@@ -2,12 +2,15 @@ import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 import "./styles/Module.Card.css"; 
 
-function Card({ id, brand, model, precio, img_name, stock }) {
+function Card({ id, brand, model, precio, imagenes, stock }) {
+    // Usamos la primera imagen de la lista, o una URL por defecto si no hay imágenes
+    const imgUrl = imagenes && imagenes.length > 0 ? imagenes[0].img_name : "https://via.placeholder.com/150";
+
     return (
         <Link to={`/producto/${id}`} className="card-link">
             <div className="card">
                 <div className="card-img-container">
-                    <img className="card-img" src={img_name} alt={`${brand} ${model}`} />
+                    <img className="card-img" src={imgUrl} alt={`${brand} ${model}`} />
                 </div>
                 <hr />
                 <div className="card-info">
@@ -32,7 +35,11 @@ Card.propTypes = {
     brand: PropTypes.string.isRequired,
     model: PropTypes.string.isRequired,
     precio: PropTypes.number.isRequired,
-    img_name: PropTypes.string.isRequired,
+    imagenes: PropTypes.arrayOf(
+        PropTypes.shape({
+            img_name: PropTypes.string.isRequired
+        })
+    ).isRequired,
     stock: PropTypes.number.isRequired,
 };
 

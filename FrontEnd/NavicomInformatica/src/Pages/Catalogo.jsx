@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 import Card from "../Componentes/Card";
-import { LIST_OF_PRODUCTS_ENDPOINT, SEARCH_PRODUCTS_ENDPOINT } from "../../config";
+import {
+  LIST_OF_PRODUCTS_ENDPOINT,
+  SORT_BY_PRICE_ENDPOINT,
+  SORT_ALPHABETICALLY_ENDPOINT,
+  FILTER_BY_CATEGORY_ENDPOINT,
+  SEARCH_BY_TEXT_ENDPOINT,
+} from "../../config";
 import "./styles/Module.Catalogo.css";
 
 function Catalogo() {
@@ -26,28 +32,58 @@ function Catalogo() {
     setError(null);
     try {
       let url = LIST_OF_PRODUCTS_ENDPOINT;
-      let body = { page, limit };
+      let body = { page: page.toString(), limit: limit.toString() };
 
-      // Si hay filtros, usamos SearchProducts
-      if (searchText || sortBy || category) {
-        url = SEARCH_PRODUCTS_ENDPOINT;
-        body = { searchText, sortBy, category, page, limit };
+      // Prioridad: búsqueda por texto > categoría > ordenamiento alfabético > ordenamiento por precio
+      if (searchText) {
+        url = SEARCH_BY_TEXT_ENDPOINT;
+        body = { searchText, page: page.toString(), limit: limit.toString() };
+      } else if (category) {
+        url = FILTER_BY_CATEGORY_ENDPOINT;
+        body = { category, page: page.toString(), limit: limit.toString() };
+      } else if (sortBy === "alpha-asc" || sortBy === "alpha-desc") {
+        url = SORT_ALPHABETICALLY_ENDPOINT;
+        body = {
+          sortOrder: sortBy === "alpha-asc" ? "asc" : "desc",
+          page: page.toString(),
+          limit: limit.toString(),
+        };
+      } else if (sortBy === "price-asc" || sortBy === "price-desc") {
+        url = SORT_BY_PRICE_ENDPOINT;
+        body = {
+          sortOrder: sortBy === "price-asc" ? "asc" : "desc",
+          page: page.toString(),
+          limit: limit.toString(),
+        };
       }
 
       console.log("Haciendo solicitud a:", url, "con cuerpo:", body);
 
+      const formData = new FormData();
+      Object.entries(body).forEach(([key, value]) => {
+        formData.append(key, value);
+      });
+
       const response = await fetch(url, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          accept: "*/*",
-        },
-        body: JSON.stringify(body),
+        body: formData,
       });
 
       if (!response.ok) {
         const errorText = await response.text();
-        throw new Error(`Error en la solicitud a la API: ${response.status} - ${errorText}`);
+        let errorMessage = `Error en la solicitud a la API: ${response.status}`;
+        try {
+          const errorDetails = JSON.parse(errorText);
+          errorMessage += ` - ${errorDetails.title || errorText}`;
+          if (errorDetails.errors) {
+            errorMessage += ` (${Object.entries(errorDetails.errors)
+              .map(([field, errors]) => `${field}: ${errors.join(", ")}`)
+              .join("; ")})`;
+          }
+        } catch (parseError) {
+          errorMessage += ` - ${errorText}`;
+        }
+        throw new Error(errorMessage);
       }
 
       const data = await response.json();
@@ -61,7 +97,7 @@ function Catalogo() {
       }
     } catch (error) {
       console.error("Error fetching products:", error);
-      setError(`No se pudieron cargar los productos: ${error.message}`);
+      setError(error.message);
       setProducts([]);
       setTotalPages(1);
     } finally {
@@ -122,7 +158,7 @@ function Catalogo() {
               brand={p.brand}
               model={p.model}
               precio={p.precio}
-              img_name={p.img_name}
+              imagenes={p.imagenes}
               stock={p.stock}
             />
           ))
@@ -141,4 +177,4 @@ function Catalogo() {
   );
 }
 
-export default Catalogo;  
+export default Catalogo;

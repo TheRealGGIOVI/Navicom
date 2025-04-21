@@ -142,7 +142,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "NavicomInformatica.Controllers.NavicomInformatica.Controllers.ProductController",
+    "ContainingType": "NavicomInformatica.Controllers.ProductController",
     "Method": "AddProductAsync",
     "RelativePath": "api/Product/AddProduct",
     "HttpMethod": "POST",
@@ -180,11 +180,6 @@
         "IsRequired": false
       },
       {
-        "Name": "Img_Name",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
         "Name": "Description",
         "Type": "System.String",
         "IsRequired": false
@@ -200,25 +195,20 @@
         "IsRequired": false
       },
       {
-        "Name": "File",
-        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "Name": "Imagenes",
+        "Type": "System.Collections.Generic.List\u00601[[NavicomInformatica.DTO.ProductoImagenDTO, NavicomInformatica, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Files",
+        "Type": "System.Collections.Generic.List\u00601[[Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Http.Features, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]",
         "IsRequired": false
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "NavicomInformatica.Controllers.NavicomInformatica.Controllers.ProductController",
-    "Method": "GetProductsByDescPrice",
-    "RelativePath": "api/Product/asc-price",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "NavicomInformatica.Controllers.NavicomInformatica.Controllers.ProductController",
+    "ContainingType": "NavicomInformatica.Controllers.ProductController",
     "Method": "DeleteProductAsync",
     "RelativePath": "api/Product/DeleteProduct/{id}",
     "HttpMethod": "DELETE",
@@ -234,17 +224,33 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "NavicomInformatica.Controllers.NavicomInformatica.Controllers.ProductController",
-    "Method": "GetProductsByAscPrice",
-    "RelativePath": "api/Product/desc-price",
-    "HttpMethod": "GET",
+    "ContainingType": "NavicomInformatica.Controllers.ProductController",
+    "Method": "FilterByCategoryAsync",
+    "RelativePath": "api/Product/FilterByCategory",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "category",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "limit",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "NavicomInformatica.Controllers.NavicomInformatica.Controllers.ProductController",
+    "ContainingType": "NavicomInformatica.Controllers.ProductController",
     "Method": "GetProductById",
     "RelativePath": "api/Product/id",
     "HttpMethod": "GET",
@@ -260,7 +266,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "NavicomInformatica.Controllers.NavicomInformatica.Controllers.ProductController",
+    "ContainingType": "NavicomInformatica.Controllers.ProductController",
     "Method": "GetProductsAsync",
     "RelativePath": "api/Product/ListOfProducts",
     "HttpMethod": "POST",
@@ -281,23 +287,85 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "NavicomInformatica.Controllers.NavicomInformatica.Controllers.ProductController",
-    "Method": "SearchProductsAsync",
-    "RelativePath": "api/Product/SearchProducts",
+    "ContainingType": "NavicomInformatica.Controllers.ProductController",
+    "Method": "SearchByTextAsync",
+    "RelativePath": "api/Product/SearchByText",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "searchParams",
-        "Type": "NavicomInformatica.DTO.ProductSearchDTO",
-        "IsRequired": true
+        "Name": "searchText",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "limit",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "NavicomInformatica.Controllers.NavicomInformatica.Controllers.ProductController",
+    "ContainingType": "NavicomInformatica.Controllers.ProductController",
+    "Method": "SortAlphabeticallyAsync",
+    "RelativePath": "api/Product/SortAlphabetically",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sortOrder",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "limit",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NavicomInformatica.Controllers.ProductController",
+    "Method": "SortByPriceAsync",
+    "RelativePath": "api/Product/SortByPrice",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sortOrder",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "limit",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NavicomInformatica.Controllers.ProductController",
     "Method": "UpdateProductAsync",
     "RelativePath": "api/Product/UpdateProduct/{id}",
     "HttpMethod": "PUT",
@@ -340,11 +408,6 @@
         "IsRequired": false
       },
       {
-        "Name": "Img_Name",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
         "Name": "Description",
         "Type": "System.String",
         "IsRequired": false
@@ -360,8 +423,13 @@
         "IsRequired": false
       },
       {
-        "Name": "File",
-        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "Name": "Imagenes",
+        "Type": "System.Collections.Generic.List\u00601[[NavicomInformatica.DTO.ProductoImagenDTO, NavicomInformatica, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Files",
+        "Type": "System.Collections.Generic.List\u00601[[Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Http.Features, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]",
         "IsRequired": false
       }
     ],

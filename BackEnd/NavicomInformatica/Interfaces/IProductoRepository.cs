@@ -12,17 +12,18 @@ namespace NavicomInformatica.Interfaces
         Task AddProductsAsync(IEnumerable<Producto> products);
         Task<Producto> GetProductByModel(string model);
         Task<int> GetTotalProductCountAsync();
-        Task<ICollection<Producto>> AscPriceProduct();
-        Task<ICollection<Producto>> DescPriceProduct();
-       
         Task UpdateStockAsync(long ProductId, int stockRestar);
         Task UpdateAllAsync(ProductDTO product);
-        Task<string> StoreImageAsync(IFormFile file, string modelName);
         Task DeleteProductAsync(long id);
 
-        Task<IEnumerable<Producto>> SearchProductsAsync(string searchText, string sortBy, string category, int offset, int limit);
+        // Nuevos métodos para ordenamiento y filtrado
+        Task<IEnumerable<Producto>> SortByPriceAsync(string sortOrder, int offset, int limit);
+        Task<IEnumerable<Producto>> SortAlphabeticallyAsync(string sortOrder, int offset, int limit);
+        Task<IEnumerable<Producto>> FilterByCategoryAsync(string category, int offset, int limit);
+        Task<IEnumerable<Producto>> SearchByTextAsync(string searchText, int offset, int limit);
 
-        // Método para contar productos con filtros aplicados
-        Task<int> GetTotalProductCountAsync(string searchText, string category);
+        // Métodos para contar productos con filtros aplicados
+        Task<int> GetTotalProductCountForCategoryAsync(string category);
+        Task<int> GetTotalProductCountForSearchAsync(string searchText);
     }
 }

@@ -2,7 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { API_BASE_URL } from "../../config";
 import { AuthContext } from "../context/AuthProvider";
-import "./styles/Module.ProductoDetalle.css"; // Asegúrate de importar el CSS
+import "./styles/Module.ProductoDetalle.css";
 
 const TEMP_CART_KEY = "tempCart";
 
@@ -12,6 +12,7 @@ function ProductoDetalle() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [cantidad, setCantidad] = useState(0);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0); // Para el carrusel
     const { user, token } = useContext(AuthContext);
 
     const CARRITO_ENDPOINT = `${API_BASE_URL}/api/Carrito`;
@@ -78,7 +79,7 @@ function ProductoDetalle() {
                         "Authorization": `Bearer ${token}`
                     },
                     body: JSON.stringify({
-                        CarritoId: user.id, // Usamos el ID del usuario
+                        CarritoId: user.id,
                         ProductoId: productId,
                         Cantidad: cantidad
                     })
@@ -101,10 +102,33 @@ function ProductoDetalle() {
             if (index !== -1) {
                 tempCart[index].cantidad += cantidad;
             } else {
-                tempCart.push({ productoId: productId, cantidad });
+                tempCart.push({
+                    productoId: productId,
+                    productoNombre: `${product.brand} ${product.model}`,
+                    precio: product.precio,
+                    imagenes: product.imagenes,
+                    cantidad
+                });
             }
             saveTempCart(tempCart);
             alert("Producto añadido al carrito temporal.");
+        }
+    };
+
+    // Funciones para el carrusel
+    const nextImage = () => {
+        if (product && product.imagenes) {
+            setCurrentImageIndex((prevIndex) =>
+                prevIndex === product.imagenes.length - 1 ? 0 : prevIndex + 1
+            );
+        }
+    };
+
+    const prevImage = () => {
+        if (product && product.imagenes) {
+            setCurrentImageIndex((prevIndex) =>
+                prevIndex === 0 ? product.imagenes.length - 1 : prevIndex - 1
+            );
         }
     };
 
@@ -112,10 +136,34 @@ function ProductoDetalle() {
     if (error) return <p>Error: {error}</p>;
     if (!product) return <p>Producto no encontrado.</p>;
 
+    const currentImage = product.imagenes && product.imagenes.length > 0
+        ? product.imagenes[currentImageIndex].img_name
+        : "https://via.placeholder.com/150";
+
     return (
         <div className="producto-detalle-container">
             <div className="producto-imagenes">
-                <img src={product.img_name} alt={product.model} className="product-image-large" />
+                <div className="carousel">
+                    <button onClick={prevImage} className="carousel-button prev">❮</button>
+                    <img
+                        src={currentImage}
+                        alt={`${product.brand} ${product.model}`}
+                        className="product-image-large"
+                    />
+                    <button onClick={nextImage} className="carousel-button next">❯</button>
+                </div>
+                <div className="thumbnails">
+                    {product.imagenes && product.imagenes.map((img, index) => (
+                        <img
+                            key={index}
+                            src={img.img_name}
+                            alt={`Thumbnail ${index}`}
+                            className={`thumbnail ${index === currentImageIndex ? 'active' : ''}`}
+                            onClick={() => setCurrentImageIndex(index)}
+                            style={{ width: "60px", height: "60px", margin: "0 5px", cursor: "pointer" }}
+                        />
+                    ))}
+                </div>
             </div>
             <div className="producto-info">
                 <h1>{product.brand} {product.model}</h1>

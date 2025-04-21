@@ -258,26 +258,35 @@
         "tags": [
           "Product"
         ],
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 1
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 10
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "page": {
+                    "type": "integer",
+                    "format": "int32",
+                    "default": 1
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "format": "int32",
+                    "default": 10
+                  }
+                }
+              },
+              "encoding": {
+                "page": {
+                  "style": "form"
+                },
+                "limit": {
+                  "style": "form"
+                }
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -318,9 +327,6 @@
                     "type": "integer",
                     "format": "int32"
                   },
-                  "Img_Name": {
-                    "type": "string"
-                  },
                   "Description": {
                     "type": "string"
                   },
@@ -330,9 +336,18 @@
                   "Category": {
                     "type": "string"
                   },
-                  "File": {
-                    "type": "string",
-                    "format": "binary"
+                  "Imagenes": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ProductoImagenDTO"
+                    }
+                  },
+                  "Files": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    }
                   }
                 }
               },
@@ -355,9 +370,6 @@
                 "Stock": {
                   "style": "form"
                 },
-                "Img_Name": {
-                  "style": "form"
-                },
                 "Description": {
                   "style": "form"
                 },
@@ -367,37 +379,16 @@
                 "Category": {
                   "style": "form"
                 },
-                "File": {
+                "Imagenes": {
+                  "style": "form"
+                },
+                "Files": {
                   "style": "form"
                 }
               }
             }
           }
         },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Product/desc-price": {
-      "get": {
-        "tags": [
-          "Product"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Product/asc-price": {
-      "get": {
-        "tags": [
-          "Product"
-        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -471,9 +462,6 @@
                     "type": "integer",
                     "format": "int32"
                   },
-                  "Img_Name": {
-                    "type": "string"
-                  },
                   "Description": {
                     "type": "string"
                   },
@@ -483,9 +471,18 @@
                   "Category": {
                     "type": "string"
                   },
-                  "File": {
-                    "type": "string",
-                    "format": "binary"
+                  "Imagenes": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ProductoImagenDTO"
+                    }
+                  },
+                  "Files": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    }
                   }
                 }
               },
@@ -508,9 +505,6 @@
                 "Stock": {
                   "style": "form"
                 },
-                "Img_Name": {
-                  "style": "form"
-                },
                 "Description": {
                   "style": "form"
                 },
@@ -520,7 +514,10 @@
                 "Category": {
                   "style": "form"
                 },
-                "File": {
+                "Imagenes": {
+                  "style": "form"
+                },
+                "Files": {
                   "style": "form"
                 }
               }
@@ -557,26 +554,183 @@
         }
       }
     },
-    "/api/Product/SearchProducts": {
+    "/api/Product/SortByPrice": {
       "post": {
         "tags": [
           "Product"
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/ProductSearchDTO"
+                "type": "object",
+                "properties": {
+                  "sortOrder": {
+                    "type": "string"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "format": "int32",
+                    "default": 1
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "format": "int32",
+                    "default": 10
+                  }
+                }
+              },
+              "encoding": {
+                "sortOrder": {
+                  "style": "form"
+                },
+                "page": {
+                  "style": "form"
+                },
+                "limit": {
+                  "style": "form"
+                }
               }
-            },
-            "text/json": {
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Product/SortAlphabetically": {
+      "post": {
+        "tags": [
+          "Product"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/ProductSearchDTO"
+                "type": "object",
+                "properties": {
+                  "sortOrder": {
+                    "type": "string"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "format": "int32",
+                    "default": 1
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "format": "int32",
+                    "default": 10
+                  }
+                }
+              },
+              "encoding": {
+                "sortOrder": {
+                  "style": "form"
+                },
+                "page": {
+                  "style": "form"
+                },
+                "limit": {
+                  "style": "form"
+                }
               }
-            },
-            "application/*+json": {
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Product/FilterByCategory": {
+      "post": {
+        "tags": [
+          "Product"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/ProductSearchDTO"
+                "type": "object",
+                "properties": {
+                  "category": {
+                    "type": "string"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "format": "int32",
+                    "default": 1
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "format": "int32",
+                    "default": 10
+                  }
+                }
+              },
+              "encoding": {
+                "category": {
+                  "style": "form"
+                },
+                "page": {
+                  "style": "form"
+                },
+                "limit": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Product/SearchByText": {
+      "post": {
+        "tags": [
+          "Product"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "searchText": {
+                    "type": "string"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "format": "int32",
+                    "default": 1
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "format": "int32",
+                    "default": 10
+                  }
+                }
+              },
+              "encoding": {
+                "searchText": {
+                  "style": "form"
+                },
+                "page": {
+                  "style": "form"
+                },
+                "limit": {
+                  "style": "form"
+                }
               }
             }
           }
@@ -782,28 +936,16 @@
         },
         "additionalProperties": false
       },
-      "ProductSearchDTO": {
+      "ProductoImagenDTO": {
         "type": "object",
         "properties": {
-          "searchText": {
-            "type": "string",
-            "nullable": true
-          },
-          "sortBy": {
-            "type": "string",
-            "nullable": true
-          },
-          "category": {
-            "type": "string",
-            "nullable": true
-          },
-          "page": {
+          "id": {
             "type": "integer",
-            "format": "int32"
+            "format": "int64"
           },
-          "limit": {
-            "type": "integer",
-            "format": "int32"
+          "img_Name": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

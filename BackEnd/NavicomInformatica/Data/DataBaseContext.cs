@@ -8,10 +8,11 @@ namespace NavicomInformatica.Data
     {
         private const string DATABASE_PATH = "Navicom.db";
 
-        public DbSet<User> Users { get; set; }
-        public DbSet<Producto> Products { get; set; }
-        public DbSet<Carrito> Carritos { get; set; }
-        public DbSet<CarritoItem> CarritoItems { get; set; }
+        public DbSet<User>? Users { get; set; }
+        public DbSet<Producto>? Products { get; set; }
+        public DbSet<ProductoImagen>? ProductoImagenes { get; set; }
+        public DbSet<Carrito>? Carritos { get; set; }
+        public DbSet<CarritoItem>? CarritoItems { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -34,6 +35,13 @@ namespace NavicomInformatica.Data
             // Configuración de Producto
             modelBuilder.Entity<Producto>()
                 .HasKey(p => p.Id);
+
+            // Configuración de la relación Producto -> ProductoImagen (eliminación en cascada)
+            modelBuilder.Entity<Producto>()
+                .HasMany(p => p.Imagenes)
+                .WithOne(pi => pi.Producto)
+                .HasForeignKey(pi => pi.ProductoId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             // Configuración de Carrito
             modelBuilder.Entity<Carrito>()

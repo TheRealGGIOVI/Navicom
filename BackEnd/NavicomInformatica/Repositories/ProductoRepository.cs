@@ -1,8 +1,8 @@
 ﻿using NavicomInformatica.Data;
-using NavicomInformatica.DTO;
 using NavicomInformatica.Models;
 using NavicomInformatica.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using NavicomInformatica.DTO;
 
 namespace NavicomInformatica.Repositories
 {
@@ -15,20 +15,21 @@ namespace NavicomInformatica.Repositories
             _context = context;
         }
 
-        // Devuelve todos los productos sin paginación
         public async Task<ICollection<Producto>> GetProductsAsync()
         {
-            return await _context.Products.OrderBy(u => u.Id).ToListAsync();
+            return await _context.Products
+                .Include(p => p.Imagenes)
+                .OrderBy(u => u.Id)
+                .ToListAsync();
         }
 
-        // Devuelve productos según el offset y el límite
         public async Task<ICollection<Producto>> GetProductsAsync(int offset, int limit)
         {
-            // Aplica la paginación a la consulta
             return await _context.Products
+                .Include(p => p.Imagenes)
                 .OrderBy(u => u.Id)
-                .Skip(offset)         // Salta el número de elementos determinado por el offset
-                .Take(limit)          // Toma el número de elementos determinado por el límite
+                .Skip(offset)
+                .Take(limit)
                 .ToListAsync();
         }
 
@@ -40,7 +41,6 @@ namespace NavicomInformatica.Repositories
             }
             catch (DbUpdateException ex)
             {
-                // Registrar la excepción interna para obtener más detalles
                 Console.WriteLine(ex.InnerException?.Message);
                 throw;
             }
@@ -49,7 +49,7 @@ namespace NavicomInformatica.Repositories
         public async Task<string> StoreImageAsync(IFormFile file, string modelName)
         {
             string fileExtension = Path.GetExtension(file.FileName);
-            string fileName = modelName + fileExtension;
+            string fileName = modelName + "_" + Guid.NewGuid().ToString() + fileExtension;
 
             string imagesFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
 
@@ -81,18 +81,27 @@ namespace NavicomInformatica.Repositories
                 Discount_Price = productDto.Discount_Price,
                 Stock = productDto.Stock,
                 Description = productDto.Description,
-                Details = productDto.Details
+                Details = productDto.Details,
+                Category = productDto.Category,
+                Imagenes = new List<ProductoImagen>()
             };
 
-            if (productDto.File != null)
+            if (productDto.Files != null && productDto.Files.Any())
             {
                 try
                 {
-                    product.Img_Name = await StoreImageAsync(productDto.File, productDto.Model);
+                    foreach (var file in productDto.Files)
+                    {
+                        if (file != null)
+                        {
+                            var fileName = await StoreImageAsync(file, productDto.Model);
+                            product.Imagenes.Add(new ProductoImagen { Img_Name = fileName });
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Error al guardar la imagen: " + ex.Message);
+                    throw new Exception("Error al guardar las imágenes: " + ex.Message);
                 }
             }
 
@@ -104,7 +113,6 @@ namespace NavicomInformatica.Repositories
             }
             catch (DbUpdateException ex)
             {
-                // Registrar la excepción interna para obtener más detalles
                 Console.WriteLine(ex.InnerException?.Message);
                 throw;
             }
@@ -119,7 +127,6 @@ namespace NavicomInformatica.Repositories
             }
             catch (DbUpdateException ex)
             {
-                // Registrar la excepción interna para obtener más detalles
                 Console.WriteLine(ex.InnerException?.Message);
                 throw;
             }
@@ -127,12 +134,16 @@ namespace NavicomInformatica.Repositories
 
         public async Task<Producto> GetProductByIdAsync(long id)
         {
-            return await _context.Products.FirstOrDefaultAsync(u => u.Id == id);
+            return await _context.Products
+                .Include(p => p.Imagenes)
+                .FirstOrDefaultAsync(u => u.Id == id);
         }
 
         public async Task<Producto> GetProductByModel(string model)
         {
-            return await _context.Products.FirstOrDefaultAsync(u => u.Model == model);
+            return await _context.Products
+                .Include(p => p.Imagenes)
+                .FirstOrDefaultAsync(u => u.Model == model);
         }
 
         public async Task<int> GetTotalProductCountAsync()
@@ -140,21 +151,9 @@ namespace NavicomInformatica.Repositories
             return await _context.Products.CountAsync();
         }
 
-        public async Task<ICollection<Producto>> AscPriceProduct()
-        {
-            var productos = await _context.Products.ToListAsync();
-            return productos.OrderBy(p => p.Precio).ToList();
-        }
-
-        public async Task<ICollection<Producto>> DescPriceProduct()
-        {
-            var productos = await _context.Products.ToListAsync();
-            return productos.OrderByDescending(p => p.Precio).ToList();
-        }
-
         public async Task UpdateStockAsync(long ProductId, int stockRestar)
         {
-            var productVariado = _context.Products.FirstOrDefault(p => p.Id == ProductId);
+            var productVariado = await _context.Products.FirstOrDefaultAsync(p => p.Id == ProductId);
 
             if (productVariado == null)
             {
@@ -174,7 +173,6 @@ namespace NavicomInformatica.Repositories
             }
             catch (DbUpdateException ex)
             {
-                // Registrar la excepción interna para obtener más detalles
                 Console.WriteLine(ex.InnerException?.Message);
                 throw;
             }
@@ -182,17 +180,20 @@ namespace NavicomInformatica.Repositories
 
         public async Task DeleteProductAsync(long id)
         {
-            var product = await _context.Set<Producto>().FindAsync(id);
+            var product = await _context.Products
+                .Include(p => p.Imagenes)
+                .FirstOrDefaultAsync(p => p.Id == id);
+
             if (product != null)
             {
-                _context.Set<Producto>().Remove(product);
+                _context.ProductoImagenes.RemoveRange(product.Imagenes);
+                _context.Products.Remove(product);
                 try
                 {
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateException ex)
                 {
-                    // Registrar la excepción interna para obtener más detalles
                     Console.WriteLine(ex.InnerException?.Message);
                     throw;
                 }
@@ -201,15 +202,15 @@ namespace NavicomInformatica.Repositories
 
         public async Task UpdateAllAsync(ProductDTO product)
         {
-            // Obtener el producto de la base de datos
-            var productVariado = await _context.Products.FirstOrDefaultAsync(p => p.Id == product.Id);
+            var productVariado = await _context.Products
+                .Include(p => p.Imagenes)
+                .FirstOrDefaultAsync(p => p.Id == product.Id);
 
             if (productVariado == null)
             {
                 throw new KeyNotFoundException("La variación del producto no existe.");
             }
 
-            // Validaciones iniciales
             if (product.Stock < 0)
             {
                 throw new ArgumentException("No se puede poner menos de 0 de stock.");
@@ -220,7 +221,6 @@ namespace NavicomInformatica.Repositories
                 throw new ArgumentException("El Precio no puede ser negativo.");
             }
 
-            // Actualización de campos si los valores son válidos
             if (!string.IsNullOrWhiteSpace(product.Brand) && product.Brand != "string")
             {
                 productVariado.Brand = product.Brand.Trim();
@@ -256,28 +256,30 @@ namespace NavicomInformatica.Repositories
                 productVariado.Details = product.Details.Trim();
             }
 
-            // Procesar y almacenar imagen 
-            if (product.File != null)
+            if (!string.IsNullOrWhiteSpace(product.Category) && product.Category != "string")
+            {
+                productVariado.Category = product.Category.Trim();
+            }
+
+            if (product.Files != null && product.Files.Any())
             {
                 try
                 {
-                    var modelImage = !string.IsNullOrWhiteSpace(product.Model) && product.Model != "string"
-                        ? product.Model
-                        : productVariado.Model;
-
-                    productVariado.Img_Name = await StoreImageAsync(product.File, modelImage);
+                    foreach (var file in product.Files)
+                    {
+                        if (file != null)
+                        {
+                            var fileName = await StoreImageAsync(file, productVariado.Model);
+                            productVariado.Imagenes.Add(new ProductoImagen { Img_Name = fileName });
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
-                    throw new InvalidOperationException("Error al guardar la imagen.", ex);
+                    throw new InvalidOperationException("Error al guardar las imágenes.", ex);
                 }
             }
-            else if (!string.IsNullOrWhiteSpace(product.Img_Name) && product.Img_Name != "string")
-            {
-                productVariado.Img_Name = product.Img_Name.Trim();
-            }
 
-            // Guardar cambios en la base de datos
             _context.Products.Update(productVariado);
             try
             {
@@ -285,25 +287,77 @@ namespace NavicomInformatica.Repositories
             }
             catch (DbUpdateException ex)
             {
-                // Registrar la excepción interna para obtener más detalles
                 Console.WriteLine(ex.InnerException?.Message);
                 throw;
             }
-
-
         }
 
-        public async Task<IEnumerable<Producto>> SearchProductsAsync(string searchText, string sortBy, string category, int offset, int limit)
+        // Método para ordenar por precio
+        public async Task<IEnumerable<Producto>> SortByPriceAsync(string sortOrder, int offset, int limit)
         {
-            var query = _context.Products.AsQueryable();
+            var query = _context.Products
+                .Include(p => p.Imagenes)
+                .AsQueryable();
 
-            // Filtrar por categoría
-            if (!string.IsNullOrEmpty(category))
+            if (sortOrder?.ToLower() == "asc")
             {
-                query = query.Where(p => p.Category == category);
+                query = query.OrderBy(p => p.Precio);
+            }
+            else
+            {
+                query = query.OrderByDescending(p => p.Precio);
             }
 
-            // Buscar por texto en Brand y Model
+            query = query.Skip(offset).Take(limit);
+
+            return await query.ToListAsync();
+        }
+
+        // Método para ordenar alfabéticamente
+        public async Task<IEnumerable<Producto>> SortAlphabeticallyAsync(string sortOrder, int offset, int limit)
+        {
+            var query = _context.Products
+                .Include(p => p.Imagenes)
+                .AsQueryable();
+
+            if (sortOrder?.ToLower() == "asc")
+            {
+                query = query.OrderBy(p => p.Brand.ToLower()).ThenBy(p => p.Model.ToLower());
+            }
+            else
+            {
+                query = query.OrderByDescending(p => p.Brand.ToLower()).ThenByDescending(p => p.Model.ToLower());
+            }
+
+            query = query.Skip(offset).Take(limit);
+
+            return await query.ToListAsync();
+        }
+
+        // Método para filtrar por categoría
+        public async Task<IEnumerable<Producto>> FilterByCategoryAsync(string category, int offset, int limit)
+        {
+            var query = _context.Products
+                .Include(p => p.Imagenes)
+                .AsQueryable();
+
+            if (!string.IsNullOrEmpty(category))
+            {
+                query = query.Where(p => p.Category.ToLower() == category.ToLower());
+            }
+
+            query = query.OrderBy(p => p.Id).Skip(offset).Take(limit);
+
+            return await query.ToListAsync();
+        }
+
+        // Método para buscar por texto
+        public async Task<IEnumerable<Producto>> SearchByTextAsync(string searchText, int offset, int limit)
+        {
+            var query = _context.Products
+                .Include(p => p.Imagenes)
+                .AsQueryable();
+
             if (!string.IsNullOrEmpty(searchText))
             {
                 var searchLower = searchText.ToLower();
@@ -311,41 +365,27 @@ namespace NavicomInformatica.Repositories
                                          p.Model.ToLower().Contains(searchLower));
             }
 
-            // Ordenar
-            switch (sortBy?.ToLower())
-            {
-                case "price-asc":
-                    query = query.OrderBy(p => p.Precio);
-                    break;
-                case "price-desc":
-                    query = query.OrderByDescending(p => p.Precio);
-                    break;
-                case "alpha-asc":
-                    query = query.OrderBy(p => p.Brand).ThenBy(p => p.Model);
-                    break;
-                case "alpha-desc":
-                    query = query.OrderByDescending(p => p.Brand).ThenByDescending(p => p.Model);
-                    break;
-                default:
-                    query = query.OrderBy(p => p.Id); // Orden por defecto
-                    break;
-            }
-
-            // Paginación
-            query = query.Skip(offset).Take(limit);
+            query = query.OrderBy(p => p.Id).Skip(offset).Take(limit);
 
             return await query.ToListAsync();
         }
 
-        // Contar productos con filtros aplicados
-        public async Task<int> GetTotalProductCountAsync(string searchText, string category)
+        // Métodos para contar productos (usados para paginación)
+        public async Task<int> GetTotalProductCountForCategoryAsync(string category)
         {
             var query = _context.Products.AsQueryable();
 
             if (!string.IsNullOrEmpty(category))
             {
-                query = query.Where(p => p.Category == category);
+                query = query.Where(p => p.Category.ToLower() == category.ToLower());
             }
+
+            return await query.CountAsync();
+        }
+
+        public async Task<int> GetTotalProductCountForSearchAsync(string searchText)
+        {
+            var query = _context.Products.AsQueryable();
 
             if (!string.IsNullOrEmpty(searchText))
             {
