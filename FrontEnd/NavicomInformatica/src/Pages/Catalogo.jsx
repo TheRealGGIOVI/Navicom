@@ -20,12 +20,16 @@ function Catalogo() {
   const [loading, setLoading] = useState(false);
   const limit = 10;
 
+  // Añadimos un estado para evitar bucles infinitos
+  const [fetchTrigger, setFetchTrigger] = useState(0);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       fetchProducts();
     }, 300);
     return () => clearTimeout(timer);
-  }, [searchText, sortBy, category, page]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fetchTrigger]); // Solo depende de fetchTrigger
 
   const fetchProducts = async () => {
     setLoading(true);
@@ -34,7 +38,6 @@ function Catalogo() {
       let url = LIST_OF_PRODUCTS_ENDPOINT;
       let body = { page: page.toString(), limit: limit.toString() };
 
-      // Prioridad: búsqueda por texto > categoría > ordenamiento alfabético > ordenamiento por precio
       if (searchText) {
         url = SEARCH_BY_TEXT_ENDPOINT;
         body = { searchText, page: page.toString(), limit: limit.toString() };
@@ -105,6 +108,38 @@ function Catalogo() {
     }
   };
 
+  // Función para disparar la búsqueda manualmente
+  const handleFetch = () => {
+    setFetchTrigger(prev => prev + 1);
+  };
+
+  // Ajustamos los manejadores de eventos para usar handleFetch
+  const handleSearchChange = (e) => {
+    setSearchText(e.target.value);
+    setPage(1);
+    handleFetch();
+  };
+
+  const handleSortChange = (e) => {
+    setSortBy(e.target.value);
+    setPage(1);
+    handleFetch();
+  };
+
+  const handleCategoryChange = (e) => {
+    setCategory(e.target.value);
+    setPage(1);
+    handleFetch();
+  };
+
+  const handlePageChange = (newPage) => {
+    setPage(newPage);
+    handleFetch();
+  };
+
+  // Construir la URL base para las imágenes
+  const BASE_IMAGE_URL = "https://localhost:7069/images/"; // Ajustado al puerto correcto
+
   return (
     <div className="catalogo-container">
       <h1>Catálogo</h1>
@@ -114,31 +149,16 @@ function Catalogo() {
           type="text"
           placeholder="Buscar..."
           value={searchText}
-          onChange={(e) => {
-            setSearchText(e.target.value);
-            setPage(1);
-          }}
+          onChange={handleSearchChange}
         />
-        <select
-          value={sortBy}
-          onChange={(e) => {
-            setSortBy(e.target.value);
-            setPage(1);
-          }}
-        >
+        <select value={sortBy} onChange={handleSortChange}>
           <option value="">Ordenar por...</option>
           <option value="price-asc">Precio: Menor a Mayor</option>
           <option value="price-desc">Precio: Mayor a Menor</option>
           <option value="alpha-asc">Alfabético: A-Z</option>
           <option value="alpha-desc">Alfabético: Z-A</option>
         </select>
-        <select
-          value={category}
-          onChange={(e) => {
-            setCategory(e.target.value);
-            setPage(1);
-          }}
-        >
+        <select value={category} onChange={handleCategoryChange}>
           <option value="">Todas las Categorías</option>
           <option value="Laptops">Laptops</option>
           <option value="MiniPCs">MiniPCs</option>
@@ -151,25 +171,29 @@ function Catalogo() {
         ) : products.length === 0 ? (
           <p>No se encontraron productos.</p>
         ) : (
-          products.map((p) => (
-            <Card
-              key={p.id}
-              id={p.id}
-              brand={p.brand}
-              model={p.model}
-              precio={p.precio}
-              imagenes={p.imagenes}
-              stock={p.stock}
-            />
-          ))
+          products.map((p) => {
+            // Construir las URLs completas para las imágenes
+            const imageUrls = p.imagenes.map(img => `${BASE_IMAGE_URL}${img.img_Name}`);
+            return (
+              <Card
+                key={p.id}
+                id={p.id}
+                brand={p.brand}
+                model={p.model}
+                precio={p.precio}
+                imagenes={imageUrls}
+                stock={p.stock}
+              />
+            );
+          })
         )}
       </div>
       <div className="pagination">
-        <button onClick={() => setPage(page - 1)} disabled={page === 1 || loading}>
+        <button onClick={() => handlePageChange(page - 1)} disabled={page === 1 || loading}>
           Anterior
         </button>
         <span>Página {page} de {totalPages}</span>
-        <button onClick={() => setPage(page + 1)} disabled={page === totalPages || loading}>
+        <button onClick={() => handlePageChange(page + 1)} disabled={page === totalPages || loading}>
           Siguiente
         </button>
       </div>

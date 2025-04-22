@@ -4,7 +4,7 @@ import "./styles/Module.Card.css";
 
 function Card({ id, brand, model, precio, imagenes, stock }) {
     // Usamos la primera imagen de la lista, o una URL por defecto si no hay imágenes
-    const imgUrl = imagenes && imagenes.length > 0 ? imagenes[0].img_name : "https://via.placeholder.com/150";
+    const imgUrl = imagenes && imagenes.length > 0 ? imagenes[0] : "https://via.placeholder.com/150";
 
     return (
         <Link to={`/producto/${id}`} className="card-link">
@@ -35,11 +35,7 @@ Card.propTypes = {
     brand: PropTypes.string.isRequired,
     model: PropTypes.string.isRequired,
     precio: PropTypes.number.isRequired,
-    imagenes: PropTypes.arrayOf(
-        PropTypes.shape({
-            img_name: PropTypes.string.isRequired
-        })
-    ).isRequired,
+    imagenes: PropTypes.arrayOf(PropTypes.string).isRequired, // Ahora esperamos un array de strings (URLs)
     stock: PropTypes.number.isRequired,
 };
 

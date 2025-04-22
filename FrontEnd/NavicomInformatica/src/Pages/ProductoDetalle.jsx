@@ -12,10 +12,12 @@ function ProductoDetalle() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [cantidad, setCantidad] = useState(0);
-    const [currentImageIndex, setCurrentImageIndex] = useState(0); // Para el carrusel
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const { user, token } = useContext(AuthContext);
 
     const CARRITO_ENDPOINT = `${API_BASE_URL}/api/Carrito`;
+    // Definir la URL base para las imágenes (igual que en Catalogo.jsx)
+    const BASE_IMAGE_URL = "https://localhost:7069/images/"; // Ajusta el puerto si es necesario
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -136,27 +138,28 @@ function ProductoDetalle() {
     if (error) return <p>Error: {error}</p>;
     if (!product) return <p>Producto no encontrado.</p>;
 
+    // Construir la URL completa para la imagen actual
     const currentImage = product.imagenes && product.imagenes.length > 0
-        ? product.imagenes[currentImageIndex].img_name
+        ? `${BASE_IMAGE_URL}${product.imagenes[currentImageIndex].img_Name}` // Usamos img_Name aquí
         : "https://via.placeholder.com/150";
 
     return (
         <div className="producto-detalle-container">
             <div className="producto-imagenes">
                 <div className="carousel">
-                    <button onClick={prevImage} className="carousel-button prev">❮</button>
+                    
                     <img
                         src={currentImage}
                         alt={`${product.brand} ${product.model}`}
                         className="product-image-large"
                     />
-                    <button onClick={nextImage} className="carousel-button next">❯</button>
+                   
                 </div>
                 <div className="thumbnails">
                     {product.imagenes && product.imagenes.map((img, index) => (
                         <img
                             key={index}
-                            src={img.img_name}
+                            src={`${BASE_IMAGE_URL}${img.img_Name}`} 
                             alt={`Thumbnail ${index}`}
                             className={`thumbnail ${index === currentImageIndex ? 'active' : ''}`}
                             onClick={() => setCurrentImageIndex(index)}

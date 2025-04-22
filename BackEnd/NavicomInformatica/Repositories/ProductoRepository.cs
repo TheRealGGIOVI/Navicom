@@ -46,12 +46,22 @@ namespace NavicomInformatica.Repositories
             }
         }
 
-        public async Task<string> StoreImageAsync(IFormFile file, string modelName)
+        public async Task<string> StoreImageAsync(IFormFile file, string brand, string model, int imageNumber)
         {
+            // Reemplazar caracteres no válidos en el nombre del archivo
+            brand = brand.Replace(" ", "_").Replace("/", "_").Replace("\\", "_");
+            model = model.Replace(" ", "_").Replace("/", "_").Replace("\\", "_");
+
             string fileExtension = Path.GetExtension(file.FileName);
-            string fileName = modelName + "_" + Guid.NewGuid().ToString() + fileExtension;
+            string fileName = $"{brand}_{model}_{imageNumber}{fileExtension}"; // Ejemplo: HP_EliteBook_1.jpg
 
             string imagesFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
+
+            // Asegurarnos de que la carpeta exista
+            if (!Directory.Exists(imagesFolder))
+            {
+                Directory.CreateDirectory(imagesFolder);
+            }
 
             string filePath = Path.Combine(imagesFolder, fileName);
 
@@ -90,12 +100,14 @@ namespace NavicomInformatica.Repositories
             {
                 try
                 {
+                    int imageNumber = 1;
                     foreach (var file in productDto.Files)
                     {
                         if (file != null)
                         {
-                            var fileName = await StoreImageAsync(file, productDto.Model);
+                            var fileName = await StoreImageAsync(file, productDto.Brand, productDto.Model, imageNumber);
                             product.Imagenes.Add(new ProductoImagen { Img_Name = fileName });
+                            imageNumber++;
                         }
                     }
                 }
@@ -265,12 +277,15 @@ namespace NavicomInformatica.Repositories
             {
                 try
                 {
+                    // Determinar el número de imágenes existentes para continuar la numeración
+                    int imageNumber = productVariado.Imagenes.Count + 1;
                     foreach (var file in product.Files)
                     {
                         if (file != null)
                         {
-                            var fileName = await StoreImageAsync(file, productVariado.Model);
+                            var fileName = await StoreImageAsync(file, productVariado.Brand, productVariado.Model, imageNumber);
                             productVariado.Imagenes.Add(new ProductoImagen { Img_Name = fileName });
+                            imageNumber++;
                         }
                     }
                 }
