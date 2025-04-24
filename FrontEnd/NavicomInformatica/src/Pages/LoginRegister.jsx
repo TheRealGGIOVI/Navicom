@@ -135,7 +135,7 @@ function LoginRegister() {
 
   return (
     <div className="container">
-      <h2>{isLogin ? "Iniciar Sesión" : "Registrarse"}</h2>
+      <h2 className="LR-title">{isLogin ? "Iniciar Sesión" : "Registrarse"}</h2>
       <form onSubmit={handleSubmit}>
         {!isLogin && (
           <>
@@ -146,7 +146,7 @@ function LoginRegister() {
               onChange={(e) => setName(e.target.value)}
               required
             />
-            {nameError && <p>{nameError}</p>}
+            {nameError && <p className="error">{nameError}</p>}
 
             <input
               type="text"
@@ -155,7 +155,7 @@ function LoginRegister() {
               onChange={(e) => setApellido(e.target.value)}
               required
             />
-            {apellidoError && <p>{apellidoError}</p>}
+            {apellidoError && <p className="error">{apellidoError}</p>}
           </>
         )}
 
@@ -166,7 +166,7 @@ function LoginRegister() {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        {emailError && <p>{emailError}</p>}
+        {emailError && <p className="error">{emailError}</p>}
 
         <input
           type="password"
@@ -175,7 +175,7 @@ function LoginRegister() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        {passwordError && <p>{passwordError}</p>}
+        {passwordError && <p className="error">{passwordError}</p>}
 
         {!isLogin && (
           <>
@@ -186,7 +186,7 @@ function LoginRegister() {
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
-            {confirmPasswordError && <p>{confirmPasswordError}</p>}
+            {confirmPasswordError && <p className="error">{confirmPasswordError}</p>}
           </>
         )}
 
@@ -205,9 +205,9 @@ function LoginRegister() {
           {isLoading ? "Cargando..." : isLogin ? "Iniciar Sesión" : "Registrarse"}
         </button>
 
-        {isLogin ? "¿No tienes cuenta?" : "¿Ya tienes cuenta?"}{" "}
+        {isLogin ? <><p className="cuenta">¿No tienes cuenta?</p></> : <><p className="cuenta">¿Ya tienes cuenta?</p></>}{" "}
         <button className="primary-button" onClick={() => setIsLogin(!isLogin)}>
-          {isLogin ? "Regístrate" : "Inicia Sesión"}
+          {isLogin ? "Regístrate" : "Iniciar Sesión"}
         </button>
       </form>
 

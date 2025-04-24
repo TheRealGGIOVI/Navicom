@@ -1,97 +1,96 @@
-import { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../context/AuthProvider";
-import { API_BASE_URL } from "../../config";
+import { Link } from "react-router-dom";
+import { USER_CART} from "../../config";
+import { UPDATE_QUANTITY_ENDPOINT} from "../../config";
+import { DELETE_PRODUCT_CART_ENDPOINT} from "../../config";
+
 import "./styles/Module.Carrito.css";
 
-// Función para obtener el carrito temporal desde localStorage
+
 const getTempCart = () => {
   const cart = localStorage.getItem("tempCart");
   return cart ? JSON.parse(cart) : [];
 };
 
-// Función para guardar el carrito temporal en localStorage
 const saveTempCart = (cart) => {
   localStorage.setItem("tempCart", JSON.stringify(cart));
 };
 
 function Carrito() {
-  const { user, token } = useContext(AuthContext);
-  const [cart, setCart] = useState(getTempCart()); // Carrito temporal o inicial
-  const [total, setTotal] = useState(0); // Total del carrito
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [cart, setCart] = useState(getTempCart());
+  const [total, setTotal] = useState(0);
+  const { user } = useContext(AuthContext);
 
-  // Obtener el carrito del backend si el usuario está autenticado
   useEffect(() => {
     const fetchCart = async () => {
-      if (!user || !token) {
-        // Si no hay usuario autenticado, usamos el carrito temporal
-        setCart(getTempCart());
-        return;
+      if (user) {
+        try {
+          const res = await fetch(`${USER_CART}${user.Id}`);
+          const data = await res.json();
+          setCart(data.cartProducts);
+          setTotal(data.totalPrice);
+        } catch (err) {
+          console.error("Error backend carrito:", err);
+        }
+      } else {
+        const localCart = getTempCart();
+        setCart(localCart);
       }
+    };
+  
+    fetchCart();
+  }, [user]);
 
-      setLoading(true);
-      setError(null);
+  useEffect(() => {
+    if (!user) {
+      let totalPrice = 0;
+      cart.forEach((item) => {
+        totalPrice += item.cantidad * item.precio;
+      });
+      setTotal(totalPrice);
+      saveTempCart(cart);
+    }
+  }, [cart, user]);
+
+  const removeFromCart = async (productId) => {
+    if (user) {
       try {
-        const response = await fetch(`${API_BASE_URL}/api/Carrito/GetCart/${user.id}`, {
-          method: "GET",
+        const res = await fetch(`${DELETE_PRODUCT_CART_ENDPOINT}${user.Id}/${productId}`, {
+          method: "DELETE",
           headers: {
-            "Authorization": `Bearer ${token}`,
             "Accept": "*/*"
           }
         });
-
-        if (!response.ok) {
-          throw new Error(`Error HTTP: ${response.status}`);
+  
+        if (!res.ok) {
+          throw new Error("Error al eliminar el producto del carrito");
         }
 
+        const response = await fetch(`${USER_CART}${user.Id}`);
         const data = await response.json();
-        // Mapear los datos del backend al formato esperado por el componente
-        const formattedCart = data.cartProducts.map(item => ({
-          productoId: item.productId,
-          productoNombre: item.productName,
-          precio: item.productPrice,
-          imagenes: [{ img_name: item.productImage }], // Convertimos la imagen en una lista para consistencia
-          cantidad: item.quantity
-        }));
-        setCart(formattedCart);
-        saveTempCart(formattedCart); // Actualizamos el carrito temporal
-      } catch (err) {
-        setError(`Error al cargar el carrito: ${err.message}`);
-        setCart(getTempCart()); // Si hay error, usamos el carrito temporal
-      } finally {
-        setLoading(false);
+        setCart(data.cartProducts);
+        setTotal(data.totalPrice);
+  
+      } catch (error) {
+        console.error("Error al eliminar del carrito:", error);
       }
-    };
-
-    fetchCart();
-  }, [user, token]);
-
-  // Actualizar el total cada vez que cambie el carrito
-  useEffect(() => {
-    let totalPrice = 0;
-    cart.forEach((item) => {
-      totalPrice += item.cantidad * item.precio;
-    });
-    setTotal(totalPrice);
-    saveTempCart(cart); // Guardar carrito en localStorage
-  }, [cart]);
-
-  // Eliminar producto del carrito
-  const removeFromCart = (productId) => {
-    setCart(cart.filter((item) => item.productoId !== productId));
+    }else{
+      setCart(cart.filter((item) => item.productoId !== productId));
+    }
   };
 
-  // Incrementar cantidad
   const incrementQuantity = (productId) => {
     setCart(cart.map((item) =>
       item.productoId === productId
-        ? { ...item, cantidad: item.cantidad + 1 }
+        ? item.cantidad < item.stock
+          ? { ...item, cantidad: item.cantidad + 1 }
+          : item
         : item
     ));
   };
+  
 
-  // Decrementar cantidad
   const decrementQuantity = (productId) => {
     setCart(cart.map((item) =>
       item.productoId === productId && item.cantidad > 1
@@ -99,53 +98,130 @@ function Carrito() {
         : item
     ));
   };
+  
+  const updateQuantity = async (productId, newCantidad) => {
+    const item = cart.find((p) => p.productId === productId);
+  
+    if (!item || newCantidad < 1 || newCantidad > item.productStock) return;
+  
+    try {
+      const res = await fetch(UPDATE_QUANTITY_ENDPOINT, {
+        method: "PUT",
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "*/*"
+        },
+        body: JSON.stringify({
+          carritoId: user.Id,
+          productoId: productId,
+          cantidad: newCantidad,
+        }),
+      });
+  
+      if (!res.ok) throw new Error("Error actualizando cantidad");
 
-  // Función para proceder al checkout
-  const proceedToCheckout = () => {
-    alert("Procediendo al checkout...");
-    // Aquí puedes implementar tu lógica para proceder al pago o enviar el carrito al servidor.
+      const updatedRes = await fetch(`${USER_CART}${user.Id}`);
+      const updatedData = await updatedRes.json();
+      setCart(updatedData.cartProducts);
+      setTotal(updatedData.totalPrice);
+  
+    } catch (err) {
+      console.error("Error al actualizar cantidad:", err);
+    }
   };
+  
 
   return (
     <div className="carrito-container">
-      <h1>Carrito de Compras</h1>
-
-      {loading && <p>Cargando carrito...</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>}
-
-      {cart.length === 0 ? (
-        <p>Tu carrito está vacío</p>
-      ) : (
-        <>
-          <div className="cart-items">
-            {cart.map((item) => (
-              <div key={item.productoId} className="cart-item">
-                <div className="cart-item-image">
+      <h1 className="carrito-title">Carrito de Compras</h1>
+    
+      {user ? (
+        // CARRITO DEL BACKEND
+        cart?.length === 0 ? (
+          <>
+            <div className="empty-cart-message">
+              <h2>Carrito vacío</h2>
+              <p>Puedes navegar por nuestra tienda y añadir productos.</p>
+              <Link to="/catalogo">
+                <button className="go-to-catalog-button">Ir al catálogo</button>
+              </Link>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="cart-items">
+              {cart.map((item) => (
+                <div key={item.productId} className="cart-item">
                   <img
-                    src={item.imagenes && item.imagenes.length > 0 ? item.imagenes[0].img_name : "https://via.placeholder.com/150"}
-                    alt={item.productoNombre}
-                    style={{ width: "100px", height: "100px" }}
+                    src={`/images/${item.productImage}`}
+                    alt={item.productModel}
+                    className="cart-item-image"
                   />
-                </div>
-                <div className="cart-item-details">
-                  <h2>{item.productoNombre}</h2>
-                  <p>Precio: {item.precio} €</p>
-                  <div className="cart-item-quantity">
-                    <span>Cantidad: {item.cantidad}</span>
-                    <button onClick={() => incrementQuantity(item.productoId)}>+</button>
-                    <button onClick={() => decrementQuantity(item.productoId)}>-</button>
+                  <div className="cart-item-details">
+                    <h2>{item.productBrand} {item.productModel}</h2>
+                    <p>{item.productDescription}</p>
+                    <p><strong>Precio:</strong> {item.productPrice} €</p>
+                    <p><strong>Stock disponible:</strong> {item.productStock}</p>
+                    <div className="cart-actions">
+                      <button onClick={() => updateQuantity(item.productId, item.quantity - 1)} disabled={item.quantity <= 1}>-</button>
+                      <span className="cantidad">{item.quantity}</span>
+                      <button onClick={() => updateQuantity(item.productId, item.quantity + 1)} disabled={item.quantity >= item.productStock}>+</button>
+                      <button className="btn-remove" onClick={() => removeFromCart(item.productId)}>Eliminar</button>
+                    </div>
                   </div>
-                  <button onClick={() => removeFromCart(item.productoId)}>Eliminar</button>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
 
-          <div className="cart-summary">
-            <p><strong>Total:</strong> {total.toFixed(2)} €</p>
-            <button onClick={proceedToCheckout}>Proceder al pago</button>
-          </div>
-        </>
+            <div className="cart-summary">
+              <p><strong>Total:</strong> {total.toFixed(2)} €</p>
+              <button onClick={() => console.log("Pago realizado")}>Proceder al pago</button>
+            </div>
+          </>
+        )
+      ) : (
+        // CARRITO LOCAL
+        cart.length === 0 ? (
+          <>
+            <div className="empty-cart-message">
+              <h2>Carrito vacío</h2>
+              <p>Puedes navegar por nuestra tienda y añadir productos.</p>
+              <Link to="/catalogo">
+                <button className="go-to-catalog-button">Ir al catálogo</button>
+              </Link>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="cart-items">
+              {cart.map((item) => (
+                <div key={item.productoId} className="cart-item">
+                  <img src={item.img_name} alt={item.model} className="cart-item-image" />
+                  <div className="cart-item-details">
+                    <h2>{item.brand} {item.model}</h2>
+                    <p>{item.description}</p>
+                    <p><strong>Precio:</strong> {item.precio} €</p>
+                    <p><strong>Stock disponible:</strong> {item.stock}</p>
+                    <div className="cart-actions">
+                      <button onClick={() => decrementQuantity(item.productoId)}>-</button>
+                      <span className="cantidad">{item.cantidad}</span>
+                      <button onClick={() => incrementQuantity(item.productoId)}>+</button>
+                      <button className="btn-remove" onClick={() => removeFromCart(item.productoId)}>Eliminar</button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+  
+            <div className="cart-summary">
+              <p><strong>Total:</strong> {total.toFixed(2)} €</p>
+              <Link to="/InicioSesion">
+                <button>Proceder al pago</button>
+              </Link>
+              
+            </div>
+          </>
+        )
       )}
     </div>
   );

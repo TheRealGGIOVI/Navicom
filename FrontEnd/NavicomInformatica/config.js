@@ -7,3 +7,8 @@ export const SORT_ALPHABETICALLY_ENDPOINT = `${API_BASE_URL}/api/Product/SortAlp
 export const FILTER_BY_CATEGORY_ENDPOINT = `${API_BASE_URL}/api/Product/FilterByCategory`;
 export const SEARCH_BY_TEXT_ENDPOINT = `${API_BASE_URL}/api/Product/SearchByText`;
 export const MERGE_CART = `${API_BASE_URL}/api/Carrito/MergeCart`;
+export const USER_CART = `${API_BASE_URL}/api/Carrito/GetCart/`;
+export const ADD_CART_ENDPOINT = `${API_BASE_URL}/api/Carrito/AddToCart`;
+export const GET_PRODUCT_ENDPOINT = `${API_BASE_URL}/api/Product/id?id=`;
+export const UPDATE_QUANTITY_ENDPOINT = `${API_BASE_URL}/api/Carrito/UpdateQuantity`;
+export const DELETE_PRODUCT_CART_ENDPOINT = `${API_BASE_URL}/api/Carrito/RemoveFromCart/`;

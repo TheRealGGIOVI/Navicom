@@ -43,9 +43,11 @@ namespace NavicomInformatica.Controllers
                 CartProducts = cart.Productos.Select(cp => new
                 {
                     ProductId = cp.ProductoId,
-                    ProductName = cp.Producto.Model,
+                    ProductBrand = cp.Producto.Brand,
+                    ProductModel = cp.Producto.Model,
+                    ProductDescription = cp.Producto.Description,
+                    ProductStock = cp.Producto.Stock,
                     ProductPrice = cp.Producto.Precio,
-                    // Usamos la primera imagen de la lista Imagenes, o una URL por defecto si no hay imágenes
                     ProductImage = cp.Producto.Imagenes.Any() ? cp.Producto.Imagenes.First().Img_Name : "https://via.placeholder.com/150",
                     Quantity = cp.Cantidad,
                     TotalPriceObject = cp.Producto.Precio * cp.Cantidad
