@@ -1,7 +1,9 @@
 import { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { API_BASE_URL } from "../../config";
 import { AuthContext } from "../context/AuthProvider";
+import {ADD_CART_ENDPOINT} from "../../config"
+import {GET_PRODUCT_ENDPOINT} from "../../config"
+import {BASE_IMAGE_URL} from "../../config"
 import "./styles/Module.ProductoDetalle.css";
 
 const TEMP_CART_KEY = "tempCart";
@@ -15,14 +17,11 @@ function ProductoDetalle() {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const { user, token } = useContext(AuthContext);
 
-    const CARRITO_ENDPOINT = `${API_BASE_URL}/api/Carrito`;
-    // Definir la URL base para las imágenes (igual que en Catalogo.jsx)
-    const BASE_IMAGE_URL = "https://localhost:7069/images/"; // Ajusta el puerto si es necesario
 
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                const response = await fetch(`${API_BASE_URL}/api/Product/id?id=${id}`, {
+                const response = await fetch(`${GET_PRODUCT_ENDPOINT}${id}`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
@@ -74,14 +73,14 @@ function ProductoDetalle() {
         // Usuario autenticado -> llamar al backend
         if (user) {
             try {
-                const response = await fetch(`${CARRITO_ENDPOINT}/AddToCart`, {
+                const response = await fetch(ADD_CART_ENDPOINT, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                         "Authorization": `Bearer ${token}`
                     },
                     body: JSON.stringify({
-                        CarritoId: user.id,
+                        CarritoId: user.Id,
                         ProductoId: productId,
                         Cantidad: cantidad
                     })
@@ -106,31 +105,18 @@ function ProductoDetalle() {
             } else {
                 tempCart.push({
                     productoId: productId,
-                    productoNombre: `${product.brand} ${product.model}`,
+                    cantidad,
+                    brand: product.brand,
+                    model: product.model,
                     precio: product.precio,
+                    description: product.description,
                     imagenes: product.imagenes,
-                    cantidad
+                    stock: product.stock
+                    
                 });
             }
             saveTempCart(tempCart);
             alert("Producto añadido al carrito temporal.");
-        }
-    };
-
-    // Funciones para el carrusel
-    const nextImage = () => {
-        if (product && product.imagenes) {
-            setCurrentImageIndex((prevIndex) =>
-                prevIndex === product.imagenes.length - 1 ? 0 : prevIndex + 1
-            );
-        }
-    };
-
-    const prevImage = () => {
-        if (product && product.imagenes) {
-            setCurrentImageIndex((prevIndex) =>
-                prevIndex === 0 ? product.imagenes.length - 1 : prevIndex - 1
-            );
         }
     };
 

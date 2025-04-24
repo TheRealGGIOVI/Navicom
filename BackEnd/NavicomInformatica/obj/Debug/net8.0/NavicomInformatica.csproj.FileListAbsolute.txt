@@ -271,3 +271,4 @@ C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\obj\Debug\net8.0\Navico
 C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\obj\Debug\net8.0\NavicomInformatica.genruntimeconfig.cache
 C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\obj\Debug\net8.0\ref\NavicomInformatica.dll
 C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\NavicomInformatica.staticwebassets.runtime.json
+C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\NavicomInformatica.staticwebassets.runtime.json
