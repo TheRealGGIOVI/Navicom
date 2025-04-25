@@ -52,3 +52,5 @@ wwwroot\images\Lenovo_USB-C_Dock_Gen2_1.jpg
 wwwroot\images\Lenovo_USB-C_Dock_Gen2_2.jpg
 wwwroot\images\Lenovo_USB-C_Travel_HUB_1.jpg
 wwwroot\images\Lenovo_USB-C_Travel_HUB_2.jpg
+wwwroot\images\Meca_Oprimida_1.png
+wwwroot\images\MSI_Monitor_to_guapo_1.jpg
