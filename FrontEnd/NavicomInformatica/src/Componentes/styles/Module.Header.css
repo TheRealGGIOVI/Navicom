@@ -3,8 +3,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: var(--primary);
-  color: white;
+  background-color: white;
+  color: var(--primary);
 }
 
 .header-left {
@@ -14,14 +14,18 @@
 }
 
 .logo {
-  height: 40px;
-  border-radius: 40px;
-  border: 3px solid var(--secondary);
+  height: 55px;
+  /* border-radius: 40px;
+  border: 3px solid var(--secondary); */
 }
 
 .site-title {
   font-size: 1.5rem;
   font-weight: bold;
+}
+.link-header {
+  text-decoration: none;
+  color: inherit;
 }
 
 /* Ajuste para pantallas pequeñas */

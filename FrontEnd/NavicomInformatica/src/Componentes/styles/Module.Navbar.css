@@ -22,7 +22,7 @@
 }
 
 .nav-links a {
-  color: rgb(255, 255, 255);
+  color: var(--primary);
   text-decoration: none;
   font-size: 1rem;
   padding: 8px 12px;
@@ -32,6 +32,7 @@
 
 .nav-links a:hover {
   background-color: var(--secondary);
+  color: white;
   transform: translateY(-2px);
 }
 
@@ -69,8 +70,13 @@
 .profile p {
   margin: 0;
   font-size: 1rem;
+  color: var(--primary);
+}
+
+.profile:hover p {
   color: white;
 }
+
 
 .menu-btn {
   display: none;
@@ -110,17 +116,18 @@
 @media (max-width: 768px) {
   .menu-btn {
     display: block;
+    color: var(--primary);;
   }
 
   .nav-links {
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 70px; /* Ajustado para que no se superponga con el header */
+    top: 90px; /* Ajustado para que no se superponga con el header */
     left: 0;
     width: 100%;
     align-items: center;
-    background-color: var(--primary);
+    background-color:var(--secondary);
     padding: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
@@ -134,4 +141,34 @@
     width: 100%;
     text-align: center;
   }
+}
+
+  @media (max-width: 600px) {
+    .menu-btn {
+      display: block;
+      color: var(--primary);;
+    }
+  
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 150px; /* Ajustado para que no se superponga con el header */
+      left: 0;
+      width: 100%;
+      align-items: center;
+      background-color: var(--secondary);
+      padding: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  
+    .nav-links.open {
+      display: flex;
+    }
+  
+    .nav-links a {
+      padding: 10px;
+      width: 100%;
+      text-align: center;
+    }
 }

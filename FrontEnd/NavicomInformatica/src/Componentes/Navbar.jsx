@@ -1,13 +1,16 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
-import Usuario from "../img/icons8-usuario-30.png";
+import Usuario from "../img/icons8-usuario-30 - copia.png";
+import UsuarioHover from "../img/icons8-usuario-30.png";
 import Carrito from "../img/carrito.png";
 import "./styles/Module.Navbar.css";
 
 const Navbar = () => {
   const { user } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
+  const [hover, setHover] = useState(false);
+
 
   return (
     <nav className="navbar">
@@ -37,9 +40,10 @@ const Navbar = () => {
           </li>
         </ul>
 
-        <div className="profile">
+        <div className="profile" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+          
           <Link to={user ? "/Perfil" : "/InicioSesion"} onClick={() => setIsOpen(false)}>
-            <img src={Usuario} alt="Perfil de usuario" className="user-icon" />
+            <img src={hover ? UsuarioHover : Usuario} alt="Perfil de usuario" className="user-icon" />
             <p>{user ? "Ver Perfil" : "Inicio Sesión"}</p>
           </Link>
         </div>

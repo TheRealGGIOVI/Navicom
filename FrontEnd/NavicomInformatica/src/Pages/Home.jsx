@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Card from "../Componentes/Card";
-import { LIST_OF_PRODUCTS_ENDPOINT } from "../../config";
+import { LIST_OF_PRODUCTS_ENDPOINT, BASE_IMAGE_URL } from "../../config";
 import "./styles/Module.Home.css";
 
 function Home() {
     const [products, setProducts] = useState([]);
-    // Definir la URL base para las imágenes (igual que en Catalogo.jsx y ProductoDetalle.jsx)
-    const BASE_IMAGE_URL = "https://localhost:7069/images/"; // Ajusta el puerto si es necesario
 
     useEffect(() => {
         fetch(LIST_OF_PRODUCTS_ENDPOINT, {
@@ -35,16 +33,16 @@ function Home() {
     }, []);
 
     return (
-        <div className="home-container">
-            {/* Sección de Bienvenida */}
-            <section className="welcome-section">
-                <div className="text-box">
-                    <h1>Bienvenido a Navicom Informática</h1>
-                    <p>Tu tienda de confianza para soluciones informáticas en Coín, Málaga.</p>
-                </div>
-            </section>
+        
+        <>
+        <section className="welcome-section">
+            <div className="text-img">
+                <h1>Bienvenido a Navicom Informática</h1>
+                <p>Tu tienda de confianza para soluciones informáticas en Coín, Málaga.</p>
+            </div>
+        </section>
             
-            {/* Sección de Novedades */}
+        <div className="home-container">
             <section className="products-section">
                 <div className="text-box">
                     <h2>Novedades</h2>
@@ -78,6 +76,7 @@ function Home() {
                 </div>
             </section>
         </div>
+        </>
     );
 }
 
