@@ -11,6 +11,7 @@ using NavicomInformatica.Models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+
 namespace NavicomInformatica.Controllers
 {
     [Route("api/[controller]")]
@@ -35,7 +36,7 @@ namespace NavicomInformatica.Controllers
             string hashedPassword = _passwordHash.Hash(model.Password);
 
             var user = await _context.Users
-                .FirstOrDefaultAsync(u =>(u.Email == model.Email && u.Password == hashedPassword));
+                .FirstOrDefaultAsync(u => (u.Email == model.Email && u.Password == hashedPassword));
 
             if (user != null)
             {
@@ -47,7 +48,7 @@ namespace NavicomInformatica.Controllers
                         { "Nombre", user.Nombre },
                         { "Apellidos", user.Apellidos },
                         { "Email", user.Email },
-                        { ClaimTypes.Role, user.Rol }
+                        { "role", user.Rol } // Usar "role" en minúsculas para coincidir con el frontend
                     },
                     Expires = DateTime.UtcNow.AddHours(2),
                     SigningCredentials = new SigningCredentials(
@@ -70,7 +71,6 @@ namespace NavicomInformatica.Controllers
         [HttpGet("secret")]
         public ActionResult GetSecret()
         {
-            // Si el usuario es admin, devuelve el secreto
             return Ok("Esto es un secreto que no todo el mundo debería leer");
         }
     }

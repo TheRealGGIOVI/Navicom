@@ -3,7 +3,6 @@ import { jwtDecode } from "jwt-decode";
 import { getTempCart, clearTempCart } from "../utils/cartService";
 import { MERGE_CART } from "../../config";
 
-
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -12,22 +11,33 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const storedToken = sessionStorage.getItem("token") || localStorage.getItem("token");
+        console.log("Token almacenado encontrado en AuthProvider:", storedToken);
         if (storedToken) {
             try {
                 const decodedUser = jwtDecode(storedToken);
-                setUser(decodedUser);
+                console.log("Token decodificado en AuthProvider:", decodedUser);
+                const role = decodedUser?.role || decodedUser?.Role || decodedUser?.rol || "user";
+                console.log("Role extraído en AuthProvider:", role);
+                setUser({ ...decodedUser, role });
                 setToken(storedToken);
             } catch (error) {
                 console.error("Error al decodificar el token:", error);
+                sessionStorage.removeItem("token");
                 localStorage.removeItem("token");
+                setUser(null);
+                setToken(null);
             }
+        } else {
+            console.log("No se encontró token en sessionStorage ni localStorage");
         }
     }, []);
 
     const login = async (token, rememberMe) => {
         const decodedUser = jwtDecode(token);
-        console.log("Usuario decodificado:", decodedUser);
-        setUser(decodedUser);
+        console.log("Usuario decodificado en login:", decodedUser);
+        const role = decodedUser?.role || decodedUser?.Role || decodedUser?.rol || "user";
+        console.log("Role extraído en login:", role);
+        setUser({ ...decodedUser, role });
         setToken(token);
         if (rememberMe) {
             localStorage.setItem("token", token);
@@ -42,7 +52,8 @@ export const AuthProvider = ({ children }) => {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
-                        "Accept": "*/*"
+                        "Accept": "*/*",
+                        "Authorization": `Bearer ${token}`
                     },
                     body: JSON.stringify({
                         carritoId: decodedUser.Id,
@@ -68,9 +79,14 @@ export const AuthProvider = ({ children }) => {
     const logout = () => {
         setUser(null);
         setToken(null);
-        localStorage.removeItem("token");
         sessionStorage.removeItem("token");
+        localStorage.removeItem("token");
+        console.log("Sesión cerrada en AuthProvider");
     };
+
+    // Depuración del estado antes de pasar al contexto
+    console.log("Estado actual en AuthProvider - User:", user);
+    console.log("Estado actual en AuthProvider - Token:", token);
 
     return (
         <AuthContext.Provider value={{ user, token, login, logout }}>

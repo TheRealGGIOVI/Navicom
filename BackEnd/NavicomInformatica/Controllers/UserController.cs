@@ -18,7 +18,7 @@ namespace NavicomInformatica.Controllers
         private readonly UserMapper _mapper;
         private readonly DataBaseContext _context;
 
-        public UserController(IUserRepository userRepository, UserMapper userMapper, DataBaseContext context) // Change to ApplicationDbContext
+        public UserController(IUserRepository userRepository, UserMapper userMapper, DataBaseContext context)
         {
             _userRepository = userRepository;
             _mapper = userMapper;
@@ -108,11 +108,11 @@ namespace NavicomInformatica.Controllers
                 var userToAdd = new User
                 {
                     Id = newUser.Id,
-                    Nombre = newUser.Nombre ?? string.Empty, // Handle possible null
+                    Nombre = newUser.Nombre ?? string.Empty,
                     Apellidos = newUser.Apellidos,
                     Email = newUser.Email,
-                    Password = newUser.Password ?? string.Empty, // Handle possible null
-                    Rol = newUser.Rol,  
+                    Password = newUser.Password ?? string.Empty,
+                    Rol = newUser.Rol ?? "user" // Valor por defecto "user" si no se especifica
                 };
 
                 var passwordHasher = new PasswordHasher();
@@ -163,7 +163,7 @@ namespace NavicomInformatica.Controllers
                 return BadRequest(new { error = "Los datos proporcionados para el usuario no son válidos." });
             }
 
-            usuario.Nombre = datosUsuario.Nombre ?? usuario.Nombre; 
+            usuario.Nombre = datosUsuario.Nombre ?? usuario.Nombre;
             usuario.Apellidos = datosUsuario.Apellidos;
 
             try
@@ -192,6 +192,33 @@ namespace NavicomInformatica.Controllers
             await _userRepository.EliminarUsuarioAsync(idUsuario);
 
             return Ok(new { message = "La cuenta del usuario ha sido eliminada exitosamente." });
+        }
+
+        [HttpPut("update-role/{id}")]
+        [Authorize(Roles = "admin")] // Restringir cambio de roles solo a administradores
+        public async Task<IActionResult> UpdateUserRole(long id, [FromBody] string newRole)
+        {
+            if (string.IsNullOrEmpty(newRole) || (newRole.ToLower() != "user" && newRole.ToLower() != "admin"))
+            {
+                return BadRequest("Rol inválido. Use 'user' o 'admin'.");
+            }
+
+            try
+            {
+                var user = await _userRepository.GetUserByIdAsync(id);
+                if (user == null)
+                {
+                    return NotFound($"User with ID {id} not found.");
+                }
+
+                user.Rol = newRole.ToLower();
+                await _userRepository.ActualizarUsuarioAsync(user);
+                return Ok(new { message = $"Rol de usuario {id} actualizado a {newRole}." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
         }
     }
 }

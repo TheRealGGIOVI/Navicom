@@ -9,6 +9,7 @@ import Contacto from './Pages/Contacto';
 import ProductoDetalle from './Pages/ProductoDetalle';
 import Catalogo from './Pages/Catalogo';
 import Carrito from './Pages/Carrito';
+import AdminPanel from './Pages/AdminPanel';  
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="producto/:id" element={<ProductoDetalle />} />
         <Route path="catalogo" element={<Catalogo />} />
         <Route path="Carrito" element={<Carrito />} />
+        <Route path="admin-panel" element={<AdminPanel />} /> 
         <Route path="*" element={<h1>404 - Página no encontrada</h1>} />
       </Route>
     </Routes>

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
 import Usuario from "../img/icons8-usuario-30 - copia.png";
@@ -7,10 +7,24 @@ import Carrito from "../img/carrito.png";
 import "./styles/Module.Navbar.css";
 
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, token } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   const [hover, setHover] = useState(false);
 
+  // Obtener el role desde el user
+  const role = user?.role;
+
+  // Depuración: Mostrar los valores de token y role
+  useEffect(() => {
+    console.log("Token encontrado en Navbar desde AuthContext:", token);
+    console.log("Role encontrado en Navbar desde AuthContext:", role);
+    console.log("Usuario completo en Navbar:", user);
+    if (token && role && role.toLowerCase() === 'admin') {
+      console.log("Condición satisfecha: debería mostrar el enlace 'Panel de Admin'");
+    } else {
+      console.log("Condición no satisfecha: no se mostrará el enlace 'Panel de Admin'");
+    }
+  }, [token, role, user]);
 
   return (
     <nav className="navbar">
@@ -38,18 +52,24 @@ const Navbar = () => {
               Sobre Nosotros
             </Link>
           </li>
+          {token && role && role.toLowerCase() === 'admin' && (
+            <li>
+              <Link to="/admin-panel" className="admin-panel-link" onClick={() => setIsOpen(false)}>
+                Panel de Admin
+              </Link>
+            </li>
+          )}
         </ul>
 
         <div className="profile" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
-          
           <Link to={user ? "/Perfil" : "/InicioSesion"} onClick={() => setIsOpen(false)}>
             <img src={hover ? UsuarioHover : Usuario} alt="Perfil de usuario" className="user-icon" />
-            <p>{user ? "Ver Perfil" : "Inicio Sesión"}</p>
+            <p>{user ? "Ver Perfil" : "Iniciar Sesión"}</p>
           </Link>
         </div>
         <div className="carrito">
           <Link to="/Carrito" onClick={() => setIsOpen(false)}>
-          <img src={Carrito} alt="Carrito" className="cart-icon" />
+            <img src={Carrito} alt="Carrito" className="cart-icon" />
           </Link>
         </div>
       </div>

@@ -5,6 +5,23 @@ import { LOGIN_ENDPOINT, REGISTER_ENDPOINT } from "../../config";
 import { AuthContext } from "../context/AuthProvider";
 import "./styles/Module.LoginRegister.css";
 
+// Función para decodificar el token JWT (solo la parte del payload)
+const parseJwt = (token) => {
+  try {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(
+      atob(base64)
+        .split('')
+        .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+        .join('')
+    );
+    return JSON.parse(jsonPayload);
+  } catch (e) {
+    return null;
+  }
+};
+
 function LoginRegister() {
   const [isLogin, setIsLogin] = useState(true);
   const [name, setName] = useState("");
@@ -112,9 +129,36 @@ function LoginRegister() {
         if (isLogin) {
           const token = datosPromesa.accessToken;
           console.log("Inicio de sesión exitoso");
+          console.log("Token recibido:", token);
+
+          // Decodificar el token para obtener el rol
+          const decodedToken = parseJwt(token);
+          console.log("Token decodificado:", decodedToken);
+
+          // Extraer el rol de forma flexible
+          let role = decodedToken?.role || decodedToken?.Role || decodedToken?.rol;
+          console.log("Rol extraído:", role);
+
+          if (!role) {
+            console.error("No se encontró el claim del rol en el token.");
+            setPromesaError("No se pudo determinar el rol del usuario.");
+            return;
+          }
+
+          // Guardar el rol y el token en localStorage
+          localStorage.setItem('token', token);
+          localStorage.setItem('role', role);
+          console.log("Rol guardado en localStorage:", localStorage.getItem('role'));
+
           login(token, rememberMe);
-          console.log("Redirigiendo a /Perfil...");
-          navigate("/Perfil");
+          console.log("Redirigiendo según el rol...");
+          
+          // Redirigir según el rol
+          if (role.toLowerCase() === 'admin') {
+            navigate("/admin-panel");
+          } else {
+            navigate("/Perfil");
+          }
         } else {
           console.log("Registro exitoso");
           setIsLogin(true);
