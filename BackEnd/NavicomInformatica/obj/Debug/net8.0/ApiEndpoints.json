@@ -537,8 +537,8 @@
         "IsRequired": true
       },
       {
-        "Name": "newRole",
-        "Type": "System.String",
+        "Name": "roleUpdate",
+        "Type": "NavicomInformatica.DTO.UpdateRoleDTO",
         "IsRequired": true
       }
     ],

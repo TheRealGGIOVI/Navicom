@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "7duIzr6CYuD3gOuS4YYO0NPO0r72COQ+fC7NEehh5Ck=",
+  "Hash": "qN0YcrYu4HZI2FpXxmBw6ZLRv8Si/cyTfNFHB8Y9EeA=",
   "Source": "NavicomInformatica",
   "BasePath": "_content/NavicomInformatica",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "NavicomInformatica\\wwwroot",
       "Source": "NavicomInformatica",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Apple_iMac_17.1_1.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Apple_iMac_17.1_1.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Apple_iMac_17.1_1#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -38,10 +38,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Apple_iMac_17.1_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Apple_iMac_17.1_2.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Apple_iMac_17.1_2.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Apple_iMac_17.1_2#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -59,10 +59,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Apple_iMac_17.1_2.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP225DJB_1.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP225DJB_1.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Hanns_HP225DJB_1#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -80,10 +80,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Hanns_HP225DJB_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP225DJB_2.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP225DJB_2.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Hanns_HP225DJB_2#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -101,10 +101,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Hanns_HP225DJB_2.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP227DJB_1.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP227DJB_1.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Hanns_HP227DJB_1#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -122,10 +122,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Hanns_HP227DJB_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP227DJB_2.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP227DJB_2.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Hanns_HP227DJB_2#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -143,10 +143,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Hanns_HP227DJB_2.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_E24C_1.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_E24C_1.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/HP_E24C_1#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -164,10 +164,10 @@
       "OriginalItemSpec": "wwwroot\\images\\HP_E24C_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_E24C_2.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_E24C_2.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/HP_E24C_2#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -185,10 +185,10 @@
       "OriginalItemSpec": "wwwroot\\images\\HP_E24C_2.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteBook_840_G4_1.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteBook_840_G4_1.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/HP_EliteBook_840_G4_1#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -206,10 +206,10 @@
       "OriginalItemSpec": "wwwroot\\images\\HP_EliteBook_840_G4_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteBook_840_G4_2.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteBook_840_G4_2.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/HP_EliteBook_840_G4_2#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -227,10 +227,10 @@
       "OriginalItemSpec": "wwwroot\\images\\HP_EliteBook_840_G4_2.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G2_1.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G2_1.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/HP_EliteDesk_800_G2_1#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -248,10 +248,10 @@
       "OriginalItemSpec": "wwwroot\\images\\HP_EliteDesk_800_G2_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G2_2.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G2_2.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/HP_EliteDesk_800_G2_2#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -269,10 +269,10 @@
       "OriginalItemSpec": "wwwroot\\images\\HP_EliteDesk_800_G2_2.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G4_1.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G4_1.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/HP_EliteDesk_800_G4_1#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -290,10 +290,10 @@
       "OriginalItemSpec": "wwwroot\\images\\HP_EliteDesk_800_G4_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G4_2.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G4_2.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/HP_EliteDesk_800_G4_2#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -311,10 +311,10 @@
       "OriginalItemSpec": "wwwroot\\images\\HP_EliteDesk_800_G4_2.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G4_3.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G4_3.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/HP_EliteDesk_800_G4_3#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -332,10 +332,10 @@
       "OriginalItemSpec": "wwwroot\\images\\HP_EliteDesk_800_G4_3.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G4_4.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G4_4.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/HP_EliteDesk_800_G4_4#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -353,10 +353,10 @@
       "OriginalItemSpec": "wwwroot\\images\\HP_EliteDesk_800_G4_4.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProBook_450_G7_1.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProBook_450_G7_1.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/HP_ProBook_450_G7_1#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -374,10 +374,10 @@
       "OriginalItemSpec": "wwwroot\\images\\HP_ProBook_450_G7_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProBook_450_G7_2.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProBook_450_G7_2.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/HP_ProBook_450_G7_2#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -395,10 +395,10 @@
       "OriginalItemSpec": "wwwroot\\images\\HP_ProBook_450_G7_2.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProBook_450_G8_1.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProBook_450_G8_1.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/HP_ProBook_450_G8_1#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -416,10 +416,10 @@
       "OriginalItemSpec": "wwwroot\\images\\HP_ProBook_450_G8_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProBook_450_G8_2.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProBook_450_G8_2.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/HP_ProBook_450_G8_2#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -437,10 +437,10 @@
       "OriginalItemSpec": "wwwroot\\images\\HP_ProBook_450_G8_2.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProDesk_600_G4_1.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProDesk_600_G4_1.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/HP_ProDesk_600_G4_1#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -458,10 +458,10 @@
       "OriginalItemSpec": "wwwroot\\images\\HP_ProDesk_600_G4_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProDesk_600_G4_2.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProDesk_600_G4_2.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/HP_ProDesk_600_G4_2#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -479,10 +479,10 @@
       "OriginalItemSpec": "wwwroot\\images\\HP_ProDesk_600_G4_2.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProDesk_600_G5_1.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProDesk_600_G5_1.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/HP_ProDesk_600_G5_1#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -500,10 +500,10 @@
       "OriginalItemSpec": "wwwroot\\images\\HP_ProDesk_600_G5_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProDesk_600_G5_2.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProDesk_600_G5_2.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/HP_ProDesk_600_G5_2#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -521,10 +521,10 @@
       "OriginalItemSpec": "wwwroot\\images\\HP_ProDesk_600_G5_2.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_UltraSlim_Docking_Station_1.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_UltraSlim_Docking_Station_1.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/HP_UltraSlim_Docking_Station_1#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -542,10 +542,10 @@
       "OriginalItemSpec": "wwwroot\\images\\HP_UltraSlim_Docking_Station_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_UltraSlim_Docking_Station_2.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_UltraSlim_Docking_Station_2.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/HP_UltraSlim_Docking_Station_2#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -563,10 +563,10 @@
       "OriginalItemSpec": "wwwroot\\images\\HP_UltraSlim_Docking_Station_2.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_Workstation_Z440_Torre_1.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_Workstation_Z440_Torre_1.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/HP_Workstation_Z440_Torre_1#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -584,10 +584,10 @@
       "OriginalItemSpec": "wwwroot\\images\\HP_Workstation_Z440_Torre_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_Workstation_Z440_Torre_2.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_Workstation_Z440_Torre_2.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/HP_Workstation_Z440_Torre_2#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -605,10 +605,10 @@
       "OriginalItemSpec": "wwwroot\\images\\HP_Workstation_Z440_Torre_2.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_P24H-10_1.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_P24H-10_1.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Lenovo_P24H-10_1#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -626,10 +626,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Lenovo_P24H-10_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_P24H-10_2.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_P24H-10_2.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Lenovo_P24H-10_2#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -647,10 +647,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Lenovo_P24H-10_2.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkCentre_M720Q_1.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkCentre_M720Q_1.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Lenovo_ThinkCentre_M720Q_1#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -668,10 +668,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Lenovo_ThinkCentre_M720Q_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkCentre_M720Q_2.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkCentre_M720Q_2.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Lenovo_ThinkCentre_M720Q_2#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -689,10 +689,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Lenovo_ThinkCentre_M720Q_2.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkCentre_M920Q_1.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkCentre_M920Q_1.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Lenovo_ThinkCentre_M920Q_1#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -710,10 +710,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Lenovo_ThinkCentre_M920Q_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkCentre_M920Q_2.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkCentre_M920Q_2.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Lenovo_ThinkCentre_M920Q_2#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -731,10 +731,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Lenovo_ThinkCentre_M920Q_2.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_E595_15.6_1.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_E595_15.6_1.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Lenovo_ThinkPad_E595_15.6_1#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -752,10 +752,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Lenovo_ThinkPad_E595_15.6_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_E595_15.6_2.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_E595_15.6_2.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Lenovo_ThinkPad_E595_15.6_2#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -773,10 +773,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Lenovo_ThinkPad_E595_15.6_2.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L13_13_1.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L13_13_1.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Lenovo_ThinkPad_L13_13_1#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -794,10 +794,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Lenovo_ThinkPad_L13_13_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L13_13_2.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L13_13_2.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Lenovo_ThinkPad_L13_13_2#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -815,10 +815,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Lenovo_ThinkPad_L13_13_2.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L14_14_1.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L14_14_1.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Lenovo_ThinkPad_L14_14_1#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -836,10 +836,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Lenovo_ThinkPad_L14_14_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L14_14_2.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L14_14_2.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Lenovo_ThinkPad_L14_14_2#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -857,10 +857,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Lenovo_ThinkPad_L14_14_2.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L490_14_1.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L490_14_1.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Lenovo_ThinkPad_L490_14_1#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -878,10 +878,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Lenovo_ThinkPad_L490_14_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L490_14_2.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L490_14_2.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Lenovo_ThinkPad_L490_14_2#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -899,10 +899,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Lenovo_ThinkPad_L490_14_2.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_T14G1_14_1.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_T14G1_14_1.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Lenovo_ThinkPad_T14G1_14_1#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -920,10 +920,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Lenovo_ThinkPad_T14G1_14_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_T14G1_14_2.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_T14G1_14_2.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Lenovo_ThinkPad_T14G1_14_2#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -941,10 +941,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Lenovo_ThinkPad_T14G1_14_2.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_T490_14_1.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_T490_14_1.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Lenovo_ThinkPad_T490_14_1#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -962,10 +962,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Lenovo_ThinkPad_T490_14_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_T490_14_2.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_T490_14_2.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Lenovo_ThinkPad_T490_14_2#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -983,10 +983,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Lenovo_ThinkPad_T490_14_2.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_TIO22D_1.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_TIO22D_1.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Lenovo_TIO22D_1#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -1004,10 +1004,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Lenovo_TIO22D_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_TIO22D_2.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_TIO22D_2.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Lenovo_TIO22D_2#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -1025,10 +1025,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Lenovo_TIO22D_2.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_TIO24_GEN3_1.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_TIO24_GEN3_1.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Lenovo_TIO24_GEN3_1#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -1046,10 +1046,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Lenovo_TIO24_GEN3_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_TIO24_GEN3_2.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_TIO24_GEN3_2.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Lenovo_TIO24_GEN3_2#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -1067,10 +1067,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Lenovo_TIO24_GEN3_2.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_USB-C_Dock_Gen2_1.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_USB-C_Dock_Gen2_1.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Lenovo_USB-C_Dock_Gen2_1#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -1088,10 +1088,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Lenovo_USB-C_Dock_Gen2_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_USB-C_Dock_Gen2_2.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_USB-C_Dock_Gen2_2.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Lenovo_USB-C_Dock_Gen2_2#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -1109,10 +1109,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Lenovo_USB-C_Dock_Gen2_2.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_USB-C_Travel_HUB_1.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_USB-C_Travel_HUB_1.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Lenovo_USB-C_Travel_HUB_1#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -1130,10 +1130,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Lenovo_USB-C_Travel_HUB_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_USB-C_Travel_HUB_2.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_USB-C_Travel_HUB_2.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Lenovo_USB-C_Travel_HUB_2#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -1151,10 +1151,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Lenovo_USB-C_Travel_HUB_2.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Meca_Oprimida_1.png",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Meca_Oprimida_1.png",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/Meca_Oprimida_1#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -1172,10 +1172,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Meca_Oprimida_1.png"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\MSI_Monitor_to_guapo_1.jpg",
+      "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\MSI_Monitor_to_guapo_1.jpg",
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
       "BasePath": "_content/NavicomInformatica",
       "RelativePath": "images/MSI_Monitor_to_guapo_1#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -1196,7 +1196,7 @@
   "Endpoints": [
     {
       "Route": "images/Apple_iMac_17.1_1.65gewxubw0.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Apple_iMac_17.1_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Apple_iMac_17.1_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1217,7 +1217,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1241,7 +1241,7 @@
     },
     {
       "Route": "images/Apple_iMac_17.1_1.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Apple_iMac_17.1_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Apple_iMac_17.1_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1262,7 +1262,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1278,7 +1278,7 @@
     },
     {
       "Route": "images/Apple_iMac_17.1_2.4ynd0ejqy9.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Apple_iMac_17.1_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Apple_iMac_17.1_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1299,7 +1299,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1323,7 +1323,7 @@
     },
     {
       "Route": "images/Apple_iMac_17.1_2.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Apple_iMac_17.1_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Apple_iMac_17.1_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1344,7 +1344,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1360,7 +1360,7 @@
     },
     {
       "Route": "images/Hanns_HP225DJB_1.g2j6jj3q24.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP225DJB_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP225DJB_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1381,7 +1381,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1405,7 +1405,7 @@
     },
     {
       "Route": "images/Hanns_HP225DJB_1.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP225DJB_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP225DJB_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1426,7 +1426,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1442,7 +1442,7 @@
     },
     {
       "Route": "images/Hanns_HP225DJB_2.g2j6jj3q24.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP225DJB_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP225DJB_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1463,7 +1463,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1487,7 +1487,7 @@
     },
     {
       "Route": "images/Hanns_HP225DJB_2.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP225DJB_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP225DJB_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1508,7 +1508,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1524,7 +1524,7 @@
     },
     {
       "Route": "images/Hanns_HP227DJB_1.g2j6jj3q24.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP227DJB_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP227DJB_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1545,7 +1545,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1569,7 +1569,7 @@
     },
     {
       "Route": "images/Hanns_HP227DJB_1.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP227DJB_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP227DJB_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1590,7 +1590,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1606,7 +1606,7 @@
     },
     {
       "Route": "images/Hanns_HP227DJB_2.g2j6jj3q24.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP227DJB_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP227DJB_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1627,7 +1627,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1651,7 +1651,7 @@
     },
     {
       "Route": "images/Hanns_HP227DJB_2.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP227DJB_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP227DJB_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1672,7 +1672,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1688,7 +1688,7 @@
     },
     {
       "Route": "images/HP_E24C_1.g2j6jj3q24.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_E24C_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_E24C_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1709,7 +1709,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1733,7 +1733,7 @@
     },
     {
       "Route": "images/HP_E24C_1.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_E24C_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_E24C_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1754,7 +1754,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1770,7 +1770,7 @@
     },
     {
       "Route": "images/HP_E24C_2.g2j6jj3q24.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_E24C_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_E24C_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1791,7 +1791,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1815,7 +1815,7 @@
     },
     {
       "Route": "images/HP_E24C_2.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_E24C_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_E24C_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1836,7 +1836,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1852,7 +1852,7 @@
     },
     {
       "Route": "images/HP_EliteBook_840_G4_1.65gewxubw0.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteBook_840_G4_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteBook_840_G4_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1873,7 +1873,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1897,7 +1897,7 @@
     },
     {
       "Route": "images/HP_EliteBook_840_G4_1.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteBook_840_G4_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteBook_840_G4_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1918,7 +1918,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1934,7 +1934,7 @@
     },
     {
       "Route": "images/HP_EliteBook_840_G4_2.4ynd0ejqy9.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteBook_840_G4_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteBook_840_G4_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1955,7 +1955,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1979,7 +1979,7 @@
     },
     {
       "Route": "images/HP_EliteBook_840_G4_2.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteBook_840_G4_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteBook_840_G4_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2000,7 +2000,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2016,7 +2016,7 @@
     },
     {
       "Route": "images/HP_EliteDesk_800_G2_1.65gewxubw0.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G2_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G2_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2037,7 +2037,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2061,7 +2061,7 @@
     },
     {
       "Route": "images/HP_EliteDesk_800_G2_1.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G2_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G2_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2082,7 +2082,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2098,7 +2098,7 @@
     },
     {
       "Route": "images/HP_EliteDesk_800_G2_2.4ynd0ejqy9.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G2_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G2_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2119,7 +2119,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2143,7 +2143,7 @@
     },
     {
       "Route": "images/HP_EliteDesk_800_G2_2.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G2_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G2_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2164,7 +2164,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2180,7 +2180,7 @@
     },
     {
       "Route": "images/HP_EliteDesk_800_G4_1.65gewxubw0.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G4_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G4_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2201,7 +2201,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2225,7 +2225,7 @@
     },
     {
       "Route": "images/HP_EliteDesk_800_G4_1.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G4_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G4_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2246,7 +2246,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2262,7 +2262,7 @@
     },
     {
       "Route": "images/HP_EliteDesk_800_G4_2.65gewxubw0.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G4_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G4_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2283,7 +2283,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2307,7 +2307,7 @@
     },
     {
       "Route": "images/HP_EliteDesk_800_G4_2.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G4_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G4_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2328,7 +2328,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2344,7 +2344,7 @@
     },
     {
       "Route": "images/HP_EliteDesk_800_G4_3.65gewxubw0.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G4_3.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G4_3.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2365,7 +2365,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2389,7 +2389,7 @@
     },
     {
       "Route": "images/HP_EliteDesk_800_G4_3.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G4_3.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G4_3.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2410,7 +2410,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2426,7 +2426,7 @@
     },
     {
       "Route": "images/HP_EliteDesk_800_G4_4.4ynd0ejqy9.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G4_4.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G4_4.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2447,7 +2447,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2471,7 +2471,7 @@
     },
     {
       "Route": "images/HP_EliteDesk_800_G4_4.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G4_4.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G4_4.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2492,7 +2492,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2508,7 +2508,7 @@
     },
     {
       "Route": "images/HP_ProBook_450_G7_1.65gewxubw0.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProBook_450_G7_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProBook_450_G7_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2529,7 +2529,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2553,7 +2553,7 @@
     },
     {
       "Route": "images/HP_ProBook_450_G7_1.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProBook_450_G7_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProBook_450_G7_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2574,7 +2574,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2590,7 +2590,7 @@
     },
     {
       "Route": "images/HP_ProBook_450_G7_2.4ynd0ejqy9.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProBook_450_G7_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProBook_450_G7_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2611,7 +2611,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2635,7 +2635,7 @@
     },
     {
       "Route": "images/HP_ProBook_450_G7_2.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProBook_450_G7_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProBook_450_G7_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2656,7 +2656,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2672,7 +2672,7 @@
     },
     {
       "Route": "images/HP_ProBook_450_G8_1.65gewxubw0.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProBook_450_G8_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProBook_450_G8_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2693,7 +2693,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2717,7 +2717,7 @@
     },
     {
       "Route": "images/HP_ProBook_450_G8_1.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProBook_450_G8_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProBook_450_G8_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2738,7 +2738,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2754,7 +2754,7 @@
     },
     {
       "Route": "images/HP_ProBook_450_G8_2.4ynd0ejqy9.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProBook_450_G8_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProBook_450_G8_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2775,7 +2775,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2799,7 +2799,7 @@
     },
     {
       "Route": "images/HP_ProBook_450_G8_2.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProBook_450_G8_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProBook_450_G8_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2820,7 +2820,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2836,7 +2836,7 @@
     },
     {
       "Route": "images/HP_ProDesk_600_G4_1.65gewxubw0.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProDesk_600_G4_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProDesk_600_G4_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2857,7 +2857,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2881,7 +2881,7 @@
     },
     {
       "Route": "images/HP_ProDesk_600_G4_1.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProDesk_600_G4_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProDesk_600_G4_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2902,7 +2902,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2918,7 +2918,7 @@
     },
     {
       "Route": "images/HP_ProDesk_600_G4_2.4ynd0ejqy9.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProDesk_600_G4_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProDesk_600_G4_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2939,7 +2939,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2963,7 +2963,7 @@
     },
     {
       "Route": "images/HP_ProDesk_600_G4_2.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProDesk_600_G4_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProDesk_600_G4_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2984,7 +2984,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3000,7 +3000,7 @@
     },
     {
       "Route": "images/HP_ProDesk_600_G5_1.65gewxubw0.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProDesk_600_G5_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProDesk_600_G5_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3021,7 +3021,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3045,7 +3045,7 @@
     },
     {
       "Route": "images/HP_ProDesk_600_G5_1.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProDesk_600_G5_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProDesk_600_G5_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3066,7 +3066,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3082,7 +3082,7 @@
     },
     {
       "Route": "images/HP_ProDesk_600_G5_2.4ynd0ejqy9.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProDesk_600_G5_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProDesk_600_G5_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3103,7 +3103,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3127,7 +3127,7 @@
     },
     {
       "Route": "images/HP_ProDesk_600_G5_2.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProDesk_600_G5_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProDesk_600_G5_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3148,7 +3148,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3164,7 +3164,7 @@
     },
     {
       "Route": "images/HP_UltraSlim_Docking_Station_1.g2j6jj3q24.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_UltraSlim_Docking_Station_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_UltraSlim_Docking_Station_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3185,7 +3185,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3209,7 +3209,7 @@
     },
     {
       "Route": "images/HP_UltraSlim_Docking_Station_1.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_UltraSlim_Docking_Station_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_UltraSlim_Docking_Station_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3230,7 +3230,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3246,7 +3246,7 @@
     },
     {
       "Route": "images/HP_UltraSlim_Docking_Station_2.g2j6jj3q24.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_UltraSlim_Docking_Station_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_UltraSlim_Docking_Station_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3267,7 +3267,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3291,7 +3291,7 @@
     },
     {
       "Route": "images/HP_UltraSlim_Docking_Station_2.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_UltraSlim_Docking_Station_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_UltraSlim_Docking_Station_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3312,7 +3312,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3328,7 +3328,7 @@
     },
     {
       "Route": "images/HP_Workstation_Z440_Torre_1.65gewxubw0.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_Workstation_Z440_Torre_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_Workstation_Z440_Torre_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3349,7 +3349,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3373,7 +3373,7 @@
     },
     {
       "Route": "images/HP_Workstation_Z440_Torre_1.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_Workstation_Z440_Torre_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_Workstation_Z440_Torre_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3394,7 +3394,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3410,7 +3410,7 @@
     },
     {
       "Route": "images/HP_Workstation_Z440_Torre_2.4ynd0ejqy9.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_Workstation_Z440_Torre_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_Workstation_Z440_Torre_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3431,7 +3431,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3455,7 +3455,7 @@
     },
     {
       "Route": "images/HP_Workstation_Z440_Torre_2.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_Workstation_Z440_Torre_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_Workstation_Z440_Torre_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3476,7 +3476,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3492,7 +3492,7 @@
     },
     {
       "Route": "images/Lenovo_P24H-10_1.g2j6jj3q24.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_P24H-10_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_P24H-10_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3513,7 +3513,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3537,7 +3537,7 @@
     },
     {
       "Route": "images/Lenovo_P24H-10_1.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_P24H-10_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_P24H-10_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3558,7 +3558,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3574,7 +3574,7 @@
     },
     {
       "Route": "images/Lenovo_P24H-10_2.g2j6jj3q24.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_P24H-10_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_P24H-10_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3595,7 +3595,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3619,7 +3619,7 @@
     },
     {
       "Route": "images/Lenovo_P24H-10_2.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_P24H-10_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_P24H-10_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3640,7 +3640,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3656,7 +3656,7 @@
     },
     {
       "Route": "images/Lenovo_ThinkCentre_M720Q_1.65gewxubw0.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkCentre_M720Q_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkCentre_M720Q_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3677,7 +3677,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3701,7 +3701,7 @@
     },
     {
       "Route": "images/Lenovo_ThinkCentre_M720Q_1.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkCentre_M720Q_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkCentre_M720Q_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3722,7 +3722,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3738,7 +3738,7 @@
     },
     {
       "Route": "images/Lenovo_ThinkCentre_M720Q_2.4ynd0ejqy9.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkCentre_M720Q_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkCentre_M720Q_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3759,7 +3759,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3783,7 +3783,7 @@
     },
     {
       "Route": "images/Lenovo_ThinkCentre_M720Q_2.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkCentre_M720Q_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkCentre_M720Q_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3804,7 +3804,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3820,7 +3820,7 @@
     },
     {
       "Route": "images/Lenovo_ThinkCentre_M920Q_1.65gewxubw0.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkCentre_M920Q_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkCentre_M920Q_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3841,7 +3841,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3865,7 +3865,7 @@
     },
     {
       "Route": "images/Lenovo_ThinkCentre_M920Q_1.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkCentre_M920Q_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkCentre_M920Q_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3886,7 +3886,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3902,7 +3902,7 @@
     },
     {
       "Route": "images/Lenovo_ThinkCentre_M920Q_2.4ynd0ejqy9.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkCentre_M920Q_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkCentre_M920Q_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3923,7 +3923,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3947,7 +3947,7 @@
     },
     {
       "Route": "images/Lenovo_ThinkCentre_M920Q_2.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkCentre_M920Q_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkCentre_M920Q_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3968,7 +3968,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3984,7 +3984,7 @@
     },
     {
       "Route": "images/Lenovo_ThinkPad_E595_15.6_1.65gewxubw0.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_E595_15.6_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_E595_15.6_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4005,7 +4005,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4029,7 +4029,7 @@
     },
     {
       "Route": "images/Lenovo_ThinkPad_E595_15.6_1.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_E595_15.6_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_E595_15.6_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4050,7 +4050,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4066,7 +4066,7 @@
     },
     {
       "Route": "images/Lenovo_ThinkPad_E595_15.6_2.4ynd0ejqy9.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_E595_15.6_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_E595_15.6_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4087,7 +4087,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4111,7 +4111,7 @@
     },
     {
       "Route": "images/Lenovo_ThinkPad_E595_15.6_2.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_E595_15.6_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_E595_15.6_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4132,7 +4132,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4148,7 +4148,7 @@
     },
     {
       "Route": "images/Lenovo_ThinkPad_L13_13_1.65gewxubw0.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L13_13_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L13_13_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4169,7 +4169,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4193,7 +4193,7 @@
     },
     {
       "Route": "images/Lenovo_ThinkPad_L13_13_1.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L13_13_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L13_13_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4214,7 +4214,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4230,7 +4230,7 @@
     },
     {
       "Route": "images/Lenovo_ThinkPad_L13_13_2.4ynd0ejqy9.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L13_13_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L13_13_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4251,7 +4251,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4275,7 +4275,7 @@
     },
     {
       "Route": "images/Lenovo_ThinkPad_L13_13_2.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L13_13_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L13_13_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4296,7 +4296,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4312,7 +4312,7 @@
     },
     {
       "Route": "images/Lenovo_ThinkPad_L14_14_1.65gewxubw0.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L14_14_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L14_14_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4333,7 +4333,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4357,7 +4357,7 @@
     },
     {
       "Route": "images/Lenovo_ThinkPad_L14_14_1.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L14_14_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L14_14_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4378,7 +4378,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4394,7 +4394,7 @@
     },
     {
       "Route": "images/Lenovo_ThinkPad_L14_14_2.4ynd0ejqy9.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L14_14_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L14_14_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4415,7 +4415,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4439,7 +4439,7 @@
     },
     {
       "Route": "images/Lenovo_ThinkPad_L14_14_2.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L14_14_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L14_14_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4460,7 +4460,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4476,7 +4476,7 @@
     },
     {
       "Route": "images/Lenovo_ThinkPad_L490_14_1.65gewxubw0.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L490_14_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L490_14_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4497,7 +4497,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4521,7 +4521,7 @@
     },
     {
       "Route": "images/Lenovo_ThinkPad_L490_14_1.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L490_14_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L490_14_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4542,7 +4542,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4558,7 +4558,7 @@
     },
     {
       "Route": "images/Lenovo_ThinkPad_L490_14_2.4ynd0ejqy9.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L490_14_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L490_14_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4579,7 +4579,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4603,7 +4603,7 @@
     },
     {
       "Route": "images/Lenovo_ThinkPad_L490_14_2.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L490_14_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L490_14_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4624,7 +4624,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4640,7 +4640,7 @@
     },
     {
       "Route": "images/Lenovo_ThinkPad_T14G1_14_1.65gewxubw0.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_T14G1_14_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_T14G1_14_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4661,7 +4661,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4685,7 +4685,7 @@
     },
     {
       "Route": "images/Lenovo_ThinkPad_T14G1_14_1.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_T14G1_14_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_T14G1_14_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4706,7 +4706,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4722,7 +4722,7 @@
     },
     {
       "Route": "images/Lenovo_ThinkPad_T14G1_14_2.4ynd0ejqy9.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_T14G1_14_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_T14G1_14_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4743,7 +4743,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4767,7 +4767,7 @@
     },
     {
       "Route": "images/Lenovo_ThinkPad_T14G1_14_2.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_T14G1_14_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_T14G1_14_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4788,7 +4788,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4804,7 +4804,7 @@
     },
     {
       "Route": "images/Lenovo_ThinkPad_T490_14_1.65gewxubw0.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_T490_14_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_T490_14_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4825,7 +4825,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4849,7 +4849,7 @@
     },
     {
       "Route": "images/Lenovo_ThinkPad_T490_14_1.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_T490_14_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_T490_14_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4870,7 +4870,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4886,7 +4886,7 @@
     },
     {
       "Route": "images/Lenovo_ThinkPad_T490_14_2.4ynd0ejqy9.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_T490_14_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_T490_14_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4907,7 +4907,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4931,7 +4931,7 @@
     },
     {
       "Route": "images/Lenovo_ThinkPad_T490_14_2.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_T490_14_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_T490_14_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4952,7 +4952,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4968,7 +4968,7 @@
     },
     {
       "Route": "images/Lenovo_TIO22D_1.g2j6jj3q24.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_TIO22D_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_TIO22D_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4989,7 +4989,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5013,7 +5013,7 @@
     },
     {
       "Route": "images/Lenovo_TIO22D_1.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_TIO22D_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_TIO22D_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5034,7 +5034,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5050,7 +5050,7 @@
     },
     {
       "Route": "images/Lenovo_TIO22D_2.g2j6jj3q24.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_TIO22D_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_TIO22D_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5071,7 +5071,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5095,7 +5095,7 @@
     },
     {
       "Route": "images/Lenovo_TIO22D_2.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_TIO22D_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_TIO22D_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5116,7 +5116,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5132,7 +5132,7 @@
     },
     {
       "Route": "images/Lenovo_TIO24_GEN3_1.g2j6jj3q24.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_TIO24_GEN3_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_TIO24_GEN3_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5153,7 +5153,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5177,7 +5177,7 @@
     },
     {
       "Route": "images/Lenovo_TIO24_GEN3_1.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_TIO24_GEN3_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_TIO24_GEN3_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5198,7 +5198,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5214,7 +5214,7 @@
     },
     {
       "Route": "images/Lenovo_TIO24_GEN3_2.g2j6jj3q24.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_TIO24_GEN3_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_TIO24_GEN3_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5235,7 +5235,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5259,7 +5259,7 @@
     },
     {
       "Route": "images/Lenovo_TIO24_GEN3_2.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_TIO24_GEN3_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_TIO24_GEN3_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5280,7 +5280,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5296,7 +5296,7 @@
     },
     {
       "Route": "images/Lenovo_USB-C_Dock_Gen2_1.g2j6jj3q24.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_USB-C_Dock_Gen2_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_USB-C_Dock_Gen2_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5317,7 +5317,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5341,7 +5341,7 @@
     },
     {
       "Route": "images/Lenovo_USB-C_Dock_Gen2_1.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_USB-C_Dock_Gen2_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_USB-C_Dock_Gen2_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5362,7 +5362,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5378,7 +5378,7 @@
     },
     {
       "Route": "images/Lenovo_USB-C_Dock_Gen2_2.g2j6jj3q24.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_USB-C_Dock_Gen2_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_USB-C_Dock_Gen2_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5399,7 +5399,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5423,7 +5423,7 @@
     },
     {
       "Route": "images/Lenovo_USB-C_Dock_Gen2_2.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_USB-C_Dock_Gen2_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_USB-C_Dock_Gen2_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5444,7 +5444,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5460,7 +5460,7 @@
     },
     {
       "Route": "images/Lenovo_USB-C_Travel_HUB_1.g2j6jj3q24.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_USB-C_Travel_HUB_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_USB-C_Travel_HUB_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5481,7 +5481,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5505,7 +5505,7 @@
     },
     {
       "Route": "images/Lenovo_USB-C_Travel_HUB_1.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_USB-C_Travel_HUB_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_USB-C_Travel_HUB_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5526,7 +5526,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5542,7 +5542,7 @@
     },
     {
       "Route": "images/Lenovo_USB-C_Travel_HUB_2.g2j6jj3q24.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_USB-C_Travel_HUB_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_USB-C_Travel_HUB_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5563,7 +5563,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5587,7 +5587,7 @@
     },
     {
       "Route": "images/Lenovo_USB-C_Travel_HUB_2.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_USB-C_Travel_HUB_2.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_USB-C_Travel_HUB_2.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5608,7 +5608,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5624,7 +5624,7 @@
     },
     {
       "Route": "images/Meca_Oprimida_1.pbhr80ddjc.png",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Meca_Oprimida_1.png",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Meca_Oprimida_1.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5645,7 +5645,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5669,7 +5669,7 @@
     },
     {
       "Route": "images/Meca_Oprimida_1.png",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Meca_Oprimida_1.png",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Meca_Oprimida_1.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5690,7 +5690,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5706,7 +5706,7 @@
     },
     {
       "Route": "images/MSI_Monitor_to_guapo_1.0t4h6838hn.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\MSI_Monitor_to_guapo_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\MSI_Monitor_to_guapo_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5727,7 +5727,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5751,7 +5751,7 @@
     },
     {
       "Route": "images/MSI_Monitor_to_guapo_1.jpg",
-      "AssetFile": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\MSI_Monitor_to_guapo_1.jpg",
+      "AssetFile": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\MSI_Monitor_to_guapo_1.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5772,7 +5772,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 09:02:22 GMT"
+          "Value": "Thu, 24 Apr 2025 09:50:13 GMT"
         },
         {
           "Name": "Cache-Control",

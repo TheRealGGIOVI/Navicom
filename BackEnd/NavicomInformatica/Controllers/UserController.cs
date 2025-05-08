@@ -195,10 +195,10 @@ namespace NavicomInformatica.Controllers
         }
 
         [HttpPut("update-role/{id}")]
-        [Authorize(Roles = "admin")] // Restringir cambio de roles solo a administradores
-        public async Task<IActionResult> UpdateUserRole(long id, [FromBody] string newRole)
+        
+        public async Task<IActionResult> UpdateUserRole(long id, [FromBody] UpdateRoleDTO roleUpdate)
         {
-            if (string.IsNullOrEmpty(newRole) || (newRole.ToLower() != "user" && newRole.ToLower() != "admin"))
+            if (roleUpdate == null || string.IsNullOrEmpty(roleUpdate.NewRole) || (roleUpdate.NewRole.ToLower() != "user" && roleUpdate.NewRole.ToLower() != "admin"))
             {
                 return BadRequest("Rol inválido. Use 'user' o 'admin'.");
             }
@@ -211,9 +211,9 @@ namespace NavicomInformatica.Controllers
                     return NotFound($"User with ID {id} not found.");
                 }
 
-                user.Rol = newRole.ToLower();
+                user.Rol = roleUpdate.NewRole.ToLower();
                 await _userRepository.ActualizarUsuarioAsync(user);
-                return Ok(new { message = $"Rol de usuario {id} actualizado a {newRole}." });
+                return Ok(new { message = $"Rol de usuario {id} actualizado a {roleUpdate.NewRole}." });
             }
             catch (Exception ex)
             {

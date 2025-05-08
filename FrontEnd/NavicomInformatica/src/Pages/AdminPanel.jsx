@@ -14,11 +14,9 @@ const AdminPanel = () => {
     const [selectedProduct, setSelectedProduct] = useState(null);
     const navigate = useNavigate();
 
-    // Obtener role y ID del usuario autenticado
     const role = user?.role;
     const currentUserId = user?.Id;
 
-    // Depuración
     useEffect(() => {
         console.log("Token encontrado en AdminPanel desde AuthContext:", token);
         console.log("Role encontrado en AdminPanel desde AuthContext:", role);
@@ -30,7 +28,10 @@ const AdminPanel = () => {
         }
     }, [token, role, user]);
 
-    // Cargar usuarios
+    useEffect(() => {
+        console.log("Estado users actual después de renderizado:", users);
+    }, [users]);
+
     const fetchUsers = async () => {
         setLoading(true);
         try {
@@ -58,9 +59,18 @@ const AdminPanel = () => {
             }
 
             const data = await response.json();
-            console.log("Usuarios recibidos:", data);
-            const filteredUsers = Array.isArray(data) ? data.filter(u => u.Id !== currentUserId) : [];
+            console.log("Usuarios recibidos (raw):", data);
+            const normalizedUsers = Array.isArray(data) ? data.map(u => ({
+                Id: u.Id || u.id,
+                Nombre: u.Nombre || u.nombre || 'Sin nombre',
+                Email: u.Email || u.email || 'Sin email',
+                Rol: u.rol || u.Rol || u.role || 'user', // Priorizar "rol" como principal
+            })) : [];
+            const filteredUsers = normalizedUsers.filter(u => u.Id !== currentUserId);
+            console.log("Usuarios normalizados:", normalizedUsers);
+            console.log("Usuarios filtrados:", filteredUsers);
             setUsers(filteredUsers);
+            console.log("Estado users establecido con:", filteredUsers);
             setError(null);
         } catch (err) {
             setError(err.message);
@@ -70,61 +80,6 @@ const AdminPanel = () => {
         }
     };
 
-    // Cargar productos
-    const fetchProducts = async () => {
-        setLoading(true);
-        try {
-            console.log("Enviando solicitud a /api/Product/ListOfProducts con token:", token);
-            const formData = new FormData();
-            formData.append('page', '1');
-            formData.append('limit', '10');
-
-            const response = await fetch(`${API_BASE_URL}/api/Product/ListOfProducts`, {
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Accept': '*/*',
-                },
-                body: formData,
-            });
-
-            if (!response.ok) {
-                const errorText = await response.text();
-                console.log("Error response from /api/Product/ListOfProducts:", errorText, "Status:", response.status);
-                if (response.status === 401) {
-                    sessionStorage.removeItem('token');
-                    sessionStorage.removeItem('role');
-                    localStorage.removeItem('token');
-                    localStorage.removeItem('role');
-                    navigate('/login-register');
-                    throw new Error('Session expired or unauthorized. Please log in again.');
-                }
-                throw new Error(`Failed to fetch products: ${errorText} (Status: ${response.status})`);
-            }
-
-            const data = await response.json();
-            console.log("Productos recibidos (raw):", data);
-            const productItems = data.items || [];
-            // Asegurarse de que los IDs sean consistentes (ajustar según la respuesta real)
-            const normalizedProducts = productItems.map(p => ({
-                Id: p.Id || p.id, // Ajustar según la clave real en la respuesta
-                Name: p.Name || p.name,
-                Description: p.Description || p.description,
-                Price: p.Price || p.price,
-                Stock: p.Stock || p.stock,
-                Category: p.Category || p.category,
-            }));
-            setProducts(normalizedProducts);
-            setError(null);
-        } catch (err) {
-            setError(err.message);
-            console.error("Error fetching products:", err);
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    // Cambiar rol de usuario
     const handleRoleChange = async (userId, newRole) => {
         setLoading(true);
         try {
@@ -167,7 +122,60 @@ const AdminPanel = () => {
         }
     };
 
-    // Añadir o actualizar producto
+    const fetchProducts = async () => {
+        setLoading(true);
+        try {
+            console.log("Enviando solicitud a /api/Product/ListOfProducts con token:", token);
+            const formData = new FormData();
+            formData.append('page', '1');
+            formData.append('limit', '100');
+
+            const response = await fetch(`${API_BASE_URL}/api/Product/ListOfProducts`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Accept': '*/*',
+                },
+                body: formData,
+            });
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                console.log("Error response from /api/Product/ListOfProducts:", errorText, "Status:", response.status);
+                if (response.status === 401) {
+                    sessionStorage.removeItem('token');
+                    sessionStorage.removeItem('role');
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('role');
+                    navigate('/login-register');
+                    throw new Error('Session expired or unauthorized. Please log in again.');
+                }
+                throw new Error(`Failed to fetch products: ${errorText} (Status: ${response.status})`);
+            }
+
+            const data = await response.json();
+            console.log("Productos recibidos (raw):", data);
+            const productItems = data.items || [];
+            const normalizedProducts = productItems.map(p => ({
+                Id: p.Id || p.id, 
+                Band: p.Brand || p.brand,
+                Model: p.Model || p.model,
+                Description: p.Description || p.description,
+                Caracteristicas: p.details || p.Details,
+                Price: p.Precio || p.precio,
+                Stock: p.Stock || p.stock,
+                Category: p.Category || p.category,
+            }));
+            setProducts(normalizedProducts);
+            setError(null);
+        } catch (err) {
+            setError(err.message);
+            console.error("Error fetching products:", err);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     const handleProductAction = async (productData) => {
         setLoading(true);
         try {
@@ -202,7 +210,7 @@ const AdminPanel = () => {
 
             const result = await response.json();
             alert(result.message || result);
-            fetchProducts(); // Recargar productos
+            fetchProducts();
             setShowModal(false);
             setSelectedProduct(null);
             setError(null);
@@ -213,7 +221,6 @@ const AdminPanel = () => {
         }
     };
 
-    // Eliminar producto
     const deleteProduct = async (productId) => {
         setLoading(true);
         try {
@@ -231,7 +238,7 @@ const AdminPanel = () => {
 
             const result = await response.json();
             alert(result.message);
-            fetchProducts(); // Recargar productos
+            fetchProducts();
             setError(null);
         } catch (err) {
             setError(err.message);
@@ -240,7 +247,6 @@ const AdminPanel = () => {
         }
     };
 
-    // Abrir modal para añadir o editar
     const openModal = (product = null) => {
         setSelectedProduct(product || {
             Id: null,
@@ -259,6 +265,8 @@ const AdminPanel = () => {
         return null;
     }
 
+    console.log("Renderizando componente, estado users:", users);
+
     return (
         <div className="admin-panel">
             <h2>Panel de Admin - Gestión de Usuarios y Productos</h2>
@@ -267,38 +275,46 @@ const AdminPanel = () => {
 
             <div>
                 <h3>Gestión de Usuarios</h3>
-                {users.length === 0 && !loading && !error && <button onClick={fetchUsers} disabled={loading}>Cargar usuarios</button>}
+                {users.length === 0 && !loading && !error && (
+                    <div>
+                        <p>No se han cargado usuarios aún.</p>
+                        <button onClick={fetchUsers} disabled={loading}>Cargar usuarios</button>
+                    </div>
+                )}
                 {users.length > 0 && (
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Email</th>
-                                <th>Rol</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {users.map(user => (
-                                <tr key={user.Id}>
-                                    <td>{user.Id}</td>
-                                    <td>{user.Nombre}</td>
-                                    <td>{user.Email}</td>
-                                    <td>{user.Rol}</td>
-                                    <td>
-                                        <select
-                                            value={user.Rol}
-                                            onChange={(e) => handleRoleChange(user.Id, e.target.value)}
-                                        >
-                                            <option value="user">Usuario</option>
-                                            <option value="admin">Admin</option>
-                                        </select>
-                                    </td>
+                    <div>
+                        <p>Usuarios cargados: {users.length}</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Email</th>
+                                    <th>Rol</th>
+                                    <th>Acciones</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {users.map(user => (
+                                    <tr key={user.Id}>
+                                        <td>{user.Id}</td>
+                                        <td>{user.Nombre}</td>
+                                        <td>{user.Email}</td>
+                                        <td>{user.Rol}</td>
+                                        <td>
+                                            <select
+                                                value={user.Rol}
+                                                onChange={(e) => handleRoleChange(user.Id, e.target.value)}
+                                            >
+                                                <option value="user">Usuario</option>
+                                                <option value="admin">Admin</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 )}
             </div>
 
@@ -310,8 +326,10 @@ const AdminPanel = () => {
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Nombre</th>
+                                <th>Marca</th>
+                                <th>Modelo</th>
                                 <th>Descripción</th>
+                                <th>Caracteristicas</th>
                                 <th>Precio</th>
                                 <th>Stock</th>
                                 <th>Categoría</th>
@@ -322,8 +340,10 @@ const AdminPanel = () => {
                             {products.map(product => (
                                 <tr key={product.Id}>
                                     <td>{product.Id}</td>
-                                    <td>{product.Name}</td>
+                                    <td>{product.Band}</td>
+                                    <td>{product.Model}</td>
                                     <td>{product.Description}</td>
+                                    <td>{product.Caracteristicas}</td>
                                     <td>{product.Price}</td>
                                     <td>{product.Stock}</td>
                                     <td>{product.Category}</td>
