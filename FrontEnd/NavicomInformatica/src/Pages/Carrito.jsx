@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../context/AuthProvider";
+import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
 import { USER_CART, UPDATE_QUANTITY_ENDPOINT, DELETE_PRODUCT_CART_ENDPOINT, BASE_IMAGE_URL} from "../../config";
 
@@ -19,6 +20,7 @@ function Carrito() {
   const [cart, setCart] = useState(getTempCart());
   const [total, setTotal] = useState(0);
   const { user } = useContext(AuthContext);
+  const { updateCartCount } = useContext(CartContext);
 
   useEffect(() => {
     const fetchCart = async () => {
@@ -76,6 +78,7 @@ function Carrito() {
     }else{
       setCart(cart.filter((item) => item.productoId !== productId));
     }
+    updateCartCount();
   };
 
   const incrementQuantity = (productId) => {
@@ -86,6 +89,7 @@ function Carrito() {
           : item
         : item
     ));
+    updateCartCount();
   };
   
 
@@ -95,6 +99,7 @@ function Carrito() {
         ? { ...item, cantidad: item.cantidad - 1 }
         : item
     ));
+    updateCartCount();
   };
   
   const updateQuantity = async (productId, newCantidad) => {
@@ -126,6 +131,7 @@ function Carrito() {
     } catch (err) {
       console.error("Error al actualizar cantidad:", err);
     }
+    updateCartCount();
   };
 
   function reemplazarEspaciosPorGuionBajo(brand, model) {

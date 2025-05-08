@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import "./styles/Module.Perfil.css";
+import { Link } from "react-router-dom";
 
 const Perfil = () => {
     const { user, logout } = useContext(AuthContext);
@@ -15,10 +16,11 @@ const Perfil = () => {
                 <h2>Bienvenido, {user.Nombre}</h2>
                 <p><strong>Email:</strong> {user.Email}</p>
                 <p><strong>ID de usuario:</strong> {user.Id}</p>
-
-                <button onClick={logout} className="logout-btn">
-                    Cerrar sesión
-                </button>
+                <Link to="/">
+                    <button onClick={logout} className="logout-btn">
+                        Cerrar sesión
+                    </button>
+                </Link>
             </div>
 
             <div className="pedidos-card">

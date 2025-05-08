@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
+import { CartContext } from "../context/CartContext";
 import {ADD_CART_ENDPOINT} from "../../config"
 import {GET_PRODUCT_ENDPOINT} from "../../config"
 import {BASE_IMAGE_URL} from "../../config"
@@ -16,6 +17,7 @@ function ProductoDetalle() {
     const [cantidad, setCantidad] = useState(0);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const { user, token } = useContext(AuthContext);
+    const { updateCartCount } = useContext(CartContext);
 
 
     useEffect(() => {
@@ -118,6 +120,7 @@ function ProductoDetalle() {
             saveTempCart(tempCart);
             alert("Producto añadido al carrito temporal.");
         }
+        updateCartCount();
     };
 
     if (loading) return <p>Cargando detalles del producto...</p>;
