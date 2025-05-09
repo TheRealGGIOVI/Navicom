@@ -4,7 +4,7 @@ import './styles/Module.Footer.css';
 const Footer = () => {
     return (
         <footer>
-            <div className="footer-container">
+           <div className="footer-container">
                 <div className="footer-column contact">
                     <h2>Contacto</h2>
                     <p>952 451 362</p>
@@ -29,7 +29,7 @@ const Footer = () => {
                         <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                     </div>
                 </div>
-            </div>
+                </div>
         </footer>
     );
 };

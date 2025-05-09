@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
+import { CartContext } from "../context/CartContext"
 import Usuario from "../img/icons8-usuario-30 - copia.png";
 import UsuarioHover from "../img/icons8-usuario-30.png";
 import Carrito from "../img/carrito.png";
@@ -10,6 +11,7 @@ const Navbar = () => {
   const { user, token } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   const [hover, setHover] = useState(false);
+  const { cartCount } = useContext(CartContext)
 
   // Obtener el role desde el user
   const role = user?.role;
@@ -28,7 +30,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="navbar-container">
+     <div className="navbar-container">  
         <button
           className="menu-btn"
           onClick={() => setIsOpen(!isOpen)}
@@ -54,7 +56,7 @@ const Navbar = () => {
           </li>
           {token && role && role.toLowerCase() === 'admin' && (
             <li>
-              <Link to="/admin-panel" className="admin-panel-link" onClick={() => setIsOpen(false)}>
+              <Link to="/admin-panel"  onClick={() => setIsOpen(false)}>
                 Panel de Admin
               </Link>
             </li>
@@ -69,10 +71,10 @@ const Navbar = () => {
         </div>
         <div className="carrito">
           <Link to="/Carrito" onClick={() => setIsOpen(false)}>
-            <img src={Carrito} alt="Carrito" className="cart-icon" />
+          <img src={Carrito} alt="Carrito" className="cart-icon" /><span className="cart-number">{cartCount}</span>
           </Link>
         </div>
-      </div>
+      </div>  
     </nav>
   );
 };

@@ -2,27 +2,45 @@
 footer {
     width: 100%;
     background-color:var(--primary); /* Color primario de tu tema (reemplaza var(--primary) por el valor real) */
-    padding: 20px 0;
-    text-align: center;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  
 }
 
+
+
 .footer-container {
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     display: flex;
+ 
+    justify-content: left;
+    align-items: left;  
+    letter-spacing: 1px;
+    line-height: 1.5;
+
+
+    /*    max-width: 1200px;
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    max-width: 1200px;
+   
     margin: 0 auto;
-    flex-wrap: wrap;
+    flex-wrap: wrap; */
 }
 
 .footer-column {
-    text-align: center;
+   
     flex: 1;
     min-width: 200px;
 }
 
 .footer-column h2 {
+    
     font-size: 1.5rem;
     color: #ffffff;
     margin-bottom: 10px;
