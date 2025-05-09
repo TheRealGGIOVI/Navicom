@@ -8,7 +8,6 @@ using NavicomInformatica.Interfaces;
 using NavicomInformatica.Models;
 using NavicomInformatica.Repositories;
 using Swashbuckle.AspNetCore.Filters;
-using System.Security.Claims;
 using System.Text;
 
 public class Program
@@ -16,17 +15,6 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-
-        // Agregar CORS
-        builder.Services.AddCors(options =>
-        {
-            options.AddPolicy("AllowAllOrigins", builder =>
-            {
-                builder.AllowAnyOrigin()   
-                       .AllowAnyHeader()    
-                       .AllowAnyMethod();   
-            });
-        });
 
         // Add services to the container.
         builder.Services.AddControllers();
@@ -61,11 +49,7 @@ public class Program
         });
 
         // JWT Authentication configuration
-        builder.Services.AddAuthentication(options =>
-        {
-            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-        }).AddJwtBearer(options =>
+        builder.Services.AddAuthentication().AddJwtBearer(options =>
         {
             string key = Environment.GetEnvironmentVariable("JWT_KEY");
             if (string.IsNullOrEmpty(key))
@@ -76,11 +60,10 @@ public class Program
             {
                 ValidateIssuer = false,
                 ValidateAudience = false,
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key)),
-                RoleClaimType = ClaimTypes.Role
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key))
             };
         });
-        
+
         var app = builder.Build();
 
         // Database initialization
@@ -91,6 +74,8 @@ public class Program
             var seeder = scope.ServiceProvider.GetRequiredService<Seeder>();
             seeder.Seed();
         }
+
+        /*
         app.Use(async (context, next) =>
         {
             var user = context.User;
@@ -108,7 +93,7 @@ public class Program
             }
             await next();
         });
-
+        */
 
         // Habilitar Swagger y CORS para desarrollo o producción
         if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
@@ -117,9 +102,16 @@ public class Program
             app.UseSwaggerUI();
         }
 
-        app.UseCors("AllowAllOrigins"); // Aplica la política de CORS
-        app.UseStaticFiles();
         app.UseHttpsRedirection();
+        app.UseStaticFiles();
+        app.UseCors(policy =>
+        {
+            policy.AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        }); // Aplica la política de CORS
+
+
         app.UseAuthentication();
         app.UseAuthorization();
         app.MapControllers();

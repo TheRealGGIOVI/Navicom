@@ -194,8 +194,8 @@ namespace NavicomInformatica.Controllers
             return Ok(new { message = "La cuenta del usuario ha sido eliminada exitosamente." });
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPut("update-role/{id}")]
-        
         public async Task<IActionResult> UpdateUserRole(long id, [FromBody] UpdateRoleDTO roleUpdate)
         {
             if (roleUpdate == null || string.IsNullOrEmpty(roleUpdate.NewRole) || (roleUpdate.NewRole.ToLower() != "user" && roleUpdate.NewRole.ToLower() != "admin"))

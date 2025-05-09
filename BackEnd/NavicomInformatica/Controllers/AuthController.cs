@@ -48,9 +48,9 @@ namespace NavicomInformatica.Controllers
                         { "Nombre", user.Nombre },
                         { "Apellidos", user.Apellidos },
                         { "Email", user.Email },
-                        { "role", user.Rol } // Usar "role" en minúsculas para coincidir con el frontend
+                        { ClaimTypes.Role, user.Rol } // Usar "role" en minúsculas para coincidir con el frontend
                     },
-                    Expires = DateTime.UtcNow.AddHours(2),
+                    Expires = DateTime.UtcNow.AddDays(2),
                     SigningCredentials = new SigningCredentials(
                         _tokenParameters.IssuerSigningKey,
                         SecurityAlgorithms.HmacSha256Signature)
@@ -67,7 +67,7 @@ namespace NavicomInformatica.Controllers
             }
         }
 
-        [Authorize(Roles = "admin")]
+        [Authorize (Roles ="admin")]
         [HttpGet("secret")]
         public ActionResult GetSecret()
         {
