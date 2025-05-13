@@ -1,4 +1,7 @@
-﻿namespace NavicomInformatica.DTO
+﻿using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
+
+namespace NavicomInformatica.DTO
 {
     public class ProductDTO
     {
@@ -12,10 +15,7 @@
         public string? Details { get; set; }
         public string? Category { get; set; }
 
-        // Lista de imágenes
         public List<ProductoImagenDTO> Imagenes { get; set; } = new List<ProductoImagenDTO>();
-
-        // Lista de archivos para subir nuevas imágenes
         public List<IFormFile>? Files { get; set; } = new List<IFormFile>();
     }
 }

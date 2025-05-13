@@ -187,7 +187,6 @@ C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Navico
 C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\NavicomInformatica.pdb
 C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
-C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Microsoft.Bcl.Memory.dll
 C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Microsoft.Data.Sqlite.dll
 C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll

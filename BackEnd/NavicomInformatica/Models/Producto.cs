@@ -16,7 +16,6 @@ namespace NavicomInformatica.Models
         public string? Details { get; set; }
         public string? Category { get; set; }
 
-        // Relación uno-a-muchos con las imágenes
         public List<ProductoImagen> Imagenes { get; set; } = new List<ProductoImagen>();
     }
 }
