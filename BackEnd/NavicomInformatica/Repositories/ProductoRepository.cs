@@ -13,7 +13,7 @@ namespace NavicomInformatica.Repositories
         private readonly IWebHostEnvironment _env;
         private IWebHostEnvironment? env;
 
-        public ProductRepository(DataBaseContext context)
+        public ProductRepository(DataBaseContext context, IWebHostEnvironment env)
         {
             _context = context;
             _env = env;

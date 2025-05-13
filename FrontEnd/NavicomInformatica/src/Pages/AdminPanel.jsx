@@ -63,6 +63,31 @@ const AdminPanel = () => {
         }
     };
 
+    const handleRoleChange = async (userId, newRole) => {
+        setLoading(true);
+        try {
+            const response = await fetch(`${API_BASE_URL}/api/User/update-role/${userId}`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ newRole }),
+            });
+
+            if (!response.ok) throw new Error('Error al actualizar el rol');
+
+            const result = await response.json();
+            alert(result.message || 'Rol actualizado con éxito');
+            fetchUsers();
+        } catch (err) {
+            console.error(err);
+            setError('Error al actualizar el rol');
+        } finally {
+            setLoading(false);
+        }
+    };
+
     const fetchProducts = async () => {
         setLoading(true);
         try {
@@ -239,7 +264,7 @@ const AdminPanel = () => {
             {activeTab === 'productos' && (
                 <div>
                     <h3>Gestión de Productos</h3>
-                    <button onClick={() => openModal()}>Añadir Producto</button>
+                    <button className="btn-add" onClick={() => openModal()}>Añadir Producto</button>
                     <table>
                         <thead>
                             <tr>
@@ -266,8 +291,8 @@ const AdminPanel = () => {
                                     <td>{product.Stock}</td>
                                     <td>{product.Category}</td>
                                     <td>
-                                        <button onClick={() => openModal(product)}>Editar</button>
-                                        <button onClick={() => deleteProduct(product.Id)}>Eliminar</button>
+                                        <button className="btn-edit" onClick={() => openModal(product)}>Editar</button>
+                                        <button className="btn-delete" onClick={() => deleteProduct(product.Id)}>Eliminar</button>
                                     </td>
                                 </tr>
                             ))}
