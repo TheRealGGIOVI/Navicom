@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 public class CarritoItem
 {
     [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public long Id { get; set; }
     public int? Cantidad { get; set; }
     public double? PrecioTotalProducto { get; set; }

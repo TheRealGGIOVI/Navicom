@@ -225,6 +225,7 @@
       "PackagePath": "staticwebassets\\images\\Meca_Oprimida_1.png"
     },
     {
+<<<<<<< Updated upstream
       "Id": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\aaaaaaaaaa_aaaaaaa_1.jpg",
       "PackagePath": "staticwebassets\\images\\aaaaaaaaaa_aaaaaaa_1.jpg"
     },
@@ -245,6 +246,24 @@
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
+=======
+      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\aaaaaaaaaa_aaaaaaa_1.jpg",
+      "PackagePath": "staticwebassets\\images\\aaaaaaaaaa_aaaaaaa_1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\bbbbbb_bbbbbb_1.png",
+      "PackagePath": "staticwebassets\\images\\bbbbbb_bbbbbb_1.png"
+    },
+    {
+      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\bbbbbb_bbbbbb_2.png",
+      "PackagePath": "staticwebassets\\images\\bbbbbb_bbbbbb_2.png"
+    },
+    {
+      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\bbbbbb_bbbbbb_3.png",
+      "PackagePath": "staticwebassets\\images\\bbbbbb_bbbbbb_3.png"
+    },
+    {
+>>>>>>> Stashed changes
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.NavicomInformatica.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

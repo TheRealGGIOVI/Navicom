@@ -1,6 +1,10 @@
 {
   "Version": 1,
+<<<<<<< Updated upstream
   "Hash": "2SwCZxcBGNJXyxCVv8Rc9OTTo8WNaLO7YPrmiWkDbJg=",
+=======
+  "Hash": "VkRUwZfcjvwRNAKW6QmeYzEDOFTETCrOFUWCfA8Jv8E=",
+>>>>>>> Stashed changes
   "Source": "NavicomInformatica",
   "BasePath": "_content/NavicomInformatica",
   "Mode": "Default",
@@ -17,7 +21,30 @@
   ],
   "Assets": [
     {
+<<<<<<< Updated upstream
       "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\aaaaaaaaaa_aaaaaaa_1.jpg",
+=======
+      "Identity": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\aaaaaaaaaa_aaaaaaa_1.jpg",
+      "SourceId": "NavicomInformatica",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "BasePath": "_content/NavicomInformatica",
+      "RelativePath": "images/aaaaaaaaaa_aaaaaaa_1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\aaaaaaaaaa_aaaaaaa_1.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Apple_iMac_17.1_1.jpg",
+>>>>>>> Stashed changes
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
@@ -80,7 +107,68 @@
       "OriginalItemSpec": "wwwroot\\images\\Apple_iMac_17.1_2.jpg"
     },
     {
+<<<<<<< Updated upstream
       "Identity": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\bbbbbb_bbbbbb_1.png",
+=======
+      "Identity": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\bbbbbb_bbbbbb_1.png",
+      "SourceId": "NavicomInformatica",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "BasePath": "_content/NavicomInformatica",
+      "RelativePath": "images/bbbbbb_bbbbbb_1.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\bbbbbb_bbbbbb_1.png"
+    },
+    {
+      "Identity": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\bbbbbb_bbbbbb_2.png",
+      "SourceId": "NavicomInformatica",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "BasePath": "_content/NavicomInformatica",
+      "RelativePath": "images/bbbbbb_bbbbbb_2.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\bbbbbb_bbbbbb_2.png"
+    },
+    {
+      "Identity": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\bbbbbb_bbbbbb_3.png",
+      "SourceId": "NavicomInformatica",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",
+      "BasePath": "_content/NavicomInformatica",
+      "RelativePath": "images/bbbbbb_bbbbbb_3.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\bbbbbb_bbbbbb_3.png"
+    },
+    {
+      "Identity": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP225DJB_1.jpg",
+>>>>>>> Stashed changes
       "SourceId": "NavicomInformatica",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\",

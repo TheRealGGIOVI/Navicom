@@ -3,6 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\",
   "Documents": [
     {
+<<<<<<< Updated upstream
       "AbsoluteMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|c:\\users\\abust\\desktop\\navicom\\backend\\navicominformatica\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -57,6 +58,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|c:\\users\\abust\\desktop\\navicom\\backend\\navicominformatica\\dto\\updateroldto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|solutionrelative:dto\\updateroldto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
+      "AbsoluteMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|c:\\users\\jmtor\\documents\\navicom\\backend\\navicominformatica\\correo\\emailhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|solutionrelative:correo\\emailhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+>>>>>>> Stashed changes
     }
   ],
   "DocumentGroupContainers": [
@@ -66,7 +71,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
+<<<<<<< Updated upstream
           "SelectedChildIndex": 5,
+=======
+          "SelectedChildIndex": 1,
+>>>>>>> Stashed changes
           "Children": [
             {
               "$type": "Document",
@@ -119,6 +128,7 @@
             },
             {
               "$type": "Document",
+<<<<<<< Updated upstream
               "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Program.cs",
@@ -240,6 +250,18 @@
               "ViewState": "AgIAABkAAAAAAAAAAAAAwEMAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-09T09:35:14.651Z"
+=======
+              "DocumentIndex": 0,
+              "Title": "EmailHelper.cs",
+              "DocumentMoniker": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\Correo\\EmailHelper.cs",
+              "RelativeDocumentMoniker": "Correo\\EmailHelper.cs",
+              "ToolTip": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\Correo\\EmailHelper.cs",
+              "RelativeToolTip": "Correo\\EmailHelper.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAA1wAMAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T09:59:09.19Z",
+              "EditorCaption": ""
+>>>>>>> Stashed changes
             }
           ]
         }

@@ -1,6 +1,10 @@
 ﻿<Project>
   <ItemGroup>
+<<<<<<< Updated upstream
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\aaaaaaaaaa_aaaaaaa_1.jpg'))">
+=======
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\aaaaaaaaaa_aaaaaaa_1.jpg))">
+>>>>>>> Stashed changes
       <SourceType>Package</SourceType>
       <SourceId>NavicomInformatica</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
@@ -12,6 +16,7 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
+<<<<<<< Updated upstream
       <Fingerprint>kaphsz22nr</Fingerprint>
       <Integrity>TEJMXAF/sEkOyye/S5LTumz+8Cvk0s42ZWJ7FHWAkhc=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
@@ -19,6 +24,13 @@
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\aaaaaaaaaa_aaaaaaa_1.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\Apple_iMac_17.1_1.jpg'))">
+=======
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\aaaaaaaaaa_aaaaaaa_1.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\Apple_iMac_17.1_1.jpg))">
+>>>>>>> Stashed changes
       <SourceType>Package</SourceType>
       <SourceId>NavicomInformatica</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
@@ -54,7 +66,11 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\Apple_iMac_17.1_2.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
+<<<<<<< Updated upstream
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\bbbbbb_bbbbbb_1.png'))">
+=======
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\bbbbbb_bbbbbb_1.png))">
+>>>>>>> Stashed changes
       <SourceType>Package</SourceType>
       <SourceId>NavicomInformatica</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
@@ -66,6 +82,7 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
+<<<<<<< Updated upstream
       <Fingerprint>jl2oeir3mg</Fingerprint>
       <Integrity>2RYxjkwwrwqPevdmCObcdub9wIisGeyfELuiptIyD8c=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
@@ -73,6 +90,13 @@
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\bbbbbb_bbbbbb_1.png'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\bbbbbb_bbbbbb_2.png'))">
+=======
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\bbbbbb_bbbbbb_1.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\bbbbbb_bbbbbb_2.png))">
+>>>>>>> Stashed changes
       <SourceType>Package</SourceType>
       <SourceId>NavicomInformatica</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
@@ -84,6 +108,7 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
+<<<<<<< Updated upstream
       <Fingerprint>4xrrij3rx0</Fingerprint>
       <Integrity>6Mt1XWGkzoH66WZOAeT+rZHmQJJHSm+BN32QedRVttA=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
@@ -91,6 +116,13 @@
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\bbbbbb_bbbbbb_2.png'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\bbbbbb_bbbbbb_3.png'))">
+=======
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\bbbbbb_bbbbbb_2.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\bbbbbb_bbbbbb_3.png))">
+>>>>>>> Stashed changes
       <SourceType>Package</SourceType>
       <SourceId>NavicomInformatica</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
@@ -102,6 +134,7 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
+<<<<<<< Updated upstream
       <Fingerprint>ijlnk30ywu</Fingerprint>
       <Integrity>zszNW4IbDuN7+cf1SO3rB+GxnZA3uBkr91qIwzvd+Vk=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
@@ -109,6 +142,13 @@
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\bbbbbb_bbbbbb_3.png'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\Hanns_HP225DJB_1.jpg'))">
+=======
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\bbbbbb_bbbbbb_3.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\Hanns_HP225DJB_1.jpg))">
+>>>>>>> Stashed changes
       <SourceType>Package</SourceType>
       <SourceId>NavicomInformatica</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>

@@ -98,7 +98,6 @@ C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Nav
 C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\NavicomInformatica.pdb
 C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
-C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Microsoft.Bcl.Memory.dll
 C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Microsoft.Data.Sqlite.dll
 C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -271,3 +270,14 @@ C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\obj\Debug\net8.0\ref\Na
 C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\NavicomInformatica.staticwebassets.runtime.json
 C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\NavicomInformatica.staticwebassets.runtime.json
 C:\Users\abust\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\NavicomInformatica.staticwebassets.runtime.json
+C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Npgsql.dll
+C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\System.IO.Pipelines.dll
+C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\System.Text.Encodings.Web.dll
+C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\System.Text.Json.dll
+C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\runtimes\linux-musl-s390x\native\libe_sqlite3.so
+C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll

@@ -9,6 +9,7 @@ using NavicomInformatica.Models;
 using NavicomInformatica.Repositories;
 using Swashbuckle.AspNetCore.Filters;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 
 public class Program
 {
@@ -16,9 +17,13 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
+
         // Add services to the container.
         builder.Services.AddControllers();
-        builder.Services.AddScoped<DataBaseContext>();
+        //builder.Services.AddScoped<DataBaseContext>();
+        builder.Services.AddDbContext<DataBaseContext>(options =>
+            options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
         builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
         builder.Services.AddScoped<IUserRepository, UserRepository>();
         builder.Services.AddScoped<UserMapper>();
@@ -67,33 +72,38 @@ public class Program
         var app = builder.Build();
 
         // Database initialization
+        //using (IServiceScope scope = app.Services.CreateScope())
+        //{
+        //    DataBaseContext dbcontext = scope.ServiceProvider.GetService<DataBaseContext>();
+        //    dbcontext.Database.EnsureCreated();
+        //    var seeder = scope.ServiceProvider.GetRequiredService<Seeder>();
+        //    seeder.Seed();
+        //}
+
         using (IServiceScope scope = app.Services.CreateScope())
         {
-            DataBaseContext dbcontext = scope.ServiceProvider.GetService<DataBaseContext>();
-            dbcontext.Database.EnsureCreated();
-            var seeder = scope.ServiceProvider.GetRequiredService<Seeder>();
-            seeder.Seed();
-        }
+            var env = scope.ServiceProvider.GetRequiredService<IWebHostEnvironment>();
 
-        /*
-        app.Use(async (context, next) =>
-        {
-            var user = context.User;
-            if (user.Identity.IsAuthenticated)
+            // 🔒 SOLO en entorno local
+            if (env.IsDevelopment() && Environment.MachineName == "TU-PC-NOMBRE")
             {
-                Console.WriteLine("Usuario autenticado:");
-                foreach (var claim in user.Claims)
+                try
                 {
-                    Console.WriteLine($"{claim.Type}: {claim.Value}");
+                    var dbcontext = scope.ServiceProvider.GetRequiredService<DataBaseContext>();
+                    dbcontext.Database.EnsureCreated();
+
+                    var seeder = scope.ServiceProvider.GetRequiredService<Seeder>();
+                    seeder.Seed();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error al ejecutar el seeder: {ex.Message}");
                 }
             }
-            else
-            {
-                Console.WriteLine("Usuario NO autenticado");
-            }
-            await next();
-        });
-        */
+        }
+
+
+
 
         // Habilitar Swagger y CORS para desarrollo o producción
         if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
