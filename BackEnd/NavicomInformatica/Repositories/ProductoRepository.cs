@@ -3,20 +3,16 @@ using NavicomInformatica.Models;
 using NavicomInformatica.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using NavicomInformatica.DTO;
-using System;
 
 namespace NavicomInformatica.Repositories
 {
     public class ProductRepository : IProductoRepository
     {
         private readonly DataBaseContext _context;
-        private readonly IWebHostEnvironment _env;
-        private IWebHostEnvironment? env;
 
-        public ProductRepository(DataBaseContext context, IWebHostEnvironment env)
+        public ProductRepository(DataBaseContext context)
         {
             _context = context;
-            _env = env;
         }
 
         public async Task<ICollection<Producto>> GetProductsAsync()
@@ -77,59 +73,61 @@ namespace NavicomInformatica.Repositories
             return fileName;
         }
 
-        public async Task UpdateAllAsync(ProductDTO productDto)
+        public async Task AddProductAsync(ProductDTO productDto)
         {
-            var productoExistente = await _context.Products
-                .Include(p => p.Imagenes)
-                .FirstOrDefaultAsync(p => p.Id == productDto.Id);
+            var existingProduct = await _context.Products
+                .FirstOrDefaultAsync(p => p.Model == productDto.Model);
 
-            if (productoExistente == null)
-                throw new Exception("Producto no encontrado");
+            if (existingProduct != null)
+            {
+                throw new Exception("A product with this model already exists.");
+            }
 
-            productoExistente.Brand = productDto.Brand;
-            productoExistente.Model = productDto.Model;
-            productoExistente.Precio = productDto.Precio ?? 0;
-            productoExistente.Stock = productDto.Stock ?? 0;
-            productoExistente.Description = productDto.Description;
-            productoExistente.Details = productDto.Details;
-            productoExistente.Category = productDto.Category;
+            var product = new Producto
+            {
+                Brand = productDto.Brand,
+                Model = productDto.Model,
+                Precio = productDto.Precio,
+                Discount_Price = productDto.Discount_Price,
+                Stock = productDto.Stock,
+                Description = productDto.Description,
+                Details = productDto.Details,
+                Category = productDto.Category,
+                Imagenes = new List<ProductoImagen>()
+            };
 
             if (productDto.Files != null && productDto.Files.Any())
             {
-                foreach (var img in productoExistente.Imagenes)
+                try
                 {
-                    var path = Path.Combine(_env.WebRootPath, "images", img.FileName);
-                    if (File.Exists(path))
+                    int imageNumber = 1;
+                    foreach (var file in productDto.Files)
                     {
-                        File.Delete(path);
+                        if (file != null)
+                        {
+                            var fileName = await StoreImageAsync(file, productDto.Brand, productDto.Model, imageNumber);
+                            product.Imagenes.Add(new ProductoImagen { Img_Name = fileName });
+                            imageNumber++;
+                        }
                     }
                 }
-
-                _context.ProductoImagenes.RemoveRange(productoExistente.Imagenes);
-
-                var nuevasImagenes = new List<ProductoImagen>();
-                foreach (var file in productDto.Files)
+                catch (Exception ex)
                 {
-                    var fileName = $"{Guid.NewGuid()}_{file.FileName}";
-                    var filePath = Path.Combine(_env.WebRootPath, "images", fileName);
-
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await file.CopyToAsync(stream);
-                    }
-
-                    nuevasImagenes.Add(new ProductoImagen
-                    {
-                        FileName = fileName,
-                        ProductoId = productoExistente.Id
-                    });
+                    throw new Exception("Error al guardar las imágenes: " + ex.Message);
                 }
-
-                productoExistente.Imagenes = nuevasImagenes;
             }
 
-            _context.Products.Update(productoExistente);
-            await _context.SaveChangesAsync();
+            await _context.Products.AddAsync(product);
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                Console.WriteLine(ex.InnerException?.Message);
+                throw;
+            }
         }
 
         public async Task AddProductsAsync(IEnumerable<Producto> products)
@@ -214,48 +212,100 @@ namespace NavicomInformatica.Repositories
             }
         }
 
-        public async Task AddProductAsync(ProductDTO productDto)
+        public async Task UpdateAllAsync(ProductDTO product)
         {
-            var nuevoProducto = new Producto
-            {
-                Brand = productDto.Brand,
-                Model = productDto.Model,
-                Precio = productDto.Precio ?? 0,
-                Discount_Price = productDto.Discount_Price ?? 0,
-                Stock = productDto.Stock ?? 0,
-                Description = productDto.Description,
-                Details = productDto.Details,
-                Category = productDto.Category
-            };
+            var productVariado = await _context.Products
+                .Include(p => p.Imagenes)
+                .FirstOrDefaultAsync(p => p.Id == product.Id);
 
-            _context.Products.Add(nuevoProducto);
-            await _context.SaveChangesAsync();
-
-            if (productDto.Files != null && productDto.Files.Any())
+            if (productVariado == null)
             {
-                var imagenes = new List<ProductoImagen>();
-                foreach (var file in productDto.Files)
+                throw new KeyNotFoundException("La variación del producto no existe.");
+            }
+
+            if (product.Stock < 0)
+            {
+                throw new ArgumentException("No se puede poner menos de 0 de stock.");
+            }
+
+            if (product.Precio < 0 || product.Discount_Price < 0)
+            {
+                throw new ArgumentException("El Precio no puede ser negativo.");
+            }
+
+            if (!string.IsNullOrWhiteSpace(product.Brand) && product.Brand != "string")
+            {
+                productVariado.Brand = product.Brand.Trim();
+            }
+
+            if (!string.IsNullOrWhiteSpace(product.Model) && product.Model != "string")
+            {
+                productVariado.Model = product.Model.Trim();
+            }
+
+            if (product.Precio > 0)
+            {
+                productVariado.Precio = product.Precio;
+            }
+
+            if (product.Discount_Price >= 0)
+            {
+                productVariado.Discount_Price = product.Discount_Price;
+            }
+
+            if (product.Stock > 0)
+            {
+                productVariado.Stock = product.Stock;
+            }
+
+            if (!string.IsNullOrWhiteSpace(product.Description) && product.Description != "string")
+            {
+                productVariado.Description = product.Description.Trim();
+            }
+
+            if (!string.IsNullOrWhiteSpace(product.Details) && product.Details != "string")
+            {
+                productVariado.Details = product.Details.Trim();
+            }
+
+            if (!string.IsNullOrWhiteSpace(product.Category) && product.Category != "string")
+            {
+                productVariado.Category = product.Category.Trim();
+            }
+
+            if (product.Files != null && product.Files.Any())
+            {
+                try
                 {
-                    var fileName = $"{Guid.NewGuid()}_{file.FileName}";
-                    var filePath = Path.Combine(_env.WebRootPath, "images", fileName);
-
-                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    // Determinar el número de imágenes existentes para continuar la numeración
+                    int imageNumber = productVariado.Imagenes.Count + 1;
+                    foreach (var file in product.Files)
                     {
-                        await file.CopyToAsync(stream);
+                        if (file != null)
+                        {
+                            var fileName = await StoreImageAsync(file, productVariado.Brand, productVariado.Model, imageNumber);
+                            productVariado.Imagenes.Add(new ProductoImagen { Img_Name = fileName });
+                            imageNumber++;
+                        }
                     }
-
-                    imagenes.Add(new ProductoImagen
-                    {
-                        FileName = fileName,
-                        ProductoId = nuevoProducto.Id
-                    });
                 }
+                catch (Exception ex)
+                {
+                    throw new InvalidOperationException("Error al guardar las imágenes.", ex);
+                }
+            }
 
-                _context.ProductoImagenes.AddRange(imagenes);
+            _context.Products.Update(productVariado);
+            try
+            {
                 await _context.SaveChangesAsync();
             }
+            catch (DbUpdateException ex)
+            {
+                Console.WriteLine(ex.InnerException?.Message);
+                throw;
+            }
         }
-
 
         // Método para ordenar por precio
         public async Task<IEnumerable<Producto>> SortByPriceAsync(string sortOrder, int offset, int limit)

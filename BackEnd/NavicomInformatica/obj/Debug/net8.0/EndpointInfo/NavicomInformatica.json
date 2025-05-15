@@ -994,7 +994,7 @@
         "properties": {
           "id": {
             "type": "integer",
-            "format": "int32"
+            "format": "int64"
           },
           "img_Name": {
             "type": "string",

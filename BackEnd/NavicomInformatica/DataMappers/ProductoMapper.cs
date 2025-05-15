@@ -10,7 +10,7 @@ namespace NavicomInformatica.DataMappers
             return new ProductoImagenDTO
             {
                 Id = imagen.Id,
-                Img_Name = imagen.FileName
+                Img_Name = imagen.Img_Name
             };
         }
 
@@ -32,7 +32,7 @@ namespace NavicomInformatica.DataMappers
                 Description = producto.Description,
                 Details = producto.Details,
                 Category = producto.Category,
-                Imagenes = MapProductoImagenesToDTO(producto.Imagenes)
+                Imagenes = MapProductoImagenesToDTO(producto.Imagenes) 
             };
         }
 
@@ -54,7 +54,7 @@ namespace NavicomInformatica.DataMappers
                 Description = productsDTO.Description,
                 Details = productsDTO.Details,
                 Category = productsDTO.Category,
-                Imagenes = new List<ProductoImagen>()
+                Imagenes = new List<ProductoImagen>() 
             };
         }
 

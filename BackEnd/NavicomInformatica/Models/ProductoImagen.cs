@@ -6,19 +6,14 @@ namespace NavicomInformatica.Models
     public class ProductoImagen
     {
         [Key]
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         [Required]
-        public string FileName { get; set; } = string.Empty;
+        public string Img_Name { get; set; } // Nombre del archivo de la imagen
 
-        [NotMapped] // Para compatibilidad con mapeos antiguos
-        public string Img_Name
-        {
-            get => FileName;
-            set => FileName = value;
-        }
+        [ForeignKey("Producto")]
+        public long ProductoId { get; set; } // Clave foránea hacia Producto
 
-        public long ProductoId { get; set; }
-        public Producto Producto { get; set; }
+        public Producto Producto { get; set; } // Relación con el producto
     }
 }
