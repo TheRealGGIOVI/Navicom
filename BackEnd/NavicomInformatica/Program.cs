@@ -86,7 +86,7 @@ public class Program
             var env = scope.ServiceProvider.GetRequiredService<IWebHostEnvironment>();
 
             // 🔒 SOLO en entorno local
-            if (env.IsDevelopment() && Environment.MachineName == "TU-PC-NOMBRE")
+            if (env.IsDevelopment() || env.IsProduction())
             {
                 try
                 {
@@ -113,7 +113,7 @@ public class Program
             app.UseSwaggerUI();
         }
 
-        app.UseHttpsRedirection();
+        //app.UseHttpsRedirection();
         app.UseStaticFiles();
         app.UseCors(policy =>
         {
