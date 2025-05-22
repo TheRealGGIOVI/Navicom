@@ -11,6 +11,9 @@ import Catalogo from './Pages/Catalogo';
 import Carrito from './Pages/Carrito';
 import AdminPanel from './Pages/AdminPanel';  
 
+console.log("🔥 API BASE URL:", import.meta.env.VITE_API_BASE_URL);
+
+
 function App() {
   return (
     <Routes>
