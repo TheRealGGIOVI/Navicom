@@ -9,7 +9,7 @@
         "JWT_KEY": "KHCKUTDIIFkfjcdjt123456jgkgclfttdlqut13li2,.,-,.,--,qrx"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "https://localhost:7069"
+      "applicationUrl": "https://0.0.0.0:7069"
     },
     "https": {
       "commandName": "Project",
@@ -20,7 +20,7 @@
         "JWT_KEY": "KHCKUTDIIFkfjcdjt123456jgkgclfttdlqut13li2,.,-,.,--,qrx"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "https://localhost:7069"
+      "applicationUrl": "https://0.0.0.0:7069"
     },
     "IIS Express": {
       "commandName": "IISExpress",

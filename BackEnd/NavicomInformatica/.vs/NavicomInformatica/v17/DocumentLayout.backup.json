@@ -1,5 +1,12 @@
 {
   "Version": 1,
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+  "WorkspaceRootPath": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\",
+  "Documents": [],
+=======
+>>>>>>> Stashed changes
   "WorkspaceRootPath": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\",
   "Documents": [
     {
@@ -15,10 +22,17 @@
       "RelativeMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|solutionrelative:navicominformatica.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
+<<<<<<< Updated upstream
+=======
+>>>>>>> fde548065c7193f35a2985368d62605d98fffdf9
+>>>>>>> Stashed changes
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
+<<<<<<< HEAD
+      "DocumentGroups": []
+=======
       "DocumentGroups": [
         {
           "DockedWidth": 200,
@@ -66,6 +80,7 @@
           ]
         }
       ]
+>>>>>>> fde548065c7193f35a2985368d62605d98fffdf9
     }
   ]
 }

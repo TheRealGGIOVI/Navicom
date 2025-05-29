@@ -1,244 +1,248 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Apple_iMac_17.1_1.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Apple_iMac_17.1_1.jpg",
       "PackagePath": "staticwebassets\\images\\Apple_iMac_17.1_1.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Apple_iMac_17.1_2.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Apple_iMac_17.1_2.jpg",
       "PackagePath": "staticwebassets\\images\\Apple_iMac_17.1_2.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_E24C_1.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_E24C_1.jpg",
       "PackagePath": "staticwebassets\\images\\HP_E24C_1.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_E24C_2.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_E24C_2.jpg",
       "PackagePath": "staticwebassets\\images\\HP_E24C_2.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteBook_840_G4_1.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteBook_840_G4_1.jpg",
       "PackagePath": "staticwebassets\\images\\HP_EliteBook_840_G4_1.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteBook_840_G4_2.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteBook_840_G4_2.jpg",
       "PackagePath": "staticwebassets\\images\\HP_EliteBook_840_G4_2.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G2_1.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G2_1.jpg",
       "PackagePath": "staticwebassets\\images\\HP_EliteDesk_800_G2_1.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G2_2.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G2_2.jpg",
       "PackagePath": "staticwebassets\\images\\HP_EliteDesk_800_G2_2.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G4_1.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G4_1.jpg",
       "PackagePath": "staticwebassets\\images\\HP_EliteDesk_800_G4_1.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G4_2.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G4_2.jpg",
       "PackagePath": "staticwebassets\\images\\HP_EliteDesk_800_G4_2.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G4_3.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G4_3.jpg",
       "PackagePath": "staticwebassets\\images\\HP_EliteDesk_800_G4_3.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G4_4.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_EliteDesk_800_G4_4.jpg",
       "PackagePath": "staticwebassets\\images\\HP_EliteDesk_800_G4_4.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProBook_450_G7_1.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProBook_450_G7_1.jpg",
       "PackagePath": "staticwebassets\\images\\HP_ProBook_450_G7_1.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProBook_450_G7_2.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProBook_450_G7_2.jpg",
       "PackagePath": "staticwebassets\\images\\HP_ProBook_450_G7_2.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProBook_450_G8_1.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProBook_450_G8_1.jpg",
       "PackagePath": "staticwebassets\\images\\HP_ProBook_450_G8_1.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProBook_450_G8_2.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProBook_450_G8_2.jpg",
       "PackagePath": "staticwebassets\\images\\HP_ProBook_450_G8_2.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProDesk_600_G4_1.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProDesk_600_G4_1.jpg",
       "PackagePath": "staticwebassets\\images\\HP_ProDesk_600_G4_1.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProDesk_600_G4_2.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProDesk_600_G4_2.jpg",
       "PackagePath": "staticwebassets\\images\\HP_ProDesk_600_G4_2.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProDesk_600_G5_1.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProDesk_600_G5_1.jpg",
       "PackagePath": "staticwebassets\\images\\HP_ProDesk_600_G5_1.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProDesk_600_G5_2.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_ProDesk_600_G5_2.jpg",
       "PackagePath": "staticwebassets\\images\\HP_ProDesk_600_G5_2.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_UltraSlim_Docking_Station_1.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_UltraSlim_Docking_Station_1.jpg",
       "PackagePath": "staticwebassets\\images\\HP_UltraSlim_Docking_Station_1.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_UltraSlim_Docking_Station_2.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_UltraSlim_Docking_Station_2.jpg",
       "PackagePath": "staticwebassets\\images\\HP_UltraSlim_Docking_Station_2.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_Workstation_Z440_Torre_1.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_Workstation_Z440_Torre_1.jpg",
       "PackagePath": "staticwebassets\\images\\HP_Workstation_Z440_Torre_1.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_Workstation_Z440_Torre_2.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\HP_Workstation_Z440_Torre_2.jpg",
       "PackagePath": "staticwebassets\\images\\HP_Workstation_Z440_Torre_2.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP225DJB_1.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP225DJB_1.jpg",
       "PackagePath": "staticwebassets\\images\\Hanns_HP225DJB_1.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP225DJB_2.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP225DJB_2.jpg",
       "PackagePath": "staticwebassets\\images\\Hanns_HP225DJB_2.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP227DJB_1.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP227DJB_1.jpg",
       "PackagePath": "staticwebassets\\images\\Hanns_HP227DJB_1.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP227DJB_2.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Hanns_HP227DJB_2.jpg",
       "PackagePath": "staticwebassets\\images\\Hanns_HP227DJB_2.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_P24H-10_1.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_P24H-10_1.jpg",
       "PackagePath": "staticwebassets\\images\\Lenovo_P24H-10_1.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_P24H-10_2.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_P24H-10_2.jpg",
       "PackagePath": "staticwebassets\\images\\Lenovo_P24H-10_2.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_TIO22D_1.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_TIO22D_1.jpg",
       "PackagePath": "staticwebassets\\images\\Lenovo_TIO22D_1.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_TIO22D_2.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_TIO22D_2.jpg",
       "PackagePath": "staticwebassets\\images\\Lenovo_TIO22D_2.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_TIO24_GEN3_1.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_TIO24_GEN3_1.jpg",
       "PackagePath": "staticwebassets\\images\\Lenovo_TIO24_GEN3_1.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_TIO24_GEN3_2.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_TIO24_GEN3_2.jpg",
       "PackagePath": "staticwebassets\\images\\Lenovo_TIO24_GEN3_2.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkCentre_M720Q_1.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkCentre_M720Q_1.jpg",
       "PackagePath": "staticwebassets\\images\\Lenovo_ThinkCentre_M720Q_1.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkCentre_M720Q_2.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkCentre_M720Q_2.jpg",
       "PackagePath": "staticwebassets\\images\\Lenovo_ThinkCentre_M720Q_2.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkCentre_M920Q_1.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkCentre_M920Q_1.jpg",
       "PackagePath": "staticwebassets\\images\\Lenovo_ThinkCentre_M920Q_1.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkCentre_M920Q_2.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkCentre_M920Q_2.jpg",
       "PackagePath": "staticwebassets\\images\\Lenovo_ThinkCentre_M920Q_2.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_E595_15.6_1.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_E595_15.6_1.jpg",
       "PackagePath": "staticwebassets\\images\\Lenovo_ThinkPad_E595_15.6_1.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_E595_15.6_2.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_E595_15.6_2.jpg",
       "PackagePath": "staticwebassets\\images\\Lenovo_ThinkPad_E595_15.6_2.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L13_13_1.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L13_13_1.jpg",
       "PackagePath": "staticwebassets\\images\\Lenovo_ThinkPad_L13_13_1.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L13_13_2.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L13_13_2.jpg",
       "PackagePath": "staticwebassets\\images\\Lenovo_ThinkPad_L13_13_2.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L14_14_1.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L14_14_1.jpg",
       "PackagePath": "staticwebassets\\images\\Lenovo_ThinkPad_L14_14_1.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L14_14_2.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L14_14_2.jpg",
       "PackagePath": "staticwebassets\\images\\Lenovo_ThinkPad_L14_14_2.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L490_14_1.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L490_14_1.jpg",
       "PackagePath": "staticwebassets\\images\\Lenovo_ThinkPad_L490_14_1.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L490_14_2.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_L490_14_2.jpg",
       "PackagePath": "staticwebassets\\images\\Lenovo_ThinkPad_L490_14_2.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_T14G1_14_1.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_T14G1_14_1.jpg",
       "PackagePath": "staticwebassets\\images\\Lenovo_ThinkPad_T14G1_14_1.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_T14G1_14_2.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_T14G1_14_2.jpg",
       "PackagePath": "staticwebassets\\images\\Lenovo_ThinkPad_T14G1_14_2.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_T490_14_1.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_T490_14_1.jpg",
       "PackagePath": "staticwebassets\\images\\Lenovo_ThinkPad_T490_14_1.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_T490_14_2.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_ThinkPad_T490_14_2.jpg",
       "PackagePath": "staticwebassets\\images\\Lenovo_ThinkPad_T490_14_2.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_USB-C_Dock_Gen2_1.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_USB-C_Dock_Gen2_1.jpg",
       "PackagePath": "staticwebassets\\images\\Lenovo_USB-C_Dock_Gen2_1.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_USB-C_Dock_Gen2_2.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_USB-C_Dock_Gen2_2.jpg",
       "PackagePath": "staticwebassets\\images\\Lenovo_USB-C_Dock_Gen2_2.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_USB-C_Travel_HUB_1.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_USB-C_Travel_HUB_1.jpg",
       "PackagePath": "staticwebassets\\images\\Lenovo_USB-C_Travel_HUB_1.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_USB-C_Travel_HUB_2.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Lenovo_USB-C_Travel_HUB_2.jpg",
       "PackagePath": "staticwebassets\\images\\Lenovo_USB-C_Travel_HUB_2.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\MSI_Monitor_to_guapo_1.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\MSI_Monitor_to_guapo_1.jpg",
       "PackagePath": "staticwebassets\\images\\MSI_Monitor_to_guapo_1.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Meca_Oprimida_1.png",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\Meca_Oprimida_1.png",
       "PackagePath": "staticwebassets\\images\\Meca_Oprimida_1.png"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\aaaaaaaaaa_aaaaaaa_1.jpg",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\aaaaaaaaaa_aaaaaaa_1.jpg",
       "PackagePath": "staticwebassets\\images\\aaaaaaaaaa_aaaaaaa_1.jpg"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\bbbbbb_bbbbbb_1.png",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\bbbbbb_bbbbbb_1.png",
       "PackagePath": "staticwebassets\\images\\bbbbbb_bbbbbb_1.png"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\bbbbbb_bbbbbb_2.png",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\bbbbbb_bbbbbb_2.png",
       "PackagePath": "staticwebassets\\images\\bbbbbb_bbbbbb_2.png"
     },
     {
-      "Id": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\bbbbbb_bbbbbb_3.png",
+      "Id": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\wwwroot\\images\\bbbbbb_bbbbbb_3.png",
       "PackagePath": "staticwebassets\\images\\bbbbbb_bbbbbb_3.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.NavicomInformatica.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.NavicomInformatica.Microsoft.AspNetCore.StaticWebAssets.props",

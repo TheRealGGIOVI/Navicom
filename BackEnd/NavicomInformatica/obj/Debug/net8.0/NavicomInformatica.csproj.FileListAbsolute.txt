@@ -186,7 +186,6 @@ C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Navico
 C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\NavicomInformatica.pdb
 C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
-C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Microsoft.Bcl.Memory.dll
 C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Microsoft.Data.Sqlite.dll
 C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -380,3 +379,14 @@ C:\Users\jmtor\Documents\Navicom_CP\BackEnd\NavicomInformatica\obj\Debug\net8.0\
 C:\Users\jmtor\Documents\Navicom_CP\BackEnd\NavicomInformatica\obj\Debug\net8.0\NavicomInformatica.pdb
 C:\Users\jmtor\Documents\Navicom_CP\BackEnd\NavicomInformatica\obj\Debug\net8.0\NavicomInformatica.genruntimeconfig.cache
 C:\Users\jmtor\Documents\Navicom_CP\BackEnd\NavicomInformatica\obj\Debug\net8.0\ref\NavicomInformatica.dll
+C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Npgsql.dll
+C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\System.IO.Pipelines.dll
+C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\System.Text.Encodings.Web.dll
+C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\System.Text.Json.dll
+C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\runtimes\linux-musl-s390x\native\libe_sqlite3.so
+C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
