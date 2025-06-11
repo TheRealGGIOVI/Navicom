@@ -1,32 +1,22 @@
 {
   "Version": 1,
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
   "WorkspaceRootPath": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|c:\\users\\user\\desktop\\navicom\\backend\\navicominformatica\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-=======
->>>>>>> Stashed changes
-  "WorkspaceRootPath": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|c:\\users\\abust\\desktop\\navicom\\backend\\navicominformatica\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|c:\\users\\user\\desktop\\navicom\\backend\\navicominformatica\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|c:\\users\\abust\\desktop\\navicom\\backend\\navicominformatica\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|c:\\users\\user\\desktop\\navicom\\backend\\navicominformatica\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|c:\\users\\user\\desktop\\navicom\\backend\\navicominformatica\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|c:\\users\\abust\\desktop\\navicom\\backend\\navicominformatica\\navicominformatica.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "AbsoluteMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|c:\\users\\user\\desktop\\navicom\\backend\\navicominformatica\\navicominformatica.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{84AD72A3-288E-439E-807A-7C01EEBCC3FC}|NavicomInformatica.csproj|solutionrelative:navicominformatica.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-<<<<<<< Updated upstream
-=======
->>>>>>> fde548065c7193f35a2985368d62605d98fffdf9
->>>>>>> Stashed changes
     }
   ],
   "DocumentGroupContainers": [
@@ -36,62 +26,56 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
+              "DocumentIndex": 1,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "Properties\\launchSettings.json",
               "ToolTip": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Properties\\launchSettings.json",
               "RelativeToolTip": "Properties\\launchSettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-29T10:46:11.426Z",
-              "EditorCaption": ""
-=======
->>>>>>> Stashed changes
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAAAQwHYAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T08:39:25.971Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-29T11:05:46.479Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-22T08:34:49.034Z"
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAQwGAAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T11:05:02.561Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-29T11:05:02.701Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "NavicomInformatica.csproj",
-              "DocumentMoniker": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\NavicomInformatica.csproj",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\NavicomInformatica.csproj",
               "RelativeDocumentMoniker": "NavicomInformatica.csproj",
-              "ToolTip": "C:\\Users\\abust\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\NavicomInformatica.csproj",
+              "ToolTip": "C:\\Users\\User\\Desktop\\Navicom\\BackEnd\\NavicomInformatica\\NavicomInformatica.csproj",
               "RelativeToolTip": "NavicomInformatica.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-05-22T08:33:04.513Z"
-<<<<<<< Updated upstream
-=======
->>>>>>> fde548065c7193f35a2985368d62605d98fffdf9
->>>>>>> Stashed changes
+              "WhenOpened": "2025-05-29T11:05:02.706Z"
             }
           ]
         }
