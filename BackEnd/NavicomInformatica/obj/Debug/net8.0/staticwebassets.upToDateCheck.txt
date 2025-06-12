@@ -16,6 +16,7 @@ wwwroot\images\HP_EliteDesk_800_G2_1.jpg
 wwwroot\images\HP_EliteDesk_800_G2_2.jpg
 wwwroot\images\HP_EliteDesk_800_G4_1.jpg
 wwwroot\images\HP_EliteDesk_800_G4_2.jpg
+wwwroot\images\HP_EliteDesk_800_G4_2.png
 wwwroot\images\HP_EliteDesk_800_G4_3.jpg
 wwwroot\images\HP_EliteDesk_800_G4_4.jpg
 wwwroot\images\HP_ProBook_450_G7_1.jpg

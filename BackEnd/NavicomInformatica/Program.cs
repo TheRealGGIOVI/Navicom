@@ -86,12 +86,10 @@ public class Program
         {
             var env = scope.ServiceProvider.GetRequiredService<IWebHostEnvironment>();
 
-<<<<<<< Updated upstream
             // 🔒 SOLO en entorno local
             if (env.IsDevelopment() || env.IsProduction())
-=======
+
             if (env.IsDevelopment() && Environment.MachineName == "TU-PC-NOMBRE")
->>>>>>> Stashed changes
             {
                 try
                 {
