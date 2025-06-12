@@ -12,4 +12,6 @@ export const ADD_CART_ENDPOINT = `${API_BASE_URL}/api/Carrito/AddToCart`;
 export const GET_PRODUCT_ENDPOINT = `${API_BASE_URL}/api/Product/id?id=`;
 export const UPDATE_QUANTITY_ENDPOINT = `${API_BASE_URL}/api/Carrito/UpdateQuantity`;
 export const DELETE_PRODUCT_CART_ENDPOINT = `${API_BASE_URL}/api/Carrito/RemoveFromCart/`;
-export const BASE_IMAGE_URL = `${API_BASE_URL}/images/`
+export const BASE_IMAGE_URL = `${API_BASE_URL}/images/`;
+export const EMAIL_URL = `${API_BASE_URL}/api/Email`;
+export const STRIPE = `${API_BASE_URL}/api/checkout/create-session`;

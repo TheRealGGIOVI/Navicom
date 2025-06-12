@@ -1,4 +1,7 @@
-﻿namespace NavicomInformatica.DTO
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
+namespace NavicomInformatica.DTO
 {
     public class UserDTO
     {
@@ -11,7 +14,6 @@
 
     public class UserCreateDTO
     {
-        public long Id { get; set; }
         public string? Nombre { get; set; }
         public string Apellidos { get; set; }
         public string? Email { get; set; }

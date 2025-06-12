@@ -7,9 +7,14 @@ using NavicomInformatica.DataMappers;
 using NavicomInformatica.Interfaces;
 using NavicomInformatica.Models;
 using NavicomInformatica.Repositories;
+using NavicomInformatica.ServiceEmail;
 using Swashbuckle.AspNetCore.Filters;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
+
+// 👉 Stripe
+using Stripe;
+using Microsoft.Extensions.Options;
 
 public class Program
 {
@@ -18,10 +23,8 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
         builder.WebHost.UseUrls("http://0.0.0.0:7069");
 
-
-        // Add services to the container.
+        /* ---------- 1. INYECCIÓN DE SERVICIOS EXISTENTES ---------- */
         builder.Services.AddControllers();
-        //builder.Services.AddScoped<DataBaseContext>();
         builder.Services.AddDbContext<DataBaseContext>(options =>
             options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -33,12 +36,14 @@ public class Program
         builder.Services.AddScoped<ICarritoRepository, CarritoRepository>();
         builder.Services.AddScoped<CarritoMapper>();
         builder.Services.AddScoped<Seeder>();
+        builder.Services.AddScoped<IEmailService, EmailService>();
 
+        /* ---------- 2. STRIPE SETTINGS ---------- */
+        // Lee la sección "Stripe" del appsettings.json / secrets / variables de entorno
+        builder.Services.Configure<StripeSettings>(
+            builder.Configuration.GetSection("Stripe"));
 
-
-
-
-        // Swagger configuration
+        /* ---------- 3. SWAGGER ---------- */
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen(options =>
         {
@@ -54,14 +59,13 @@ public class Program
             options.OperationFilter<SecurityRequirementsOperationFilter>(true, JwtBearerDefaults.AuthenticationScheme);
         });
 
-        // JWT Authentication configuration
+        /* ---------- 4. JWT ---------- */
         builder.Services.AddAuthentication().AddJwtBearer(options =>
         {
             string key = Environment.GetEnvironmentVariable("JWT_KEY");
             if (string.IsNullOrEmpty(key))
-            {
                 throw new Exception("JWT_KEY variable de entorno no está configurada.");
-            }
+
             options.TokenValidationParameters = new TokenValidationParameters
             {
                 ValidateIssuer = false,
@@ -72,21 +76,22 @@ public class Program
 
         var app = builder.Build();
 
-        // Database initialization
-        //using (IServiceScope scope = app.Services.CreateScope())
-        //{
-        //    DataBaseContext dbcontext = scope.ServiceProvider.GetService<DataBaseContext>();
-        //    dbcontext.Database.EnsureCreated();
-        //    var seeder = scope.ServiceProvider.GetRequiredService<Seeder>();
-        //    seeder.Seed();
-        //}
+        /* ---------- 5. STRIPE CONFIGURATION.GLOBAL ---------- */
+        // Obtiene las claves y las expone a StripeConfiguration
+        var stripeSettings = app.Services.GetRequiredService<IOptions<StripeSettings>>().Value;
+        StripeConfiguration.ApiKey = stripeSettings.SecretKey;   // 🔒 solo la clave secreta
 
+        /* ---------- 6. DATABASE SEED (sin cambios) ---------- */
         using (IServiceScope scope = app.Services.CreateScope())
         {
             var env = scope.ServiceProvider.GetRequiredService<IWebHostEnvironment>();
 
+<<<<<<< Updated upstream
             // 🔒 SOLO en entorno local
             if (env.IsDevelopment() || env.IsProduction())
+=======
+            if (env.IsDevelopment() && Environment.MachineName == "TU-PC-NOMBRE")
+>>>>>>> Stashed changes
             {
                 try
                 {
@@ -103,10 +108,7 @@ public class Program
             }
         }
 
-
-
-
-        // Habilitar Swagger y CORS para desarrollo o producción
+        /* ---------- 7. MIDDLEWARE ---------- */
         if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
         {
             app.UseSwagger();
@@ -115,17 +117,19 @@ public class Program
 
         //app.UseHttpsRedirection();
         app.UseStaticFiles();
-        app.UseCors(policy =>
-        {
-            policy.AllowAnyOrigin()
-                .AllowAnyHeader()
-                .AllowAnyMethod();
-        }); // Aplica la política de CORS
-
+        app.UseCors(policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
         app.UseAuthentication();
         app.UseAuthorization();
         app.MapControllers();
         app.Run();
     }
+}
+
+/* ---------- 8. POCO con las tres claves de Stripe ---------- */
+public class StripeSettings
+{
+    public string SecretKey { get; set; } = string.Empty;
+    public string PublishableKey { get; set; } = string.Empty;
+    public string Domain { get; set; } = string.Empty;
 }

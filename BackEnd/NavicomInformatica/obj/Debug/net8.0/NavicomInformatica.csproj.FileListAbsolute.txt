@@ -164,11 +164,6 @@ C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\obj\Debug\net8.0\Nav
 C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\obj\Debug\net8.0\NavicomInformatica.sourcelink.json
 C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\obj\Debug\net8.0\staticwebassets.development.json
-C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\obj\Debug\net8.0\staticwebassets\msbuild.NavicomInformatica.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\obj\Debug\net8.0\staticwebassets\msbuild.build.NavicomInformatica.props
-C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.NavicomInformatica.props
-C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.NavicomInformatica.props
-C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\obj\Debug\net8.0\scopedcss\bundle\NavicomInformatica.styles.css
 C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\obj\Debug\net8.0\NavicomI.FEE005A6.Up2Date
 C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\obj\Debug\net8.0\NavicomInformatica.dll
@@ -379,6 +374,7 @@ C:\Users\jmtor\Documents\Navicom_CP\BackEnd\NavicomInformatica\obj\Debug\net8.0\
 C:\Users\jmtor\Documents\Navicom_CP\BackEnd\NavicomInformatica\obj\Debug\net8.0\NavicomInformatica.pdb
 C:\Users\jmtor\Documents\Navicom_CP\BackEnd\NavicomInformatica\obj\Debug\net8.0\NavicomInformatica.genruntimeconfig.cache
 C:\Users\jmtor\Documents\Navicom_CP\BackEnd\NavicomInformatica\obj\Debug\net8.0\ref\NavicomInformatica.dll
+<<<<<<< Updated upstream
 C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Microsoft.Extensions.Caching.Abstractions.dll
 C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
 C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
@@ -390,3 +386,18 @@ C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\System
 C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\System.Text.Json.dll
 C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\runtimes\linux-musl-s390x\native\libe_sqlite3.so
 C:\Users\User\Desktop\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+=======
+C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\MailKit.dll
+C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\MimeKit.dll
+C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\NavicomInformatica.staticwebassets.endpoints.json
+C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\obj\Debug\net8.0\staticwebassets.build.json.cache
+C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\Stripe.net.dll
+C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+C:\Users\jmtor\Documents\Navicom\BackEnd\NavicomInformatica\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+>>>>>>> Stashed changes

@@ -14,7 +14,7 @@ function ProductoDetalle() {
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [cantidad, setCantidad] = useState(0);
+    const [cantidad, setCantidad] = useState(1);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const { user, token } = useContext(AuthContext);
     const { updateCartCount } = useContext(CartContext);
@@ -171,10 +171,10 @@ function ProductoDetalle() {
                         id="cantidad"
                         value={cantidad}
                         onChange={(e) => {
-                            const value = parseInt(e.target.value) || 0;
-                            setCantidad(Math.max(0, Math.min(value, product.stock)));
+                            const value = parseInt(e.target.value) || 1;
+                            setCantidad(Math.max(1, Math.min(value, product.stock)));
                         }}
-                        min="0"
+                        min="1"
                         max={product.stock}
                     />
                 </div>

@@ -1,9 +1,10 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { validation } from "../utils/validationForm";
-import { LOGIN_ENDPOINT, REGISTER_ENDPOINT } from "../../config";
+import { LOGIN_ENDPOINT, REGISTER_ENDPOINT, EMAIL_URL } from "../../config";
 import { AuthContext } from "../context/AuthProvider";
 import "./styles/Module.LoginRegister.css";
+const URL = "http://localhost:5173/";
 
 // Función para decodificar el token JWT (solo la parte del payload)
 const parseJwt = (token) => {
@@ -111,7 +112,6 @@ function LoginRegister() {
         formData.append("Email", userData.email);
         formData.append("Password", userData.password);
       } else {
-        formData.append("Id", userData.id);
         formData.append("Nombre", userData.name);
         formData.append("Apellidos", userData.apellido);
         formData.append("Email", userData.email);
@@ -160,6 +160,30 @@ function LoginRegister() {
             navigate("/Perfil");
           }
         } else {
+          fetch(EMAIL_URL, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              para: userData.email,
+              asunto: "Bienvenido a Navicom Informática",
+              contenido: `<!DOCTYPE html><html lang=\"es\"><head><meta charset=\"UTF-8\" /><style>body {font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;} .container {background-color: #ffffff; border: 1px solid #dddddd; padding: 30px; max-width: 600px; margin: auto; border-radius: 8px;} .header {background-color: #0157CA; color: white; padding: 20px; text-align: center; border-radius: 6px 6px 0 0;} .content {margin-top: 20px; color: #333333;} .button {display: inline-block; margin-top: 20px; padding: 10px 20px; background-color: #6CAAF1; color: white; text-decoration: none; border-radius: 4px;} .footer {margin-top: 30px; font-size: 12px; color: #888888; text-align: center;}</style></head><body><div class=\"container\"><div class=\"header\"><h1>¡Bienvenido a Nuestra Tienda!</h1></div><div class=\"content\"><p>Hola ${userData.name},</p><p>Gracias por registrarte en nuestra tienda. Estamos felices de tenerte a bordo.</p><p>¡Explora nuestros productos y disfruta de tu experiencia de compra!</p><a class=\"button\" href=\"${URL}\">Ir a la tienda</a></div><div class=\"footer\">&copy; 2025 NavicomInformática. Todos los derechos reservados.</div></div></body></html>`
+            })
+          })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Error al enviar el correo');
+            }
+            return response.json();
+          })
+          .then(data => {
+            console.log('Correo enviado con éxito:', data);
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+
           console.log("Registro exitoso");
           setIsLogin(true);
         }

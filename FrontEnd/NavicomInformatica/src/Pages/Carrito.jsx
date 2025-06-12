@@ -2,7 +2,11 @@ import React, { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
-import { USER_CART, UPDATE_QUANTITY_ENDPOINT, DELETE_PRODUCT_CART_ENDPOINT, BASE_IMAGE_URL} from "../../config";
+import { USER_CART, UPDATE_QUANTITY_ENDPOINT, DELETE_PRODUCT_CART_ENDPOINT, BASE_IMAGE_URL, STRIPE} from "../../config";
+
+import { loadStripe } from "@stripe/stripe-js";
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PK);
+
 
 import "./styles/Module.Carrito.css";
 
@@ -139,7 +143,31 @@ function Carrito() {
     const urlCompleta = `${BASE_IMAGE_URL}${brand}_${modelConGuiones}_1.jpg`;
     return urlCompleta
   }
-  
+
+  const handleCheckout = async () => {
+    if (!cart.length) return;
+
+    const items = cart.map(p => ({
+      productName: `${p.productBrand} ${p.productModel}`,
+      description: p.productDescription,
+      imageUrl: reemplazarEspaciosPorGuionBajo(p.productBrand, p.productModel),
+      quantity: p.quantity,
+      unitAmountCents: Math.round(p.productPrice * 100)
+    }));
+
+    try {
+      const r = await fetch(STRIPE, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items })
+      });
+      const { sessionId } = await r.json();
+      const stripe = await stripePromise;
+      await stripe.redirectToCheckout({ sessionId });
+    } catch (err) {
+      console.error("Error Stripe:", err);
+    }
+  };
 
   return (
     <div className="carrito-container">
@@ -185,7 +213,7 @@ function Carrito() {
 
             <div className="cart-summary">
               <p><strong>Total:</strong> {total.toFixed(2)} €</p>
-              <button onClick={() => console.log("Pago realizado")}>Proceder al pago</button>
+              <button onClick={handleCheckout}>Proceder al pago</button>
             </div>
           </>
         )

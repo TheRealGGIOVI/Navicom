@@ -20,6 +20,7 @@ wwwroot\images\HP_EliteDesk_800_G4_3.jpg
 wwwroot\images\HP_EliteDesk_800_G4_4.jpg
 wwwroot\images\HP_ProBook_450_G7_1.jpg
 wwwroot\images\HP_ProBook_450_G7_2.jpg
+wwwroot\images\HP_ProBook_450_G7_3.png
 wwwroot\images\HP_ProBook_450_G8_1.jpg
 wwwroot\images\HP_ProBook_450_G8_2.jpg
 wwwroot\images\HP_ProDesk_600_G4_1.jpg
@@ -58,3 +59,6 @@ wwwroot\images\Lenovo_USB-C_Travel_HUB_1.jpg
 wwwroot\images\Lenovo_USB-C_Travel_HUB_2.jpg
 wwwroot\images\Meca_Oprimida_1.png
 wwwroot\images\MSI_Monitor_to_guapo_1.jpg
+wwwroot\images\p_p_1.png
+wwwroot\images\p_p_2.png
+wwwroot\images\p_p_3.png

@@ -1,7 +1,12 @@
-﻿namespace NavicomInformatica.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace NavicomInformatica.Models
 {
     public class User
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; } 
         public string Nombre { get; set; }
         public string Apellidos { get; set; }

@@ -83,45 +83,38 @@ namespace NavicomInformatica.Controllers
         public async Task<IActionResult> AddUserAsync([FromForm] UserCreateDTO newUser)
         {
             if (newUser == null)
-            {
                 return BadRequest("Información necesaria no enviada.");
-            }
 
             if (!ModelState.IsValid)
-            {
                 return BadRequest(ModelState);
-            }
 
             if (string.IsNullOrEmpty(newUser.Email))
-            {
                 return BadRequest("El email es obligatorio.");
-            }
 
             var existingEmailUser = await _userRepository.GetUserByEmailAsync(newUser.Email);
             if (existingEmailUser != null)
-            {
                 return Conflict("Email existente, por favor introduzca otro Email.");
-            }
 
             try
             {
                 var userToAdd = new User
                 {
-                    Id = newUser.Id,
                     Nombre = newUser.Nombre ?? string.Empty,
                     Apellidos = newUser.Apellidos,
                     Email = newUser.Email,
                     Password = newUser.Password ?? string.Empty,
-                    Rol = newUser.Rol ?? "user" // Valor por defecto "user" si no se especifica
+                    Rol = newUser.Rol ?? "user"
                 };
 
                 var passwordHasher = new PasswordHasher();
                 userToAdd.Password = passwordHasher.Hash(userToAdd.Password);
 
                 await _userRepository.AddUserAsync(userToAdd);
+                await _context.SaveChangesAsync(); // Ahora userToAdd.Id ya está generado
 
                 var carrito = new Carrito
                 {
+                    Id = userToAdd.Id,       // <- Clave
                     UserId = userToAdd.Id,
                     TotalPrice = 0.0
                 };
@@ -136,9 +129,10 @@ namespace NavicomInformatica.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, "Internal server error: " + ex.Message);
+                return StatusCode(500, $"Internal server error: {ex.Message} | {ex.InnerException?.Message}");
             }
         }
+
 
         [HttpPut("actualizar")]
         [Authorize]

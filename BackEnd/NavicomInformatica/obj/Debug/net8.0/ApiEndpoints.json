@@ -142,6 +142,38 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "NavicomInformatica.Controllers.CheckoutController",
+    "Method": "CreateSession",
+    "RelativePath": "api/Checkout/create-session",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "NavicomInformatica.Controllers.CreateSessionDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NavicomInformatica.Controllers.EmailController",
+    "Method": "SendEmail",
+    "RelativePath": "api/Email",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "NavicomInformatica.DTO.EmailDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "NavicomInformatica.Controllers.ProductController",
     "Method": "AddProductAsync",
     "RelativePath": "api/Product/AddProduct",
@@ -495,11 +527,6 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [
-      {
-        "Name": "Id",
-        "Type": "System.Int64",
-        "IsRequired": false
-      },
       {
         "Name": "Nombre",
         "Type": "System.String",
