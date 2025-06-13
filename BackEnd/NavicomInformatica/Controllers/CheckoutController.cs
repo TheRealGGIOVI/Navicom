@@ -7,8 +7,9 @@ using NavicomInformatica.Models;
 
 namespace NavicomInformatica.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
+    [ApiController]
+    
     public class CheckoutController : ControllerBase
     {
         private readonly StripeSettings _stripe;

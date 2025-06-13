@@ -14,8 +14,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{c9c0ae26-aa77-11d2-b3f0-0000f87570ee}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -24,14 +28,10 @@
               "RelativeDocumentMoniker": "Controllers\\CheckoutController.cs",
               "ToolTip": "C:\\Users\\jmtor\\Documents\\Navicom\\BackEnd\\NavicomInformatica\\Controllers\\CheckoutController.cs",
               "RelativeToolTip": "Controllers\\CheckoutController.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAAuwD4AAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAywD8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-13T09:59:15.122Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{c9c0ae26-aa77-11d2-b3f0-0000f87570ee}"
             }
           ]
         }
