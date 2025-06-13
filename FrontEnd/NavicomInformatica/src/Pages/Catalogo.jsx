@@ -6,6 +6,7 @@ import {
   SORT_ALPHABETICALLY_ENDPOINT,
   FILTER_BY_CATEGORY_ENDPOINT,
   SEARCH_BY_TEXT_ENDPOINT,
+  BASE_IMAGE_URL
 } from "../../config";
 import "./styles/Module.Catalogo.css";
 
@@ -133,9 +134,6 @@ function Catalogo() {
     setPage(newPage);
     handleFetch();
   };
-
-  // Construir la URL base para las imágenes
-  const BASE_IMAGE_URL = "https://localhost:7069/images/"; // Ajustado al puerto correcto
 
   return (
     <div className="catalogo-container">

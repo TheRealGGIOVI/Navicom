@@ -1,208 +1,150 @@
-/* Contenedor principal de la vista Home */
+/* Module.Home.css */
+
+/* Reset box-sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Contenedor principal */
 .home-container {
-    max-width: 1200px; /* Volvemos al ancho original */
-    margin: 0 auto;
-    padding: 20px; /* Volvemos al padding original */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
 }
 
-/* .welcome-section {
-    text-align: center;
-    padding: 40px 0;
-}
-
-.text-box {
-    background-color: #f9f9f9;
-    padding: 15px 20px;
-    margin: 10px 0; 
-    border-radius: 10px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-} */
-
+/* HERO SECTION */
 .welcome-section {
-    width: 100%;
-    height: 100vh; /* Altura total de la pantalla */
-    background-image: url('../../img/tienda_por_fuera.jpg'); /* <<--- Aquí cambias la ruta de tu imagen */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url('../../img/tienda_por_fuera.jpg') center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
 }
 
-.text-img h1{
-    color: white;
-    font-size: 2.2rem;
+.hero-text {
+  max-width: 90%;
+  padding: clamp(1rem, 5vw, 3rem);
+  background-color: rgba(0,0,0,0.5);
+  border-radius: 1rem;
+  text-align: center;
 }
 
-.text-img p{
-    color: white;
-    font-size: 1.2rem;
+.hero-text h1 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(2rem, 6vw, 3rem);
+  color: #fff;
 }
 
-.text-box {
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 2rem 3rem;
-    border-radius: 10px;
-    color: white;
+.hero-text p {
+  margin: 0;
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  color: #eee;
 }
 
-.text-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.text-box h1 {
-    font-size: 2.2rem; /* Volvemos al tamaño original */
-    color: #333;
-    margin: 0 0 10px 0;
-}
-
-.text-box p {
-    font-size: 1.2rem; /* Volvemos al tamaño original */
-    color: #666;
-    margin: 0;
-}
-
-/* Sección de productos */
+/* PRODUCTS SECTION */
 .products-section {
-    padding: 40px 0; /* Volvemos al padding original */
+  padding: 4rem 0;
 }
 
-.products-section .text-box h2 {
-    font-size: 1.8rem; /* Volvemos al tamaño original */
-    color: #333;
-    margin: 0;
+.section-header {
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
-/* Cuadrícula de productos */
+.section-header h2 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  color: #333;
+  margin: 0;
+}
+
+/* GRID de productos: 1–2–3–4 columnas exactas */
 .products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Volvemos al tamaño original */
-    gap: 20px; /* Volvemos al espaciado original */
-    padding: 20px 0; /* Volvemos al padding original */
-    justify-items: center;
+  display: grid;
+  gap: 1.5rem;
+  justify-items: center;
+  align-items: stretch;                 /* asegura celdas de igual altura */
+  grid-template-columns: repeat(1, 1fr); /* 1 columna por defecto */
+}
+@media (min-width: 150px) and (max-width: 642px) {
+  .products-grid {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+}
+/* 2 columnas entre 480px y 767px */
+@media (min-width: 643px) and (max-width: 982px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
 }
 
-/* Mensaje de carga */
+/* 3 columnas entre 768px y 1199px */
+@media (min-width: 983px) and (max-width: 1302px) {
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+/* 4 columnas a partir de 1200px */
+@media (min-width: 1303px) {
+  .products-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+/* ─── FIX PADDING MÓVIL ≤480px ─── */
+/* ─── FIX DESPLAZAMIENTO A ≤480px ─── */
+@media (max-width: 480px) {
+  /* Asegúrate de que la grid ocupa todo el ancho menos el padding */
+  .products-grid {
+    width: calc(100% - 2rem) !important;    /* 100% menos 1rem a cada lado */
+    padding: 0 1rem !important;              /* 1rem de padding lateral */
+    box-sizing: border-box !important;
+  }
+
+  /* Si el <h2> se te hace muy pequeño, fuerza un tamaño mínimo */
+  .section-header h2 {
+    font-size: 1.2rem !important;
+  }
+}
+
+
+/* Mensaje de carga ocupa toda la fila */
 .products-grid p {
-    font-size: 1.2rem; /* Volvemos al tamaño original */
-    color: #666;
-    text-align: center;
-    width: 100%;
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: #666;
 }
 
-/* Contenedor del botón "Mostrar más productos" */
+/* Botón "Mostrar más productos" */
 .more-products-button {
-    text-align: center;
-    margin-top: 30px; /* Volvemos al margen original */
+  text-align: center;
+  margin: 2rem 0;
 }
 
-/* Estilo del enlace "Mostrar más productos" */
 .more-products-link {
-    display: inline-block;
-    padding: 10px 20px; /* Volvemos al padding original */
-    background-color: #455a64;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px; /* Volvemos al borde original */
-    font-size: 1.1rem; /* Volvemos al tamaño original */
-    transition: background-color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+  padding: 0.75em 1.5em;
+  background-color: #455a64;
+  color: #fff;
+  border-radius: 0.5rem;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  text-decoration: none;
+  transition: transform 0.2s, background-color 0.2s;
 }
 
 .more-products-link:hover {
-    background-color: #607d8b;
-    transform: translateY(-2px); /* Volvemos al efecto original */
+  background-color: #607d8b;
+  transform: translateY(-2px);
 }
 
-/* Responsividad */
-@media (max-width: 1024px) {
-    .products-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    }
-
-    .text-box h1 {
-        font-size: 2rem;
-    }
-
-    .text-box p {
-        font-size: 1.1rem;
-    }
-
-    .products-section .text-box h2 {
-        font-size: 1.6rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .products-grid {
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    }
-
-    .text-box h1 {
-        font-size: 1.8rem;
-    }
-
-    .text-box p {
-        font-size: 1rem;
-    }
-
-    .products-section .text-box h2 {
-        font-size: 1.4rem;
-    }
-
-    .welcome-section,
-    .products-section {
-        padding: 20px 0;
-    }
-}
-
-@media (max-width: 480px) {
-    .products-grid {
-        grid-template-columns: 1fr; /* Solo 1 columna en móviles */
-        gap: 15px;
-        padding: 15px 0;
-        justify-items: center; /* Centra las tarjetas horizontalmente */
-    }
-
-    /* Ajustamos el contenedor de la tarjeta para que esté perfectamente centrado */
-    .products-grid > * {
-        width: 100%;
-        max-width: 250px; /* Mantenemos el ancho original de la tarjeta */
-        margin: 0 auto; /* Centra la tarjeta horizontalmente */
-    }
-
-    .text-box h1 {
-        font-size: 1.5rem;
-    }
-
-    .text-box p {
-        font-size: 0.9rem;
-    }
-
-    .products-section .text-box h2 {
-        font-size: 1.2rem;
-    }
-
-    .more-products-link {
-        padding: 8px 16px;
-        font-size: 1rem;
-    }
-
-    .welcome-section,
-    .products-section {
-        padding: 15px 0;
-    }
-
-    .home-container {
-        padding: 10px 0; /* Reducimos el padding lateral para centrar mejor */
-    }
+/* Ocultar iframe privado de Stripe */
+iframe[name^="__privateStripeController"] {
+  display: none !important;
 }

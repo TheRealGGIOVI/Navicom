@@ -158,6 +158,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "NavicomInformatica.Controllers.CheckoutController",
+    "Method": "Success",
+    "RelativePath": "api/Checkout/success",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sessionId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "NavicomInformatica.Controllers.EmailController",
     "Method": "SendEmail",
     "RelativePath": "api/Email",

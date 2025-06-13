@@ -1,91 +1,101 @@
+/* Module.Card.css */
+
+/* Ajusta estos valores si quieres otro tamaño */
+:root {
+  --card-width: 280px;
+  --card-height: 400px;
+}
+
+/* enlace de la tarjeta */
 .card-link {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
+/* tarjeta */
 .card {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 250px;
-    margin: 10px;
-    overflow: hidden;
+  width: var(--card-width);
+  height: var(--card-height);
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
 }
 
+/* efecto hover */
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
+/* contenedor de imagen, altura fija */
 .card-img-container {
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
+/* propia imagen centrada y cover */
 .card-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* Línea divisoria */
+/* línea divisoria fina y en color secundario */
 .card hr {
-    border: 0;
-    border-top: 1px solid #e0e0e0;
-    margin: 0;
+  border: none;
+  border-top: 1px solid var(--secondary);
+  margin: 0;
 }
 
+/* zona de información, ocupa el resto de espacio */
 .card-info {
-    padding: 15px; 
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
 }
 
-
+/* parte superior (marca y modelo) */
 .card-info-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
+  margin-bottom: 1rem;
 }
 
 .card-naming h3 {
-    font-size: 1.2rem;
-    color: #333;
-    margin: 0;
+  font-size: 1.25rem;
+  margin: 0 0 0.5rem;
+  color: #333;
 }
 
 .card-naming p {
-    font-size: 1rem;
-    color: #666;
-    margin: 5px 0 0 0;
+  font-size: 1rem;
+  margin: 0;
+  color: #666;
 }
 
+/* parte inferior (stock y precio) */
 .card-info-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    min-height: 32px;
-    gap: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .card-stock {
-    font-size: 1rem;
-    color: #666;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    height: 100%;
+  font-size: 0.95rem;
+  color: #666;
+  margin: 0;
 }
 
 .card-price {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #333;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    height: 100%;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
 }
