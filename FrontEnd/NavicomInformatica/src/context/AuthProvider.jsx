@@ -11,13 +11,10 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const storedToken = sessionStorage.getItem("token") || localStorage.getItem("token");
-        console.log("Token almacenado encontrado en AuthProvider:", storedToken);
         if (storedToken) {
             try {
                 const decodedUser = jwtDecode(storedToken);
-                console.log("Token decodificado en AuthProvider:", decodedUser);
                 const role = decodedUser?.role || decodedUser?.Role || decodedUser?.rol || "user";
-                console.log("Role extraído en AuthProvider:", role);
                 setUser({ ...decodedUser, role });
                 setToken(storedToken);
             } catch (error) {
@@ -28,15 +25,12 @@ export const AuthProvider = ({ children }) => {
                 setToken(null);
             }
         } else {
-            console.log("No se encontró token en sessionStorage ni localStorage");
         }
     }, []);
 
     const login = async (token, rememberMe) => {
         const decodedUser = jwtDecode(token);
-        console.log("Usuario decodificado en login:", decodedUser);
         const role = decodedUser?.role || decodedUser?.Role || decodedUser?.rol || "user";
-        console.log("Role extraído en login:", role);
         setUser({ ...decodedUser, role });
         setToken(token);
         if (rememberMe) {
@@ -67,8 +61,6 @@ export const AuthProvider = ({ children }) => {
                 if (!response.ok) {
                     throw new Error("Error al mergear carrito");
                 }
-
-                console.log("Carrito temporal mergeado correctamente");
                 clearTempCart();
             } catch (err) {
                 console.error("Fallo al mergear carrito:", err);
@@ -81,12 +73,7 @@ export const AuthProvider = ({ children }) => {
         setToken(null);
         sessionStorage.removeItem("token");
         localStorage.removeItem("token");
-        console.log("Sesión cerrada en AuthProvider");
     };
-
-    // Depuración del estado antes de pasar al contexto
-    console.log("Estado actual en AuthProvider - User:", user);
-    console.log("Estado actual en AuthProvider - Token:", token);
 
     return (
         <AuthContext.Provider value={{ user, token, login, logout }}>

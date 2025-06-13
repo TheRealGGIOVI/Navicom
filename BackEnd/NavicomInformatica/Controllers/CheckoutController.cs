@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Stripe.Checkout;
+using NavicomInformatica.Models;
 
 namespace NavicomInformatica.Controllers
 {
@@ -37,11 +38,68 @@ namespace NavicomInformatica.Controllers
                 Mode = "payment",
                 SuccessUrl = $"{_stripe.Domain}/success?session_id={{CHECKOUT_SESSION_ID}}",
                 CancelUrl = $"{_stripe.Domain}/cancel",
-                LineItems = lineItems
+                LineItems = lineItems,
+                ShippingAddressCollection = new SessionShippingAddressCollectionOptions
+                {
+                    AllowedCountries = new List<string>
+                    {
+                        "ES",
+                    }
+                }
             };
 
             var session = new SessionService().Create(options);
             return Ok(new { sessionId = session.Id });
+        }
+
+
+        [HttpGet("success")]
+        public async Task<IActionResult> Success([FromQuery] string sessionId)
+        {
+            var sessionService = new SessionService();
+            var session = await sessionService.GetAsync(sessionId, new SessionGetOptions
+            {
+                Expand = new List<string> { "customer_details" }
+            });
+
+            // Listamos las líneas sin expandir nada
+            var lineItems = await sessionService.ListLineItemsAsync(sessionId, new SessionLineItemListOptions
+            {
+                Limit = 100
+            });
+
+            // 3) Guardar en la base de datos (si no existe aún)
+            //if (!await _db.Orders.AnyAsync(o => o.SessionId == session.Id))
+            //{
+            //    var order = new Order
+            //    {
+            //        SessionId = session.Id,
+            //        AmountTotal = session.AmountTotal ?? 0,
+            //        Currency = session.Currency,
+            //        CustomerEmail = session.CustomerDetails?.Email,
+            //        CreatedAt = DateTime.UtcNow
+            //    };
+            //    _db.Orders.Add(order);
+            //    await _db.SaveChangesAsync();
+            //}
+
+            var result = new
+            {
+                session.Id,
+                session.AmountTotal,
+                session.Currency,
+                customerEmail = session.CustomerDetails?.Email,
+                items = lineItems.Data.Select(li => new {
+                    id = li.Id,
+                    quantity = li.Quantity,
+                    // aquí usamos Description, que será tu ProductData.Name
+                    productName = li.Description,
+                    unitAmount = li.Price?.UnitAmount,
+                    currency = li.Price?.Currency
+                })
+            };
+
+            return Ok(result);
         }
     }
 

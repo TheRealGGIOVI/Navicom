@@ -128,16 +128,13 @@ function LoginRegister() {
         const datosPromesa = await response.json();
         if (isLogin) {
           const token = datosPromesa.accessToken;
-          console.log("Inicio de sesión exitoso");
-          console.log("Token recibido:", token);
+          
 
           // Decodificar el token para obtener el rol
           const decodedToken = parseJwt(token);
-          console.log("Token decodificado:", decodedToken);
 
           // Extraer el rol de forma flexible
           let role = decodedToken?.role || decodedToken?.Role || decodedToken?.rol;
-          console.log("Rol extraído:", role);
 
           if (!role) {
             console.error("No se encontró el claim del rol en el token.");
@@ -148,10 +145,8 @@ function LoginRegister() {
           // Guardar el rol y el token en localStorage
           localStorage.setItem('token', token);
           localStorage.setItem('role', role);
-          console.log("Rol guardado en localStorage:", localStorage.getItem('role'));
 
           login(token, rememberMe);
-          console.log("Redirigiendo según el rol...");
           
           // Redirigir según el rol
           if (role.toLowerCase() === 'admin') {
@@ -178,7 +173,6 @@ function LoginRegister() {
             return response.json();
           })
           .then(data => {
-            console.log('Correo enviado con éxito:', data);
           })
           .catch(error => {
             console.error('Error:', error);

@@ -60,8 +60,6 @@ function Catalogo() {
         };
       }
 
-      console.log("Haciendo solicitud a:", url, "con cuerpo:", body);
-
       const formData = new FormData();
       Object.entries(body).forEach(([key, value]) => {
         formData.append(key, value);
@@ -90,7 +88,6 @@ function Catalogo() {
       }
 
       const data = await response.json();
-      console.log("Respuesta recibida:", data);
 
       if (Array.isArray(data.items)) {
         setProducts(data.items);

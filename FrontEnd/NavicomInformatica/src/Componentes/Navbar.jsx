@@ -16,18 +16,6 @@ const Navbar = () => {
   // Obtener el role desde el user
   const role = user?.role;
 
-  // Depuración: Mostrar los valores de token y role
-  useEffect(() => {
-    console.log("Token encontrado en Navbar desde AuthContext:", token);
-    console.log("Role encontrado en Navbar desde AuthContext:", role);
-    console.log("Usuario completo en Navbar:", user);
-    if (token && role && role.toLowerCase() === 'admin') {
-      console.log("Condición satisfecha: debería mostrar el enlace 'Panel de Admin'");
-    } else {
-      console.log("Condición no satisfecha: no se mostrará el enlace 'Panel de Admin'");
-    }
-  }, [token, role, user]);
-
   return (
     <nav className="navbar">
      <div className="navbar-container">  
