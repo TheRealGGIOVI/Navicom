@@ -11,7 +11,7 @@ import Catalogo from './Pages/Catalogo';
 import Carrito from './Pages/Carrito';
 import AdminPanel from './Pages/AdminPanel';  
 import ErrorPage from './Pages/ErrorPage';  
-import SuccessTest from './Pages/SuccessTest';
+import Success from './Pages/Success';
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
         <Route path="catalogo" element={<Catalogo />} />
         <Route path="Carrito" element={<Carrito />} />
         <Route path="admin-panel" element={<AdminPanel />} /> 
-        <Route path="success-test" element={<SuccessTest />} />
+        <Route path="success" element={<Success />} />
         <Route path="*" element={<ErrorPage/>} />
       </Route>
     </Routes>
