@@ -89,9 +89,10 @@ La aplicación sigue una arquitectura cliente-servidor con separación de respon
 El proyecto está desplegado en AWS mediante instancias EC2:
 
 1. EC2 Ubuntu para backend y frontend.
-2. Backend como servicio con .NET y PostgreSQL.
-3. Frontend servido estáticamente desde Apache/Nginx.
-4. Uso de GitHub Actions para despliegue continuo.
+2. Backend como servicio con .NET.
+3. BBDD a través de PostgreSQL.
+4. Frontend servido estáticamente desde Nginx.
+5. Implementación de HTTPS con CerBot.
 
 
 ---
