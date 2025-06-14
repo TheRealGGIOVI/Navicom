@@ -21,7 +21,7 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-        builder.WebHost.UseUrls("https://0.0.0.0:7069");
+        builder.WebHost.UseUrls("http://0.0.0.0:7069");
 
 
         /* ---------- 1. INYECCIÓN DE SERVICIOS EXISTENTES ---------- */
