@@ -56,8 +56,7 @@ Para comenzar a utilizar **Navicom Informática**:
 
 1. Clona el repositorio y sigue los pasos de instalación.
 2. Accede a la aplicación desde tu navegador:
-   - **Local:** `http://localhost:3000`
-   - **Desplegado:** [https://navicominformatica.com](https://navicominformatica.com)
+   - [https://navicominformatica.com](https://navicominformatica.com)
 3. Crea una cuenta o inicia sesión.
 4. Explora el catálogo, añade productos al carrito y realiza tu compra.
 5. Si eres administrador, accede al panel para gestionar productos y usuarios.
