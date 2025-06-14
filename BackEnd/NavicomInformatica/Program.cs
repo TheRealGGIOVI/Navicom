@@ -21,15 +21,8 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-        builder.WebHost.ConfigureKestrel(serverOptions =>
-        {
-            serverOptions.ListenAnyIP(7069, listenOptions =>
-            {
-                listenOptions.UseHttps(
-                    "/etc/letsencrypt/live/navicominformatica.com/cert.pfx",
-                    "navicompfxpass");
-            });
-        });
+        builder.WebHost.UseUrls("https://0.0.0.0:7069");
+
 
         /* ---------- 1. INYECCIÓN DE SERVICIOS EXISTENTES ---------- */
         builder.Services.AddControllers();
