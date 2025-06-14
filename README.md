@@ -39,7 +39,6 @@ Navicom ofrece una experiencia completa de compra online, con funcionalidades av
 
 ## 🔧 Instalación
 
-> *Próximamente se incluirán los comandos completos para la instalación del frontend y backend.*
 
 ### 📦 Requisitos
 
