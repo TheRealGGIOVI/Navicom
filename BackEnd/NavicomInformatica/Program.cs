@@ -26,8 +26,8 @@ public class Program
             serverOptions.ListenAnyIP(7069, listenOptions =>
             {
                 listenOptions.UseHttps(
-                    "/etc/letsencrypt/live/navicominformatica.com/fullchain.pem",
-                    "/etc/letsencrypt/live/navicominformatica.com/privkey.pem");
+                    "/etc/letsencrypt/live/navicominformatica.com/cert.pfx",
+                    "navicompfxpass");
             });
         });
 
