@@ -30,7 +30,8 @@ align-items: center;
 .nav-links a {
   white-space: nowrap;
   /* flex:1 1 0; */
-  color: var(--primary);
+  /* color: var(--primary); */
+  color:#333;
   text-decoration: none;
   font-size: 1rem;
 /*   padding: 8px 12px; */
@@ -40,7 +41,6 @@ align-items: center;
 
 .nav-links a:hover {
    background-color: var(--secondary); 
-   color: white; 
   transform: translateY(-2px);
 }
 
@@ -56,7 +56,6 @@ align-items: center;
 
 .nav-links .admin-panel-link:hover {
   background-color: var(--secondary);
-  color: white;
   transform: translateY(-1px);
 }
 
@@ -80,7 +79,6 @@ align-items: center;
   display: flex;
   align-items: center;
   gap: 8px;
-  color: white;
   text-decoration: none;
 }
 
@@ -94,11 +92,8 @@ align-items: center;
 .profile p {
   margin: 0;
   font-size: 1rem;
-  color: var(--primary);
-}
-
-.profile:hover p {
-  color: white;
+  /* color: var(--primary); */
+  color:#333;
 }
 
 .menu-btn {
@@ -157,7 +152,8 @@ align-items: center;
 @media (max-width: 860px) {
   .menu-btn {
     display: block;
-    color: var(--primary);
+    /* color: var(--primary); */
+    color: #333;
     align-self: center;
     margin-bottom: 0;
     
@@ -168,7 +164,7 @@ align-items: center;
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 150px; /* Ajustado para que no se superponga con el header */
+    top: 90px; /* Ajustado para que no se superponga con el header */
     left: 0;
     width: 100%;
     align-items: center;
@@ -179,6 +175,10 @@ align-items: center;
 
   .nav-links.open {
     display: flex;
+  }
+
+  .nav-links a:hover{
+      color:white;
   }
 
   .nav-links a,
@@ -198,23 +198,27 @@ align-items: center;
   }
 } 
 /* Media Query para pantallas menores a 768px */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .menu-btn {
     display: block;
-    color: var(--primary);
+    /* color: var(--primary); */
+    color: #333;
   }
 
   .nav-links {
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 90px; /* Ajustado para que no se superponga con el header */
+    top: 150px; /* Ajustado para que no se superponga con el header */
     left: 0;
     width: 100%;
     align-items: center;
     background-color: var(--secondary);
     padding: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .nav-links a:hover{
+    color:white;
   }
 
   .nav-links.open {

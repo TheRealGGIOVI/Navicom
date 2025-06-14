@@ -1,21 +1,21 @@
-import Header from "../Componentes/Header";
-import Footer from "../Componentes/Footer";
 import "./styles/Module.SobreNosotros.css";
 
 function SobreNosotros() {
     return (
         <>
             <div className="main-content">
-                {/* Sección Introductoria */}
+                <section className="page-title-section">
+                    <h1 className="page-title">¿Quiénes somos?</h1>
+                </section>
                 <section className="intro-section">
                     <div className="text-box">
                         <p>
                             Navicom Informática es una empresa de servicio de mantenimiento preventivo, correctivo y reparación de ordenadores, creada para brindar soporte técnico en mantenimiento, asesorías y reparación de ordenadores, con servicios de calidad y asegurando la satisfacción del usuario. También prestamos el servicio de venta de ordenadores, partes, accesorios y establecimiento de redes locales e intranets.
                         </p>
                     </div>
-                    <div className="button-box">
+                    {/* <div className="button-box">
                         <a href="/contacto" className="contact-button">Contáctanos</a>
-                    </div>
+                    </div> */}
                 </section>
 
                 {/* Sección de Valores y Misión */}

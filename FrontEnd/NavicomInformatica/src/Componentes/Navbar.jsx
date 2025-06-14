@@ -2,9 +2,9 @@ import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
 import { CartContext } from "../context/CartContext"
-import Usuario from "../img/icons8-usuario-30 - copia.png";
-import UsuarioHover from "../img/icons8-usuario-30.png";
-import Carrito from "../img/carrito.png";
+import Usuario from "../img/icono-negro.png";
+// import UsuarioHover from "../img/icons8-usuario-30.png";
+import Carrito from "../img/carrito_negro.png";
 import "./styles/Module.Navbar.css";
 
 const Navbar = () => {
@@ -38,8 +38,8 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/sobre-nosotros" onClick={() => setIsOpen(false)}>
-              Sobre Nosotros
+            <Link to="/contacto" onClick={() => setIsOpen(false)}>
+              Contacto
             </Link>
           </li>
           {token && role && role.toLowerCase() === 'admin' && (
@@ -53,7 +53,8 @@ const Navbar = () => {
 
         <div className="profile" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
           <Link to={user ? "/Perfil" : "/InicioSesion"} onClick={() => setIsOpen(false)}>
-            <img src={hover ? UsuarioHover : Usuario} alt="Perfil de usuario" className="user-icon" />
+            {/* <img src={hover ? UsuarioHover : Usuario} alt="Perfil de usuario" className="user-icon" /> */}
+            <img src={Usuario} alt="Perfil de usuario" className="user-icon" />
             <p>{user ? "Ver Perfil" : "Iniciar Sesión"}</p>
           </Link>
         </div>

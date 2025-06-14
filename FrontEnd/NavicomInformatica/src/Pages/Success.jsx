@@ -9,10 +9,10 @@ function useQuery() {
 
 export default function SuccessPage() {
   const query = useQuery();
-  const sessionId = query.get("session_id"); // ojo: “session_id” con guión bajo
-  const [data, setData]     = useState(null);
+  const sessionId = query.get("session_id");
+  const [data, setData]       = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError]    = useState(null);
+  const [error, setError]     = useState(null);
 
   useEffect(() => {
     if (!sessionId) {
@@ -20,6 +20,7 @@ export default function SuccessPage() {
       setLoading(false);
       return;
     }
+
     fetch(`http://52.54.146.10:7069/api/checkout/success?sessionId=${sessionId}`)
       .then(res => {
         if (!res.ok) throw new Error(res.statusText);
@@ -33,17 +34,21 @@ export default function SuccessPage() {
   if (loading) return <div className="sp-container">Cargando pedido…</div>;
   if (error)   return <div className="sp-container sp-error">Error: {error}</div>;
 
+  // Aquí usamos camelCase, que es como viene en el JSON
+  const { amountTotal, currency, customerEmail, items } = data;
+
   return (
     <div className="sp-container">
       <h1>✅ ¡Pago confirmado!</h1>
       <p>
-        <strong>Total:</strong> { (data.AmountTotal/100).toFixed(2) } { data.Currency.toUpperCase() }
+        <strong>Total:</strong> {(amountTotal / 100).toFixed(2)}{" "}
+        {currency.toUpperCase()}
       </p>
-      <p><strong>Email:</strong> {data.customerEmail}</p>
+      <p><strong>Email:</strong> {customerEmail}</p>
 
       <h2>Productos:</h2>
       <ul className="sp-items">
-        {data.items.map(item => (
+        {items.map(item => (
           <li key={item.id}>
             {item.quantity}× {item.productName}
           </li>
