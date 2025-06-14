@@ -21,7 +21,15 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-        builder.WebHost.UseUrls("http://0.0.0.0:7069");
+        builder.WebHost.ConfigureKestrel(serverOptions =>
+        {
+            serverOptions.ListenAnyIP(7069, listenOptions =>
+            {
+                listenOptions.UseHttps(
+                    "/etc/letsencrypt/live/navicominformatica.com/fullchain.pem",
+                    "/etc/letsencrypt/live/navicominformatica.com/privkey.pem");
+            });
+        });
 
         /* ---------- 1. INYECCIÓN DE SERVICIOS EXISTENTES ---------- */
         builder.Services.AddControllers();
