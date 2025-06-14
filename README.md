@@ -61,7 +61,7 @@ Para comenzar a utilizar **Navicom Informática**:
 4. Explora el catálogo, añade productos al carrito y realiza tu compra.
 5. Si eres administrador, accede al panel para gestionar productos y usuarios.
 
-> 🎥 [Ver presentación en YouTube](#) *(próximamente)*
+> 🎥 [Ver presentación en YouTube](https://www.youtube.com/watch?v=AP7xSiUjYCM)
 
 ---
 
