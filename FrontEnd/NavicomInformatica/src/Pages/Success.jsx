@@ -32,6 +32,11 @@ export default function SuccessPage() {
         const json = await res.json();
         setData(json);
 
+
+        console.log("BODY ENVIADO A BACKEND:", {
+          SessionId: sessionId,
+          UserId: user.id.toString()
+        });
         // 2. Crear orden en backend
         const createOrderRes = await fetch(MAKE_ORDER, {
           method: "POST",
@@ -91,7 +96,7 @@ export default function SuccessPage() {
               <p className="sp-item-name">{item.productName}</p>
               <p className="sp-item-desc">{item.description}</p>
               <p className="sp-item-info">
-                {item.quantity} × {(item.unitAmount / 100).toFixed(2)}{" "}
+                {item.quantity} x {(item.unitAmount / 100).toFixed(2)}{" "}
                 {item.currency.toUpperCase()}
               </p>
             </div>
