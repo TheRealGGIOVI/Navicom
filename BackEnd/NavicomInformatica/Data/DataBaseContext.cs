@@ -17,6 +17,9 @@ namespace NavicomInformatica.Data
         public DbSet<ProductoImagen>? ProductoImagenes { get; set; }
         public DbSet<Carrito>? Carritos { get; set; }
         public DbSet<CarritoItem>? CarritoItems { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
+
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
@@ -67,6 +70,36 @@ namespace NavicomInformatica.Data
             modelBuilder.Entity<CarritoItem>().Property(ci => ci.PrecioTotalProducto).HasColumnName("preciototalproducto");
             modelBuilder.Entity<CarritoItem>().Property(ci => ci.CarritoId).HasColumnName("carritoid");
             modelBuilder.Entity<CarritoItem>().Property(ci => ci.ProductoId).HasColumnName("productoid");
+            
+            // 🧾 ORDENES
+            modelBuilder.Entity<Order>().ToTable("orders");
+            modelBuilder.Entity<Order>().Property(o => o.Id).HasColumnName("id");
+            modelBuilder.Entity<Order>().Property(o => o.UserId).HasColumnName("userid");
+            modelBuilder.Entity<Order>().Property(o => o.TotalAmount).HasColumnName("totalamount");
+            modelBuilder.Entity<Order>().Property(o => o.Currency).HasColumnName("currency");
+            modelBuilder.Entity<Order>().Property(o => o.CreatedAt).HasColumnName("createdat");
+
+            // 🧾 ORDEN ITEMS
+            modelBuilder.Entity<OrderItem>().ToTable("orderitems");
+            modelBuilder.Entity<OrderItem>().Property(oi => oi.Id).HasColumnName("id");
+            modelBuilder.Entity<OrderItem>().Property(oi => oi.OrderId).HasColumnName("orderid");
+            modelBuilder.Entity<OrderItem>().Property(oi => oi.ProductoId).HasColumnName("productoid");
+            modelBuilder.Entity<OrderItem>().Property(oi => oi.Cantidad).HasColumnName("cantidad");
+            modelBuilder.Entity<OrderItem>().Property(oi => oi.PrecioUnitario).HasColumnName("preciounitario");
+
+            // Relaciones
+            modelBuilder.Entity<Order>()
+                .HasMany(o => o.Items)
+                .WithOne(oi => oi.Order)
+                .HasForeignKey(oi => oi.OrderId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<OrderItem>()
+                .HasOne(oi => oi.Producto)
+                .WithMany()
+                .HasForeignKey(oi => oi.ProductoId)
+                .OnDelete(DeleteBehavior.Restrict);
+            
             // Configuración de User
             modelBuilder.Entity<User>()
                 .HasKey(u => u.Id);
