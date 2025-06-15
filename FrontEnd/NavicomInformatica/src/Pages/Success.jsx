@@ -60,7 +60,7 @@ export default function SuccessPage() {
     };
 
     procesarPago();
-  }, [sessionId, authLoading, user, setCartCount]);
+  }, [sessionId, authLoading, user, updateCartCount]);
 
   if (loading || authLoading) return <div className="sp-container">Cargando pedido…</div>;
   if (error) return <div className="sp-container sp-error">Error: {error}</div>;
