@@ -32,17 +32,11 @@ export default function SuccessPage() {
         const json = await res.json();
         setData(json);
 
-        // 2. Limpiar el carrito visual
-        setCartCount(0);
-        updateCartCount();
-
         // 3. Crear orden en backend
         const body = {
           SessionId: sessionId,
           UserId: user.Id.toString()
         };
-
-        console.log("BODY ENVIADO A BACKEND:", body);
 
         const createOrderRes = await fetch(MAKE_ORDER, {
           method: "POST",
@@ -55,6 +49,9 @@ export default function SuccessPage() {
         }
 
         await createOrderRes.json();
+
+        setCartCount(0);
+        updateCartCount();
 
       } catch (err) {
         console.error("Error en SuccessPage:", err);
