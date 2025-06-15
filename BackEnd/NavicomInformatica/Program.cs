@@ -15,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 // 👉 Stripe
 using Stripe;
 using Microsoft.Extensions.Options;
+using Microsoft.Extensions.FileProviders;
 
 public class Program
 {
@@ -116,6 +117,12 @@ public class Program
 
         //app.UseHttpsRedirection();
         app.UseStaticFiles();
+        app.UseStaticFiles(new StaticFileOptions
+        {
+            FileProvider = new PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images")),
+            RequestPath = "/api/images"
+        });
         app.UseCors(policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
         app.UseAuthentication();
