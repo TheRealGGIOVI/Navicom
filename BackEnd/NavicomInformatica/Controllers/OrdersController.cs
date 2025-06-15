@@ -38,7 +38,7 @@ public class OrdersController : ControllerBase
         {
             Id = dto.SessionId,
             UserId = user.Id,
-            TotalAmount = carrito.TotalPrice,
+            TotalAmount = (decimal)carrito.TotalPrice,
             Currency = "eur",
             CreatedAt = DateTime.UtcNow,
             Items = new List<OrderItem>()
@@ -58,8 +58,9 @@ public class OrdersController : ControllerBase
             order.Items.Add(new OrderItem
             {
                 ProductoId = producto.Id,
-                Cantidad = item.Cantidad,
-                PrecioUnitario = item.PrecioTotalProducto / item.Cantidad
+                Cantidad = item.Cantidad.Value,
+                PrecioUnitario = (decimal)(item.PrecioTotalProducto ?? 0) / (item.Cantidad ?? 1)
+
             });
         }
 
