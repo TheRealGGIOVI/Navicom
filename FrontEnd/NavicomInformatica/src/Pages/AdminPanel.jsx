@@ -165,18 +165,27 @@ const AdminPanel = () => {
 
             if (!response.ok) throw new Error('Error al guardar producto');
 
-            const result = await response.json();
-            alert(result.message || 'Producto guardado con éxito');
+            const contentType = response.headers.get("content-type");
+
+            if (contentType && contentType.includes("application/json")) {
+                const result = await response.json();
+                alert(result.message || 'Producto guardado con éxito');
+            } else {
+                const text = await response.text();
+                alert(text || 'Producto guardado con éxito');
+            }
+
             fetchProducts();
             setShowModal(false);
             setSelectedProduct(null);
             setError(null);
-        } catch (err) {
-            setError(err.message);
-        } finally {
-            setLoading(false);
-        }
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
     };
+
 
     const deleteProduct = async (productId) => {
         if (!window.confirm("¿Seguro que deseas eliminar este producto?")) return;
