@@ -4,61 +4,68 @@
     --background: #f4f4f4;
     --text-color: #333;
     --white: #ffffff;
+    --border: #ddd;
+    --error: #c0392b;
 }
 
 /* Contenedor principal */
 .perfil-container {
-    max-width: 600px;
+    max-width: 800px;
     margin: 50px auto;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    padding: 0 15px;
 }
 
-/* Tarjetas del perfil y pedidos */
-.perfil-card, .pedidos-card {
+/* Tarjetas generales */
+.perfil-card,
+.pedidos-card {
     background: var(--background);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     transition: transform 0.2s ease-in-out;
 }
 
-.perfil-card:hover, .pedidos-card:hover {
-    transform: scale(1.02);
+.perfil-card:hover,
+.pedidos-card:hover {
+    transform: scale(1.01);
 }
 
 /* Títulos */
-h2, h3 {
+h2,
+h3 {
     color: var(--primary);
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
-/* Párrafos y texto */
+/* Texto general */
 p {
     color: var(--text-color);
     font-size: 1rem;
+    margin-bottom: 6px;
 }
 
 /* Mensaje de error */
 .error-message {
     text-align: center;
-    color: red;
-    font-size: 1.2rem;
+    color: var(--error);
+    font-size: 1.1rem;
     font-weight: bold;
 }
 
-/* Botón de cerrar sesión */
+/* Botón cerrar sesión */
 .logout-btn {
     margin-top: 15px;
     background: var(--primary);
     color: var(--white);
-    padding: 10px 15px;
+    padding: 10px 18px;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
     font-size: 1rem;
-    transition: background 0.3s, transform 0.2s;
+    transition: background 0.3s ease, transform 0.2s;
 }
 
 .logout-btn:hover {
@@ -66,9 +73,56 @@ p {
     transform: scale(1.05);
 }
 
-/* Estilos responsivos */
+/* Texto secundario */
+.text-gray {
+    color: #777;
+    font-style: italic;
+}
+
+/* ----- Historial de pedidos ----- */
+.pedido {
+    border-top: 1px solid var(--border);
+    padding-top: 15px;
+    margin-top: 15px;
+}
+
+.productos-pedido {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.producto-pedido {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    background: var(--white);
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+.producto-pedido img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Responsivo */
 @media (max-width: 600px) {
     .perfil-container {
-        width: 90%;
+        width: 95%;
+    }
+
+    .producto-pedido {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .producto-pedido img {
+        width: 100%;
+        height: auto;
     }
 }

@@ -17,3 +17,4 @@ export const EMAIL_URL = `${API_BASE_URL}/api/Email`;
 export const STRIPE = `${API_BASE_URL}/api/checkout/create-session`;
 export const STRIPE_SUCCESS = `${API_BASE_URL}/api/checkout/success?sessionId=`;
 export const MAKE_ORDER = `${API_BASE_URL}/api/Orders/makeorder`;
+export const LIST_ORDERS = `${API_BASE_URL}/api/orders/user/`;
