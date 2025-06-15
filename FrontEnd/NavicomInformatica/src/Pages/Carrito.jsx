@@ -191,7 +191,11 @@ function Carrito() {
               {cart.map((item) => (
                 <div key={item.productId} className="cart-item">
                   <img
-                    src={reemplazarEspaciosPorGuionBajo(item.productBrand, item.productModel)}
+                    src={
+                      item.imagenes && item.imagenes.length > 0
+                        ? `${BASE_IMAGE_URL}${item.imagenes[0].img_Name}`
+                        : "https://via.placeholder.com/150"
+                    }
                     alt={item.productModel}
                     className="cart-item-image"
                   />
