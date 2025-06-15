@@ -1,8 +1,8 @@
 // src/Pages/SuccessPage.jsx
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useLocation, Link } from "react-router-dom";
-import {STRIPE_SUCCESS} from "../../config"
-
+import {STRIPE_SUCCESS, MAKE_ORDER} from "../../config"
+import { AuthProvider } from "../context/AuthProvider";
 import "./styles/Module.Success.css";
 
 function useQuery() {
@@ -12,6 +12,7 @@ function useQuery() {
 export default function SuccessPage() {
   const query = useQuery();
   const sessionId = query.get("session_id");
+  const { user } = useContext(AuthProvider);
   const [data, setData]       = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError]     = useState(null);
@@ -23,16 +24,37 @@ export default function SuccessPage() {
       return;
     }
 
+    // 1. Confirmar datos desde Stripe
     fetch(STRIPE_SUCCESS + sessionId)
       .then(res => {
         if (!res.ok) throw new Error(res.statusText);
         return res.json();
       })
-      .then(json => setData(json))
+      .then(json => {
+        setData(json);
+
+        // 2. Hacer la orden en backend (solo si hay usuario)
+        if (user?.id) {
+          fetch(MAKE_ORDER, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              sessionId: sessionId,
+              userId: user.id.toString()
+            })
+          })
+            .then(res => {
+              if (!res.ok) throw new Error("Error al crear la orden.");
+              return res.json();
+            })
+            .then(() => setOrderSuccess(true))
+            .catch(err => console.error("Error creando la orden:", err));
+        }
+      })
       .catch(err => setError(err.message))
       .finally(() => setLoading(false));
-  }, [sessionId]);
-
+  }, [sessionId, user]);
+  
   if (loading) return <div className="sp-container">Cargando pedido…</div>;
   if (error)   return <div className="sp-container sp-error">Error: {error}</div>;
 

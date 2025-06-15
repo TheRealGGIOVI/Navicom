@@ -73,4 +73,36 @@ public class OrdersController : ControllerBase
 
         return Ok(new { message = "Pedido realizado con éxito", orderId = order.Id });
     }
+
+    [HttpGet("user/{userId}")]
+    public async Task<IActionResult> GetOrdersByUser(long userId)
+    {
+        var orders = await _db.Orders
+            .Where(o => o.UserId == userId)
+            .Include(o => o.Items!)
+                .ThenInclude(oi => oi.Producto)
+                    .ThenInclude(p => p.Imagenes)
+            .OrderByDescending(o => o.CreatedAt)
+            .ToListAsync();
+
+        if (orders == null || !orders.Any())
+            return NotFound("Este usuario no tiene pedidos.");
+
+        var result = orders.Select(order => new OrderSummaryDto
+        {
+            OrderId = order.Id,
+            CreatedAt = order.CreatedAt,
+            TotalAmount = order.TotalAmount,
+            Currency = order.Currency,
+            Items = order.Items.Select(item => new OrderItemDto
+            {
+                ProductName = item.Producto?.Brand + " " + item.Producto?.Model,
+                Quantity = item.Cantidad,
+                PrecioUnitario = item.PrecioUnitario,
+                ImageUrl = item.Producto?.Imagenes?.FirstOrDefault()?.Img_Name
+            }).ToList()
+        });
+
+        return Ok(result);
+    }
 }
