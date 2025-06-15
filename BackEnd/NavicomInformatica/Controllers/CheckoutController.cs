@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Stripe.Checkout;
 using NavicomInformatica.Models;
+using Stripe;
+
 
 namespace NavicomInformatica.Controllers
 {
@@ -66,37 +68,36 @@ namespace NavicomInformatica.Controllers
             // Listamos las líneas sin expandir nada
             var lineItems = await sessionService.ListLineItemsAsync(sessionId, new SessionLineItemListOptions
             {
-                Limit = 100
+                Limit = 100,
+                Expand = new List<string> { "data.price.product" }
             });
-
-            // 3) Guardar en la base de datos (si no existe aún)
-            //if (!await _db.Orders.AnyAsync(o => o.SessionId == session.Id))
-            //{
-            //    var order = new Order
-            //    {
-            //        SessionId = session.Id,
-            //        AmountTotal = session.AmountTotal ?? 0,
-            //        Currency = session.Currency,
-            //        CustomerEmail = session.CustomerDetails?.Email,
-            //        CreatedAt = DateTime.UtcNow
-            //    };
-            //    _db.Orders.Add(order);
-            //    await _db.SaveChangesAsync();
-            //}
-
             var result = new
             {
                 session.Id,
                 session.AmountTotal,
                 session.Currency,
                 customerEmail = session.CustomerDetails?.Email,
-                items = lineItems.Data.Select(li => new {
-                    id = li.Id,
-                    quantity = li.Quantity,
-                    // aquí usamos Description, que será tu ProductData.Name
-                    productName = li.Description,
-                    unitAmount = li.Price?.UnitAmount,
-                    currency = li.Price?.Currency
+                //items = lineItems.Data.Select(li => new {
+                //    id = li.Id,
+                //    quantity = li.Quantity,
+                //    // aquí usamos Description, que será tu ProductData.Name
+                //    productName = li.Description,
+                //    unitAmount = li.Price?.UnitAmount,
+                //    currency = li.Price?.Currency
+                //})
+                items = lineItems.Data.Select(li =>
+                {
+                    var product = li.Price?.Product as Product;
+                    return new
+                    {
+                        id = li.Id,
+                        quantity = li.Quantity,
+                        productName = product?.Name ?? li.Description,
+                        unitAmount = li.Price?.UnitAmount,
+                        currency = li.Price?.Currency,
+                        imageUrl = product?.Images?.FirstOrDefault(),
+                        description = product?.Description
+                    };
                 })
             };
 

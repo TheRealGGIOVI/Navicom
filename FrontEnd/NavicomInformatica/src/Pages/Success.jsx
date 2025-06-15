@@ -51,8 +51,22 @@ export default function SuccessPage() {
       <h2>Productos:</h2>
       <ul className="sp-items">
         {items.map(item => (
-          <li key={item.id}>
-            {item.quantity}× {item.productName}
+          <li key={item.id} className="sp-item">
+            {item.imageUrl && (
+              <img
+                src={item.imageUrl}
+                alt={item.productName}
+                className="sp-item-img"
+              />
+            )}
+            <div className="sp-item-details">
+              <p className="sp-item-name">{item.productName}</p>
+              <p className="sp-item-desc">{item.description}</p>
+              <p className="sp-item-info">
+                {item.quantity} × {(item.unitAmount / 100).toFixed(2)}{" "}
+                {item.currency.toUpperCase()}
+              </p>
+            </div>
           </li>
         ))}
       </ul>
