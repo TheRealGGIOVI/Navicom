@@ -15,14 +15,14 @@ export default function SuccessPage() {
   const sessionId = query.get("session_id");
 
   const { user, authLoading } = useContext(AuthContext);
-  const { updateCartCount } = useContext(CartContext);
+  const { setCartCount, updateCartCount } = useContext(CartContext);
 
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (!sessionId || authLoading || !user) return;
+    if (!sessionId || authLoading || !user || !user.Id) return;
 
     const procesarPago = async () => {
       try {
@@ -32,19 +32,22 @@ export default function SuccessPage() {
         const json = await res.json();
         setData(json);
 
+        // 2. Limpiar el carrito visual
+        setCartCount(0);
+        updateCartCount();
 
-        console.log("BODY ENVIADO A BACKEND:", {
+        // 3. Crear orden en backend
+        const body = {
           SessionId: sessionId,
-          UserId: user.id.toString()
-        });
-        // 2. Crear orden en backend
+          UserId: user.Id.toString()
+        };
+
+        console.log("BODY ENVIADO A BACKEND:", body);
+
         const createOrderRes = await fetch(MAKE_ORDER, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            sessionId: sessionId,
-            userId: user.Id.toString(),
-          }),
+          body: JSON.stringify(body),
         });
 
         if (!createOrderRes.ok) {
@@ -52,9 +55,6 @@ export default function SuccessPage() {
         }
 
         await createOrderRes.json();
-
-        // 3. Actualizar visualmente el contador del carrito después de vaciarlo
-        await updateCartCount();
 
       } catch (err) {
         console.error("Error en SuccessPage:", err);
@@ -65,7 +65,7 @@ export default function SuccessPage() {
     };
 
     procesarPago();
-  }, [sessionId, authLoading, user, updateCartCount]);
+  }, [sessionId, authLoading, user]);
 
   if (loading || authLoading) return <div className="sp-container">Cargando pedido…</div>;
   if (error) return <div className="sp-container sp-error">Error: {error}</div>;
@@ -76,8 +76,7 @@ export default function SuccessPage() {
     <div className="sp-container">
       <h1>✅ ¡Pago confirmado!</h1>
       <p>
-        <strong>Total:</strong> {(amountTotal / 100).toFixed(2)}{" "}
-        {currency.toUpperCase()}
+        <strong>Total:</strong> {(amountTotal / 100).toFixed(2)} {currency.toUpperCase()}
       </p>
       <p><strong>Email:</strong> {customerEmail}</p>
 
@@ -96,7 +95,7 @@ export default function SuccessPage() {
               <p className="sp-item-name">{item.productName}</p>
               <p className="sp-item-desc">{item.description}</p>
               <p className="sp-item-info">
-                {item.quantity} x {(item.unitAmount / 100).toFixed(2)}{" "}
+                {item.quantity} × {(item.unitAmount / 100).toFixed(2)}{" "}
                 {item.currency.toUpperCase()}
               </p>
             </div>
