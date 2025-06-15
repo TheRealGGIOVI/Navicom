@@ -1,17 +1,50 @@
+.sp-container {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f5faff;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  color: #222;
+}
+
+.sp-container h1 {
+  color: #0077cc;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.sp-container p {
+  margin: 0.5rem 0;
+}
+
+.sp-items {
+  list-style: none;
+  padding: 0;
+  margin-top: 2rem;
+  text-align: left;
+}
+
 .sp-item {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1rem 0;
-  border-bottom: 1px solid #eee;
+  padding: 1rem;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1rem;
 }
 
 .sp-item-img {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   object-fit: contain;
   border-radius: 8px;
-  background: #f7f7f7;
+  border: 1px solid #ddd;
+  background: #f0f0f0;
 }
 
 .sp-item-details {
@@ -20,7 +53,9 @@
 
 .sp-item-name {
   font-weight: 600;
+  font-size: 1rem;
   margin-bottom: 0.25rem;
+  color: #0157CA;
 }
 
 .sp-item-desc {
@@ -32,4 +67,25 @@
 .sp-item-info {
   font-size: 0.9rem;
   color: #333;
+}
+
+.sp-button {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.75rem 1.5rem;
+  background: #0157CA;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+  font-weight: 500;
+}
+
+.sp-button:hover {
+  background: #438ef1;
+}
+
+.sp-error {
+  color: #c00;
+  font-weight: 500;
 }
