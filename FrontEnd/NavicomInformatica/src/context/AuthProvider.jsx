@@ -8,9 +8,11 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [token, setToken] = useState(null);
+    const [authLoading, setAuthLoading] = useState(true); // <- añadido
 
     useEffect(() => {
         const storedToken = sessionStorage.getItem("token") || localStorage.getItem("token");
+
         if (storedToken) {
             try {
                 const decodedUser = jwtDecode(storedToken);
@@ -24,8 +26,9 @@ export const AuthProvider = ({ children }) => {
                 setUser(null);
                 setToken(null);
             }
-        } else {
         }
+
+        setAuthLoading(false); // <- importante, para evitar render anticipado
     }, []);
 
     const login = async (token, rememberMe) => {
@@ -33,6 +36,7 @@ export const AuthProvider = ({ children }) => {
         const role = decodedUser?.role || decodedUser?.Role || decodedUser?.rol || "user";
         setUser({ ...decodedUser, role });
         setToken(token);
+
         if (rememberMe) {
             localStorage.setItem("token", token);
         } else {
@@ -61,6 +65,7 @@ export const AuthProvider = ({ children }) => {
                 if (!response.ok) {
                     throw new Error("Error al mergear carrito");
                 }
+
                 clearTempCart();
             } catch (err) {
                 console.error("Fallo al mergear carrito:", err);
@@ -76,7 +81,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, token, login, logout }}>
+        <AuthContext.Provider value={{ user, token, login, logout, authLoading }}>
             {children}
         </AuthContext.Provider>
     );

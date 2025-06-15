@@ -13,18 +13,16 @@ function useQuery() {
 export default function SuccessPage() {
   const query = useQuery();
   const sessionId = query.get("session_id");
-  const { user } = useContext(AuthContext);
+
+  const { user, authLoading } = useContext(AuthContext);
   const { setCartCount } = useContext(CartContext);
+
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (!sessionId) {
-      setError("Falta el parámetro session_id en la URL.");
-      setLoading(false);
-      return;
-    }
+    if (!sessionId || authLoading || !user) return;
 
     const procesarPago = async () => {
       try {
@@ -38,17 +36,20 @@ export default function SuccessPage() {
         setCartCount(0);
 
         // 3. Crear orden en backend
-        await fetch(MAKE_ORDER, {
+        const createOrderRes = await fetch(MAKE_ORDER, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             sessionId: sessionId,
-            userId: user.Id.toString()
-          })
-        }).then(res => {
-          if (!res.ok) throw new Error("Error al crear la orden en backend.");
-          return res.json();
+            userId: user.Id.toString(),
+          }),
         });
+
+        if (!createOrderRes.ok) {
+          throw new Error("Error al crear la orden en backend.");
+        }
+
+        await createOrderRes.json();
 
       } catch (err) {
         console.error("Error en SuccessPage:", err);
@@ -59,9 +60,9 @@ export default function SuccessPage() {
     };
 
     procesarPago();
-  }, [sessionId, user, setCartCount]);
+  }, [sessionId, authLoading, user, setCartCount]);
 
-  if (loading) return <div className="sp-container">Cargando pedido…</div>;
+  if (loading || authLoading) return <div className="sp-container">Cargando pedido…</div>;
   if (error) return <div className="sp-container sp-error">Error: {error}</div>;
 
   const { amountTotal, currency, customerEmail, items } = data;
@@ -70,7 +71,8 @@ export default function SuccessPage() {
     <div className="sp-container">
       <h1>✅ ¡Pago confirmado!</h1>
       <p>
-        <strong>Total:</strong> {(amountTotal / 100).toFixed(2)} {currency.toUpperCase()}
+        <strong>Total:</strong> {(amountTotal / 100).toFixed(2)}{" "}
+        {currency.toUpperCase()}
       </p>
       <p><strong>Email:</strong> {customerEmail}</p>
 
