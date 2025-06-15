@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useLocation, Link } from "react-router-dom";
 import {STRIPE_SUCCESS, MAKE_ORDER} from "../../config"
-import { AuthProvider } from "../context/AuthProvider";
+import { AuthContext } from "../context/AuthProvider";
 import { CartContext } from "../context/CartContext";
 import "./styles/Module.Success.css";
 
@@ -13,7 +13,7 @@ function useQuery() {
 export default function SuccessPage() {
   const query = useQuery();
   const sessionId = query.get("session_id");
-  const { user } = useContext(AuthProvider);
+  const { user } = useContext(AuthContext);
   const { setCartCount } = useContext(CartContext);
   const [data, setData]       = useState(null);
   const [loading, setLoading] = useState(true);
