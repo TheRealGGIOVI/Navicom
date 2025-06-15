@@ -15,3 +15,4 @@ export const DELETE_PRODUCT_CART_ENDPOINT = `${API_BASE_URL}/api/Carrito/RemoveF
 export const BASE_IMAGE_URL = `${API_BASE_URL}/images/`;
 export const EMAIL_URL = `${API_BASE_URL}/api/Email`;
 export const STRIPE = `${API_BASE_URL}/api/checkout/create-session`;
+export const STRIPE_SUCCESS = `${API_BASE_URL}/api/checkout/success?sessionId=`;

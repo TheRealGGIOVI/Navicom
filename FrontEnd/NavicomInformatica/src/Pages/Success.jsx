@@ -1,6 +1,8 @@
 // src/Pages/SuccessPage.jsx
 import React, { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
+import {STRIPE_SUCCESS} from "../../config"
+
 import "./styles/Module.Success.css";
 
 function useQuery() {
@@ -21,7 +23,7 @@ export default function SuccessPage() {
       return;
     }
 
-    fetch(`http://52.54.146.10:7069/api/checkout/success?sessionId=${sessionId}`)
+    fetch(STRIPE_SUCCESS + sessionId)
       .then(res => {
         if (!res.ok) throw new Error(res.statusText);
         return res.json();
