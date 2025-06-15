@@ -7,7 +7,7 @@ public class Order
     [Key]
     public string Id { get; set; } // Será el session.Id de Stripe
 
-    public string UserId { get; set; }
+    public long UserId { get; set; }
 
     public decimal TotalAmount { get; set; }
 

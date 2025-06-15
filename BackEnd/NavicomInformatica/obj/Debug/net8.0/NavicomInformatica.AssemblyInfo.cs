@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NavicomInformatica")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e226814ff6807958e0e2a78eee448000e81b6d4e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+baf57b728617ea465f3c412fd282d3a15bdd567b")]
 [assembly: System.Reflection.AssemblyProductAttribute("NavicomInformatica")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NavicomInformatica")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
