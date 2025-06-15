@@ -15,7 +15,7 @@ export default function SuccessPage() {
   const sessionId = query.get("session_id");
 
   const { user, authLoading } = useContext(AuthContext);
-  const { setCartCount } = useContext(CartContext);
+  const { updateCartCount } = useContext(CartContext);
 
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -32,10 +32,7 @@ export default function SuccessPage() {
         const json = await res.json();
         setData(json);
 
-        // 2. Limpiar el carrito visual
-        setCartCount(0);
-
-        // 3. Crear orden en backend
+        // 2. Crear orden en backend
         const createOrderRes = await fetch(MAKE_ORDER, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -51,6 +48,9 @@ export default function SuccessPage() {
 
         await createOrderRes.json();
 
+        // 3. Actualizar visualmente el contador del carrito después de vaciarlo
+        await updateCartCount();
+
       } catch (err) {
         console.error("Error en SuccessPage:", err);
         setError(err.message);
@@ -60,7 +60,7 @@ export default function SuccessPage() {
     };
 
     procesarPago();
-  }, [sessionId, authLoading, user, setCartCount]);
+  }, [sessionId, authLoading, user, updateCartCount]);
 
   if (loading || authLoading) return <div className="sp-container">Cargando pedido…</div>;
   if (error) return <div className="sp-container sp-error">Error: {error}</div>;
