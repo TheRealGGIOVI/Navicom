@@ -1,7 +1,7 @@
 // src/Pages/SuccessPage.jsx
 import React, { useEffect, useState, useContext } from "react";
 import { useLocation, Link } from "react-router-dom";
-import {STRIPE_SUCCESS, MAKE_ORDER} from "../../config"
+import { STRIPE_SUCCESS, MAKE_ORDER } from "../../config";
 import { AuthContext } from "../context/AuthProvider";
 import { CartContext } from "../context/CartContext";
 import "./styles/Module.Success.css";
@@ -15,9 +15,9 @@ export default function SuccessPage() {
   const sessionId = query.get("session_id");
   const { user } = useContext(AuthContext);
   const { setCartCount } = useContext(CartContext);
-  const [data, setData]       = useState(null);
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError]     = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (!sessionId) {
@@ -26,50 +26,51 @@ export default function SuccessPage() {
       return;
     }
 
-    // 1. Confirmar datos desde Stripe
-    fetch(STRIPE_SUCCESS + sessionId)
-      .then(res => {
-        if (!res.ok) throw new Error(res.statusText);
-        return res.json();
-      })
-      .then(json => {
+    const procesarPago = async () => {
+      try {
+        // 1. Obtener datos de Stripe
+        const res = await fetch(STRIPE_SUCCESS + sessionId);
+        if (!res.ok) throw new Error("Error al obtener datos de Stripe.");
+        const json = await res.json();
         setData(json);
+
+        // 2. Limpiar el carrito visual
         setCartCount(0);
 
-        // 2. Hacer la orden en backend (solo si hay usuario)
-        if (user?.id) {
-          fetch(MAKE_ORDER, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              sessionId: sessionId,
-              userId: user.id.toString()
-            })
+        // 3. Crear orden en backend
+        await fetch(MAKE_ORDER, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            sessionId: sessionId,
+            userId: user.Id.toString()
           })
-            .then(res => {
-              if (!res.ok) throw new Error("Error al crear la orden.");
-              return res.json();
-            })
-            .then(() => setOrderSuccess(true))
-            .catch(err => console.error("Error creando la orden:", err));
-        }
-      })
-      .catch(err => setError(err.message))
-      .finally(() => setLoading(false));
-  }, [sessionId, user]);
+        }).then(res => {
+          if (!res.ok) throw new Error("Error al crear la orden en backend.");
+          return res.json();
+        });
+
+      } catch (err) {
+        console.error("Error en SuccessPage:", err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    procesarPago();
+  }, [sessionId, user, setCartCount]);
 
   if (loading) return <div className="sp-container">Cargando pedido…</div>;
-  if (error)   return <div className="sp-container sp-error">Error: {error}</div>;
+  if (error) return <div className="sp-container sp-error">Error: {error}</div>;
 
-  // Aquí usamos camelCase, que es como viene en el JSON
   const { amountTotal, currency, customerEmail, items } = data;
 
   return (
     <div className="sp-container">
       <h1>✅ ¡Pago confirmado!</h1>
       <p>
-        <strong>Total:</strong> {(amountTotal / 100).toFixed(2)}{" "}
-        {currency.toUpperCase()}
+        <strong>Total:</strong> {(amountTotal / 100).toFixed(2)} {currency.toUpperCase()}
       </p>
       <p><strong>Email:</strong> {customerEmail}</p>
 
