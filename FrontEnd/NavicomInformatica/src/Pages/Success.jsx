@@ -61,6 +61,63 @@ export default function SuccessPage() {
 
         setCartCount(0);
         updateCartCount();
+        fetch(EMAIL_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            para: customerEmail,
+            asunto: "Confirmación de compra - Navicom Informática",
+            contenido: `<!DOCTYPE html>
+        <html lang="es">
+        <head>
+          <meta charset="UTF-8" />
+          <style>
+            body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; }
+            .container { background-color: #ffffff; border: 1px solid #dddddd; padding: 30px; max-width: 600px; margin: auto; border-radius: 8px; }
+            .header { background-color: #0157CA; color: white; padding: 20px; text-align: center; border-radius: 6px 6px 0 0; }
+            .content { margin-top: 20px; color: #333333; }
+            .item { border-bottom: 1px solid #eeeeee; padding: 10px 0; }
+            .item:last-child { border-bottom: none; }
+            .item-name { font-weight: bold; }
+            .total { margin-top: 20px; font-size: 1.2em; font-weight: bold; }
+            .footer { margin-top: 30px; font-size: 12px; color: #888888; text-align: center; }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <div class="header">
+              <h1>¡Gracias por tu compra!</h1>
+            </div>
+            <div class="content">
+              <p>Hola ${user.name},</p>
+              <p>Hemos recibido tu pedido correctamente. Aquí tienes un resumen:</p>
+              
+              <div>
+                ${items.map(item => `
+                  <div class="item">
+                    <div class="item-name">${item.productName}</div>
+                    <div>${item.quantity} × ${(item.unitAmount / 100).toFixed(2)} ${currency.toUpperCase()}</div>
+                  </div>
+                `).join('')}
+              </div>
+
+              <div class="total">
+                Total pagado: ${(amountTotal / 100).toFixed(2)} ${currency.toUpperCase()}
+              </div>
+
+              <p>En breve recibirás tu pedido. Gracias por confiar en <strong>Navicom Informática</strong>.</p>
+            </div>
+            <div class="footer">
+              &copy; 2025 Navicom Informática. Todos los derechos reservados.
+            </div>
+          </div>
+        </body>
+        </html>`
+          })
+        });
+
 
       } catch (err) {
         console.error("Error en SuccessPage:", err);
