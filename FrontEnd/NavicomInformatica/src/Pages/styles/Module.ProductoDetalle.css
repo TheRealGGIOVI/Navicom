@@ -150,7 +150,7 @@
 
 /* Sección de acciones (derecha) */
 .producto-acciones {
-  max-width: 300px; /* Limitar el ancho para mejor diseño */
+  /* max-width: 300px; */
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -321,10 +321,10 @@
 }
 
 @media (max-width: 480px) {
-  .producto-detalle-container {
+  /* .producto-detalle-container {
     margin: 10px auto;
     padding: 5px;
-  }
+  } */
 
   .producto-imagenes .product-image-large {
     max-height: 300px; /* Más pequeño para pantallas muy pequeñas */
