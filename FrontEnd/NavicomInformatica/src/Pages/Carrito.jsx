@@ -191,14 +191,11 @@ function Carrito() {
               {cart.map((item) => (
                 <div key={item.productId} className="cart-item">
                   <img
-                    src={
-                      item.imagenes && item.imagenes.length > 0
-                        ? `${BASE_IMAGE_URL}${item.imagenes[0].img_Name}`
-                        : "https://via.placeholder.com/150"
-                    }
+                    src={item.productImage || "https://via.placeholder.com/150"}
                     alt={item.productModel}
                     className="cart-item-image"
                   />
+
                   <div className="cart-item-details">
                     <h2>{item.productBrand} {item.productModel}</h2>
                     <p>{item.productDescription}</p>
