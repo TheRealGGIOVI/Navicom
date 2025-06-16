@@ -1,3 +1,11 @@
+.server_error {
+  color: #d93025;
+  font-size: 1.1rem;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 500;
+}
+
 .container {
     width: 100%;
     max-width: 500px;

@@ -185,11 +185,11 @@ function LoginRegister() {
         resetForm();
       } else {
         const errorData = await response.text();
-        setPromesaError(`Error en el servidor: ${errorData || "Desconocido"}`);
+        setPromesaError(`${errorData || "Desconocido"}`);
       }
     } catch (error) {
       console.error(error);
-      setPromesaError(`Error en el servidor: ${error}`);
+      setPromesaError(`${error}`);
     } finally {
       setIsLoading(false);
     }
@@ -252,6 +252,8 @@ function LoginRegister() {
           </>
         )}
 
+        {promesaError && <p className="server_error">{promesaError}</p>}
+
         {isLogin && (
           <label>
             <input
@@ -273,7 +275,7 @@ function LoginRegister() {
         </button>
       </form>
 
-      {promesaError && <p>{promesaError}</p>}
+      
     </div>
   );
 }
