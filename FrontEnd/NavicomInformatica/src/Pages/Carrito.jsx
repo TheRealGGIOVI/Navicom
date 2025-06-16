@@ -150,7 +150,7 @@ function Carrito() {
     const items = cart.map(p => ({
       productName: `${p.productBrand} ${p.productModel}`,
       description: p.productDescription,
-      imageUrl: reemplazarEspaciosPorGuionBajo(p.productBrand, p.productModel),
+      imageUrl: `${BASE_IMAGE_URL}${p.productImage}`,
       quantity: p.quantity,
       unitAmountCents: Math.round(p.productPrice * 100)
     }));
