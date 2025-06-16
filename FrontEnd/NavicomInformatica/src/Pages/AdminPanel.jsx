@@ -320,7 +320,18 @@ const AdminPanel = () => {
                         <input type="text" value={selectedProduct?.Caracteristicas || ''} onChange={(e) => setSelectedProduct({ ...selectedProduct, Caracteristicas: e.target.value })} placeholder="Características" />
                         <input type="number" value={selectedProduct?.Price || ''} onChange={(e) => setSelectedProduct({ ...selectedProduct, Price: e.target.value })} placeholder="Precio" />
                         <input type="number" value={selectedProduct?.Stock || ''} onChange={(e) => setSelectedProduct({ ...selectedProduct, Stock: e.target.value })} placeholder="Stock" />
-                        <input type="text" value={selectedProduct?.Category || ''} onChange={(e) => setSelectedProduct({ ...selectedProduct, Category: e.target.value })} placeholder="Categoría" />
+                        {/* <input type="text" value={selectedProduct?.Category || ''} onChange={(e) => setSelectedProduct({ ...selectedProduct, Category: e.target.value })} placeholder="Categoría" /> */}
+                        <select
+                            value={selectedProduct?.Category || ''}
+                            onChange={(e) =>
+                                setSelectedProduct({ ...selectedProduct, Category: e.target.value })
+                            }
+                            >
+                            <option value="">Selecciona una categoría</option>
+                            <option value="Portatiles">Portátiles</option>
+                            <option value="Ordenadores">Ordenadores</option>
+                            <option value="Monitores">Monitores</option>
+                        </select>
                         <input type="file" multiple onChange={(e) => setSelectedProduct({ ...selectedProduct, Images: Array.from(e.target.files) })} />
                         {selectedProduct?.Images?.length > 0 && (
                             <p>{selectedProduct.Images.length} imagen(es) seleccionada(s)</p>
