@@ -45,7 +45,7 @@ Navicom ofrece una experiencia completa de compra online, con funcionalidades av
 |---------------|-----------------|
 | Node.js       | 16+             |
 | .NET SDK      | 8.0+            |
-| PostgreSQL    | –               |
+| PostgreSQL    | 16.9            |
 | Cuenta AWS    | –               |
 
 ---
