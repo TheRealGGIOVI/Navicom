@@ -41,6 +41,15 @@ function LoginRegister() {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  const resetErrors = () => {
+    setEmailError(null);
+    setPasswordError(null);
+    setConfirmPasswordError(null);
+    setNameError(null);
+    setApellidoError(null);
+    setPromesaError(null);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -270,7 +279,13 @@ function LoginRegister() {
         </button>
 
         {isLogin ? <><p className="cuenta">¿No tienes cuenta?</p></> : <><p className="cuenta">¿Ya tienes cuenta?</p></>}{" "}
-        <button className="primary-button" onClick={() => setIsLogin(!isLogin)}>
+        <button
+          className="primary-button"
+          onClick={() => {
+            setIsLogin(!isLogin);
+            resetErrors();
+          }}
+        >
           {isLogin ? "Regístrate" : "Iniciar Sesión"}
         </button>
       </form>
