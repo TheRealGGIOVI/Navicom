@@ -157,36 +157,38 @@ function ProductoDetalle() {
                     ))}
                 </div>
             </div>
-            <div className="producto-info">
-                <h1>{product.brand} {product.model}</h1>
-                <p className="descripcion">{product.description || "Descripción no disponible"}</p>
-                <p><strong>Precio:</strong> {product.precio} €</p>
-                <p><strong>Stock disponible:</strong> {product.stock}</p>
-            </div>
-            <div className="producto-acciones">
-                <div className="cantidad-seleccion">
-                    <label htmlFor="cantidad">Cantidad:</label>
-                    <input
-                        type="number"
-                        id="cantidad"
-                        value={cantidad}
-                        onChange={(e) => {
-                            const value = parseInt(e.target.value) || 1;
-                            setCantidad(Math.max(1, Math.min(value, product.stock)));
-                        }}
-                        min="1"
-                        max={product.stock}
-                    />
+            <div className="producto-detalle-derecha">
+                <div className="producto-info">
+                    <h1>{product.brand} {product.model}</h1>
+                    <p className="descripcion">{product.description || "Descripción no disponible"}</p>
+                    <p><strong>Precio:</strong> {product.precio} €</p>
+                    <p><strong>Stock disponible:</strong> {product.stock}</p>
                 </div>
-                <button
-                    onClick={() => addToCart(product.id)}
-                    disabled={product.stock === 0}
-                >
-                    Añadir al Carrito
-                </button>
-                {product.stock === 0 && (
-                    <p className="agotado">Este producto está agotado.</p>
-                )}
+                <div className="producto-acciones">
+                    <div className="cantidad-seleccion">
+                        <label htmlFor="cantidad">Cantidad:</label>
+                        <input
+                            type="number"
+                            id="cantidad"
+                            value={cantidad}
+                            onChange={(e) => {
+                                const value = parseInt(e.target.value) || 1;
+                                setCantidad(Math.max(1, Math.min(value, product.stock)));
+                            }}
+                            min="1"
+                            max={product.stock}
+                        />
+                    </div>
+                    <button
+                        onClick={() => addToCart(product.id)}
+                        disabled={product.stock === 0}
+                    >
+                        Añadir al Carrito
+                    </button>
+                    {product.stock === 0 && (
+                        <p className="agotado">Este producto está agotado.</p>
+                    )}
+                </div>
             </div>
         </div>
     );
