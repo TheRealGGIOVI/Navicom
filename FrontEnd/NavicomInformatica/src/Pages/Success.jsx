@@ -61,6 +61,8 @@ export default function SuccessPage() {
 
         setCartCount(0);
         updateCartCount();
+
+        const { amountTotal, currency, customerEmail, items } = json;
         fetch(EMAIL_URL, {
           method: 'POST',
           headers: {
