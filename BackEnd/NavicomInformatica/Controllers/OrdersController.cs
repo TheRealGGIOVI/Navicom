@@ -127,11 +127,17 @@ public class OrdersController : ControllerBase
         if (!long.TryParse(dto.UserId, out var userIdParsed))
             return BadRequest("UserId no válido");
 
-        var user = await _db.Users.FindAsync(userIdParsed);
-        if (user == null)
-            return NotFound("Usuario no encontrado.");
+        var user = await _db.Users
+            .Include(u => u.Carrito!)
+                .ThenInclude(c => c.Productos!)
+            .FirstOrDefaultAsync(u => u.Id == userIdParsed);
 
-        // Evitar duplicado de órdenes por session
+        if (user == null || user.Carrito == null || user.Carrito.Productos == null || !user.Carrito.Productos.Any())
+            return BadRequest("Carrito vacío o usuario no válido.");
+
+        var carrito = user.Carrito;
+
+        // Verificamos que no exista ya una orden con ese SessionId (por si acaso)
         if (await _db.Orders.AnyAsync(o => o.Id == dto.SessionId))
             return Conflict("Ya existe una orden con esta sesión.");
 
@@ -146,34 +152,35 @@ public class OrdersController : ControllerBase
 
         decimal total = 0;
 
-        foreach (var item in dto.Items)
+        foreach (var item in carrito.Productos)
         {
-            var producto = await _db.Products
-                .Include(p => p.Imagenes)
-                .FirstOrDefaultAsync(p => (p.Brand + " " + p.Model) == item.Nombre);
-
+            var producto = await _db.Products.FindAsync(item.ProductoId);
             if (producto == null)
-                return NotFound($"Producto '{item.Nombre}' no encontrado.");
+                return NotFound($"Producto con ID {item.ProductoId} no encontrado.");
 
             if (producto.Stock < item.Cantidad)
                 return BadRequest($"Stock insuficiente para {producto.Brand} {producto.Model}.");
 
             producto.Stock -= item.Cantidad;
 
-            var precioTotalItem = item.PrecioUnitario * item.Cantidad;
-            total += precioTotalItem;
+            decimal precioUnitario = (decimal)(item.PrecioTotalProducto ?? 0) / (item.Cantidad ?? 1);
+            total += precioUnitario * item.Cantidad.Value;
 
             order.Items.Add(new OrderItem
             {
                 ProductoId = producto.Id,
-                Cantidad = item.Cantidad,
-                PrecioUnitario = item.PrecioUnitario
+                Cantidad = item.Cantidad.Value,
+                PrecioUnitario = precioUnitario
             });
         }
 
         order.TotalAmount = total;
 
+        // Guardar orden y limpiar carrito
         _db.Orders.Add(order);
+        _db.CarritoItems.RemoveRange(carrito.Productos);
+        carrito.TotalPrice = 0;
+
         await _db.SaveChangesAsync();
 
         return Ok(new { message = "Pedido realizado con éxito", orderId = order.Id });
