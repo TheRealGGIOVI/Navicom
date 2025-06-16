@@ -146,7 +146,6 @@ namespace NavicomInformatica.Controllers
             }
         }
 
-        // Endpoint para ordenar por precio
         [HttpPost("SortByPrice")]
         public async Task<IActionResult> SortByPriceAsync([FromForm] string sortOrder, [FromForm] int page = 1, [FromForm] int limit = 10)
         {
@@ -192,7 +191,6 @@ namespace NavicomInformatica.Controllers
             }
         }
 
-        // Endpoint para ordenar alfabéticamente
         [HttpPost("SortAlphabetically")]
         public async Task<IActionResult> SortAlphabeticallyAsync([FromForm] string sortOrder, [FromForm] int page = 1, [FromForm] int limit = 10)
         {
@@ -238,7 +236,7 @@ namespace NavicomInformatica.Controllers
             }
         }
 
-        // Endpoint para filtrar por categoría
+
         [HttpPost("FilterByCategory")]
         public async Task<IActionResult> FilterByCategoryAsync([FromForm] string category, [FromForm] int page = 1, [FromForm] int limit = 10)
         {
@@ -249,7 +247,6 @@ namespace NavicomInformatica.Controllers
                     return BadRequest("La página y el límite deben ser mayores que 0.");
                 }
 
-                // Validar categoría (opcional)
                 var validCategories = new[] { "Portatiles", "Ordenadores", "Monitores", "" };
                 if (!string.IsNullOrEmpty(category) && !validCategories.Contains(category))
                 {
@@ -286,7 +283,6 @@ namespace NavicomInformatica.Controllers
             }
         }
 
-        // Endpoint para buscar por texto
         [HttpPost("SearchByText")]
         public async Task<IActionResult> SearchByTextAsync([FromForm] string searchText, [FromForm] int page = 1, [FromForm] int limit = 10)
         {

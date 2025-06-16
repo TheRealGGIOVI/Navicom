@@ -110,11 +110,11 @@ namespace NavicomInformatica.Controllers
                 userToAdd.Password = passwordHasher.Hash(userToAdd.Password);
 
                 await _userRepository.AddUserAsync(userToAdd);
-                await _context.SaveChangesAsync(); // Ahora userToAdd.Id ya está generado
+                await _context.SaveChangesAsync(); 
 
                 var carrito = new Carrito
                 {
-                    Id = userToAdd.Id,       // <- Clave
+                    Id = userToAdd.Id,      
                     UserId = userToAdd.Id,
                     TotalPrice = 0.0
                 };

@@ -12,6 +12,7 @@ import Carrito from './Pages/Carrito';
 import AdminPanel from './Pages/AdminPanel';  
 import ErrorPage from './Pages/ErrorPage';  
 import Success from './Pages/Success';
+import CancelPage from './Pages/Cancelation_Pay_Page';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="admin-panel" element={<AdminPanel />} /> 
         <Route path="success" element={<Success />} />
         <Route path="*" element={<ErrorPage/>} />
+        <Route path="cancel" element={<CancelPage/>} />
       </Route>
     </Routes>
   );

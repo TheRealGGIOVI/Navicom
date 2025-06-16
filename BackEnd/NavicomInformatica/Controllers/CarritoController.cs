@@ -81,7 +81,6 @@ namespace NavicomInformatica.Controllers
             }
             catch (DbUpdateException dbEx)
             {
-                // Capturar errores específicos de Entity Framework
                 return BadRequest(new { message = "Error al guardar en la base de datos.", details = dbEx.InnerException?.Message ?? dbEx.Message });
             }
             catch (Exception ex)

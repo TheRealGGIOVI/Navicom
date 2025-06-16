@@ -64,8 +64,6 @@ namespace NavicomInformatica.Controllers
             {
                 Expand = new List<string> { "customer_details" }
             });
-
-            // Listamos las líneas sin expandir nada
             var lineItems = await sessionService.ListLineItemsAsync(sessionId, new SessionLineItemListOptions
             {
                 Limit = 100,
@@ -77,14 +75,6 @@ namespace NavicomInformatica.Controllers
                 session.AmountTotal,
                 session.Currency,
                 customerEmail = session.CustomerDetails?.Email,
-                //items = lineItems.Data.Select(li => new {
-                //    id = li.Id,
-                //    quantity = li.Quantity,
-                //    // aquí usamos Description, que será tu ProductData.Name
-                //    productName = li.Description,
-                //    unitAmount = li.Price?.UnitAmount,
-                //    currency = li.Price?.Currency
-                //})
                 items = lineItems.Data.Select(li =>
                 {
                     var product = li.Price?.Product as Product;

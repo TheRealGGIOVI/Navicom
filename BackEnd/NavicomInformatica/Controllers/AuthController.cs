@@ -48,7 +48,7 @@ namespace NavicomInformatica.Controllers
                         { "Nombre", user.Nombre },
                         { "Apellidos", user.Apellidos },
                         { "Email", user.Email },
-                        { ClaimTypes.Role, user.Rol } // Usar "role" en minúsculas para coincidir con el frontend
+                        { ClaimTypes.Role, user.Rol } 
                     },
                     Expires = DateTime.UtcNow.AddDays(2),
                     SigningCredentials = new SigningCredentials(

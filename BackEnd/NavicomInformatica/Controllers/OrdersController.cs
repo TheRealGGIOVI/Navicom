@@ -137,7 +137,6 @@ public class OrdersController : ControllerBase
 
         var carrito = user.Carrito;
 
-        // Verificamos que no exista ya una orden con ese SessionId (por si acaso)
         if (await _db.Orders.AnyAsync(o => o.Id == dto.SessionId))
             return Conflict("Ya existe una orden con esta sesión.");
 
