@@ -191,7 +191,7 @@ function Carrito() {
               {cart.map((item) => (
                 <div key={item.productId} className="cart-item">
                   <img
-                    src={item.productImage || "https://via.placeholder.com/150"}
+                    src={`${BASE_IMAGE_URL}HP_EliteBook_840_G4_1.jpg`}
                     alt={item.productModel}
                     className="cart-item-image"
                   />
