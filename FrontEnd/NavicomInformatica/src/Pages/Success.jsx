@@ -1,7 +1,7 @@
 // src/Pages/SuccessPage.jsx
 import React, { useEffect, useState, useContext } from "react";
 import { useLocation, Link } from "react-router-dom";
-import { STRIPE_SUCCESS, MAKE_ORDER } from "../../config";
+import { STRIPE_SUCCESS, MAKE_ORDER, EMAIL_URL } from "../../config";
 import { AuthContext } from "../context/AuthProvider";
 import { CartContext } from "../context/CartContext";
 import "./styles/Module.Success.css";
