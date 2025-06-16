@@ -272,10 +272,10 @@
 @media (max-width: 768px) {
 
 
-  .producto-detalle-container {
+  /* .producto-detalle-container {
     margin: 20px auto;
     padding: 10px;
-  }
+  } */
 
   .producto-imagenes {
     max-width: 100%;
