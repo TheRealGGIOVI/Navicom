@@ -155,9 +155,9 @@ function Catalogo() {
         </select>
         <select value={category} onChange={handleCategoryChange}>
           <option value="">Todas las Categorías</option>
-          <option value="Laptops">Laptops</option>
-          <option value="MiniPCs">MiniPCs</option>
-          <option value="MonitorsAndAccessories">MonitorsAndAccessories</option>
+          <option value="Portatiles">Portátiles</option>
+          <option value="Ordenadores">Ordenadores</option>
+          <option value="Monitores">Monitores</option>
         </select>
       </div>
       <div className="products-grid">

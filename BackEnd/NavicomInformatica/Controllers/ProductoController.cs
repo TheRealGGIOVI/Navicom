@@ -250,7 +250,7 @@ namespace NavicomInformatica.Controllers
                 }
 
                 // Validar categoría (opcional)
-                var validCategories = new[] { "Laptops", "MiniPCs", "MonitorsAndAccessories", "" };
+                var validCategories = new[] { "Portatiles", "Ordenadores", "Monitores", "" };
                 if (!string.IsNullOrEmpty(category) && !validCategories.Contains(category))
                 {
                     return BadRequest("Categoría inválida. Opciones válidas: Laptops, MiniPCs, MonitorsAndAccessories.");
