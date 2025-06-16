@@ -91,6 +91,7 @@ namespace NavicomInformatica.Repositories
             return await _context.Carritos
             .Include(c => c.Productos)
             .ThenInclude(cp => cp.Producto)
+            .ThenInclude(p => p.Imagenes)
             .FirstOrDefaultAsync(c => c.Id == carritoId);
         }
 

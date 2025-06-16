@@ -191,7 +191,7 @@ function Carrito() {
               {cart.map((item) => (
                 <div key={item.productId} className="cart-item">
                   <img
-                    src={reemplazarEspaciosPorGuionBajo(item.productBrand,item.productModel)}
+                    src={BASE_IMAGE_URL + item.producImage}
                     alt={item.productModel}
                     className="cart-item-image"
                   />
