@@ -51,7 +51,7 @@ const Perfil = () => {
 
                 {orders.map(order => (
                     <div key={order.orderId} className="pedido">
-                        <p><strong>Pedido:</strong> {order.orderId}</p>
+                        <p><strong>Identificador:</strong> {order.orderId}</p>
                         <p><strong>Fecha:</strong> {new Date(order.createdAt).toLocaleString()}</p>
                         <p><strong>Total:</strong> {order.totalAmount.toFixed(2)} {order.currency.toUpperCase()}</p>
                         <div className="productos-pedido">

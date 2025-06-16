@@ -51,7 +51,7 @@ function LoginRegister() {
       setEmailError(null);
     }
 
-    if (!validation.isValidPassword(password)) {
+    if (!isLogin && !validation.isValidPassword(password)) {
       setPasswordError("La contraseña debe tener al menos 8 caracteres, incluyendo mayúsculas, minúsculas, números y caracteres especiales.");
       return;
     } else {
