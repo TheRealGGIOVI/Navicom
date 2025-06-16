@@ -39,12 +39,13 @@ export default function SuccessPage() {
         const body = {
           SessionId: sessionId,
           UserId: user.Id.toString(),
-          Items: items.map(item => ({
+          Items: json.items.map(item => ({
             Nombre: item.productName,
             PrecioUnitario: item.unitAmount / 100,
             Cantidad: item.quantity
           }))
         };
+
 
         const createOrderRes = await fetch(MAKE_ORDER, {
           method: "POST",
