@@ -207,7 +207,11 @@ function Catalogo() {
             (num === page - 2 && num > 1) ||
             (num === page + 2 && num < totalPages)
           ) {
-            return <span key={num}>...</span>;
+            return (
+              <span key={num} className="pagination-ellipsis">
+                ...
+              </span>
+            );
           } else {
             return null;
           }
