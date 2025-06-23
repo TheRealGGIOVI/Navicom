@@ -184,12 +184,37 @@ function Catalogo() {
         )}
       </div>
       <div className="pagination">
-        <button onClick={() => handlePageChange(page - 1)} disabled={page === 1 || loading}>
-          Anterior
+        <button onClick={() => handlePageChange(page - 1)} disabled={page === 1}>
+          &#8592;
         </button>
-        <span>Página {page} de {totalPages}</span>
-        <button onClick={() => handlePageChange(page + 1)} disabled={page === totalPages || loading}>
-          Siguiente
+
+        {Array.from({ length: totalPages }, (_, index) => index + 1).map((num) => {
+          if (
+            num === 1 ||
+            num === totalPages ||
+            (num >= page - 1 && num <= page + 1)
+          ) {
+            return (
+              <button
+                key={num}
+                onClick={() => handlePageChange(num)}
+                className={page === num ? "active-page" : ""}
+              >
+                {num}
+              </button>
+            );
+          } else if (
+            (num === page - 2 && num > 1) ||
+            (num === page + 2 && num < totalPages)
+          ) {
+            return <span key={num}>...</span>;
+          } else {
+            return null;
+          }
+        })}
+
+        <button onClick={() => handlePageChange(page + 1)} disabled={page === totalPages}>
+          &#8594;
         </button>
       </div>
     </div>
