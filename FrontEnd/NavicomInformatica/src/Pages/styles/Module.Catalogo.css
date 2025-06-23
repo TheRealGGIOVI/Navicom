@@ -51,9 +51,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
-  margin-top: 30px;
   flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 30px;
 }
 
 .pagination button {
@@ -65,7 +65,9 @@
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
   min-width: 40px;
+  min-height: 40px;
   text-align: center;
+  font-size: 1rem;
 }
 
 .pagination button:disabled {
