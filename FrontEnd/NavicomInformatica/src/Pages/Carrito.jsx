@@ -80,9 +80,11 @@ function Carrito() {
         console.error("Error al eliminar del carrito:", error);
       }
     }else{
-      setCart(cart.filter((item) => item.productoId !== productId));
+      const newCart = cart.filter((item) => item.productoId !== productId);
+      setCart(newCart);
+      saveTempCart(newCart);
+      updateCartCount();
     }
-    updateCartCount();
   };
 
   const incrementQuantity = (productId) => {
@@ -93,6 +95,8 @@ function Carrito() {
           : item
         : item
     ));
+    setCart(newCart);
+    saveTempCart(newCart);
     updateCartCount();
   };
   
@@ -103,6 +107,8 @@ function Carrito() {
         ? { ...item, cantidad: item.cantidad - 1 }
         : item
     ));
+    setCart(newCart);
+    saveTempCart(newCart);
     updateCartCount();
   };
   

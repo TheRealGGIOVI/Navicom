@@ -4,7 +4,7 @@ import { validation } from "../utils/validationForm";
 import { LOGIN_ENDPOINT, REGISTER_ENDPOINT, EMAIL_URL } from "../../config";
 import { AuthContext } from "../context/AuthProvider";
 import "./styles/Module.LoginRegister.css";
-const URL = "http://localhost:5173/";
+const URL = "https://navicominformatica.com";
 
 // Función para decodificar el token JWT (solo la parte del payload)
 const parseJwt = (token) => {
