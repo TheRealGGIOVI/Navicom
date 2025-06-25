@@ -76,17 +76,72 @@ export default function SuccessPage() {
               <head>
                 <meta charset="UTF-8" />
                 <style>
+                  :root {
+                    --primary: #0157CA;
+                    --secondary: #6CAAF1;
+                  }
                   body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; }
-                  .container { background-color: #ffffff; border: 1px solid #dddddd; padding: 30px; max-width: 600px; margin: auto; border-radius: 8px; }
-                  .header { background-color: #0157CA; color: white; padding: 20px; text-align: center; border-radius: 6px 6px 0 0; }
-                  .content { margin-top: 20px; color: #333333; }
-                  .item { display: flex; gap: 10px; border-bottom: 1px solid #eeeeee; padding: 10px 0; }
-                  .item:last-child { border-bottom: none; }
-                  .item-img { width: 70px; height: 70px; object-fit: contain; border-radius: 4px; }
-                  .item-details { flex: 1; }
-                  .item-name { font-weight: bold; }
-                  .total { margin-top: 20px; font-size: 1.2em; font-weight: bold; }
-                  .footer { margin-top: 30px; font-size: 12px; color: #888888; text-align: center; }
+                  .container {
+                    background-color: #fff;
+                    border: 1px solid #ddd;
+                    padding: 30px;
+                    max-width: 600px;
+                    margin: auto;
+                    border-radius: 8px;
+                  }
+                  .header {
+                    background-color: var(--primary);
+                    color: white;
+                    padding: 20px;
+                    text-align: center;
+                    border-radius: 6px 6px 0 0;
+                  }
+                  .content {
+                    margin-top: 20px;
+                    color: #333;
+                  }
+                  .item {
+                    display: flex;
+                    align-items: center;
+                    padding: 10px 0;
+                    border-bottom: 1px solid #eee;
+                  }
+                  .item:last-child {
+                    border-bottom: none;
+                  }
+                  .item img {
+                    width: 60px;
+                    height: 60px;
+                    object-fit: cover;
+                    margin-right: 15px;
+                    border-radius: 6px;
+                    border: 1px solid #ddd;
+                  }
+                  .item-info {
+                    flex: 1;
+                  }
+                  .item-name {
+                    font-weight: bold;
+                    color: var(--primary);
+                    margin-bottom: 4px;
+                  }
+                  .item-details {
+                    font-size: 14px;
+                    color: #555;
+                  }
+                  .total {
+                    margin-top: 20px;
+                    font-size: 18px;
+                    font-weight: bold;
+                    color: var(--primary);
+                    text-align: right;
+                  }
+                  .footer {
+                    margin-top: 30px;
+                    font-size: 12px;
+                    color: #888;
+                    text-align: center;
+                  }
                 </style>
               </head>
               <body>
@@ -95,26 +150,26 @@ export default function SuccessPage() {
                     <h1>¡Gracias por tu compra!</h1>
                   </div>
                   <div class="content">
-                    <p>Hola ${user.Nombre || "cliente"},</p>
+                    <p>Hola ${user?.name || "cliente"},</p>
                     <p>Hemos recibido tu pedido correctamente. Aquí tienes un resumen:</p>
-                    
-                    <div>
-                      ${items.map(item => `
-                        <div class="item">
-                          <img src="${item.imageUrl}" alt="${item.productName}" class="item-img" />
-                          <div class="item-details">
-                            <div class="item-name">${item.productName}</div>
-                            <div>${item.quantity} × ${(item.unitAmount / 100).toFixed(2)} ${currency.toUpperCase()}</div>
-                          </div>
+
+                    ${items.map(item => `
+                      <div class="item">
+                        <img src="${item.imageUrl}" alt="${item.productName}" />
+                        <div class="item-info">
+                          <div class="item-name">${item.productName}</div>
+                          <div class="item-details">${item.quantity} × ${(item.unitAmount / 100).toFixed(2)} ${currency.toUpperCase()}</div>
                         </div>
-                      `).join('')}
-                    </div>
+                      </div>
+                    `).join('')}
 
                     <div class="total">
                       Total pagado: ${(amountTotal / 100).toFixed(2)} ${currency.toUpperCase()}
                     </div>
 
-                    <p>En breve recibirás tu pedido. Gracias por confiar en <strong>Navicom Informática</strong>.</p>
+                    <p style="margin-top: 20px;">
+                      En breve recibirás tu pedido. Gracias por confiar en <strong style="color: var(--secondary)">Navicom Informática</strong>.
+                    </p>
                   </div>
                   <div class="footer">
                     &copy; 2025 Navicom Informática. Todos los derechos reservados.
@@ -122,6 +177,7 @@ export default function SuccessPage() {
                 </div>
               </body>
               </html>`
+
           })
         });
 
