@@ -150,7 +150,7 @@ export default function SuccessPage() {
                     <h1>¡Gracias por tu compra!</h1>
                   </div>
                   <div class="content">
-                    <p>Hola ${user?.name || "cliente"},</p>
+                    <p>Hola ${user?.Nombre || "cliente"},</p>
                     <p>Hemos recibido tu pedido correctamente. Aquí tienes un resumen:</p>
 
                     ${items.map(item => `
