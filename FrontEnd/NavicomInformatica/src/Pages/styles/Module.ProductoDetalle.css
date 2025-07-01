@@ -391,6 +391,42 @@
   margin: 0;
 }
 
+.input-cantidad-wrapper input {
+  width: 60px;
+  padding: 8px;
+  font-size: 1.1rem;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+}
+
+.btn-cantidad {
+  padding: 8px 14px;
+  background-color: #1565c0; /* Azul intenso */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-cantidad:hover {
+  background-color: #0d47a1;
+}
+
+.btn-add-cart {
+  background-color: #2e7d32 !important; /* Verde fuerte */
+  color: white;
+  font-weight: bold;
+}
+
+.btn-add-cart:hover {
+  background-color: #1b5e20 !important;
+}
+
 .input-cantidad-wrapper {
   display: flex;
   align-items: center;
@@ -438,5 +474,3 @@
 .btn-cantidad:hover {
   background-color: #0d47a1;
 }
-
-
