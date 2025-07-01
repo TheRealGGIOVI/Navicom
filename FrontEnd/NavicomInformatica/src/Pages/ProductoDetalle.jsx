@@ -166,18 +166,34 @@ function ProductoDetalle() {
                 </div>
                 <div className="producto-acciones">
                     <div className="cantidad-seleccion">
-                        <label htmlFor="cantidad">Cantidad:</label>
+                    <label htmlFor="cantidad">Cantidad:</label>
+                    <div className="input-cantidad-wrapper">
+                        <button
+                        type="button"
+                        className="btn-cantidad"
+                        onClick={() => setCantidad(prev => Math.max(1, prev - 1))}
+                        >
+                        −
+                        </button>
                         <input
-                            type="number"
-                            id="cantidad"
-                            value={cantidad}
-                            onChange={(e) => {
-                                const value = parseInt(e.target.value) || 1;
-                                setCantidad(Math.max(1, Math.min(value, product.stock)));
-                            }}
-                            min="1"
-                            max={product.stock}
+                        type="number"
+                        id="cantidad"
+                        value={cantidad}
+                        onChange={(e) => {
+                            const value = parseInt(e.target.value) || 1;
+                            setCantidad(Math.max(1, Math.min(value, product.stock)));
+                        }}
+                        min="1"
+                        max={product.stock}
                         />
+                        <button
+                        type="button"
+                        className="btn-cantidad"
+                        onClick={() => setCantidad(prev => Math.min(prev + 1, product.stock))}
+                        >
+                        +
+                        </button>
+                    </div>
                     </div>
                     <button
                         onClick={() => addToCart(product.id)}

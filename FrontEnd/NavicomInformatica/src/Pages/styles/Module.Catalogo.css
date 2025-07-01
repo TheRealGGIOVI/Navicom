@@ -1,3 +1,4 @@
+
 .catalogo-container {
   max-width: 1300px;
   margin: 0 auto;
@@ -134,13 +135,21 @@
     font-size: 1.5rem;
   }
 
+  .pagination {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 0 10px;
+  }
+
   .pagination button {
     padding: 6px 12px;
     font-size: 0.9rem;
+    flex-shrink: 0;
   }
 
   .pagination span {
     font-size: 1rem;
+    flex-shrink: 0;
   }
 
   .catalogo-container {
