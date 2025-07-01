@@ -391,23 +391,45 @@
   margin: 0;
 }
 
+.input-cantidad-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Elimina flechas del input en todos los navegadores */
+.input-cantidad-wrapper input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+  -webkit-appearance: none;
+}
+
+.input-cantidad-wrapper input::-webkit-inner-spin-button,
+.input-cantidad-wrapper input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .input-cantidad-wrapper input {
-  width: 60px;
-  padding: 8px;
-  font-size: 1.1rem;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  font-size: 1.2rem;
   text-align: center;
   border: 1px solid #ccc;
   border-radius: 6px;
   outline: none;
 }
 
+/* Botones + y - cuadrados y azules */
 .btn-cantidad {
-  padding: 8px 14px;
-  background-color: #1565c0; /* Azul intenso */
+  width: 50px;
+  height: 50px;
+  background-color: #1565c0; /* Azul */
   color: white;
   border: none;
   border-radius: 6px;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -417,13 +439,4 @@
   background-color: #0d47a1;
 }
 
-.btn-add-cart {
-  background-color: #2e7d32 !important; /* Verde fuerte */
-  color: white;
-  font-weight: bold;
-}
-
-.btn-add-cart:hover {
-  background-color: #1b5e20 !important;
-}
 

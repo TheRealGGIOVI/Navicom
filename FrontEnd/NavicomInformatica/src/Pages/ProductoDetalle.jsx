@@ -168,36 +168,33 @@ function ProductoDetalle() {
           <div className="cantidad-seleccion">
             <label htmlFor="cantidad">Cantidad:</label>
             <div className="input-cantidad-wrapper">
-              <button
+                <button
                 type="button"
                 className="btn-cantidad"
-                onClick={() => setCantidad((prev) => Math.max(1, prev - 1))}
-              >
+                onClick={() => setCantidad(prev => Math.max(1, prev - 1))}
+                >
                 −
-              </button>
-              <input
+                </button>
+                <input
                 type="number"
                 id="cantidad"
                 value={cantidad}
                 onChange={(e) => {
-                  const value = parseInt(e.target.value) || 1;
-                  setCantidad(Math.max(1, Math.min(value, product.stock)));
+                    const value = parseInt(e.target.value) || 1;
+                    setCantidad(Math.max(1, Math.min(value, product.stock)));
                 }}
                 min="1"
                 max={product.stock}
-              />
-              <button
+                />
+                <button
                 type="button"
                 className="btn-cantidad"
-                onClick={() =>
-                  setCantidad((prev) => Math.min(prev + 1, product.stock))
-                }
-              >
+                onClick={() => setCantidad(prev => Math.min(prev + 1, product.stock))}
+                >
                 +
-              </button>
+                </button>
             </div>
-          </div>
-
+            </div>
           <button
             className="btn-add-cart"
             onClick={() => addToCart(product.id)}
