@@ -7,7 +7,7 @@
   display: flex;
   gap: 30px;
   align-items: flex-start;
-  background-color: #f9f9f9; /* Fondo claro para contraste */
+  background-color: #f9f9f9;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
@@ -19,19 +19,16 @@
   gap: 20px;
 }
 
-
-/* Sección de imágenes (izquierda) */
+/* Sección de imágenes */
 .producto-imagenes {
   flex: 1;
-
-  max-width: 450px; /* Aumentado ligeramente para imágenes más grandes */
+  max-width: 450px;
 }
 
-/* Contenedor del carrusel */
 .carousel {
   position: relative;
   height: 400px;
-  background-color: #fff; /* Fondo blanco para el carrusel */
+  background-color: #fff;
   border-radius: 10px;
   padding: 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -40,46 +37,42 @@
 .producto-imagenes .product-image-large {
   width: 100%;
   height: 100%;
-  /* max-height: 450px; */ /* Aumentado para imágenes más grandes */
   border-radius: 8px;
+  object-fit: contain;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  object-fit: contain; /* Asegura que la imagen no se distorsione */
 }
 
 .producto-imagenes .product-image-large:hover {
-  transform: scale(1.05); /* Efecto de zoom más suave */
+  transform: scale(1.05);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Botones del carrusel */
 .carousel-button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.6); /* Fondo más oscuro para mejor contraste */
+  background: rgba(0, 0, 0, 0.6);
   color: white;
   border: none;
   padding: 12px 18px;
   cursor: pointer;
   font-size: 1.8rem;
-  border-radius: 50%; /* Botones circulares */
+  border-radius: 50%;
   transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .carousel-button.prev {
   left: 15px;
 }
-
 .carousel-button.next {
   right: 15px;
 }
 
 .carousel-button:hover {
   background: rgba(0, 0, 0, 0.9);
-  transform: translateY(-50%) scale(1.1); /* Efecto de escala al pasar el mouse */
+  transform: translateY(-50%) scale(1.1);
 }
 
-/* Contenedor de miniaturas */
 .thumbnails {
   display: flex;
   justify-content: center;
@@ -88,9 +81,8 @@
   flex-wrap: wrap;
 }
 
-/* Estilo de las miniaturas */
 .thumbnail {
-  width: 70px; /* Aumentado para mejor visibilidad */
+  width: 70px;
   height: 70px;
   object-fit: cover;
   border: 2px solid transparent;
@@ -101,19 +93,14 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.thumbnail:hover {
-  opacity: 1;
-  border-color: #455a64;
-  transform: scale(1.1); /* Efecto de zoom en las miniaturas */
-}
-
+.thumbnail:hover,
 .thumbnail.active {
-  border-color: #455a64;
   opacity: 1;
+  border-color: #455a64;
   transform: scale(1.1);
 }
 
-/* Sección de información del producto (centro) */
+/* Info producto */
 .producto-info {
   padding: 20px;
   background-color: #fff;
@@ -122,9 +109,9 @@
 }
 
 .producto-info h1 {
-  font-size: 2.4rem; /* Tamaño más grande para el título */
+  font-size: 2.4rem;
   color: #333;
-  margin: 0 0 20px 0;
+  margin-bottom: 20px;
   font-weight: 700;
   line-height: 1.2;
 }
@@ -148,9 +135,8 @@
   font-weight: 600;
 }
 
-/* Sección de acciones (derecha) */
+/* Acciones (carrito y cantidad) */
 .producto-acciones {
-  /* max-width: 300px; */
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -172,22 +158,6 @@
   color: #333;
   font-weight: 500;
   margin-bottom: 0;
-}
-
-.producto-acciones input[type="number"] {
-  width: 70px;
-  padding: 10px;
-  font-size: 1.1rem;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  text-align: center;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.producto-acciones input[type="number"]:focus {
-  border-color: #455a64;
-  box-shadow: 0 0 5px rgba(69, 90, 100, 0.3);
-  outline: none;
 }
 
 .producto-acciones button {
@@ -219,12 +189,12 @@
 
 .producto-acciones .agotado {
   font-size: 1.1rem;
-  color: #e53935; /* Rojo más vibrante para destacar */
-  margin-top: 10px;
+  color: #e53935;
   font-weight: 500;
+  margin-top: 10px;
 }
 
-/* Responsividad para pantallas más pequeñas */
+/* Responsive */
 @media (max-width: 1024px) {
   .producto-detalle-container {
     flex-direction: column;
@@ -242,47 +212,26 @@
   }
 
   .producto-imagenes {
-    max-width: 500px; /* Ajustado para pantallas medianas */
+    max-width: 500px;
   }
 
   .producto-info h1 {
     font-size: 2rem;
   }
 
-  .producto-info .descripcion,
-  .producto-info p {
-    font-size: 1.1rem;
-  }
-
-  .carousel-button {
-    padding: 10px 14px;
-    font-size: 1.5rem;
+  .carousel {
+    height: 300px;
   }
 
   .thumbnail {
     width: 60px;
     height: 60px;
   }
-
-     .carousel {
-    height: 300px;
-  } 
 }
 
 @media (max-width: 768px) {
-
-
-  /* .producto-detalle-container {
-    margin: 20px auto;
-    padding: 10px;
-  } */
-
-  .producto-imagenes {
-    max-width: 100%;
-  }
-
   .producto-imagenes .product-image-large {
-    max-height: 350px; /* Reducido para pantallas más pequeñas */
+    max-height: 350px;
   }
 
   .producto-info h1 {
@@ -294,19 +243,9 @@
     font-size: 1rem;
   }
 
-  .carousel-button {
-    padding: 8px 12px;
-    font-size: 1.3rem;
-  }
-
   .thumbnail {
     width: 50px;
     height: 50px;
-  }
-
-  .producto-acciones {
-    max-width: 100%;
-    padding: 15px;
   }
 
   .producto-acciones input[type="number"] {
@@ -321,13 +260,8 @@
 }
 
 @media (max-width: 480px) {
-  /* .producto-detalle-container {
-    margin: 10px auto;
-    padding: 5px;
-  } */
-
   .producto-imagenes .product-image-large {
-    max-height: 300px; /* Más pequeño para pantallas muy pequeñas */
+    max-height: 300px;
   }
 
   .producto-info h1 {
@@ -339,22 +273,9 @@
     font-size: 0.95rem;
   }
 
-  .carousel-button {
-    padding: 6px 10px;
-    font-size: 1.2rem;
-  }
-
   .thumbnail {
     width: 45px;
     height: 45px;
-  }
-
-  .producto-acciones {
-    padding: 10px;
-  }
-
-  .producto-acciones label {
-    font-size: 1rem;
   }
 
   .producto-acciones input[type="number"] {
@@ -372,68 +293,13 @@
   }
 }
 
-/* Cantidad con botones estilo input moderno */
-.input-cantidad-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.input-cantidad-wrapper input[type="number"] {
-  -moz-appearance: textfield;
-  appearance: textfield;
-  -webkit-appearance: none;
-}
-
-.input-cantidad-wrapper input::-webkit-inner-spin-button,
-.input-cantidad-wrapper input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.input-cantidad-wrapper input {
-  width: 60px;
-  padding: 8px;
-  font-size: 1.1rem;
-  text-align: center;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  outline: none;
-}
-
-.btn-cantidad {
-  padding: 8px 14px;
-  background-color: #1565c0; /* Azul intenso */
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.btn-cantidad:hover {
-  background-color: #0d47a1;
-}
-
-.btn-add-cart {
-  background-color: #2e7d32 !important; /* Verde fuerte */
-  color: white;
-  font-weight: bold;
-}
-
-.btn-add-cart:hover {
-  background-color: #1b5e20 !important;
-}
-
+/* Cantidad con botones azules cuadrados alineados */
 .input-cantidad-wrapper {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-/* Elimina flechas del input en todos los navegadores */
 .input-cantidad-wrapper input[type="number"] {
   -moz-appearance: textfield;
   appearance: textfield;
@@ -457,11 +323,11 @@
   outline: none;
 }
 
-/* Botones + y - cuadrados y azules */
+/* Botones + y - */
 .btn-cantidad {
   width: 50px;
   height: 50px;
-  background-color: #1565c0; /* Azul */
+  background-color: #1565c0;
   color: white;
   border: none;
   border-radius: 6px;
@@ -473,4 +339,15 @@
 
 .btn-cantidad:hover {
   background-color: #0d47a1;
+}
+
+/* Botón verde de "Añadir al carrito" */
+.btn-add-cart {
+  background-color: #2e7d32 !important;
+  color: white;
+  font-weight: bold;
+}
+
+.btn-add-cart:hover {
+  background-color: #1b5e20 !important;
 }
