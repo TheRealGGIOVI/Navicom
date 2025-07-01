@@ -371,3 +371,53 @@
     font-size: 0.95rem;
   }
 }
+
+/* Cantidad con botones estilo input moderno */
+.input-cantidad-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.input-cantidad-wrapper input[type="number"] {
+  width: 60px;
+  padding: 10px;
+  font-size: 1rem;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+  color: #333;
+}
+
+.btn-cantidad {
+  background-color: #455a64;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-cantidad:hover {
+  background-color: #607d8b;
+}
+
+@media (max-width: 480px) {
+  .input-cantidad-wrapper {
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .input-cantidad-wrapper input[type="number"] {
+    width: 50px;
+    padding: 8px;
+  }
+
+  .btn-cantidad {
+    padding: 8px 12px;
+    font-size: 1.1rem;
+  }
+}
