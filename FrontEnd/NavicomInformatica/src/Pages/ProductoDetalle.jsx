@@ -199,6 +199,7 @@ function ProductoDetalle() {
           </div>
 
           <button
+            className="btn-add-cart"
             onClick={() => addToCart(product.id)}
             disabled={product.stock === 0}
           >
