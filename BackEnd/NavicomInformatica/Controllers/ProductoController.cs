@@ -126,6 +126,21 @@ namespace NavicomInformatica.Controllers
             }
         }
 
+        [HttpPut("ReactivateProduct/{id}")]
+        public async Task<IActionResult> ReactivateProductAsync(long id)
+        {
+            try
+            {
+                await _productRepository.ReactivateProductAsync(id);
+                return Ok("Producto reactivado correctamente.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error interno: " + ex.Message);
+            }
+        }
+
+
         [HttpDelete("DeleteProduct/{id}")]
         public async Task<IActionResult> DeleteProductAsync(long id)
         {

@@ -192,25 +192,26 @@ namespace NavicomInformatica.Repositories
 
         public async Task DeleteProductAsync(long id)
         {
-            var product = await _context.Products
-                .Include(p => p.Imagenes)
-                .FirstOrDefaultAsync(p => p.Id == id);
-
+            var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
             if (product != null)
             {
-                _context.ProductoImagenes.RemoveRange(product.Imagenes);
-                _context.Products.Remove(product);
-                try
-                {
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateException ex)
-                {
-                    Console.WriteLine(ex.InnerException?.Message);
-                    throw;
-                }
+                product.IsActive = false;
+                _context.Products.Update(product);
+                await _context.SaveChangesAsync();
             }
         }
+
+        public async Task ReactivateProductAsync(long id)
+        {
+            var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
+            if (product != null)
+            {
+                product.IsActive = true;
+                _context.Products.Update(product);
+                await _context.SaveChangesAsync();
+            }
+        }
+
 
         public async Task UpdateAllAsync(ProductDTO product)
         {

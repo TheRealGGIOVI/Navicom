@@ -15,7 +15,7 @@ namespace NavicomInformatica.Interfaces
         Task UpdateStockAsync(long ProductId, int stockRestar);
         Task UpdateAllAsync(ProductDTO product);
         Task DeleteProductAsync(long id);
-
+        Task ReactivateProductAsync(long id);
         // Nuevos métodos para ordenamiento y filtrado
         Task<IEnumerable<Producto>> SortByPriceAsync(string sortOrder, int offset, int limit);
         Task<IEnumerable<Producto>> SortAlphabeticallyAsync(string sortOrder, int offset, int limit);

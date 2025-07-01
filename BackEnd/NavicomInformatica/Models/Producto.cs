@@ -15,6 +15,8 @@ namespace NavicomInformatica.Models
         public string? Description { get; set; }
         public string? Details { get; set; }
         public string? Category { get; set; }
+        public bool IsActive { get; set; } = true; // por defecto activo
+
 
         // Relación uno-a-muchos con las imágenes
         public List<ProductoImagen> Imagenes { get; set; } = new List<ProductoImagen>();

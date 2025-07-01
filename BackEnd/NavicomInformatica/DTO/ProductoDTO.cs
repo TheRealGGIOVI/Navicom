@@ -11,6 +11,8 @@
         public string? Description { get; set; }
         public string? Details { get; set; }
         public string? Category { get; set; }
+        public bool IsActive { get; set; } = true;
+
 
         // Lista de imágenes
         public List<ProductoImagenDTO> Imagenes { get; set; } = new List<ProductoImagenDTO>();

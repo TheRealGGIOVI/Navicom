@@ -32,6 +32,7 @@ namespace NavicomInformatica.DataMappers
                 Description = producto.Description,
                 Details = producto.Details,
                 Category = producto.Category,
+                IsActive = producto.IsActive,
                 Imagenes = MapProductoImagenesToDTO(producto.Imagenes) 
             };
         }
@@ -54,6 +55,7 @@ namespace NavicomInformatica.DataMappers
                 Description = productsDTO.Description,
                 Details = productsDTO.Details,
                 Category = productsDTO.Category,
+                IsActive = productsDTO.IsActive,
                 Imagenes = new List<ProductoImagen>() 
             };
         }
