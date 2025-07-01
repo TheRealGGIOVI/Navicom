@@ -376,48 +376,54 @@
 .input-cantidad-wrapper {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .input-cantidad-wrapper input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+  -webkit-appearance: none;
+}
+
+.input-cantidad-wrapper input::-webkit-inner-spin-button,
+.input-cantidad-wrapper input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input-cantidad-wrapper input {
   width: 60px;
-  padding: 10px;
-  font-size: 1rem;
+  padding: 8px;
+  font-size: 1.1rem;
   text-align: center;
   border: 1px solid #ccc;
   border-radius: 6px;
-  background-color: #fff;
-  color: #333;
+  outline: none;
 }
 
 .btn-cantidad {
-  background-color: #455a64;
+  padding: 8px 14px;
+  background-color: #1565c0; /* Azul intenso */
   color: white;
   border: none;
-  padding: 10px 14px;
-  font-size: 1.2rem;
   border-radius: 6px;
+  font-size: 1.2rem;
+  font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .btn-cantidad:hover {
-  background-color: #607d8b;
+  background-color: #0d47a1;
 }
 
-@media (max-width: 480px) {
-  .input-cantidad-wrapper {
-    justify-content: center;
-    gap: 6px;
-  }
-
-  .input-cantidad-wrapper input[type="number"] {
-    width: 50px;
-    padding: 8px;
-  }
-
-  .btn-cantidad {
-    padding: 8px 12px;
-    font-size: 1.1rem;
-  }
+.btn-add-cart {
+  background-color: #2e7d32 !important; /* Verde fuerte */
+  color: white;
+  font-weight: bold;
 }
+
+.btn-add-cart:hover {
+  background-color: #1b5e20 !important;
+}
+
