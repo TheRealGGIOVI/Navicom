@@ -23,9 +23,9 @@ const AdminPanel = () => {
     if (!token || !role || role.toLowerCase() !== 'admin') {
       navigate('/');
     } else {
-      fetchProducts();
+      fetchProductsByStatus(productSubTab === 'habilitados');
     }
-  }, [token, role]);
+  }, [token, role, productSubTab]);
 
   const fetchUsers = async () => {
     setLoading(true);
@@ -66,37 +66,13 @@ const AdminPanel = () => {
     }
   };
 
-  const handleRoleChange = async (userId, newRole) => {
-    setLoading(true);
-    try {
-      const response = await fetch(`${API_BASE_URL}/api/User/update-role/${userId}`, {
-        method: 'PUT',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ newRole }),
-      });
-
-      if (!response.ok) throw new Error('Error al actualizar el rol');
-
-      const result = await response.json();
-      alert(result.message || 'Rol actualizado con éxito');
-      fetchUsers();
-    } catch (err) {
-      console.error(err);
-      setError('Error al actualizar el rol');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const fetchProducts = async () => {
+  const fetchProductsByStatus = async (isActiveValue) => {
     setLoading(true);
     try {
       const formData = new FormData();
       formData.append('page', '1');
       formData.append('limit', '100');
+      formData.append('isActive', isActiveValue);
 
       const response = await fetch(`${API_BASE_URL}/api/Product/ListOfProducts`, {
         method: 'POST',
@@ -111,6 +87,7 @@ const AdminPanel = () => {
 
       const data = await response.json();
       const productItems = data.items || [];
+
       const normalizedProducts = productItems.map(p => ({
         Id: p.Id || p.id,
         Brand: p.Brand || p.brand,
@@ -121,10 +98,38 @@ const AdminPanel = () => {
         Stock: p.Stock || p.stock,
         Category: p.Category || p.category,
         Imagenes: p.Imagenes || [],
-        IsActive: Boolean(p.IsActive), // 👈 ¡AQUÍ se fuerza correctamente como booleano!
+        IsActive: Boolean(p.IsActive),
       }));
+
       setProducts(normalizedProducts);
       setError(null);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const toggleProductActiveStatus = async (product) => {
+    setLoading(true);
+    try {
+      const formData = new FormData();
+      formData.append('Id', product.Id);
+      formData.append('IsActive', (!product.IsActive).toString());
+
+      const response = await fetch(`${API_BASE_URL}/api/Product/UpdateProduct/${product.Id}`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Accept': '*/*',
+        },
+        body: formData,
+      });
+
+      if (!response.ok) throw new Error('Error al cambiar el estado del producto');
+
+      // Volver a cargar según pestaña activa
+      fetchProductsByStatus(productSubTab === 'habilitados');
     } catch (err) {
       setError(err.message);
     } finally {
@@ -180,7 +185,7 @@ const AdminPanel = () => {
         alert(text || 'Producto guardado con éxito');
       }
 
-      fetchProducts();
+      fetchProductsByStatus(productSubTab === 'habilitados');
       setShowModal(false);
       setSelectedProduct(null);
       setError(null);
@@ -212,7 +217,7 @@ const AdminPanel = () => {
       <h2>Panel de Administración</h2>
 
       <div className="tab-buttons">
-        <button className={activeTab === 'productos' ? 'active' : ''} onClick={() => { setActiveTab('productos'); fetchProducts(); }}>Productos</button>
+        <button className={activeTab === 'productos' ? 'active' : ''} onClick={() => setActiveTab('productos')}>Productos</button>
         <button className={activeTab === 'usuarios' ? 'active' : ''} onClick={() => { setActiveTab('usuarios'); fetchUsers(); }}>Usuarios</button>
       </div>
 
@@ -256,18 +261,8 @@ const AdminPanel = () => {
         <div>
           <h3>Gestión de Productos</h3>
           <div className="subtab-buttons">
-            <button
-              className={productSubTab === 'habilitados' ? 'active' : ''}
-              onClick={() => setProductSubTab('habilitados')}
-            >
-              Habilitados
-            </button>
-            <button
-              className={productSubTab === 'deshabilitados' ? 'active' : ''}
-              onClick={() => setProductSubTab('deshabilitados')}
-            >
-              Deshabilitados
-            </button>
+            <button className={productSubTab === 'habilitados' ? 'active' : ''} onClick={() => setProductSubTab('habilitados')}>Habilitados</button>
+            <button className={productSubTab === 'deshabilitados' ? 'active' : ''} onClick={() => setProductSubTab('deshabilitados')}>Deshabilitados</button>
           </div>
           <button className="btn-add" onClick={() => openModal()}>Añadir Producto</button>
           <table>
@@ -285,27 +280,24 @@ const AdminPanel = () => {
               </tr>
             </thead>
             <tbody>
-              {products
-                .filter(product => {
-                  if (productSubTab === 'habilitados') return product.IsActive === true;
-                  if (productSubTab === 'deshabilitados') return product.IsActive === false;
-                  return true;
-                })
-                .map(product => (
-                  <tr key={product.Id}>
-                    <td>{product.Id}</td>
-                    <td>{product.Brand}</td>
-                    <td>{product.Model}</td>
-                    <td>{product.Description}</td>
-                    <td>{product.Caracteristicas}</td>
-                    <td>{product.Price}</td>
-                    <td>{product.Stock}</td>
-                    <td>{product.Category}</td>
-                    <td>
-                      <button className="btn-edit" onClick={() => openModal(product)}>Editar</button>
-                    </td>
-                  </tr>
-                ))}
+              {products.map(product => (
+                <tr key={product.Id}>
+                  <td>{product.Id}</td>
+                  <td>{product.Brand}</td>
+                  <td>{product.Model}</td>
+                  <td>{product.Description}</td>
+                  <td>{product.Caracteristicas}</td>
+                  <td>{product.Price}</td>
+                  <td>{product.Stock}</td>
+                  <td>{product.Category}</td>
+                  <td>
+                    <button className="btn-edit" onClick={() => openModal(product)}>Editar</button>
+                    <button className="btn-toggle" onClick={() => toggleProductActiveStatus(product)}>
+                      {product.IsActive ? 'Deshabilitar' : 'Habilitar'}
+                    </button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
@@ -321,30 +313,18 @@ const AdminPanel = () => {
             <input type="text" value={selectedProduct?.Caracteristicas || ''} onChange={(e) => setSelectedProduct({ ...selectedProduct, Caracteristicas: e.target.value })} placeholder="Características" />
             <input type="number" value={selectedProduct?.Price || ''} onChange={(e) => setSelectedProduct({ ...selectedProduct, Price: e.target.value })} placeholder="Precio" />
             <input type="number" value={selectedProduct?.Stock || ''} onChange={(e) => setSelectedProduct({ ...selectedProduct, Stock: e.target.value })} placeholder="Stock" />
-            <select
-              value={selectedProduct?.Category || ''}
-              onChange={(e) =>
-                setSelectedProduct({ ...selectedProduct, Category: e.target.value })
-              }
-            >
+            <select value={selectedProduct?.Category || ''} onChange={(e) => setSelectedProduct({ ...selectedProduct, Category: e.target.value })}>
               <option value="">Selecciona una categoría</option>
               <option value="Portatiles">Portátiles</option>
               <option value="Ordenadores">Ordenadores</option>
               <option value="Monitores">Monitores</option>
             </select>
-            <select
-              value={selectedProduct?.IsActive ?? true}
-              onChange={(e) =>
-                setSelectedProduct({ ...selectedProduct, IsActive: e.target.value === 'true' })
-              }
-            >
+            <select value={selectedProduct?.IsActive ?? true} onChange={(e) => setSelectedProduct({ ...selectedProduct, IsActive: e.target.value === 'true' })}>
               <option value="true">Habilitado</option>
               <option value="false">Deshabilitado</option>
             </select>
             <input type="file" multiple onChange={(e) => setSelectedProduct({ ...selectedProduct, Images: Array.from(e.target.files) })} />
-            {selectedProduct?.Images?.length > 0 && (
-              <p>{selectedProduct.Images.length} imagen(es) seleccionada(s)</p>
-            )}
+            {selectedProduct?.Images?.length > 0 && <p>{selectedProduct.Images.length} imagen(es) seleccionada(s)</p>}
             <div className="modal-buttons">
               <button onClick={() => handleProductAction(selectedProduct)}>Guardar</button>
               <button onClick={() => setShowModal(false)}>Cancelar</button>
