@@ -24,6 +24,7 @@ function Home() {
       })
       .then(data => {
         const latestProducts = data.items
+          .filter(p => p.isActive)
           .sort((a, b) => b.id - a.id)
           .slice(0, 12);
         setProducts(latestProducts);
