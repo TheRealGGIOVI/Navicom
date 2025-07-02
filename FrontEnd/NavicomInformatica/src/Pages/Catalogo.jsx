@@ -91,7 +91,8 @@ function Catalogo() {
       const data = await response.json();
 
       if (Array.isArray(data.items)) {
-        setProducts(data.items);
+        const activeItems = data.items.filter(item => item.isActive);
+        setProducts(activeItems);
         setTotalPages(data.totalPages || 1);
       } else {
         throw new Error("Datos inválidos recibidos de la API");
