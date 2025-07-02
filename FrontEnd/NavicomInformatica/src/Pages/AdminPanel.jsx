@@ -14,6 +14,8 @@ const AdminPanel = () => {
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [activeTab, setActiveTab] = useState('productos');
     const navigate = useNavigate();
+    const [productSubTab, setProductSubTab] = useState('habilitados');
+
 
     const role = user?.role;
     const currentUserId = user?.Id;
@@ -118,6 +120,7 @@ const AdminPanel = () => {
                 Stock: p.Stock || p.stock,
                 Category: p.Category || p.category,
                 Imagenes: p.Imagenes || [],
+                IsActive: p.IsActive !== undefined ? p.IsActive : true,
             }));
             setProducts(normalizedProducts);
             setError(null);
@@ -141,6 +144,8 @@ const AdminPanel = () => {
             formData.append('Precio', productData.Price || 0);
             formData.append('Stock', productData.Stock || 0);
             formData.append('Category', productData.Category || '');
+            formData.append('IsActive', productData.IsActive ? 'true' : 'false');
+
 
             if (productData.Images && productData.Images.length > 0) {
                 productData.Images.forEach((file) => {
@@ -221,6 +226,7 @@ const AdminPanel = () => {
             Stock: '',
             Category: '',
             Images: [],
+            IsActive: true,
         });
         setShowModal(true);
     };
@@ -273,6 +279,20 @@ const AdminPanel = () => {
             {activeTab === 'productos' && (
                 <div>
                     <h3>Gestión de Productos</h3>
+                    <div className="subtab-buttons">
+                    <button
+                        className={productSubTab === 'habilitados' ? 'active' : ''}
+                        onClick={() => setProductSubTab('habilitados')}
+                    >
+                        Habilitados
+                    </button>
+                    <button
+                        className={productSubTab === 'deshabilitados' ? 'active' : ''}
+                        onClick={() => setProductSubTab('deshabilitados')}
+                    >
+                        Deshabilitados
+                    </button>
+                    </div>
                     <button className="btn-add" onClick={() => openModal()}>Añadir Producto</button>
                     <table>
                         <thead>
@@ -289,7 +309,9 @@ const AdminPanel = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {products.map(product => (
+                            {products
+                            .filter(product => product.IsActive === (productSubTab === 'habilitados'))
+                            .map(product => (
                                 <tr key={product.Id}>
                                     <td>{product.Id}</td>
                                     <td>{product.Brand}</td>
@@ -332,6 +354,16 @@ const AdminPanel = () => {
                             <option value="Ordenadores">Ordenadores</option>
                             <option value="Monitores">Monitores</option>
                         </select>
+                        <select
+                            value={selectedProduct?.IsActive ?? true}
+                            onChange={(e) =>
+                                setSelectedProduct({ ...selectedProduct, IsActive: e.target.value === 'true' })
+                            }
+                        >
+                            <option value="true">Habilitado</option>
+                            <option value="false">Deshabilitado</option>
+                        </select>
+
                         <input type="file" multiple onChange={(e) => setSelectedProduct({ ...selectedProduct, Images: Array.from(e.target.files) })} />
                         {selectedProduct?.Images?.length > 0 && (
                             <p>{selectedProduct.Images.length} imagen(es) seleccionada(s)</p>
