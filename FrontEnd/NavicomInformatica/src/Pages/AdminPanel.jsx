@@ -13,8 +13,9 @@ const AdminPanel = () => {
     const [showModal, setShowModal] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [activeTab, setActiveTab] = useState('productos');
-    const navigate = useNavigate();
+    const [isActiveFilter, setIsActiveFilter] = useState(true); // 👈 NUEVO
 
+    const navigate = useNavigate();
     const role = user?.role;
     const currentUserId = user?.Id;
 
@@ -24,7 +25,7 @@ const AdminPanel = () => {
         } else {
             fetchProducts();
         }
-    }, [token, role]);
+    }, [token, role, isActiveFilter]); // 👈 recarga cuando cambia el filtro
 
     const fetchUsers = async () => {
         setLoading(true);
@@ -94,6 +95,7 @@ const AdminPanel = () => {
             const formData = new FormData();
             formData.append('page', '1');
             formData.append('limit', '100');
+            formData.append('isActive', isActiveFilter.toString()); // 👈 aplica el filtro
 
             const response = await fetch(`${API_BASE_URL}/api/Product/ListOfProducts`, {
                 method: 'POST',
@@ -121,88 +123,6 @@ const AdminPanel = () => {
             }));
             setProducts(normalizedProducts);
             setError(null);
-        } catch (err) {
-            setError(err.message);
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    const handleProductAction = async (productData) => {
-        setLoading(true);
-        try {
-            const formData = new FormData();
-
-            formData.append('Id', productData.Id || 0);
-            formData.append('Brand', productData.Brand || '');
-            formData.append('Model', productData.Model || '');
-            formData.append('Description', productData.Description || '');
-            formData.append('Details', productData.Caracteristicas || '');
-            formData.append('Precio', productData.Price || 0);
-            formData.append('Stock', productData.Stock || 0);
-            formData.append('Category', productData.Category || '');
-
-            if (productData.Images && productData.Images.length > 0) {
-                productData.Images.forEach((file) => {
-                    formData.append('Files', file);
-                });
-            }
-
-            const url = productData.Id
-                ? `${API_BASE_URL}/api/Product/UpdateProduct/${productData.Id}`
-                : `${API_BASE_URL}/api/Product/AddProduct`;
-
-            const method = productData.Id ? 'PUT' : 'POST';
-
-            const response = await fetch(url, {
-                method,
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Accept': '*/*',
-                },
-                body: formData,
-            });
-
-            if (!response.ok) throw new Error('Error al guardar producto');
-
-            const contentType = response.headers.get("content-type");
-
-            if (contentType && contentType.includes("application/json")) {
-                const result = await response.json();
-                alert(result.message || 'Producto guardado con éxito');
-            } else {
-                const text = await response.text();
-                alert(text || 'Producto guardado con éxito');
-            }
-
-            fetchProducts();
-            setShowModal(false);
-            setSelectedProduct(null);
-            setError(null);
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
-    };
-
-
-    const deleteProduct = async (productId) => {
-        if (!window.confirm("¿Seguro que deseas eliminar este producto?")) return;
-        setLoading(true);
-        try {
-            const response = await fetch(`${API_BASE_URL}/api/Product/DeleteProduct/${productId}`, {
-                method: 'DELETE',
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Accept': '*/*',
-                },
-            });
-
-            if (!response.ok) throw new Error('Error al eliminar producto');
-
-            await response.json();
-            fetchProducts();
         } catch (err) {
             setError(err.message);
         } finally {
@@ -273,6 +193,23 @@ const AdminPanel = () => {
             {activeTab === 'productos' && (
                 <div>
                     <h3>Gestión de Productos</h3>
+
+                    {/* Botones Habilitados / Deshabilitados */}
+                    <div className="product-filters">
+                        <button
+                            className={isActiveFilter ? 'active' : ''}
+                            onClick={() => setIsActiveFilter(true)}
+                        >
+                            Habilitados
+                        </button>
+                        <button
+                            className={!isActiveFilter ? 'active' : ''}
+                            onClick={() => setIsActiveFilter(false)}
+                        >
+                            Deshabilitados
+                        </button>
+                    </div>
+
                     <button className="btn-add" onClick={() => openModal()}>Añadir Producto</button>
                     <table>
                         <thead>
@@ -285,7 +222,6 @@ const AdminPanel = () => {
                                 <th>Precio</th>
                                 <th>Stock</th>
                                 <th>Categoría</th>
-                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -299,10 +235,6 @@ const AdminPanel = () => {
                                     <td>{product.Price}</td>
                                     <td>{product.Stock}</td>
                                     <td>{product.Category}</td>
-                                    <td>
-                                        <button className="btn-edit" onClick={() => openModal(product)}>Editar</button>
-                                        <button className="btn-delete" onClick={() => deleteProduct(product.Id)}>Eliminar</button>
-                                    </td>
                                 </tr>
                             ))}
                         </tbody>
@@ -320,13 +252,7 @@ const AdminPanel = () => {
                         <input type="text" value={selectedProduct?.Caracteristicas || ''} onChange={(e) => setSelectedProduct({ ...selectedProduct, Caracteristicas: e.target.value })} placeholder="Características" />
                         <input type="number" value={selectedProduct?.Price || ''} onChange={(e) => setSelectedProduct({ ...selectedProduct, Price: e.target.value })} placeholder="Precio" />
                         <input type="number" value={selectedProduct?.Stock || ''} onChange={(e) => setSelectedProduct({ ...selectedProduct, Stock: e.target.value })} placeholder="Stock" />
-                        {/* <input type="text" value={selectedProduct?.Category || ''} onChange={(e) => setSelectedProduct({ ...selectedProduct, Category: e.target.value })} placeholder="Categoría" /> */}
-                        <select
-                            value={selectedProduct?.Category || ''}
-                            onChange={(e) =>
-                                setSelectedProduct({ ...selectedProduct, Category: e.target.value })
-                            }
-                            >
+                        <select value={selectedProduct?.Category || ''} onChange={(e) => setSelectedProduct({ ...selectedProduct, Category: e.target.value })}>
                             <option value="">Selecciona una categoría</option>
                             <option value="Portatiles">Portátiles</option>
                             <option value="Ordenadores">Ordenadores</option>
