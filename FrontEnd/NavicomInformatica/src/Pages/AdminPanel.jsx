@@ -298,7 +298,7 @@ const AdminPanel = () => {
                                     <td>{product.Price}</td>
                                     <td>{product.Stock}</td>
                                     <td>{product.Category}</td>
-                                    <td>{product.IsActive ? 'Habilitado' : 'Deshabilitado'}</td>
+                                    <td>{product.isActive ? 'Habilitado' : 'Deshabilitado'}</td>
                                     <td>
                                         <button className="btn-edit" onClick={() => openModal(product)}>Editar</button>
                                     </td>
