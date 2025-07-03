@@ -20,8 +20,11 @@ namespace NavicomInformatica.Controllers
         }
         //modificaciones isActive
         [HttpPost("ListOfProducts")]
-        public async Task<IActionResult> GetProductsAsync([FromForm] int page = 1, [FromForm] int limit = 10, [FromForm] bool? isActive = null)
+        public async Task<IActionResult> GetProductsAsync([FromForm] ProductListQueryDTO query)
         {
+            int page = query.Page;
+            int limit = query.Limit;
+            bool? isActive = query.IsActive;
             try
             {
                 if (page < 1 || limit < 1)
@@ -162,8 +165,11 @@ namespace NavicomInformatica.Controllers
         }
 
         [HttpPost("SortByPrice")]
-        public async Task<IActionResult> SortByPriceAsync([FromForm] string sortOrder, [FromForm] int page = 1, [FromForm] int limit = 10, [FromForm] bool? isActive = null)
+        public async Task<IActionResult> SortByPriceAsync([FromForm] string sortOrder, [FromForm] ProductListQueryDTO query)
         {
+            int page = query.Page;
+            int limit = query.Limit;
+            bool? isActive = query.IsActive;
             try
             {
                 if (page < 1 || limit < 1)
@@ -207,8 +213,11 @@ namespace NavicomInformatica.Controllers
         }
 
         [HttpPost("SortAlphabetically")]
-        public async Task<IActionResult> SortAlphabeticallyAsync([FromForm] string sortOrder, [FromForm] int page = 1, [FromForm] int limit = 10, [FromForm] bool? isActive = null)
+        public async Task<IActionResult> SortAlphabeticallyAsync([FromForm] string sortOrder, [FromForm] ProductListQueryDTO query)
         {
+            int page = query.Page;
+            int limit = query.Limit;
+            bool? isActive = query.IsActive;
             try
             {
                 if (page < 1 || limit < 1)
@@ -254,11 +263,11 @@ namespace NavicomInformatica.Controllers
 
         [HttpPost("FilterByCategory")]
         public async Task<IActionResult> FilterByCategoryAsync(
-            [FromForm] string category,
-            [FromForm] int page = 1,
-            [FromForm] int limit = 10,
-            [FromForm] bool? isActive = null) // 👈 añadido
+            [FromForm] string category, [FromForm] ProductListQueryDTO query) // 👈 añadido
         {
+            int page = query.Page;
+            int limit = query.Limit;
+            bool? isActive = query.IsActive;
             try
             {
                 if (page < 1 || limit < 1)
@@ -305,11 +314,11 @@ namespace NavicomInformatica.Controllers
 
         [HttpPost("SearchByText")]
         public async Task<IActionResult> SearchByTextAsync(
-            [FromForm] string searchText,
-            [FromForm] int page = 1,
-            [FromForm] int limit = 10,
-            [FromForm] bool? isActive = null) // 👈 añadido
+            [FromForm] string searchText, [FromForm] ProductListQueryDTO query) // 👈 añadido
         {
+            int page = query.Page;
+            int limit = query.Limit;
+            bool? isActive = query.IsActive;
             try
             {
                 if (page < 1 || limit < 1)
