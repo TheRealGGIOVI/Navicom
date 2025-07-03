@@ -21,7 +21,6 @@ function Catalogo() {
   const [loading, setLoading] = useState(false);
   const limit = 10;
 
-  // Añadimos un estado para evitar bucles infinitos
   const [fetchTrigger, setFetchTrigger] = useState(0);
 
   useEffect(() => {
@@ -29,28 +28,42 @@ function Catalogo() {
       fetchProducts();
     }, 300);
     return () => clearTimeout(timer);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [fetchTrigger]); // Solo depende de fetchTrigger
+  }, [fetchTrigger]);
 
   const fetchProducts = async () => {
     setLoading(true);
     setError(null);
     try {
       let url = LIST_OF_PRODUCTS_ENDPOINT;
-      let body = { page: page.toString(), limit: limit.toString() };
+      let body = {
+        page: page.toString(),
+        limit: limit.toString(),
+        isActive: "true"
+      };
 
       if (searchText) {
         url = SEARCH_BY_TEXT_ENDPOINT;
-        body = { searchText, page: page.toString(), limit: limit.toString() };
+        body = {
+          searchText,
+          page: page.toString(),
+          limit: limit.toString(),
+          isActive: "true"
+        };
       } else if (category) {
         url = FILTER_BY_CATEGORY_ENDPOINT;
-        body = { category, page: page.toString(), limit: limit.toString() };
+        body = {
+          category,
+          page: page.toString(),
+          limit: limit.toString(),
+          isActive: "true"
+        };
       } else if (sortBy === "alpha-asc" || sortBy === "alpha-desc") {
         url = SORT_ALPHABETICALLY_ENDPOINT;
         body = {
           sortOrder: sortBy === "alpha-asc" ? "asc" : "desc",
           page: page.toString(),
           limit: limit.toString(),
+          isActive: "true"
         };
       } else if (sortBy === "price-asc" || sortBy === "price-desc") {
         url = SORT_BY_PRICE_ENDPOINT;
@@ -58,6 +71,7 @@ function Catalogo() {
           sortOrder: sortBy === "price-asc" ? "asc" : "desc",
           page: page.toString(),
           limit: limit.toString(),
+          isActive: "true"
         };
       }
 
@@ -91,8 +105,7 @@ function Catalogo() {
       const data = await response.json();
 
       if (Array.isArray(data.items)) {
-        const activeItems = data.items.filter(item => item.isActive);
-        setProducts(activeItems);
+        setProducts(data.items);
         setTotalPages(data.totalPages || 1);
       } else {
         throw new Error("Datos inválidos recibidos de la API");
@@ -107,12 +120,10 @@ function Catalogo() {
     }
   };
 
-  // Función para disparar la búsqueda manualmente
   const handleFetch = () => {
     setFetchTrigger(prev => prev + 1);
   };
 
-  // Ajustamos los manejadores de eventos para usar handleFetch
   const handleSearchChange = (e) => {
     setSearchText(e.target.value);
     setPage(1);
@@ -168,7 +179,6 @@ function Catalogo() {
           <p>No se encontraron productos.</p>
         ) : (
           products.map((p) => {
-            // Construir las URLs completas para las imágenes
             const imageUrls = p.imagenes.map(img => `${BASE_IMAGE_URL}${img.img_Name}`);
             return (
               <Card
