@@ -18,7 +18,7 @@ namespace NavicomInformatica.Controllers
             _productRepository = productRepository;
             _mapper = productMapper;
         }
-
+        //modificaciones isActive
         [HttpPost("ListOfProducts")]
         public async Task<IActionResult> GetProductsAsync([FromForm] int page = 1, [FromForm] int limit = 10, [FromForm] bool? isActive = null)
         {
