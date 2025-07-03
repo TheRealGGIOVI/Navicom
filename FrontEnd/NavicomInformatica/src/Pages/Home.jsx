@@ -8,28 +8,30 @@ function Home() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch(LIST_OF_PRODUCTS_ENDPOINT, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "*/*"
-      },
-      body: JSON.stringify({ page: 1, limit: 30, isActive: true })
+  const formData = new FormData();
+  formData.append("page", "1");
+  formData.append("limit", "30");
+  formData.append("isActive", "true"); // 👈 opcional pero recomendado
+
+  fetch(LIST_OF_PRODUCTS_ENDPOINT, {
+    method: "POST",
+    body: formData, // 👈 no pongas headers
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`Error HTTP: ${response.status}`);
+      }
+      return response.json();
     })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`Error HTTP: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then(data => {
-        const latestProducts = data.items
-          .sort((a, b) => b.id - a.id)
-          .slice(0, 12);
-        setProducts(latestProducts);
-      })
-      .catch(error => console.error("Error al obtener los productos:", error));
-  }, []);
+    .then(data => {
+      const latestProducts = data.items
+        .sort((a, b) => b.id - a.id)
+        .slice(0, 12);
+      setProducts(latestProducts);
+    })
+    .catch(error => console.error("Error al obtener los productos:", error));
+}, []);
+
 
   return (
     <>
