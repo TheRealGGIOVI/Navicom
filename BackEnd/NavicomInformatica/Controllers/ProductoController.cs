@@ -20,7 +20,7 @@ namespace NavicomInformatica.Controllers
         }
 
         [HttpPost("ListOfProducts")]
-        public async Task<IActionResult> GetProductsAsync([FromForm] int page = 1, [FromForm] int limit = 10)
+        public async Task<IActionResult> GetProductsAsync([FromForm] int page = 1, [FromForm] int limit = 10, [FromForm] bool? isActive = null)
         {
             try
             {
@@ -31,14 +31,14 @@ namespace NavicomInformatica.Controllers
 
                 int offset = (page - 1) * limit;
 
-                var products = await _productRepository.GetProductsAsync(offset, limit);
+                var products = await _productRepository.GetProductsAsync(offset, limit, isActive);
 
                 if (products == null || !products.Any())
                 {
                     return NotFound("No se encontró ningún producto.");
                 }
 
-                int totalItems = await _productRepository.GetTotalProductCountAsync();
+                int totalItems = await _productRepository.GetTotalProductCountAsync(isActive);
 
                 int totalPages = (int)Math.Ceiling(totalItems / (double)limit);
 
@@ -162,7 +162,7 @@ namespace NavicomInformatica.Controllers
         }
 
         [HttpPost("SortByPrice")]
-        public async Task<IActionResult> SortByPriceAsync([FromForm] string sortOrder, [FromForm] int page = 1, [FromForm] int limit = 10)
+        public async Task<IActionResult> SortByPriceAsync([FromForm] string sortOrder, [FromForm] int page = 1, [FromForm] int limit = 10, [FromForm] bool? isActive = null)
         {
             try
             {
@@ -178,14 +178,14 @@ namespace NavicomInformatica.Controllers
 
                 int offset = (page - 1) * limit;
 
-                var products = await _productRepository.SortByPriceAsync(sortOrder, offset, limit);
+                var products = await _productRepository.SortByPriceAsync(sortOrder, offset, limit, isActive);
 
                 if (products == null || !products.Any())
                 {
                     return NotFound("No se encontraron productos.");
                 }
 
-                int totalItems = await _productRepository.GetTotalProductCountAsync();
+                int totalItems = await _productRepository.GetTotalProductCountAsync(isActive);
                 int totalPages = (int)Math.Ceiling(totalItems / (double)limit);
 
                 var productsDTO = _mapper.productToDTO(products);
@@ -207,7 +207,7 @@ namespace NavicomInformatica.Controllers
         }
 
         [HttpPost("SortAlphabetically")]
-        public async Task<IActionResult> SortAlphabeticallyAsync([FromForm] string sortOrder, [FromForm] int page = 1, [FromForm] int limit = 10)
+        public async Task<IActionResult> SortAlphabeticallyAsync([FromForm] string sortOrder, [FromForm] int page = 1, [FromForm] int limit = 10, [FromForm] bool? isActive = null)
         {
             try
             {
@@ -223,14 +223,14 @@ namespace NavicomInformatica.Controllers
 
                 int offset = (page - 1) * limit;
 
-                var products = await _productRepository.SortAlphabeticallyAsync(sortOrder, offset, limit);
+                var products = await _productRepository.SortAlphabeticallyAsync(sortOrder, offset, limit, isActive);
 
                 if (products == null || !products.Any())
                 {
                     return NotFound("No se encontraron productos.");
                 }
 
-                int totalItems = await _productRepository.GetTotalProductCountAsync();
+                int totalItems = await _productRepository.GetTotalProductCountAsync(isActive);
                 int totalPages = (int)Math.Ceiling(totalItems / (double)limit);
 
                 var productsDTO = _mapper.productToDTO(products);
@@ -253,7 +253,11 @@ namespace NavicomInformatica.Controllers
 
 
         [HttpPost("FilterByCategory")]
-        public async Task<IActionResult> FilterByCategoryAsync([FromForm] string category, [FromForm] int page = 1, [FromForm] int limit = 10)
+        public async Task<IActionResult> FilterByCategoryAsync(
+            [FromForm] string category,
+            [FromForm] int page = 1,
+            [FromForm] int limit = 10,
+            [FromForm] bool? isActive = null) // 👈 añadido
         {
             try
             {
@@ -265,19 +269,19 @@ namespace NavicomInformatica.Controllers
                 var validCategories = new[] { "Portatiles", "Ordenadores", "Monitores", "" };
                 if (!string.IsNullOrEmpty(category) && !validCategories.Contains(category))
                 {
-                    return BadRequest("Categoría inválida. Opciones válidas: Laptops, MiniPCs, MonitorsAndAccessories.");
+                    return BadRequest("Categoría inválida. Opciones válidas: Portatiles, Ordenadores, Monitores.");
                 }
 
                 int offset = (page - 1) * limit;
 
-                var products = await _productRepository.FilterByCategoryAsync(category, offset, limit);
+                var products = await _productRepository.FilterByCategoryAsync(category, offset, limit, isActive); // 👈 modificado
 
                 if (products == null || !products.Any())
                 {
                     return NotFound("No se encontraron productos.");
                 }
 
-                int totalItems = await _productRepository.GetTotalProductCountForCategoryAsync(category);
+                int totalItems = await _productRepository.GetTotalProductCountForCategoryAsync(category, isActive); // 👈 modificado
                 int totalPages = (int)Math.Ceiling(totalItems / (double)limit);
 
                 var productsDTO = _mapper.productToDTO(products);
@@ -298,8 +302,13 @@ namespace NavicomInformatica.Controllers
             }
         }
 
+
         [HttpPost("SearchByText")]
-        public async Task<IActionResult> SearchByTextAsync([FromForm] string searchText, [FromForm] int page = 1, [FromForm] int limit = 10)
+        public async Task<IActionResult> SearchByTextAsync(
+            [FromForm] string searchText,
+            [FromForm] int page = 1,
+            [FromForm] int limit = 10,
+            [FromForm] bool? isActive = null) // 👈 añadido
         {
             try
             {
@@ -310,14 +319,14 @@ namespace NavicomInformatica.Controllers
 
                 int offset = (page - 1) * limit;
 
-                var products = await _productRepository.SearchByTextAsync(searchText, offset, limit);
+                var products = await _productRepository.SearchByTextAsync(searchText, offset, limit, isActive); // 👈 modificado
 
                 if (products == null || !products.Any())
                 {
                     return NotFound("No se encontraron productos.");
                 }
 
-                int totalItems = await _productRepository.GetTotalProductCountForSearchAsync(searchText);
+                int totalItems = await _productRepository.GetTotalProductCountForSearchAsync(searchText, isActive); // 👈 modificado
                 int totalPages = (int)Math.Ceiling(totalItems / (double)limit);
 
                 var productsDTO = _mapper.productToDTO(products);

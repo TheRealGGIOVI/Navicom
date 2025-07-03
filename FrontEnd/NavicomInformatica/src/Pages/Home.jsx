@@ -14,7 +14,7 @@ function Home() {
         "Content-Type": "application/json",
         "Accept": "*/*"
       },
-      body: JSON.stringify({ page: 1, limit: 30 })
+      body: JSON.stringify({ page: 1, limit: 30, isActive: true })
     })
       .then(response => {
         if (!response.ok) {
@@ -24,7 +24,6 @@ function Home() {
       })
       .then(data => {
         const latestProducts = data.items
-          .filter(p => p.isActive)
           .sort((a, b) => b.id - a.id)
           .slice(0, 12);
         setProducts(latestProducts);

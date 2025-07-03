@@ -23,11 +23,19 @@ namespace NavicomInformatica.Repositories
                 .ToListAsync();
         }
 
-        public async Task<ICollection<Producto>> GetProductsAsync(int offset, int limit)
+        public async Task<ICollection<Producto>> GetProductsAsync(int offset, int limit, bool? isActive)
         {
-            return await _context.Products
+            var query = _context.Products
                 .Include(p => p.Imagenes)
-                .OrderBy(u => u.Id)
+                .AsQueryable();
+
+            if (isActive.HasValue)
+            {
+                query = query.Where(p => p.IsActive == isActive.Value);
+            }
+
+            return await query
+                .OrderBy(p => p.Id)
                 .Skip(offset)
                 .Take(limit)
                 .ToListAsync();
@@ -93,6 +101,7 @@ namespace NavicomInformatica.Repositories
                 Description = productDto.Description,
                 Details = productDto.Details,
                 Category = productDto.Category,
+                IsActive = true,
                 Imagenes = new List<ProductoImagen>()
             };
 
@@ -158,9 +167,17 @@ namespace NavicomInformatica.Repositories
                 .FirstOrDefaultAsync(u => u.Model == model);
         }
 
-        public async Task<int> GetTotalProductCountAsync()
+        public async Task<int> GetTotalProductCountAsync(bool? isActive)
         {
-            return await _context.Products.CountAsync();
+            var query = _context.Products.AsQueryable();
+
+            if (isActive.HasValue)
+            {
+                query = query.Where(p => p.IsActive == isActive.Value);
+            }
+
+            return await query.CountAsync();
+
         }
 
         public async Task UpdateStockAsync(long ProductId, int stockRestar)
@@ -273,6 +290,12 @@ namespace NavicomInformatica.Repositories
             {
                 productVariado.Category = product.Category.Trim();
             }
+            // Validar y actualizar estado activo/inactivo
+            if (product.IsActive != productVariado.IsActive)
+            {
+                productVariado.IsActive = product.IsActive;
+            }
+
 
             if (product.Files != null && product.Files.Any())
             {
@@ -309,11 +332,16 @@ namespace NavicomInformatica.Repositories
         }
 
         // Método para ordenar por precio
-        public async Task<IEnumerable<Producto>> SortByPriceAsync(string sortOrder, int offset, int limit)
+        public async Task<IEnumerable<Producto>> SortByPriceAsync(string sortOrder, int offset, int limit, bool? isActive)
         {
             var query = _context.Products
                 .Include(p => p.Imagenes)
                 .AsQueryable();
+
+            if (isActive.HasValue)
+            {
+                query = query.Where(p => p.IsActive == isActive.Value);
+            }
 
             if (sortOrder?.ToLower() == "asc")
             {
@@ -330,11 +358,16 @@ namespace NavicomInformatica.Repositories
         }
 
         // Método para ordenar alfabéticamente
-        public async Task<IEnumerable<Producto>> SortAlphabeticallyAsync(string sortOrder, int offset, int limit)
+        public async Task<IEnumerable<Producto>> SortAlphabeticallyAsync(string sortOrder, int offset, int limit, bool? isActive)
         {
             var query = _context.Products
                 .Include(p => p.Imagenes)
                 .AsQueryable();
+
+            if (isActive.HasValue)
+            {
+                query = query.Where(p => p.IsActive == isActive.Value);
+            }
 
             if (sortOrder?.ToLower() == "asc")
             {
@@ -348,10 +381,11 @@ namespace NavicomInformatica.Repositories
             query = query.Skip(offset).Take(limit);
 
             return await query.ToListAsync();
+
         }
 
         // Método para filtrar por categoría
-        public async Task<IEnumerable<Producto>> FilterByCategoryAsync(string category, int offset, int limit)
+        public async Task<IEnumerable<Producto>> FilterByCategoryAsync(string category, int offset, int limit, bool? isActive)
         {
             var query = _context.Products
                 .Include(p => p.Imagenes)
@@ -362,13 +396,19 @@ namespace NavicomInformatica.Repositories
                 query = query.Where(p => p.Category.ToLower() == category.ToLower());
             }
 
+            if (isActive.HasValue)
+            {
+                query = query.Where(p => p.IsActive == isActive.Value);
+            }
+
             query = query.OrderBy(p => p.Id).Skip(offset).Take(limit);
 
             return await query.ToListAsync();
         }
+
 
         // Método para buscar por texto
-        public async Task<IEnumerable<Producto>> SearchByTextAsync(string searchText, int offset, int limit)
+        public async Task<IEnumerable<Producto>> SearchByTextAsync(string searchText, int offset, int limit, bool? isActive)
         {
             var query = _context.Products
                 .Include(p => p.Imagenes)
@@ -381,13 +421,19 @@ namespace NavicomInformatica.Repositories
                                          p.Model.ToLower().Contains(searchLower));
             }
 
+            if (isActive.HasValue)
+            {
+                query = query.Where(p => p.IsActive == isActive.Value);
+            }
+
             query = query.OrderBy(p => p.Id).Skip(offset).Take(limit);
 
             return await query.ToListAsync();
         }
 
+
         // Métodos para contar productos (usados para paginación)
-        public async Task<int> GetTotalProductCountForCategoryAsync(string category)
+        public async Task<int> GetTotalProductCountForCategoryAsync(string category, bool? isActive)
         {
             var query = _context.Products.AsQueryable();
 
@@ -396,10 +442,16 @@ namespace NavicomInformatica.Repositories
                 query = query.Where(p => p.Category.ToLower() == category.ToLower());
             }
 
+            if (isActive.HasValue)
+            {
+                query = query.Where(p => p.IsActive == isActive.Value);
+            }
+
             return await query.CountAsync();
         }
 
-        public async Task<int> GetTotalProductCountForSearchAsync(string searchText)
+
+        public async Task<int> GetTotalProductCountForSearchAsync(string searchText, bool? isActive)
         {
             var query = _context.Products.AsQueryable();
 
@@ -410,7 +462,13 @@ namespace NavicomInformatica.Repositories
                                          p.Model.ToLower().Contains(searchLower));
             }
 
+            if (isActive.HasValue)
+            {
+                query = query.Where(p => p.IsActive == isActive.Value);
+            }
+
             return await query.CountAsync();
         }
+
     }
 }
