@@ -119,6 +119,7 @@ const AdminPanel = () => {
                 Price: p.Precio || p.precio,
                 Stock: p.Stock || p.stock,
                 Category: p.Category || p.category,
+                isActive: p.isActive,
                 Imagenes: p.Imagenes || [],
             }));
             setProducts(normalizedProducts);
@@ -129,6 +130,65 @@ const AdminPanel = () => {
             setLoading(false);
         }
     };
+    const handleProductAction = async (productData) => {
+        setLoading(true);
+        try {
+            const formData = new FormData();
+
+            formData.append('Id', productData.Id || 0);
+            formData.append('Brand', productData.Brand || '');
+            formData.append('Model', productData.Model || '');
+            formData.append('Description', productData.Description || '');
+            formData.append('Details', productData.Caracteristicas || '');
+            formData.append('Precio', productData.Price || 0);
+            formData.append('Stock', productData.Stock || 0);
+            formData.append('Category', productData.Category || '');
+            formData.append('isActive', productData.isActive || null)
+
+            if (productData.Images && productData.Images.length > 0) {
+                productData.Images.forEach((file) => {
+                    formData.append('Files', file);
+                });
+            }
+
+            const url = productData.Id
+                ? `${API_BASE_URL}/api/Product/UpdateProduct/${productData.Id}`
+                : `${API_BASE_URL}/api/Product/AddProduct`;
+
+            const method = productData.Id ? 'PUT' : 'POST';
+
+            const response = await fetch(url, {
+                method,
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Accept': '*/*',
+                },
+                body: formData,
+            });
+
+            if (!response.ok) throw new Error('Error al guardar producto');
+
+            const contentType = response.headers.get("content-type");
+
+            if (contentType && contentType.includes("application/json")) {
+                const result = await response.json();
+                alert(result.message || 'Producto guardado con éxito');
+            } else {
+                const text = await response.text();
+                alert(text || 'Producto guardado con éxito');
+            }
+
+            fetchProducts();
+            setShowModal(false);
+            setSelectedProduct(null);
+            setError(null);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+    };
+
 
     const openModal = (product = null) => {
         setSelectedProduct(product || {
@@ -140,6 +200,7 @@ const AdminPanel = () => {
             Price: '',
             Stock: '',
             Category: '',
+            isActive: null,
             Images: [],
         });
         setShowModal(true);
@@ -222,6 +283,8 @@ const AdminPanel = () => {
                                 <th>Precio</th>
                                 <th>Stock</th>
                                 <th>Categoría</th>
+                                <th>Visibilidad</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -235,6 +298,10 @@ const AdminPanel = () => {
                                     <td>{product.Price}</td>
                                     <td>{product.Stock}</td>
                                     <td>{product.Category}</td>
+                                    <td>{product.IsActive ? 'Habilitado' : 'Deshabilitado'}</td>
+                                    <td>
+                                        <button className="btn-edit" onClick={() => openModal(product)}>Editar</button>
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>
@@ -257,6 +324,11 @@ const AdminPanel = () => {
                             <option value="Portatiles">Portátiles</option>
                             <option value="Ordenadores">Ordenadores</option>
                             <option value="Monitores">Monitores</option>
+                        </select>
+                        <select value={selectedProduct?.isActive || ''} onChange={(e) => setSelectedProduct({ ...selectedProduct, isActive: e.target.value })}>
+                            <option value="">Selecciona si será visible, o no.</option>
+                            <option value="true">Habilitado</option>
+                            <option value="false">Deshabilitado</option>
                         </select>
                         <input type="file" multiple onChange={(e) => setSelectedProduct({ ...selectedProduct, Images: Array.from(e.target.files) })} />
                         {selectedProduct?.Images?.length > 0 && (
