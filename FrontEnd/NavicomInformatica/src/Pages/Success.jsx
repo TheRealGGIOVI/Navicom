@@ -180,6 +180,23 @@ export default function SuccessPage() {
           })
         });
         
+        const adminContent = `
+          <p>📦 <strong>Nuevo pedido recibido</strong></p>
+          <p><strong>Nombre:</strong> ${user?.Nombre}</p>
+          <p><strong>Email:</strong> ${customerEmail}</p>
+        `;
+
+        fetch(EMAIL_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            para: "ventas.navicominformatica@gmail.com",
+            asunto: "Nuevo pedido recibido - Navicom Informática",
+            contenido: adminContent
+          })
+        });
 
 
       } catch (err) {
