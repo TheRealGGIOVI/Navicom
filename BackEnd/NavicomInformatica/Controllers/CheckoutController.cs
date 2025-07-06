@@ -18,7 +18,6 @@ namespace NavicomInformatica.Controllers
         private readonly StripeSettings _stripe;
         public CheckoutController(IOptions<StripeSettings> stripe) => _stripe = stripe.Value;
 
-        [Authorize]
         [HttpPost("create-session")]
         public IActionResult CreateSession([FromBody] CreateSessionDto dto)
         {
