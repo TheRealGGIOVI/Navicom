@@ -300,34 +300,36 @@
 }
 
 .input-cantidad-wrapper button,
-.input-cantidad-wrapper input {
-  width: 50px;
-  height: 50px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  background-color: #f0f0f0;
+.input-cantidad-wrapper input[type="number"] {
+  width: 48px;
+  height: 48px;
   font-size: 1.3rem;
-  font-weight: 500;
-  color: #333;
+  font-weight: bold;
   text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #455a64;
+  color: white;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0; /* 👈 esto elimina el desplazamiento */
-  box-sizing: border-box;
+  appearance: none;
 }
 
-/* Eliminar flechas del input number */
+/* Eliminar flechas del input en todos los navegadores */
+.input-cantidad-wrapper input[type="number"]::-webkit-inner-spin-button,
+.input-cantidad-wrapper input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 .input-cantidad-wrapper input[type="number"] {
   -moz-appearance: textfield;
   appearance: textfield;
 }
 
-.input-cantidad-wrapper input::-webkit-inner-spin-button,
-.input-cantidad-wrapper input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
 
 
 
