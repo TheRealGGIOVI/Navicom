@@ -5,6 +5,7 @@ using Microsoft.Extensions.Options;
 using Stripe.Checkout;
 using NavicomInformatica.Models;
 using Stripe;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace NavicomInformatica.Controllers
@@ -17,6 +18,7 @@ namespace NavicomInformatica.Controllers
         private readonly StripeSettings _stripe;
         public CheckoutController(IOptions<StripeSettings> stripe) => _stripe = stripe.Value;
 
+        [Authorize]
         [HttpPost("create-session")]
         public IActionResult CreateSession([FromBody] CreateSessionDto dto)
         {

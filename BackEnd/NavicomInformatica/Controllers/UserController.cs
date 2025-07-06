@@ -25,6 +25,7 @@ namespace NavicomInformatica.Controllers
             _context = context;
         }
 
+        [Authorize(Roles = "admin")]
         [HttpGet]
         public async Task<IActionResult> GetUsersAsync()
         {
@@ -52,6 +53,8 @@ namespace NavicomInformatica.Controllers
             }
         }
 
+
+        [Authorize(Roles = "admin")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUserAsync(long id)
         {

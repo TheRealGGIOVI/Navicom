@@ -3,6 +3,7 @@ using NavicomInformatica.DTO;
 using NavicomInformatica.Interfaces;
 using NavicomInformatica.Models;
 using NavicomInformatica.DataMappers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NavicomInformatica.Controllers
 {
@@ -63,6 +64,7 @@ namespace NavicomInformatica.Controllers
             }
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPost("AddProduct")]
         public async Task<IActionResult> AddProductAsync([FromForm] ProductDTO productToAdd)
         {
@@ -110,6 +112,7 @@ namespace NavicomInformatica.Controllers
             }
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPut("UpdateProduct/{id}")]
         public async Task<IActionResult> UpdateProductAsync(long id, [FromForm] ProductDTO productToAdd)
         {
@@ -129,6 +132,7 @@ namespace NavicomInformatica.Controllers
             }
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPut("ReactivateProduct/{id}")]
         public async Task<IActionResult> ReactivateProductAsync(long id)
         {
@@ -143,7 +147,7 @@ namespace NavicomInformatica.Controllers
             }
         }
 
-
+        [Authorize(Roles = "admin")]
         [HttpDelete("DeleteProduct/{id}")]
         public async Task<IActionResult> DeleteProductAsync(long id)
         {

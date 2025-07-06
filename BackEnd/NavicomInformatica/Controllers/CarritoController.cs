@@ -6,7 +6,7 @@ using NavicomInformatica.Interfaces;
 using NavicomInformatica.Models;
 
 namespace NavicomInformatica.Controllers
-{
+{   
     [Route("api/[controller]")]
     [ApiController]
     public class CarritoController : ControllerBase
