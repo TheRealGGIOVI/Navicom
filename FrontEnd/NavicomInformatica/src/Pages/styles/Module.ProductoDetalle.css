@@ -299,7 +299,31 @@
   gap: 8px;
 }
 
-.input-cantidad-wrapper button,
+.input-cantidad-wrapper button {
+  width: 48px;
+  height: 48px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid #1976d2;
+  border-radius: 8px;
+  background-color: #1976d2;
+  color: white;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.input-cantidad-wrapper button:hover {
+  background-color: #1565c0;
+}
+
+/* Cajita del número */
 .input-cantidad-wrapper input[type="number"] {
   width: 48px;
   height: 48px;
@@ -308,8 +332,8 @@
   text-align: center;
   border: 1px solid #ccc;
   border-radius: 8px;
-  background-color: #455a64;
-  color: white;
+  background-color: white;
+  color: black;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -319,7 +343,7 @@
   appearance: none;
 }
 
-/* Eliminar flechas del input en todos los navegadores */
+/* Quitar flechas de input */
 .input-cantidad-wrapper input[type="number"]::-webkit-inner-spin-button,
 .input-cantidad-wrapper input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -329,6 +353,23 @@
   -moz-appearance: textfield;
   appearance: textfield;
 }
+
+/* Botón verde de "Añadir al carrito" */
+.btn-add-cart {
+  background-color: #2e7d32 !important;
+  color: white !important;
+  font-weight: bold;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  padding: 12px 25px;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-add-cart:hover {
+  background-color: #1b5e20 !important;
+}
+
 
 
 
