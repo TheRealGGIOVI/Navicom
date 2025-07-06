@@ -293,52 +293,50 @@
   }
 }
 
-/* Contenedor conjunto */
 .input-cantidad-wrapper {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
-/* Campo de número */
+/* Botones y campo de número uniformes */
+.input-cantidad-wrapper button,
 .input-cantidad-wrapper input {
-  width: 55px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
   border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1.1rem;
+  background-color: #f0f0f0;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #333;
   text-align: center;
-  padding: 4px 0;
-  background-color: white;
-  color: #333;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.input-cantidad-wrapper input:focus {
-  border-color: #1976d2;
-  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.2);
-  outline: none;
-}
-
-/* Botones de + y - */
-.btn-cantidad {
-  width: 48px;
-  height: 48px;
-  border: none;
-  border-radius: 8px;
-  background-color: #e3e3e3;
-  color: #333;
-  font-size: 1.5rem;
-  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.25s ease, transform 0.1s ease;
+  transition: background-color 0.2s ease;
 }
 
-.btn-cantidad:hover {
-  background-color: #d0d0d0;
+/* Botones hover */
+.input-cantidad-wrapper button:hover {
+  background-color: #e0e0e0;
 }
 
-.btn-cantidad:active {
-  transform: scale(0.95);
+/* Eliminar las flechas del input number */
+.input-cantidad-wrapper input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
+
+.input-cantidad-wrapper input::-webkit-inner-spin-button,
+.input-cantidad-wrapper input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Evitar que el campo número sea editable con teclado si lo deseas: (opcional) */
+/*
+.input-cantidad-wrapper input {
+  pointer-events: none;
+}
+*/
+
 
