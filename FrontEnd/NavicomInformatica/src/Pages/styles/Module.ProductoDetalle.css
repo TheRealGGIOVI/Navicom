@@ -299,7 +299,6 @@
   gap: 8px;
 }
 
-/* Botones y campo de número uniformes */
 .input-cantidad-wrapper button,
 .input-cantidad-wrapper input {
   width: 50px;
@@ -311,16 +310,14 @@
   font-weight: 500;
   color: #333;
   text-align: center;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0; /* 👈 esto elimina el desplazamiento */
+  box-sizing: border-box;
 }
 
-/* Botones hover */
-.input-cantidad-wrapper button:hover {
-  background-color: #e0e0e0;
-}
-
-/* Eliminar las flechas del input number */
+/* Eliminar flechas del input number */
 .input-cantidad-wrapper input[type="number"] {
   -moz-appearance: textfield;
   appearance: textfield;
@@ -332,11 +329,5 @@
   margin: 0;
 }
 
-/* Evitar que el campo número sea editable con teclado si lo deseas: (opcional) */
-/*
-.input-cantidad-wrapper input {
-  pointer-events: none;
-}
-*/
 
 
