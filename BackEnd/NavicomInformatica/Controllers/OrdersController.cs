@@ -14,7 +14,6 @@ public class OrdersController : ControllerBase
     private readonly DataBaseContext _db;
     public OrdersController(DataBaseContext db) => _db = db;
 
-    [Authorize]
     [HttpPost("makeorder")]
     public async Task<IActionResult> MakeOrder([FromBody] MakeOrderDTO dto)
     {
@@ -106,7 +105,6 @@ public class OrdersController : ControllerBase
         return Ok(new { message = "Pedido realizado con éxito", orderId = order.Id });
     }
 
-    [Authorize]
     [HttpGet("user/{userId}")]
     public async Task<IActionResult> GetOrdersByUser(long userId)
     {

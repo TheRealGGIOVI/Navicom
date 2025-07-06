@@ -293,17 +293,37 @@
   }
 }
 
-/* Cantidad con botones azules cuadrados alineados */
 .input-cantidad-wrapper {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
+/* Botones y campo de número uniformes */
+.input-cantidad-wrapper button,
+.input-cantidad-wrapper input {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+/* Botones hover */
+.input-cantidad-wrapper button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Eliminar las flechas del input number */
 .input-cantidad-wrapper input[type="number"] {
   -moz-appearance: textfield;
   appearance: textfield;
-  -webkit-appearance: none;
 }
 
 .input-cantidad-wrapper input::-webkit-inner-spin-button,
@@ -312,42 +332,11 @@
   margin: 0;
 }
 
+/* Evitar que el campo número sea editable con teclado si lo deseas: (opcional) */
+/*
 .input-cantidad-wrapper input {
-  width: 50px;
-  height: 50px;
-  padding: 0;
-  font-size: 1.2rem;
-  text-align: center;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  outline: none;
+  pointer-events: none;
 }
+*/
 
-/* Botones + y - */
-.btn-cantidad {
-  width: 50px;
-  height: 50px;
-  background-color: #1565c0;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 1.4rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
 
-.btn-cantidad:hover {
-  background-color: #0d47a1;
-}
-
-/* Botón verde de "Añadir al carrito" */
-.btn-add-cart {
-  background-color: #2e7d32 !important;
-  color: white;
-  font-weight: bold;
-}
-
-.btn-add-cart:hover {
-  background-color: #1b5e20 !important;
-}
