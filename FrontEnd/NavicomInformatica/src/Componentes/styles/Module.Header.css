@@ -1,0 +1,42 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: white;
+  /* color: var(--primary); */
+  color: #333;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  height: 55px;
+  /* border-radius: 40px;
+  border: 3px solid var(--secondary); */
+}
+
+.site-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.link-header {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Ajuste para pantallas pequeñas */
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .header-left {
+    justify-content: center;
+  }
+}

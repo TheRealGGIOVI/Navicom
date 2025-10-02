@@ -1,0 +1,101 @@
+/* Module.Card.css */
+
+/* Ajusta estos valores si quieres otro tamaño */
+:root {
+  --card-width: 280px;
+  --card-height: 400px;
+}
+
+/* enlace de la tarjeta */
+.card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* tarjeta */
+.card {
+  width: var(--card-width);
+  height: var(--card-height);
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* efecto hover */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* contenedor de imagen, altura fija */
+.card-img-container {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* propia imagen centrada y cover */
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* línea divisoria fina y en color secundario */
+.card hr {
+  border: none;
+  border-top: 1px solid var(--secondary);
+  margin: 0;
+}
+
+/* zona de información, ocupa el resto de espacio */
+.card-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+/* parte superior (marca y modelo) */
+.card-info-top {
+  margin-bottom: 1rem;
+}
+
+.card-naming h3 {
+  font-size: 1.25rem;
+  margin: 0 0 0.5rem;
+  color: #333;
+}
+
+.card-naming p {
+  font-size: 1rem;
+  margin: 0;
+  color: #666;
+}
+
+/* parte inferior (stock y precio) */
+.card-info-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-stock {
+  font-size: 0.95rem;
+  color: #666;
+  margin: 0;
+}
+
+.card-price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}

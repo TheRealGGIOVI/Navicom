@@ -1,0 +1,84 @@
+/* Module.Footer.css */
+
+/* Footer */
+footer {
+    width: 100%;
+    background-color: var(--primary); /* Color primario de tu tema */
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Contenedor principal */
+.footer-container {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    letter-spacing: 1px;
+    line-height: 1.5;
+}
+
+/* Columnas genéricas */
+.footer-column {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-column h2 {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.footer-column p,
+.footer-column a {
+    font-size: 1rem;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.footer-column a:hover {
+    text-decoration: underline;
+}
+
+/* Lista de Información */
+.footer-column.info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Social Media */
+.footer-column.social-media {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* o center si prefieres centrar */
+}
+
+.footer-column.social-media .social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-column.social-media .social-icons a {
+    font-size: 1.5rem;
+    color: #ffffff;
+    padding: 0.4rem;
+    border-radius: 50%;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.footer-column.social-media .social-icons a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+/* Responsividad */
+@media (max-width: 600px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+}

@@ -1,0 +1,153 @@
+/* Module.Home.css */
+
+/* Reset box-sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Contenedor principal */
+.home-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* HERO SECTION */
+.welcome-section {
+  width: 100%;
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url('../../img/tienda_por_fuera.jpg') center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.hero-text {
+  max-width: 90%;
+  padding: clamp(1rem, 5vw, 3rem);
+  background: none;
+  text-align: center;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+
+
+.hero-text h1 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(2rem, 6vw, 3rem);
+  color: #fff;
+}
+
+.hero-text p {
+  margin: 0;
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  color: #eee;
+}
+
+/* PRODUCTS SECTION */
+.products-section {
+  padding: 4rem 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.section-header h2 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  color: #333;
+  margin: 0;
+}
+
+/* GRID de productos: 1–2–3–4 columnas exactas */
+.products-grid {
+  display: grid;
+  gap: 1.5rem;
+  justify-items: center;
+  align-items: stretch;                 /* asegura celdas de igual altura */
+  grid-template-columns: repeat(1, 1fr); /* 1 columna por defecto */
+}
+@media (min-width: 150px) and (max-width: 642px) {
+  .products-grid {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+}
+/* 2 columnas entre 480px y 767px */
+@media (min-width: 643px) and (max-width: 982px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* 3 columnas entre 768px y 1199px */
+@media (min-width: 983px) and (max-width: 1302px) {
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+/* 4 columnas a partir de 1200px */
+@media (min-width: 1303px) {
+  .products-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+/* ─── FIX PADDING MÓVIL ≤480px ─── */
+/* ─── FIX DESPLAZAMIENTO A ≤480px ─── */
+@media (max-width: 480px) {
+  /* Asegúrate de que la grid ocupa todo el ancho menos el padding */
+  .products-grid {
+    width: calc(100% - 2rem) !important;    /* 100% menos 1rem a cada lado */
+    padding: 0 1rem !important;              /* 1rem de padding lateral */
+    box-sizing: border-box !important;
+  }
+
+  /* Si el <h2> se te hace muy pequeño, fuerza un tamaño mínimo */
+  .section-header h2 {
+    font-size: 1.2rem !important;
+  }
+}
+
+
+/* Mensaje de carga ocupa toda la fila */
+.products-grid p {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: #666;
+}
+
+/* Botón "Mostrar más productos" */
+.more-products-button {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.more-products-link {
+  display: inline-block;
+  padding: 0.75em 1.5em;
+  background-color: #455a64;
+  color: #fff;
+  border-radius: 0.5rem;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  text-decoration: none;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.more-products-link:hover {
+  background-color: #607d8b;
+  transform: translateY(-2px);
+}
+
+/* Ocultar iframe privado de Stripe */
+iframe[name^="__privateStripeController"] {
+  display: none !important;
+}

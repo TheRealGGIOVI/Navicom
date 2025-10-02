@@ -1,0 +1,83 @@
+.server_error {
+  color: #d93025;
+  font-size: 1.1rem;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    margin: 80px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.LR-title {
+    font-size: 2.2rem;
+    color: var(--primary);
+    margin-bottom: 25px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 90%;
+    padding: 12px;
+    margin-bottom: 18px;
+    border: 1.5px solid #ccc;
+    border-radius: 6px;
+    font-size: 1.05rem;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.05rem;
+    font-weight: bold;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+
+}
+
+.error {
+    font-size: 0.9rem;
+    color: red;
+    padding-bottom: 1rem;
+}
+
+.cuenta{
+    padding-bottom: 1rem;
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+    }
+
+    .LR-title {
+        font-size: 1.8rem;
+      }
+} 
+
