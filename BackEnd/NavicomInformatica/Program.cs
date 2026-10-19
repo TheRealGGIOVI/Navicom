@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using NavicomInformatica.Data;
@@ -47,13 +47,14 @@ public class Program
         // Lee la sección "Stripe" del appsettings.json / secrets / variables de entorno
         builder.Services.Configure<StripeSettings>(
             builder.Configuration.GetSection("Stripe"));
-        // Si no se define Stripe__Domain, usa el dominio de producción que Vercel expone (si está disponible).
+        // Si no se define Stripe__Domain, usa el dominio del preview o de producción que Vercel expone.
         builder.Services.PostConfigure<StripeSettings>(s =>
         {
             if (string.IsNullOrWhiteSpace(s.Domain))
             {
-                var prod = Environment.GetEnvironmentVariable("VERCEL_PROJECT_PRODUCTION_URL");
-                if (!string.IsNullOrWhiteSpace(prod)) s.Domain = $"https://{prod}";
+                var vercelDomain = Environment.GetEnvironmentVariable("VERCEL_URL")
+                                ?? Environment.GetEnvironmentVariable("VERCEL_PROJECT_PRODUCTION_URL");
+                if (!string.IsNullOrWhiteSpace(vercelDomain)) s.Domain = $"https://{vercelDomain}";
             }
         });
 
@@ -141,29 +142,36 @@ public class Program
     }
 
     /* Cadena de conexión: admite DATABASE_URL / POSTGRES_URL (formato postgres://, como inyectan
-       las integraciones de Vercel Marketplace) o ConnectionStrings:DefaultConnection. */
+       las integraciones de Vercel Marketplace, o formato estándar Host=...;Database=...)
+       o ConnectionStrings:DefaultConnection. */
     private static string? ResolveConnectionString(IConfiguration config)
     {
         var url = Environment.GetEnvironmentVariable("DATABASE_URL")
                   ?? Environment.GetEnvironmentVariable("POSTGRES_URL");
 
-        if (!string.IsNullOrWhiteSpace(url) &&
-            (url.StartsWith("postgres://", StringComparison.OrdinalIgnoreCase) ||
-             url.StartsWith("postgresql://", StringComparison.OrdinalIgnoreCase)))
+        if (!string.IsNullOrWhiteSpace(url))
         {
-            var uri = new Uri(url);
-            var userInfo = uri.UserInfo.Split(':', 2);
-            var csb = new Npgsql.NpgsqlConnectionStringBuilder
+            if (url.StartsWith("postgres://", StringComparison.OrdinalIgnoreCase) ||
+                url.StartsWith("postgresql://", StringComparison.OrdinalIgnoreCase))
             {
-                Host = uri.Host,
-                Port = uri.Port > 0 ? uri.Port : 5432,
-                Username = Uri.UnescapeDataString(userInfo[0]),
-                Password = userInfo.Length > 1 ? Uri.UnescapeDataString(userInfo[1]) : null,
-                Database = uri.AbsolutePath.TrimStart('/'),
-                SslMode = Npgsql.SslMode.Require,
-                MaxPoolSize = 5
-            };
-            return csb.ConnectionString;
+                var uri = new Uri(url);
+                var userInfo = uri.UserInfo.Split(':', 2);
+                var csb = new Npgsql.NpgsqlConnectionStringBuilder
+                {
+                    Host = uri.Host,
+                    Port = uri.Port > 0 ? uri.Port : 5432,
+                    Username = Uri.UnescapeDataString(userInfo[0]),
+                    Password = userInfo.Length > 1 ? Uri.UnescapeDataString(userInfo[1]) : null,
+                    Database = uri.AbsolutePath.TrimStart('/'),
+                    SslMode = Npgsql.SslMode.Require,
+                    TrustServerCertificate = true,
+                    MaxPoolSize = 5
+                };
+                return csb.ConnectionString;
+            }
+
+            // Si ya viene en formato de parámetros (ej. Host=...;Database=...)
+            return url;
         }
 
         return config.GetConnectionString("DefaultConnection");

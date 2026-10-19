@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using NavicomInformatica.Data;
 using NavicomInformatica.Interfaces;
 using NavicomInformatica.Models;
@@ -20,11 +20,9 @@ namespace NavicomInformatica.Data.Seeder
         {
             try
             {
-                _dbContext.Database.Migrate();
-
+                // EnsureCreated() ya se encarga de crear las tablas en Program.cs
                 if (!_dbContext.Users.Any())
                 {
-                    // En producción define SEED_ADMIN_PASSWORD; los valores por defecto son solo para desarrollo local.
                     string? seedPassword = Environment.GetEnvironmentVariable("SEED_ADMIN_PASSWORD");
                     string passwordHashedChristian = _passwordHasher.Hash(seedPassword ?? "Josemi123.");
                     string passwordHashedJuanjo = _passwordHasher.Hash(seedPassword ?? "Giovi123.");
