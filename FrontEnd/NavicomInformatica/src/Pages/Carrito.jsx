@@ -162,11 +162,17 @@ function Carrito() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ items })
       });
-      const { sessionId } = await r.json();
+      const data = await r.json();
+      if (!r.ok) {
+        alert(data.message || data.error || "Error al procesar el pago con Stripe.");
+        return;
+      }
+      const { sessionId } = data;
       const stripe = await stripePromise;
       await stripe.redirectToCheckout({ sessionId });
     } catch (err) {
       console.error("Error Stripe:", err);
+      alert("Error al iniciar el pago con Stripe: " + (err.message || err));
     }
   };
 
