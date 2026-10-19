@@ -8,9 +8,11 @@ using NavicomInformatica.Interfaces;
 using NavicomInformatica.Models;
 using NavicomInformatica.Repositories;
 using NavicomInformatica.ServiceEmail;
-using Swashbuckle.AspNetCore.Filters;
 using System.Text;
+using Swashbuckle.AspNetCore.Filters;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
 
 // 👉 Stripe
 using Stripe;
@@ -105,7 +107,15 @@ public class Program
             try
             {
                 var dbcontext = scope.ServiceProvider.GetRequiredService<DataBaseContext>();
-                dbcontext.Database.EnsureCreated();
+                var creator = dbcontext.GetService<IRelationalDatabaseCreator>();
+                try
+                {
+                    creator.CreateTables();
+                }
+                catch (Exception createEx)
+                {
+                    Console.WriteLine($"Nota al crear tablas (posiblemente ya existan): {createEx.Message}");
+                }
 
                 var seeder = scope.ServiceProvider.GetRequiredService<Seeder>();
                 seeder.Seed();
@@ -144,7 +154,16 @@ public class Program
         {
             try
             {
-                db.Database.EnsureCreated();
+                var creator = db.GetService<IRelationalDatabaseCreator>();
+                try
+                {
+                    creator.CreateTables();
+                }
+                catch (Exception createEx)
+                {
+                    Console.WriteLine($"Nota al crear tablas (posiblemente ya existan): {createEx.Message}");
+                }
+
                 seeder.Seed();
                 return Results.Ok(new { status = "OK", message = "Base de datos creada y sembrada con éxito con los productos y usuarios iniciales." });
             }
