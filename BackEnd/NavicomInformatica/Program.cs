@@ -22,13 +22,16 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-        builder.WebHost.UseUrls("http://0.0.0.0:7069");
+        // Vercel (runtime "container") envía el tráfico al puerto $PORT; en local se usa 7069.
+        var port = Environment.GetEnvironmentVariable("PORT") ?? "7069";
+        builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
 
 
         /* ---------- 1. INYECCIÓN DE SERVICIOS EXISTENTES ---------- */
         builder.Services.AddControllers();
+        var connectionString = ResolveConnectionString(builder.Configuration);
         builder.Services.AddDbContext<DataBaseContext>(options =>
-            options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+            options.UseNpgsql(connectionString));
 
         builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
         builder.Services.AddScoped<IUserRepository, UserRepository>();
@@ -44,6 +47,15 @@ public class Program
         // Lee la sección "Stripe" del appsettings.json / secrets / variables de entorno
         builder.Services.Configure<StripeSettings>(
             builder.Configuration.GetSection("Stripe"));
+        // Si no se define Stripe__Domain, usa el dominio de producción que Vercel expone (si está disponible).
+        builder.Services.PostConfigure<StripeSettings>(s =>
+        {
+            if (string.IsNullOrWhiteSpace(s.Domain))
+            {
+                var prod = Environment.GetEnvironmentVariable("VERCEL_PROJECT_PRODUCTION_URL");
+                if (!string.IsNullOrWhiteSpace(prod)) s.Domain = $"https://{prod}";
+            }
+        });
 
         /* ---------- 3. SWAGGER ---------- */
         builder.Services.AddEndpointsApiExplorer();
@@ -83,28 +95,24 @@ public class Program
         var stripeSettings = app.Services.GetRequiredService<IOptions<StripeSettings>>().Value;
         StripeConfiguration.ApiKey = stripeSettings.SecretKey;   // 🔒 solo la clave secreta
 
-        /* ---------- 6. DATABASE SEED (sin cambios) ---------- */
-        using (IServiceScope scope = app.Services.CreateScope())
+        /* ---------- 6. DATABASE INIT ---------- */
+        // Crea las tablas y siembra los datos SOLO cuando DB_INIT=true (primer despliegue).
+        // Después de la primera ejecución correcta, elimina la variable DB_INIT en Vercel.
+        if (string.Equals(Environment.GetEnvironmentVariable("DB_INIT"), "true", StringComparison.OrdinalIgnoreCase))
         {
-            var env = scope.ServiceProvider.GetRequiredService<IWebHostEnvironment>();
-
-            // 🔒 SOLO en entorno local
-            if (env.IsDevelopment() || env.IsProduction())
-
-            if (env.IsDevelopment() && Environment.MachineName == "TU-PC-NOMBRE")
+            using IServiceScope scope = app.Services.CreateScope();
+            try
             {
-                try
-                {
-                    var dbcontext = scope.ServiceProvider.GetRequiredService<DataBaseContext>();
-                    dbcontext.Database.EnsureCreated();
+                var dbcontext = scope.ServiceProvider.GetRequiredService<DataBaseContext>();
+                dbcontext.Database.EnsureCreated();
 
-                    var seeder = scope.ServiceProvider.GetRequiredService<Seeder>();
-                    seeder.Seed();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error al ejecutar el seeder: {ex.Message}");
-                }
+                var seeder = scope.ServiceProvider.GetRequiredService<Seeder>();
+                seeder.Seed();
+                Console.WriteLine("DB_INIT: base de datos creada y sembrada.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al inicializar la base de datos: {ex.Message}");
             }
         }
 
@@ -117,10 +125,11 @@ public class Program
 
         //app.UseHttpsRedirection();
         app.UseStaticFiles();
+        var imagesPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
+        Directory.CreateDirectory(imagesPath);
         app.UseStaticFiles(new StaticFileOptions
         {
-            FileProvider = new PhysicalFileProvider(
-        Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images")),
+            FileProvider = new PhysicalFileProvider(imagesPath),
             RequestPath = "/api/images"
         });
         app.UseCors(policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
@@ -129,6 +138,35 @@ public class Program
         app.UseAuthorization();
         app.MapControllers();
         app.Run();
+    }
+
+    /* Cadena de conexión: admite DATABASE_URL / POSTGRES_URL (formato postgres://, como inyectan
+       las integraciones de Vercel Marketplace) o ConnectionStrings:DefaultConnection. */
+    private static string? ResolveConnectionString(IConfiguration config)
+    {
+        var url = Environment.GetEnvironmentVariable("DATABASE_URL")
+                  ?? Environment.GetEnvironmentVariable("POSTGRES_URL");
+
+        if (!string.IsNullOrWhiteSpace(url) &&
+            (url.StartsWith("postgres://", StringComparison.OrdinalIgnoreCase) ||
+             url.StartsWith("postgresql://", StringComparison.OrdinalIgnoreCase)))
+        {
+            var uri = new Uri(url);
+            var userInfo = uri.UserInfo.Split(':', 2);
+            var csb = new Npgsql.NpgsqlConnectionStringBuilder
+            {
+                Host = uri.Host,
+                Port = uri.Port > 0 ? uri.Port : 5432,
+                Username = Uri.UnescapeDataString(userInfo[0]),
+                Password = userInfo.Length > 1 ? Uri.UnescapeDataString(userInfo[1]) : null,
+                Database = uri.AbsolutePath.TrimStart('/'),
+                SslMode = Npgsql.SslMode.Require,
+                MaxPoolSize = 5
+            };
+            return csb.ConnectionString;
+        }
+
+        return config.GetConnectionString("DefaultConnection");
     }
 }
 

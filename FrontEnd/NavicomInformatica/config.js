@@ -1,4 +1,6 @@
-export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+// Vacío = mismo dominio (Vercel sirve frontend y API juntos; las rutas son /api/...).
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "";
+const ORIGIN = typeof window !== "undefined" ? window.location.origin : "";
 export const LOGIN_ENDPOINT = `${API_BASE_URL}/api/Auth/login`;
 export const REGISTER_ENDPOINT = `${API_BASE_URL}/api/User/register`;
 export const LIST_OF_PRODUCTS_ENDPOINT = `${API_BASE_URL}/api/Product/ListOfProducts`;
@@ -12,7 +14,8 @@ export const ADD_CART_ENDPOINT = `${API_BASE_URL}/api/Carrito/AddToCart`;
 export const GET_PRODUCT_ENDPOINT = `${API_BASE_URL}/api/Product/id?id=`;
 export const UPDATE_QUANTITY_ENDPOINT = `${API_BASE_URL}/api/Carrito/UpdateQuantity`;
 export const DELETE_PRODUCT_CART_ENDPOINT = `${API_BASE_URL}/api/Carrito/RemoveFromCart/`;
-export const BASE_IMAGE_URL = `${API_BASE_URL}/images/`;
+// URL absoluta (Stripe exige URLs absolutas para las imágenes de producto).
+export const BASE_IMAGE_URL = `${API_BASE_URL || ORIGIN}/api/images/`;
 export const EMAIL_URL = `${API_BASE_URL}/api/Email`;
 export const STRIPE = `${API_BASE_URL}/api/checkout/create-session`;
 export const STRIPE_SUCCESS = `${API_BASE_URL}/api/checkout/success?sessionId=`;

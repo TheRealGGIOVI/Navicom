@@ -1,0 +1,15 @@
+# Imagen de la API de Navicom para Vercel (runtime "container").
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+COPY . .
+# Elimina restos de compilaciones de Windows/Visual Studio antes de restaurar
+RUN rm -rf bin obj .vs
+RUN dotnet restore NavicomInformatica.csproj
+RUN dotnet publish NavicomInformatica.csproj -c Release --no-restore -o /app/publish /p:UseAppHost=false
+
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
+WORKDIR /app
+COPY --from=build /app/publish ./
+# Vercel enruta el tráfico al puerto 80 por defecto; Program.cs escucha en $PORT
+ENV PORT=80 ASPNETCORE_ENVIRONMENT=Production DOTNET_EnableDiagnostics=0
+ENTRYPOINT ["dotnet", "NavicomInformatica.dll"]

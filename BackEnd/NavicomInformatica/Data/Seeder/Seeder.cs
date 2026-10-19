@@ -24,8 +24,10 @@ namespace NavicomInformatica.Data.Seeder
 
                 if (!_dbContext.Users.Any())
                 {
-                    string passwordHashedChristian = _passwordHasher.Hash("Josemi123.");
-                    string passwordHashedJuanjo = _passwordHasher.Hash("Giovi123.");
+                    // En producción define SEED_ADMIN_PASSWORD; los valores por defecto son solo para desarrollo local.
+                    string? seedPassword = Environment.GetEnvironmentVariable("SEED_ADMIN_PASSWORD");
+                    string passwordHashedChristian = _passwordHasher.Hash(seedPassword ?? "Josemi123.");
+                    string passwordHashedJuanjo = _passwordHasher.Hash(seedPassword ?? "Giovi123.");
 
                     User[] users = {
                         new User { Nombre = "Josemi", Apellidos = "toro", Email = "josemi@gmail.com", Rol="admin" },
