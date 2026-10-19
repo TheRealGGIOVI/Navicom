@@ -107,15 +107,12 @@ public class Program
             try
             {
                 var dbcontext = scope.ServiceProvider.GetRequiredService<DataBaseContext>();
-                var creator = dbcontext.GetService<IRelationalDatabaseCreator>();
-                try
-                {
-                    creator.CreateTables();
-                }
-                catch (Exception createEx)
-                {
-                    Console.WriteLine($"Nota al crear tablas (posiblemente ya existan): {createEx.Message}");
-                }
+                var sql = dbcontext.Database.GenerateCreateScript();
+                sql = sql.Replace("CREATE TABLE ", "CREATE TABLE IF NOT EXISTS ")
+                         .Replace("CREATE INDEX ", "CREATE INDEX IF NOT EXISTS ")
+                         .Replace("CREATE UNIQUE INDEX ", "CREATE UNIQUE INDEX IF NOT EXISTS ");
+
+                dbcontext.Database.ExecuteSqlRaw(sql);
 
                 var seeder = scope.ServiceProvider.GetRequiredService<Seeder>();
                 seeder.Seed();
@@ -152,24 +149,25 @@ public class Program
         // Endpoint manual para crear y sembrar la base de datos directamente desde el navegador
         app.MapGet("/api/init-db", (DataBaseContext db, Seeder seeder) =>
         {
+            var logs = new List<string>();
             try
             {
-                var creator = db.GetService<IRelationalDatabaseCreator>();
-                try
-                {
-                    creator.CreateTables();
-                }
-                catch (Exception createEx)
-                {
-                    Console.WriteLine($"Nota al crear tablas (posiblemente ya existan): {createEx.Message}");
-                }
+                var sql = db.Database.GenerateCreateScript();
+                sql = sql.Replace("CREATE TABLE ", "CREATE TABLE IF NOT EXISTS ")
+                         .Replace("CREATE INDEX ", "CREATE INDEX IF NOT EXISTS ")
+                         .Replace("CREATE UNIQUE INDEX ", "CREATE UNIQUE INDEX IF NOT EXISTS ");
+
+                db.Database.ExecuteSqlRaw(sql);
+                logs.Add("Tablas de PostgreSQL creadas.");
 
                 seeder.Seed();
-                return Results.Ok(new { status = "OK", message = "Base de datos creada y sembrada con éxito con los productos y usuarios iniciales." });
+                logs.Add("Datos iniciales sembrados con éxito.");
+
+                return Results.Ok(new { status = "OK", message = "Base de datos creada y sembrada con éxito.", logs });
             }
             catch (Exception ex)
             {
-                return Results.Problem($"Error al inicializar base de datos: {ex.Message} | Detalle interno: {ex.InnerException?.Message}");
+                return Results.Problem($"Error al inicializar base de datos: {ex.Message} | Detalle interno: {ex.InnerException?.Message} | Logs: {string.Join(" -> ", logs)}");
             }
         });
 
