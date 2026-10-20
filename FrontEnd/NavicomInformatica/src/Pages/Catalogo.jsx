@@ -19,7 +19,7 @@ function Catalogo() {
   const [totalPages, setTotalPages] = useState(1);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const limit = 10;
+  const limit = 12; // 4 cards x 3 filas = 12 productos por página
 
   const [fetchTrigger, setFetchTrigger] = useState(0);
 
@@ -114,10 +114,12 @@ function Catalogo() {
         let items = [...data.items];
         if (sortBy) {
           items.sort((a, b) => {
-            if (sortBy === "price-asc") return (a.precio ?? 0) - (b.precio ?? 0);
-            if (sortBy === "price-desc") return (b.precio ?? 0) - (a.precio ?? 0);
-            const nameA = `${a.brand || ""} ${a.model || ""}`.trim().toLowerCase();
-            const nameB = `${b.brand || ""} ${b.model || ""}`.trim().toLowerCase();
+            const priceA = a.precio ?? a.Precio ?? a.price ?? 0;
+            const priceB = b.precio ?? b.Precio ?? b.price ?? 0;
+            if (sortBy === "price-asc") return priceA - priceB;
+            if (sortBy === "price-desc") return priceB - priceA;
+            const nameA = `${a.brand || a.Brand || ""} ${a.model || a.Model || ""}`.trim().toLowerCase();
+            const nameB = `${b.brand || b.Brand || ""} ${b.model || b.Model || ""}`.trim().toLowerCase();
             if (sortBy === "alpha-asc") return nameA.localeCompare(nameB);
             if (sortBy === "alpha-desc") return nameB.localeCompare(nameA);
             return 0;
@@ -166,90 +168,156 @@ function Catalogo() {
   };
 
   return (
-    <div className="catalogo-container">
-      <h1>Catálogo</h1>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <div className="catalogo-filters">
-        <input
-          type="text"
-          placeholder="Buscar..."
-          value={searchText}
-          onChange={handleSearchChange}
-        />
-        <select value={sortBy} onChange={handleSortChange}>
-          <option value="">Ordenar por...</option>
-          <option value="price-asc">Precio: Menor a Mayor</option>
-          <option value="price-desc">Precio: Mayor a Menor</option>
-          <option value="alpha-asc">Alfabético: A-Z</option>
-          <option value="alpha-desc">Alfabético: Z-A</option>
-        </select>
-        <select value={category} onChange={handleCategoryChange}>
-          <option value="">Todas las Categorías</option>
-          <option value="Portatiles">Portátiles</option>
-          <option value="Ordenadores">Ordenadores</option>
-          <option value="Monitores">Monitores</option>
-          <option value="Perifericos">Periféricos y Accesorios</option>
-        </select>
-      </div>
-      <div className="products-grid">
-        {loading ? (
-          <p>Cargando productos...</p>
-        ) : products.length === 0 ? (
-          <p>No se encontraron productos.</p>
-        ) : (
-          products.map((p) => {
-            const imageUrls = p.imagenes.map(img => `${BASE_IMAGE_URL}${img.img_Name}`);
-            return (
-              <Card
-                key={p.id}
-                id={p.id}
-                brand={p.brand}
-                model={p.model}
-                precio={p.precio}
-                imagenes={imageUrls}
-                stock={p.stock}
-              />
-            );
-          })
-        )}
-      </div>
-      <div className="pagination">
-        <button onClick={() => handlePageChange(page - 1)} disabled={page === 1}>
-          &#8592;
-        </button>
+    <div className="catalogo-page">
+      {/* Hero Header Section */}
+      <section className="catalogo-hero">
+        <div className="catalogo-hero-content">
+          <span className="catalogo-hero-badge">Hardware & Tecnología</span>
+          <h1>Catálogo de Productos</h1>
+          <p>
+            Descubre nuestra gama de componentes, portátiles, ordenadores y periféricos de primeras marcas con la máxima garantía.
+          </p>
+        </div>
+      </section>
 
-        {Array.from({ length: totalPages }, (_, index) => index + 1).map((num) => {
-          if (
-            num === 1 ||
-            num === totalPages ||
-            (num >= page - 1 && num <= page + 1)
-          ) {
-            return (
-              <button
-                key={num}
-                onClick={() => handlePageChange(num)}
-                className={page === num ? "active-page" : ""}
+      <div className="catalogo-container">
+        {error && <div className="catalogo-error-alert">{error}</div>}
+
+        {/* Filters Bar */}
+        <div className="catalogo-filters">
+          <div className="catalogo-search-wrapper">
+            <svg className="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input
+              type="text"
+              placeholder="Buscar por marca, modelo o palabra clave..."
+              value={searchText}
+              onChange={handleSearchChange}
+            />
+            {searchText && (
+              <button 
+                type="button" 
+                className="clear-search-btn" 
+                onClick={() => { setSearchText(""); setPage(1); handleFetch(); }}
+                title="Limpiar búsqueda"
               >
-                {num}
+                ×
               </button>
-            );
-          } else if (
-            (num === page - 2 && num > 1) ||
-            (num === page + 2 && num < totalPages)
-          ) {
-            return (
-              <span key={num} className="pagination-ellipsis">
-                ...
-              </span>
-            );
-          } else {
-            return null;
-          }
-        })}
+            )}
+          </div>
 
-        <button onClick={() => handlePageChange(page + 1)} disabled={page === totalPages}>
-          &#8594;
-        </button>
+          <div className="catalogo-selects-wrapper">
+            <select value={sortBy} onChange={handleSortChange} aria-label="Ordenar productos">
+              <option value="">Ordenar por relevancia</option>
+              <option value="price-asc">Precio: Menor a Mayor</option>
+              <option value="price-desc">Precio: Mayor a Menor</option>
+              <option value="alpha-asc">Nombre: A - Z</option>
+              <option value="alpha-desc">Nombre: Z - A</option>
+            </select>
+
+            <select value={category} onChange={handleCategoryChange} aria-label="Filtrar por categoría">
+              <option value="">Todas las Categorías</option>
+              <option value="Portatiles">Portátiles</option>
+              <option value="Ordenadores">Ordenadores</option>
+              <option value="Monitores">Monitores</option>
+              <option value="Perifericos">Periféricos y Accesorios</option>
+            </select>
+          </div>
+        </div>
+
+        {/* Products Grid - 4 cards per row */}
+        <div className="products-grid">
+          {loading ? (
+            <div className="catalogo-state-box">
+              <div className="catalogo-spinner"></div>
+              <p>Cargando productos...</p>
+            </div>
+          ) : products.length === 0 ? (
+            <div className="catalogo-state-box">
+              <p className="empty-title">No se encontraron productos</p>
+              <p className="empty-subtitle">Intenta buscar con otro término o elimina los filtros aplicados.</p>
+            </div>
+          ) : (
+            products.map((p) => {
+              const prodId = p.id ?? p.Id;
+              const rawImages = p.imagenes || p.Imagenes || [];
+              const imageUrls = rawImages.map(img =>
+                typeof img === "string"
+                  ? (img.startsWith("http") ? img : `${BASE_IMAGE_URL}${img}`)
+                  : `${BASE_IMAGE_URL}${img.img_Name || img.Img_Name || ""}`
+              );
+              const prodPrice = p.precio ?? p.Precio ?? p.price ?? 0;
+              const prodStock = p.stock ?? p.Stock ?? 0;
+              const prodBrand = p.brand || p.Brand || "Navicom";
+              const prodModel = p.model || p.Model || "Producto";
+
+              return (
+                <Card
+                  key={prodId}
+                  id={prodId}
+                  brand={prodBrand}
+                  model={prodModel}
+                  precio={prodPrice}
+                  imagenes={imageUrls}
+                  stock={prodStock}
+                />
+              );
+            })
+          )}
+        </div>
+
+        {/* Modern Pagination */}
+        {totalPages > 1 && (
+          <div className="pagination">
+            <button 
+              onClick={() => handlePageChange(page - 1)} 
+              disabled={page === 1}
+              aria-label="Página anterior"
+            >
+              &#8592;
+            </button>
+
+            {Array.from({ length: totalPages }, (_, index) => index + 1).map((num) => {
+              if (
+                num === 1 ||
+                num === totalPages ||
+                (num >= page - 1 && num <= page + 1)
+              ) {
+                return (
+                  <button
+                    key={num}
+                    onClick={() => handlePageChange(num)}
+                    className={page === num ? "active-page" : ""}
+                    aria-label={`Página ${num}`}
+                  >
+                    {num}
+                  </button>
+                );
+              } else if (
+                (num === page - 2 && num > 1) ||
+                (num === page + 2 && num < totalPages)
+              ) {
+                return (
+                  <span key={num} className="pagination-ellipsis">
+                    ...
+                  </span>
+                );
+              } else {
+                return null;
+              }
+            })}
+
+            <button 
+              onClick={() => handlePageChange(page + 1)} 
+              disabled={page === totalPages}
+              aria-label="Página siguiente"
+            >
+              &#8594;
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
