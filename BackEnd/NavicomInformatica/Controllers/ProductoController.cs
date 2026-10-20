@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using NavicomInformatica.DTO;
 using NavicomInformatica.Interfaces;
 using NavicomInformatica.Models;
@@ -279,22 +279,34 @@ namespace NavicomInformatica.Controllers
                     return BadRequest("La página y el límite deben ser mayores que 0.");
                 }
 
-                var validCategories = new[] { "Portatiles", "Ordenadores", "Monitores", "" };
-                if (!string.IsNullOrEmpty(category) && !validCategories.Contains(category))
+                var validCategories = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
                 {
-                    return BadRequest("Categoría inválida. Opciones válidas: Portatiles, Ordenadores, Monitores.");
+                    "Portatiles", "Portátiles", "Laptops", "Laptop",
+                    "Ordenadores", "Ordenador", "MiniPCs", "MiniPC", "Desktops", "Sobremesa", "PC", "PCs",
+                    "Monitores", "Monitor", "Perifericos", "Periféricos", "Accesorios", "MonitorsAndAccessories", ""
+                };
+
+                if (!string.IsNullOrEmpty(category) && !validCategories.Contains(category.Trim()))
+                {
+                    return BadRequest("Categoría inválida. Opciones válidas: Portatiles, Ordenadores, Monitores, Perifericos.");
                 }
 
                 int offset = (page - 1) * limit;
 
-                var products = await _productRepository.FilterByCategoryAsync(category, offset, limit, isActive); // 👈 modificado
+                var products = await _productRepository.FilterByCategoryAsync(category, offset, limit, isActive);
 
                 if (products == null || !products.Any())
                 {
-                    return NotFound("No se encontraron productos.");
+                    return Ok(new
+                    {
+                        currentPage = page,
+                        totalPages = 1,
+                        totalItems = 0,
+                        items = new List<object>()
+                    });
                 }
 
-                int totalItems = await _productRepository.GetTotalProductCountForCategoryAsync(category, isActive); // 👈 modificado
+                int totalItems = await _productRepository.GetTotalProductCountForCategoryAsync(category, isActive);
                 int totalPages = (int)Math.Ceiling(totalItems / (double)limit);
 
                 var productsDTO = _mapper.productToDTO(products);
@@ -302,7 +314,7 @@ namespace NavicomInformatica.Controllers
                 var result = new
                 {
                     currentPage = page,
-                    totalPages = totalPages,
+                    totalPages = Math.Max(1, totalPages),
                     totalItems = totalItems,
                     items = productsDTO
                 };
@@ -318,7 +330,7 @@ namespace NavicomInformatica.Controllers
 
         [HttpPost("SearchByText")]
         public async Task<IActionResult> SearchByTextAsync(
-            [FromForm] string searchText, [FromForm] ProductListQueryDTO query) // 👈 añadido
+            [FromForm] string searchText, [FromForm] ProductListQueryDTO query)
         {
             int page = query.Page;
             int limit = query.Limit;
@@ -332,14 +344,20 @@ namespace NavicomInformatica.Controllers
 
                 int offset = (page - 1) * limit;
 
-                var products = await _productRepository.SearchByTextAsync(searchText, offset, limit, isActive); // 👈 modificado
+                var products = await _productRepository.SearchByTextAsync(searchText, offset, limit, isActive);
 
                 if (products == null || !products.Any())
                 {
-                    return NotFound("No se encontraron productos.");
+                    return Ok(new
+                    {
+                        currentPage = page,
+                        totalPages = 1,
+                        totalItems = 0,
+                        items = new List<object>()
+                    });
                 }
 
-                int totalItems = await _productRepository.GetTotalProductCountForSearchAsync(searchText, isActive); // 👈 modificado
+                int totalItems = await _productRepository.GetTotalProductCountForSearchAsync(searchText, isActive);
                 int totalPages = (int)Math.Ceiling(totalItems / (double)limit);
 
                 var productsDTO = _mapper.productToDTO(products);
@@ -347,7 +365,7 @@ namespace NavicomInformatica.Controllers
                 var result = new
                 {
                     currentPage = page,
-                    totalPages = totalPages,
+                    totalPages = Math.Max(1, totalPages),
                     totalItems = totalItems,
                     items = productsDTO
                 };

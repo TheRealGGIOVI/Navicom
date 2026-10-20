@@ -1,4 +1,4 @@
-﻿using NavicomInformatica.Data;
+using NavicomInformatica.Data;
 using NavicomInformatica.Models;
 using NavicomInformatica.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -384,6 +384,76 @@ namespace NavicomInformatica.Repositories
 
         }
 
+        private IQueryable<Producto> ApplyCategoryFilter(IQueryable<Producto> query, string? category)
+        {
+            if (string.IsNullOrWhiteSpace(category))
+            {
+                return query;
+            }
+
+            string cat = category.Trim().ToLowerInvariant();
+
+            if (cat == "portatiles" || cat == "portatil" || cat == "portátiles" || cat == "laptops" || cat == "laptop")
+            {
+                return query.Where(p => p.Category.ToLower() == "laptops" || 
+                                        p.Category.ToLower() == "portatiles" || 
+                                        p.Category.ToLower() == "portátiles");
+            }
+            if (cat == "ordenadores" || cat == "ordenador" || cat == "minipcs" || cat == "minipc" || cat == "pcs" || cat == "pc" || cat == "desktops" || cat == "sobremesa")
+            {
+                return query.Where(p => p.Category.ToLower() == "minipcs" || 
+                                        p.Category.ToLower() == "ordenadores" || 
+                                        p.Category.ToLower() == "desktops" || 
+                                        p.Category.ToLower() == "sobremesa" ||
+                                        p.Category.ToLower() == "pc");
+            }
+            if (cat == "monitores" || cat == "monitor" || cat == "pantallas")
+            {
+                return query.Where(p => p.Category.ToLower() == "monitores" || 
+                                        (p.Category.ToLower() == "monitorsandaccessories" && 
+                                         (p.Description.ToLower().Contains("monitor") || 
+                                          p.Model.ToLower().Contains("tio") || 
+                                          p.Model.ToLower().Contains("e24") || 
+                                          p.Model.ToLower().Contains("p24") || 
+                                          p.Model.ToLower().Contains("hp22"))));
+            }
+            if (cat == "perifericos" || cat == "periféricos" || cat == "periferico" || cat == "accesorios" || cat == "accessories")
+            {
+                return query.Where(p => p.Category.ToLower() == "perifericos" || 
+                                        p.Category.ToLower() == "periféricos" || 
+                                        p.Category.ToLower() == "accesorios" ||
+                                        (p.Category.ToLower() == "monitorsandaccessories" && 
+                                         (p.Description.ToLower().Contains("dock") || 
+                                          p.Description.ToLower().Contains("hub") || 
+                                          p.Description.ToLower().Contains("station") || 
+                                          p.Model.ToLower().Contains("dock") || 
+                                          p.Model.ToLower().Contains("hub"))));
+            }
+            if (cat == "monitorsandaccessories")
+            {
+                return query.Where(p => p.Category.ToLower() == "monitorsandaccessories" ||
+                                        p.Category.ToLower() == "monitores" ||
+                                        p.Category.ToLower() == "perifericos" ||
+                                        p.Category.ToLower() == "periféricos");
+            }
+
+            return query.Where(p => p.Category.ToLower() == cat);
+        }
+
+        private IQueryable<Producto> ApplySearchFilter(IQueryable<Producto> query, string? searchText)
+        {
+            if (string.IsNullOrWhiteSpace(searchText))
+            {
+                return query;
+            }
+
+            var searchLower = searchText.Trim().ToLower();
+            return query.Where(p => p.Brand.ToLower().Contains(searchLower) ||
+                                    p.Model.ToLower().Contains(searchLower) ||
+                                    p.Description.ToLower().Contains(searchLower) ||
+                                    p.Category.ToLower().Contains(searchLower));
+        }
+
         // Método para filtrar por categoría
         public async Task<IEnumerable<Producto>> FilterByCategoryAsync(string category, int offset, int limit, bool? isActive)
         {
@@ -391,10 +461,7 @@ namespace NavicomInformatica.Repositories
                 .Include(p => p.Imagenes)
                 .AsQueryable();
 
-            if (!string.IsNullOrEmpty(category))
-            {
-                query = query.Where(p => p.Category.ToLower() == category.ToLower());
-            }
+            query = ApplyCategoryFilter(query, category);
 
             if (isActive.HasValue)
             {
@@ -405,7 +472,6 @@ namespace NavicomInformatica.Repositories
 
             return await query.ToListAsync();
         }
-
 
         // Método para buscar por texto
         public async Task<IEnumerable<Producto>> SearchByTextAsync(string searchText, int offset, int limit, bool? isActive)
@@ -414,12 +480,7 @@ namespace NavicomInformatica.Repositories
                 .Include(p => p.Imagenes)
                 .AsQueryable();
 
-            if (!string.IsNullOrEmpty(searchText))
-            {
-                var searchLower = searchText.ToLower();
-                query = query.Where(p => p.Brand.ToLower().Contains(searchLower) ||
-                                         p.Model.ToLower().Contains(searchLower));
-            }
+            query = ApplySearchFilter(query, searchText);
 
             if (isActive.HasValue)
             {
@@ -431,16 +492,12 @@ namespace NavicomInformatica.Repositories
             return await query.ToListAsync();
         }
 
-
         // Métodos para contar productos (usados para paginación)
         public async Task<int> GetTotalProductCountForCategoryAsync(string category, bool? isActive)
         {
             var query = _context.Products.AsQueryable();
 
-            if (!string.IsNullOrEmpty(category))
-            {
-                query = query.Where(p => p.Category.ToLower() == category.ToLower());
-            }
+            query = ApplyCategoryFilter(query, category);
 
             if (isActive.HasValue)
             {
@@ -450,17 +507,11 @@ namespace NavicomInformatica.Repositories
             return await query.CountAsync();
         }
 
-
         public async Task<int> GetTotalProductCountForSearchAsync(string searchText, bool? isActive)
         {
             var query = _context.Products.AsQueryable();
 
-            if (!string.IsNullOrEmpty(searchText))
-            {
-                var searchLower = searchText.ToLower();
-                query = query.Where(p => p.Brand.ToLower().Contains(searchLower) ||
-                                         p.Model.ToLower().Contains(searchLower));
-            }
+            query = ApplySearchFilter(query, searchText);
 
             if (isActive.HasValue)
             {

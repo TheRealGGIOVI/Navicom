@@ -86,6 +86,12 @@ function Catalogo() {
       });
 
       if (!response.ok) {
+        if (response.status === 404) {
+          setProducts([]);
+          setTotalPages(1);
+          setError(null);
+          return;
+        }
         const errorText = await response.text();
         let errorMessage = `Error en la solicitud a la API: ${response.status}`;
         try {
@@ -105,7 +111,19 @@ function Catalogo() {
       const data = await response.json();
 
       if (Array.isArray(data.items)) {
-        setProducts(data.items);
+        let items = [...data.items];
+        if (sortBy) {
+          items.sort((a, b) => {
+            if (sortBy === "price-asc") return (a.precio ?? 0) - (b.precio ?? 0);
+            if (sortBy === "price-desc") return (b.precio ?? 0) - (a.precio ?? 0);
+            const nameA = `${a.brand || ""} ${a.model || ""}`.trim().toLowerCase();
+            const nameB = `${b.brand || ""} ${b.model || ""}`.trim().toLowerCase();
+            if (sortBy === "alpha-asc") return nameA.localeCompare(nameB);
+            if (sortBy === "alpha-desc") return nameB.localeCompare(nameA);
+            return 0;
+          });
+        }
+        setProducts(items);
         setTotalPages(data.totalPages || 1);
       } else {
         throw new Error("Datos inválidos recibidos de la API");
@@ -170,6 +188,7 @@ function Catalogo() {
           <option value="Portatiles">Portátiles</option>
           <option value="Ordenadores">Ordenadores</option>
           <option value="Monitores">Monitores</option>
+          <option value="Perifericos">Periféricos y Accesorios</option>
         </select>
       </div>
       <div className="products-grid">

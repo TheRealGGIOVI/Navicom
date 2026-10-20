@@ -2,7 +2,8 @@
 
 /* Contenedor principal */
 .home-container {
-  max-width: 1320px;
+  max-width: 1440px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 24px 80px;
 }
@@ -115,36 +116,51 @@
   margin: 12px auto 0;
 }
 
-/* Products Grid Layout: 4 columns desktop, 3 tablet, 2 mobile-lg, 1 mobile */
-.products-grid {
+/* Layout Novedades: 2 filas de 5 productos = 10 tarjetas en total */
+.home-novedades-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  justify-items: center;
-  align-items: stretch;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
   width: 100%;
+  justify-items: stretch;
+  align-items: stretch;
 }
 
-@media (max-width: 1250px) {
-  .products-grid {
-    grid-template-columns: repeat(3, 1fr);
+.home-novedades-grid .card-link {
+  width: 100%;
+  display: flex;
+}
+
+.home-novedades-grid .card {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: 100%;
+  min-height: 350px;
+}
+
+@media (max-width: 900px) {
+  .home-novedades-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
   }
 }
 
-@media (max-width: 950px) {
-  .products-grid {
-    grid-template-columns: repeat(2, 1fr);
+@media (max-width: 640px) {
+  .home-novedades-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
   }
 }
 
-@media (max-width: 620px) {
-  .products-grid {
-    grid-template-columns: repeat(1, 1fr);
+@media (max-width: 400px) {
+  .home-novedades-grid {
+    grid-template-columns: 1fr;
   }
 }
 
 /* Loading state */
-.products-grid p {
+.home-novedades-grid p {
   grid-column: 1 / -1;
   text-align: center;
   font-size: 1.15rem;

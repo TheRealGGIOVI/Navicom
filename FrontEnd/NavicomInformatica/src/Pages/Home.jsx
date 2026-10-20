@@ -31,7 +31,7 @@ function Home() {
           const aId = Number(a.id ?? a.Id ?? 0);
           return bId - aId;
         })
-        .slice(0, 12);
+        .slice(0, 10);
       setProducts(latestProducts);
     })
     .catch(error => console.error("Error al obtener los productos:", error));
@@ -52,7 +52,7 @@ function Home() {
           <div className="section-header">
             <h2>Novedades</h2>
           </div>
-          <div className="products-grid">
+          <div className="home-novedades-grid">
             {products.length > 0 ? (
               products.map(prod => {
                 const prodId = prod.id ?? prod.Id;
@@ -73,7 +73,7 @@ function Home() {
                 );
               })
             ) : (
-              <p>Cargando productos...</p>
+              <p>Cargando novedades...</p>
             )}
           </div>
           <div className="more-products-button">

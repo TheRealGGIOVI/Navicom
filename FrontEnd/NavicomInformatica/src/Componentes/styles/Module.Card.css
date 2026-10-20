@@ -1,8 +1,9 @@
 /* Module.Card.css - Modern Premium Product Card */
 
 :root {
-  --card-width: 285px;
-  --card-height: 395px;
+  --card-width: 100%;
+  --card-max-width: 250px;
+  --card-height: 375px;
 }
 
 .card-link {
@@ -17,7 +18,7 @@
 
 .card {
   width: 100%;
-  max-width: var(--card-width);
+  max-width: var(--card-max-width);
   height: var(--card-height);
   background: #ffffff;
   border: 1px solid #e2e8f0;
@@ -43,7 +44,7 @@
 /* Image Container */
 .card-img-container {
   width: 100%;
-  height: 200px;
+  height: 175px;
   overflow: hidden;
   background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
   display: flex;
