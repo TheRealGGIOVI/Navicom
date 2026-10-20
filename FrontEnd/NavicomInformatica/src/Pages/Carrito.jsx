@@ -30,12 +30,20 @@ function Carrito() {
     const fetchCart = async () => {
       if (user) {
         try {
-          const res = await fetch(`${USER_CART}${user.Id}`);
-          const data = await res.json();
-          setCart(data.cartProducts);
-          setTotal(data.totalPrice);
+          const userId = user.Id || user.id;
+          const res = await fetch(`${USER_CART}${userId}`);
+          if (res.ok) {
+            const data = await res.json();
+            setCart(data.cartProducts || data.CartProducts || []);
+            setTotal(Number(data.totalPrice ?? data.TotalPrice ?? 0));
+          } else {
+            setCart([]);
+            setTotal(0);
+          }
         } catch (err) {
           console.error("Error backend carrito:", err);
+          setCart([]);
+          setTotal(0);
         }
       } else {
         const localCart = getTempCart();

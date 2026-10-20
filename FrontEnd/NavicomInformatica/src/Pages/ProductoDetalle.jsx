@@ -69,6 +69,7 @@ function ProductoDetalle() {
 
     if (user) {
       try {
+        const userId = user.Id || user.id;
         const response = await fetch(ADD_CART_ENDPOINT, {
           method: "POST",
           headers: {
@@ -76,19 +77,22 @@ function ProductoDetalle() {
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
-            CarritoId: user.Id,
+            CarritoId: userId,
             ProductoId: productId,
             Cantidad: cantidad,
           }),
         });
 
-        if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
+        if (!response.ok) {
+          const errData = await response.json().catch(() => ({}));
+          throw new Error(errData.message || errData.details || `Error HTTP: ${response.status}`);
+        }
 
         const data = await response.json();
-        alert(data.message);
+        alert(data.message || "Producto añadido al carrito con éxito");
       } catch (err) {
         console.error("Error al añadir al carrito:", err);
-        alert("Error al añadir al carrito");
+        alert(err.message || "Error al añadir al carrito");
       }
     } else {
       const tempCart = getTempCart();

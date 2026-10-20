@@ -12,16 +12,22 @@ export const CartProvider = ({ children }) => {
     const updateCartCount = async () => {
         if (user) {
             try {
-                const res = await fetch(`${USER_CART}${user.Id}`);
-                const data = await res.json();
-                const count = data.cartProducts.reduce((sum, p) => sum + p.quantity, 0);
-                setCartCount(count);
+                const userId = user.Id || user.id;
+                const res = await fetch(`${USER_CART}${userId}`);
+                if (res.ok) {
+                    const data = await res.json();
+                    const list = data?.cartProducts || data?.CartProducts || [];
+                    const count = list.reduce((sum, p) => sum + (p.quantity || p.Quantity || 0), 0);
+                    setCartCount(count);
+                } else {
+                    setCartCount(0);
+                }
             } catch (err) {
                 console.error("Error actualizando cantidad del carrito:", err);
             }
         } else {
             const tempCart = getTempCart();
-            const count = tempCart.reduce((sum, p) => sum + p.cantidad, 0);
+            const count = tempCart.reduce((sum, p) => sum + (p.cantidad || p.quantity || 0), 0);
             setCartCount(count);
         }
     };

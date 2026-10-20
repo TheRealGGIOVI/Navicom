@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using NavicomInformatica.Models;
 using NavicomInformatica.Interfaces;
 using NavicomInformatica.Data;
@@ -33,11 +33,18 @@ namespace NavicomInformatica.Repositories
 
             var carrito = await _context.Carritos
                 .Include(c => c.Productos)
-                .FirstOrDefaultAsync(c => c.Id == carritoProductDTO.CarritoId);
+                .FirstOrDefaultAsync(c => c.Id == carritoProductDTO.CarritoId || c.UserId == carritoProductDTO.CarritoId);
 
             if (carrito == null)
             {
-                throw new Exception($"Carrito con ID {carritoProductDTO.CarritoId} no encontrado.");
+                carrito = new Carrito
+                {
+                    UserId = carritoProductDTO.CarritoId,
+                    TotalPrice = 0,
+                    Productos = new List<CarritoItem>()
+                };
+                _context.Carritos.Add(carrito);
+                await _context.SaveChangesAsync();
             }
 
             var product = await _context.Products
@@ -88,18 +95,40 @@ namespace NavicomInformatica.Repositories
 
         public async Task<Carrito> GetCartByIdAsync(long carritoId)
         {
-            return await _context.Carritos
-            .Include(c => c.Productos)
-            .ThenInclude(cp => cp.Producto)
-            .ThenInclude(p => p.Imagenes)
-            .FirstOrDefaultAsync(c => c.Id == carritoId);
+            var cart = await _context.Carritos
+                .Include(c => c.Productos)
+                .ThenInclude(cp => cp.Producto)
+                .ThenInclude(p => p.Imagenes)
+                .FirstOrDefaultAsync(c => c.Id == carritoId || c.UserId == carritoId);
+
+            if (cart == null)
+            {
+                var userExists = await _context.Users.AnyAsync(u => u.Id == carritoId);
+                if (userExists)
+                {
+                    cart = new Carrito
+                    {
+                        UserId = carritoId,
+                        TotalPrice = 0,
+                        Productos = new List<CarritoItem>()
+                    };
+                    _context.Carritos.Add(cart);
+                    await _context.SaveChangesAsync();
+                }
+            }
+
+            return cart;
         }
 
         public async Task RemoveAllProductsFromCartAsync(long carritoId)
         {
+            var cart = await _context.Carritos
+                .FirstOrDefaultAsync(c => c.Id == carritoId || c.UserId == carritoId);
+            long resolvedCartId = cart != null ? cart.Id : carritoId;
+
             var cartProduct = await _context.CarritoItems
-                                        .Where(cp => cp.CarritoId == carritoId)
-                                        .ToListAsync();
+                .Where(cp => cp.CarritoId == resolvedCartId)
+                .ToListAsync();
 
             _context.CarritoItems.RemoveRange(cartProduct);
             await _context.SaveChangesAsync();
@@ -107,11 +136,18 @@ namespace NavicomInformatica.Repositories
 
         public async Task RemoveProductFromCartAsync(long carritoId, long productoId)
         {
-            var cartProduct = await _context.CarritoItems
-                                        .FirstOrDefaultAsync(cp => cp.CarritoId == carritoId && cp.ProductoId == productoId);
+            var cart = await _context.Carritos
+                .FirstOrDefaultAsync(c => c.Id == carritoId || c.UserId == carritoId);
+            long resolvedCartId = cart != null ? cart.Id : carritoId;
 
-            _context.CarritoItems.Remove(cartProduct);
-            await _context.SaveChangesAsync();
+            var cartProduct = await _context.CarritoItems
+                .FirstOrDefaultAsync(cp => cp.CarritoId == resolvedCartId && cp.ProductoId == productoId);
+
+            if (cartProduct != null)
+            {
+                _context.CarritoItems.Remove(cartProduct);
+                await _context.SaveChangesAsync();
+            }
         }
 
         public async Task SaveChangesAsync()
@@ -121,9 +157,18 @@ namespace NavicomInformatica.Repositories
 
         public async Task UpdateProductAsync(CarritoProductoDTO carritoProductoDTO)
         {
+            var cart = await _context.Carritos
+                .Include(c => c.Productos)
+                .FirstOrDefaultAsync(c => c.Id == carritoProductoDTO.CarritoId || c.UserId == carritoProductoDTO.CarritoId);
+
+            if (cart == null)
+            {
+                throw new Exception("El carrito no encontrado");
+            }
+
             var cartProduct = await _context.CarritoItems
-            .Include(cp => cp.Producto)
-            .FirstOrDefaultAsync(cp => cp.CarritoId == carritoProductoDTO.CarritoId && cp.ProductoId == carritoProductoDTO.ProductoId);
+                .Include(cp => cp.Producto)
+                .FirstOrDefaultAsync(cp => cp.CarritoId == cart.Id && cp.ProductoId == carritoProductoDTO.ProductoId);
 
             if (cartProduct == null)
             {
@@ -143,15 +188,6 @@ namespace NavicomInformatica.Repositories
 
             cartProduct.PrecioTotalProducto = cartProduct.Cantidad * (cartProduct.Producto.Precio ?? 0.0);
 
-            var cart = await _context.Carritos
-                .Include(c => c.Productos)
-                .FirstOrDefaultAsync(c => c.Id == carritoProductoDTO.CarritoId);
-
-            if (cart == null)
-            {
-                throw new Exception("El carrito no encontrado");
-            }
-
             cart.TotalPrice = cart.Productos.Sum(cp => cp.PrecioTotalProducto ?? 0.0);
 
             await _context.SaveChangesAsync();
@@ -162,7 +198,7 @@ namespace NavicomInformatica.Repositories
             var carrito = await _context.Carritos
                 .Include(c => c.Productos)
                 .ThenInclude(p => p.Producto)
-                .FirstOrDefaultAsync(c => c.Id == carritoMerge.CarritoId);
+                .FirstOrDefaultAsync(c => c.Id == carritoMerge.CarritoId || c.UserId == carritoMerge.CarritoId);
 
             if (carrito == null)
                 throw new Exception($"Carrito con ID {carritoMerge.CarritoId} no encontrado.");

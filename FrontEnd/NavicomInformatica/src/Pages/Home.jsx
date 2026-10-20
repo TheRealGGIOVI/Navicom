@@ -24,8 +24,13 @@ function Home() {
       return response.json();
     })
     .then(data => {
-      const latestProducts = data.items
-        .sort((a, b) => b.id - a.id)
+      const items = Array.isArray(data.items) ? data.items : [];
+      const latestProducts = [...items]
+        .sort((a, b) => {
+          const bId = Number(b.id ?? b.Id ?? 0);
+          const aId = Number(a.id ?? a.Id ?? 0);
+          return bId - aId;
+        })
         .slice(0, 12);
       setProducts(latestProducts);
     })
@@ -50,18 +55,20 @@ function Home() {
           <div className="products-grid">
             {products.length > 0 ? (
               products.map(prod => {
-                const imageUrls = prod.imagenes.map(
-                  i => `${BASE_IMAGE_URL}${i.img_Name}`
+                const prodId = prod.id ?? prod.Id;
+                const rawImages = prod.imagenes || prod.Imagenes || [];
+                const imageUrls = rawImages.map(
+                  i => typeof i === "string" ? `${BASE_IMAGE_URL}${i}` : `${BASE_IMAGE_URL}${i.img_Name || i.Img_Name || ""}`
                 );
                 return (
                   <Card
-                    key={prod.id}
-                    id={prod.id}
-                    brand={prod.brand}
-                    model={prod.model}
-                    precio={prod.precio}
+                    key={prodId}
+                    id={prodId}
+                    brand={prod.brand || prod.Brand || ""}
+                    model={prod.model || prod.Model || ""}
+                    precio={prod.precio || prod.Precio || 0}
                     imagenes={imageUrls}
-                    stock={prod.stock}
+                    stock={prod.stock || prod.Stock || 0}
                   />
                 );
               })

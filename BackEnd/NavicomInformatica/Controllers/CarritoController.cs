@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NavicomInformatica.DataMappers;
 using NavicomInformatica.DTO;
@@ -33,27 +33,34 @@ namespace NavicomInformatica.Controllers
 
             if (cart == null)
             {
-                return NotFound("Carrito no encontrado.");
+                return Ok(new
+                {
+                    CartId = cartId,
+                    UserId = cartId,
+                    CartProducts = new List<object>(),
+                    TotalPrice = 0.0
+                });
             }
 
             var cartDTO = new
             {
                 CartId = cart.Id,
                 cart.UserId,
-                CartProducts = cart.Productos.Select(cp => new
+                CartProducts = (cart.Productos ?? new List<CarritoItem>()).Select(cp => new
                 {
                     ProductId = cp.ProductoId,
-                    ProductBrand = cp.Producto.Brand,
-                    ProductModel = cp.Producto.Model,
-                    ProductDescription = cp.Producto.Description,
-                    ProductStock = cp.Producto.Stock,
-                    ProductPrice = cp.Producto.Precio,
-                    ProductImage = cp.Producto.Imagenes.Any() ? cp.Producto.Imagenes.First().Img_Name : "https://via.placeholder.com/150",
-                    Quantity = cp.Cantidad,
-                    TotalPriceObject = cp.Producto.Precio * cp.Cantidad
+                    ProductBrand = cp.Producto?.Brand ?? "",
+                    ProductModel = cp.Producto?.Model ?? "",
+                    ProductDescription = cp.Producto?.Description ?? "",
+                    ProductStock = cp.Producto?.Stock ?? 0,
+                    ProductPrice = cp.Producto?.Precio ?? 0.0,
+                    ProductImage = (cp.Producto?.Imagenes != null && cp.Producto.Imagenes.Any()) ? cp.Producto.Imagenes.First().Img_Name : "https://via.placeholder.com/150",
+                    Quantity = cp.Cantidad ?? 1,
+                    TotalPriceObject = (cp.Producto?.Precio ?? 0.0) * (cp.Cantidad ?? 1)
                 }).ToList(),
-                TotalPrice = cart.Productos
-                    .Sum(cp => cp.Producto.Precio * cp.Cantidad)
+                TotalPrice = cart.Productos != null
+                    ? cart.Productos.Sum(cp => (cp.Producto?.Precio ?? 0.0) * (cp.Cantidad ?? 1))
+                    : 0.0
             };
 
             return Ok(cartDTO);
