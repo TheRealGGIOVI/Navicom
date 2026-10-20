@@ -9,8 +9,7 @@ const Header = () => {
 
   return (
     <header className="header">
-      <Link className="link-header" to="/" onClick={() => setIsOpen(false)}>
-      
+      <Link className="link-header" to="/">
       <div className="header-left">
         <img src={Logo} alt="Logo" className="logo" />
         <h1 className="site-title">Navicom Informática</h1>

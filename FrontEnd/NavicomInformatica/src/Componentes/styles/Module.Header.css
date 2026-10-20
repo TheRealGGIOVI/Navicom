@@ -1,42 +1,86 @@
+/* Module.Header.css - Modern Prestigious Header */
+
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  background-color: white;
-  /* color: var(--primary); */
-  color: #333;
+  padding: 12px 32px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.04);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.link-header {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.2s ease;
+}
+
+.link-header:hover {
+  opacity: 0.92;
 }
 
 .header-left {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 14px;
 }
 
 .logo {
-  height: 55px;
-  /* border-radius: 40px;
-  border: 3px solid var(--secondary); */
+  height: 48px;
+  width: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.15);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.link-header:hover .logo {
+  transform: scale(1.06) rotate(-1deg);
 }
 
 .site-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-.link-header {
-  text-decoration: none;
-  color: inherit;
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #0f172a 30%, #2563eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  white-space: nowrap;
 }
 
-/* Ajuste para pantallas pequeñas */
-@media (max-width: 600px) {
+/* Responsive */
+@media (max-width: 900px) {
   .header {
-    flex-direction: column;
-    gap: 10px;
+    padding: 10px 18px;
   }
 
-  .header-left {
-    justify-content: center;
+  .site-title {
+    font-size: 1.25rem;
+  }
+
+  .logo {
+    height: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    padding: 10px 16px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .site-title {
+    font-size: 1.15rem;
   }
 }

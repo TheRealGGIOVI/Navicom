@@ -1,101 +1,156 @@
-/* Module.Card.css */
+/* Module.Card.css - Modern Premium Product Card */
 
-/* Ajusta estos valores si quieres otro tamaño */
 :root {
-  --card-width: 280px;
-  --card-height: 400px;
+  --card-width: 285px;
+  --card-height: 395px;
 }
 
-/* enlace de la tarjeta */
 .card-link {
   text-decoration: none;
   color: inherit;
+  display: block;
+  outline: none;
+  height: 100%;
 }
 
-/* tarjeta */
 .card {
-  width: var(--card-width);
+  width: 100%;
+  max-width: var(--card-width);
   height: var(--card-height);
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
   overflow: hidden;
-
   display: flex;
   flex-direction: column;
+  position: relative;
+  box-shadow: 0 2px 10px -2px rgba(15, 23, 42, 0.05);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.3s ease;
+  margin: 0 auto;
 }
 
-/* efecto hover */
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  transform: translateY(-8px);
+  border-color: rgba(37, 99, 235, 0.35);
+  box-shadow: 0 20px 30px -10px rgba(37, 99, 235, 0.12), 
+              0 10px 18px -4px rgba(15, 23, 42, 0.06);
 }
 
-/* contenedor de imagen, altura fija */
+/* Image Container */
 .card-img-container {
   width: 100%;
   height: 200px;
   overflow: hidden;
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  position: relative;
   flex-shrink: 0;
 }
 
-/* propia imagen centrada y cover */
 .card-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.04));
 }
 
-/* línea divisoria fina y en color secundario */
+.card:hover .card-img {
+  transform: scale(1.08);
+}
+
+/* Subtle separator */
 .card hr {
   border: none;
-  border-top: 1px solid var(--secondary);
+  border-top: 1px solid #f1f5f9;
   margin: 0;
 }
 
-/* zona de información, ocupa el resto de espacio */
+/* Information Container */
 .card-info {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 16px 18px;
+  background: #ffffff;
 }
 
-/* parte superior (marca y modelo) */
 .card-info-top {
-  margin-bottom: 1rem;
+  margin-bottom: 8px;
 }
 
 .card-naming h3 {
-  font-size: 1.25rem;
-  margin: 0 0 0.5rem;
-  color: #333;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--primary, #2563eb);
+  margin: 0 0 4px 0;
 }
 
 .card-naming p {
   font-size: 1rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.35;
   margin: 0;
-  color: #666;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
-/* parte inferior (stock y precio) */
+/* Bottom Information (Stock & Price) */
 .card-info-bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-top: 10px;
+  border-top: 1px dashed #e2e8f0;
 }
 
 .card-stock {
-  font-size: 0.95rem;
-  color: #666;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #059669;
+  background: #ecfdf5;
+  padding: 4px 10px;
+  border-radius: 9999px;
   margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.card-stock::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #10b981;
+  box-shadow: 0 0 6px #10b981;
 }
 
 .card-price {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #333;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #0f172a;
   margin: 0;
+  letter-spacing: -0.03em;
+}
+
+@media (max-width: 480px) {
+  .card {
+    max-width: 100%;
+    height: auto;
+    min-height: 380px;
+  }
 }

@@ -1,83 +1,191 @@
-.server_error {
-  color: #d93025;
-  font-size: 1.1rem;
-  margin-top: 10px;
-  text-align: center;
-  font-weight: 500;
-}
+/* Module.LoginRegister.css - Luxury Auth Card */
 
 .container {
-    width: 100%;
-    max-width: 500px;
-    margin: 80px auto;
-    padding: 30px;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.1);
-    text-align: center;
+  width: 100%;
+  max-width: 480px;
+  margin: 60px auto 80px;
+  padding: 44px 40px;
+  background-color: #ffffff;
+  border-radius: 24px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.08), 
+              0 0 0 1px rgba(15, 23, 42, 0.02);
+  text-align: center;
+  position: relative;
 }
 
 .LR-title {
-    font-size: 2.2rem;
-    color: var(--primary);
-    margin-bottom: 25px;
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  color: #0f172a;
+  margin-bottom: 28px;
+  position: relative;
+}
+
+.LR-title::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: var(--primary-gradient, linear-gradient(135deg, #2563eb, #1d4ed8));
+  border-radius: 9999px;
+  margin: 10px auto 0;
+}
+
+/* Modern Inputs */
+form {
+  display: flex;
+  flex-direction: column;
 }
 
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-    width: 90%;
-    padding: 12px;
-    margin-bottom: 18px;
-    border: 1.5px solid #ccc;
-    border-radius: 6px;
-    font-size: 1.05rem;
+  width: 100%;
+  padding: 14px 18px;
+  margin-bottom: 16px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 12px;
+  font-size: 0.98rem;
+  color: #0f172a;
+  background-color: #f8fafc;
+  outline: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
 }
 
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="password"]::placeholder {
+  color: #94a3b8;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  background-color: #ffffff;
+  border-color: var(--primary, #2563eb);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+
+/* Remember Me Checkbox */
 label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.95rem;
-    color: #555;
-    margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #475569;
+  margin: 4px 0 20px 4px;
+  cursor: pointer;
+  user-select: none;
 }
 
 input[type="checkbox"] {
-    margin-right: 10px;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary, #2563eb);
+  cursor: pointer;
 }
 
-button {
-    width: 100%;
-    padding: 12px;
-    font-size: 1.05rem;
-    font-weight: bold;
-    color: #ffffff;
-    border: none;
-    border-radius: 6px;
-    margin-bottom: 1rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-
+/* Primary Button */
+button.primary-button:first-of-type,
+button[type="submit"] {
+  width: 100%;
+  padding: 14px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.32);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-bottom: 20px;
 }
 
+button[type="submit"]:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.45);
+  filter: brightness(1.06);
+}
+
+button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Switch Mode Prompt */
+.cuenta {
+  font-size: 0.92rem;
+  color: #64748b;
+  margin: 10px 0 8px 0;
+  padding: 0;
+  font-weight: 500;
+}
+
+/* Secondary Button (Toggle between login/register) */
+.cuenta + button,
+form > button:last-of-type:not([type="submit"]) {
+  width: 100%;
+  padding: 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  background: transparent !important;
+  color: var(--primary, #2563eb) !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+  cursor: pointer;
+  transition: all 0.2s ease !important;
+}
+
+.cuenta + button:hover,
+form > button:last-of-type:not([type="submit"]):hover {
+  background-color: #eff6ff !important;
+  border-color: var(--primary, #2563eb) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Error Messages */
 .error {
-    font-size: 0.9rem;
-    color: red;
-    padding-bottom: 1rem;
+  font-size: 0.85rem;
+  color: #ef4444;
+  background: #fef2f2;
+  border: 1px solid #fee2e2;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin: -8px 0 14px;
+  text-align: left;
+  font-weight: 500;
 }
 
-.cuenta{
-    padding-bottom: 1rem;
+.server_error {
+  color: #ef4444;
+  background: #fef2f2;
+  border: 1px solid #fee2e2;
+  font-size: 0.95rem;
+  padding: 12px;
+  border-radius: 10px;
+  margin: 8px 0 16px;
+  text-align: center;
+  font-weight: 600;
 }
 
+/* Responsive */
 @media (max-width: 600px) {
-    .container {
-        width: 90%;
-    }
+  .container {
+    width: 90%;
+    margin: 40px auto;
+    padding: 32px 24px;
+    border-radius: 20px;
+  }
 
-    .LR-title {
-        font-size: 1.8rem;
-      }
-} 
-
+  .LR-title {
+    font-size: 1.8rem;
+  }
+}

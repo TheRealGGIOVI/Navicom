@@ -1,156 +1,178 @@
-/* Fondo general de la página */
-body {
-    background-color: #e6f0fa; /* Tono azul claro */
-    margin: 0;
-}
-
-.main-content {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
+/* Module.SobreNosotros.css - Luxury Corporate Story */
 
 .page-title-section {
   text-align: center;
-  margin: 40px 0 20px;
+  margin: 40px 0 32px;
 }
 
 .page-title {
-  font-size: 2.5rem;
-  color: var(--primary);
+  font-size: clamp(2.2rem, 4.5vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  color: #0f172a;
   margin: 0;
-  font-weight: 600;
-}
-/* Estilo para las cajas de texto */
-.text-box {
-    background-color: #f9f9f9;
-    padding: 15px 20px;
-    margin: 10px 0;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centra el contenido verticalmente */
-    align-items: center; /* Centra el texto horizontalmente dentro de la caja */
-    height: 100%; /* Asegura que la caja ocupe toda la altura disponible */
-    text-align: center; /* Asegura que el texto esté centrado horizontalmente */
+  position: relative;
 }
 
-.text-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* Estilo para la caja del botón */
-.button-box {
-    display: inline-block;
-    background-color: #f9f9f9;
-    padding: 10px 20px;
-    margin: 20px 0;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.button-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+.page-title::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: var(--primary-gradient, linear-gradient(135deg, #2563eb, #1d4ed8));
+  border-radius: 9999px;
+  margin: 12px auto 0;
 }
 
 /* Sección Introductoria */
 .intro-section {
-    text-align: center;
-    padding: 40px 0;
+  margin-bottom: 40px;
+}
+
+.intro-section .text-box {
+  background: #ffffff;
+  padding: 44px 40px;
+  border-radius: 24px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.05);
+  max-width: 960px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.intro-section .text-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: var(--primary-gradient, linear-gradient(135deg, #2563eb, #1d4ed8));
 }
 
 .intro-section p {
-    font-size: 1.2rem;
-    color: #666;
-    margin: 0;
-}
-
-.contact-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #455a64; /* Color secundario del tema */
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1.1rem;
-    transition: background-color 0.3s ease;
-}
-
-.contact-button:hover {
-    background-color: #607d8b;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #334155;
+  margin: 0;
+  font-weight: 400;
 }
 
 /* Sección de Valores y Misión */
 .values-mission-section {
-    padding: 40px 0;
+  margin-bottom: 40px;
 }
 
-.columns {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    align-items: stretch; /* Asegura que las columnas tengan la misma altura */
+.values-mission-section .columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
-.column {
-    flex: 1;
-    min-width: 300px;
-    display: flex; /* Hace que el contenido interno también sea flexible */
+.values-mission-section .column {
+  display: flex;
 }
 
-/* Eliminamos text-align: center de .column porque ahora lo manejamos en text-box */
-.column h3 {
-    font-size: 1.8rem;
-    margin: 0 0 10px 0;
+.values-mission-section .text-box {
+  background: #ffffff;
+  padding: 36px 32px;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.column p {
-    font-size: 1.2rem;
-    color: #666;
-    margin: 0;
+.values-mission-section .text-box:hover {
+  transform: translateY(-6px);
+  border-color: rgba(37, 99, 235, 0.3);
+  box-shadow: 0 20px 35px -8px rgba(15, 23, 42, 0.08);
+}
+
+.values-mission-section h3 {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.025em;
+  margin: 0 0 14px 0;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 6px;
+}
+
+.values-mission-section h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 28px;
+  height: 2px;
+  background: var(--primary, #2563eb);
+  border-radius: 2px;
+}
+
+.values-mission-section p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #475569;
+  margin: 0;
 }
 
 /* Sección de Visión */
 .vision-section {
-    text-align: center;
-    padding: 40px 0;
+  margin-bottom: 60px;
+}
+
+.vision-section .text-box {
+  background: #ffffff;
+  padding: 36px 36px;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05);
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.vision-section .text-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 30px -8px rgba(15, 23, 42, 0.08);
 }
 
 .vision-section h3 {
-    font-size: 1.8rem;
-    margin: 0 0 10px 0;
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.025em;
+  margin: 0 0 12px 0;
 }
 
 .vision-section p {
-    font-size: 1.2rem;
-    color: #666;
-    margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: #475569;
+  margin: 0;
+  max-width: 760px;
+  margin: 0 auto;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
-  .page-title {
-    font-size: 2rem;
+  .values-mission-section .columns {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
-  .column h3 {
-    font-size: 1.6rem;
-  }
-  .column p,
-  .vision-section p {
-    font-size: 1rem;
-  }
-}
 
-@media (max-width: 480px) {
-  .columns {
-    flex-direction: column;
-  }
-  .page-title {
-    font-size: 1.8rem;
+  .intro-section .text-box,
+  .vision-section .text-box {
+    padding: 28px 22px;
   }
 }
