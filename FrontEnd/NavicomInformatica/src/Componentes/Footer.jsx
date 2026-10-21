@@ -10,9 +10,9 @@ const Footer = () => {
         {/* Contacto */}
         <div className="footer-column contact">
           <h2>Contacto</h2>
-          <p>952 451 362</p>
-          <p>info@navicominformatica.com</p>
-          <p>C. Buenavista, 53, 29100 Coín, Málaga</p>
+          <p>+34 910 123 456</p>
+          <p>contacto@navicominformatica.es</p>
+          <p>Av. de la Innovación, 42, 28001 Madrid</p>
         </div>
 
         {/* Información */}
@@ -33,18 +33,18 @@ const Footer = () => {
           <h2>Redes Sociales</h2>
           <div className="social-icons">
             <a
-              href="https://www.facebook.com/p/Navicom-Informatica-100071020142889/?locale=es_ES"
+              href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Visita nuestro Facebook"
+              aria-label="Facebook"
             >
               <FaFacebookF />
             </a>
             <a
-              href="https://www.instagram.com/navicominformatica_/"
+              href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Visita nuestro Instagram"
+              aria-label="Instagram"
             >
               <FaInstagram />
             </a>

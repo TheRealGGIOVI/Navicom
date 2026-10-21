@@ -191,34 +191,6 @@ export default function SuccessPage() {
             })
           }).catch(err => console.warn("No se pudo enviar el correo de confirmación al cliente:", err));
         }
-        
-        const adminContent = `
-          <h2>📦 Nuevo pedido recibido</h2>
-          <p><strong>Nombre del cliente:</strong> ${user?.Nombre}</p>
-          <p><strong>Email del cliente:</strong> ${customerEmail}</p>
-          <h3>🛒 Productos:</h3>
-          <ul>
-            ${items.map(item => `
-              <li>
-                ${item.productName} - ${item.quantity} × ${(item.unitAmount / 100).toFixed(2)} ${currency.toUpperCase()}
-              </li>
-            `).join('')}
-          </ul>
-          <p><strong>Total pagado:</strong> ${(amountTotal / 100).toFixed(2)} ${currency.toUpperCase()}</p>
-          <p><strong>Fecha:</strong> ${new Date().toLocaleString('es-ES')}</p>
-        `;
-
-        fetch(EMAIL_URL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            para: "ventas.navicominformatica@gmail.com",
-            asunto: "Nuevo pedido recibido - Navicom Informática",
-            contenido: adminContent
-          })
-        });
 
 
       } catch (err) {

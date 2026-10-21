@@ -26,7 +26,7 @@ function Contacto() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          para: "ventas.navicominformatica@gmail.com",
+          para: "contacto@navicominformatica.es",
           asunto: form.subject,
           contenido: `
             Nombre: ${form.name}
@@ -64,12 +64,12 @@ function Contacto() {
               <div className="text-box">
                 <h2>¿Dónde estamos?</h2>
                 <p>
-                  <strong>Navicom está en Calle Buenavista 53, Coín, Málaga.</strong>
+                  <strong>Nos encontramos en Av. de la Innovación, 42, 28001 Madrid.</strong>
                 </p>
                 <p>
-                  <strong>Puedes rellenar el formulario para preguntar una duda específica o llamar al número de abajo.</strong>
+                  <strong>Puedes rellenar el formulario para cualquier consulta o llamarnos directamente en horario de atención.</strong>
                 </p>
-                <p className="phone-number">Tel: 952-451-362</p>
+                <p className="phone-number">Tel: +34 910 123 456</p>
               </div>
             </div>
             {/* Columna del Formulario */}
@@ -191,9 +191,9 @@ function Contacto() {
           <div className="map-box">
             <iframe
               loading="lazy"
-              src="https://maps.google.com/maps?q=Navicom%2C%20Calle%20Buenavista%2C%2053%2C%2029100%20Co%C3%ADn%2C%20M%C3%A1laga&t=m&z=15&output=embed&iwloc=near"
-              title="Navicom, Calle Buenavista, 53, 29100 Coín, Málaga"
-              aria-label="Navicom, Calle Buenavista, 53, 29100 Coín, Málaga"
+              src="https://maps.google.com/maps?q=Puerta%20del%20Sol%2C%20Madrid%2C%20Espa%C3%B1a&t=m&z=14&output=embed&iwloc=near"
+              title="Ubicación de la tienda"
+              aria-label="Ubicación de la tienda"
             ></iframe>
           </div>
         </section>

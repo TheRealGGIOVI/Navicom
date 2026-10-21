@@ -43,7 +43,7 @@ function Home() {
       <section className="welcome-section">
         <div className="hero-text">
           <h1>Bienvenido a Navicom Informática</h1>
-          <p>Tu tienda de confianza para soluciones informáticas en Coín, Málaga.</p>
+          <p>Tu tienda de confianza para soluciones informáticas, componentes y tecnología.</p>
         </div>
       </section>
 

@@ -37,7 +37,7 @@ namespace NavicomInformatica.ServiceEmail
             var userName = _config["Email:UserName"]
                         ?? Environment.GetEnvironmentVariable("Email__UserName")
                         ?? Environment.GetEnvironmentVariable("EMAIL_USER")
-                        ?? "ventas.navicominformatica@gmail.com";
+                        ?? "soporte@navicominformatica.es";
 
             var password = _config["Email:PassWord"]
                         ?? Environment.GetEnvironmentVariable("Email__PassWord")
