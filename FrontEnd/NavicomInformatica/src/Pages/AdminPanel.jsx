@@ -221,59 +221,90 @@ const AdminPanel = () => {
             {loading && <p>Cargando...</p>}
 
             {activeTab === 'usuarios' && users.length > 0 && (
-                <div>
-                    <h3>Gestión de Usuarios</h3>
+                <div className="admin-section-card">
+                    <div className="admin-header-row">
+                        <div className="admin-header-titles">
+                            <h3 className="admin-section-title">Gestión de Usuarios</h3>
+                            <p className="admin-section-desc">Consulta y gestiona los privilegios de los usuarios registrados</p>
+                        </div>
+                        <span className="product-count-chip">
+                            {users.length} {users.length === 1 ? 'usuario' : 'usuarios'}
+                        </span>
+                    </div>
+                    <div className="table-responsive-wrapper">
                     <table>
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Nombre</th>
                                 <th>Email</th>
-                                <th>Rol</th>
-                                <th>Acciones</th>
+                                <th>Rol Actual</th>
+                                <th>Modificar Rol</th>
                             </tr>
                         </thead>
                         <tbody>
                             {users.map(user => (
                                 <tr key={user.Id}>
-                                    <td>{user.Id}</td>
-                                    <td>{user.Nombre}</td>
-                                    <td>{user.Email}</td>
-                                    <td>{user.Rol}</td>
+                                    <td className="cell-id">#{user.Id}</td>
+                                    <td><strong>{user.Nombre}</strong></td>
+                                    <td className="cell-email">{user.Email}</td>
                                     <td>
-                                        <select value={user.Rol} onChange={(e) => handleRoleChange(user.Id, e.target.value)}>
+                                      <span className={`role-pill ${user.Rol?.toLowerCase() === 'admin' ? 'role-admin' : 'role-user'}`}>
+                                        {user.Rol?.toUpperCase()}
+                                      </span>
+                                    </td>
+                                    <td>
+                                        <select className="select-role" value={user.Rol} onChange={(e) => handleRoleChange(user.Id, e.target.value)}>
                                             <option value="user">Usuario</option>
-                                            <option value="admin">Admin</option>
+                                            <option value="admin">Administrador</option>
                                         </select>
                                     </td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
+                    </div>
                 </div>
             )}
 
             {activeTab === 'productos' && (
-                <div>
-                    <h3>Gestión de Productos</h3>
-
-                    {/* Botones Habilitados / Deshabilitados */}
-                    <div className="product-filters">
-                        <button
-                            className={isActiveFilter ? 'active' : ''}
-                            onClick={() => setIsActiveFilter(true)}
-                        >
-                            Habilitados
-                        </button>
-                        <button
-                            className={!isActiveFilter ? 'active' : ''}
-                            onClick={() => setIsActiveFilter(false)}
-                        >
-                            Deshabilitados
+                <div className="admin-section-card">
+                    <div className="admin-header-row">
+                        <div className="admin-header-titles">
+                            <h3 className="admin-section-title">Gestión de Productos</h3>
+                            <p className="admin-section-desc">Controla el catálogo de hardware, existencias y estados de visibilidad</p>
+                        </div>
+                        <button className="btn-add" onClick={() => openModal()}>
+                            <span className="btn-add-plus">+</span> Añadir Producto
                         </button>
                     </div>
 
-                    <button className="btn-add" onClick={() => openModal()}>Añadir Producto</button>
+                    {/* Toolbar con Filtros Segmentados Modernos */}
+                    <div className="product-toolbar">
+                        <div className="segmented-filter">
+                            <button
+                                type="button"
+                                className={`segmented-btn ${isActiveFilter ? 'active' : ''}`}
+                                onClick={() => setIsActiveFilter(true)}
+                            >
+                                <span className="status-dot dot-enabled"></span>
+                                Habilitados
+                            </button>
+                            <button
+                                type="button"
+                                className={`segmented-btn ${!isActiveFilter ? 'active' : ''}`}
+                                onClick={() => setIsActiveFilter(false)}
+                            >
+                                <span className="status-dot dot-disabled"></span>
+                                Deshabilitados
+                            </button>
+                        </div>
+                        <span className="product-count-chip">
+                            {products.length} {products.length === 1 ? 'producto' : 'productos'} listados
+                        </span>
+                    </div>
+
+                    <div className="table-responsive-wrapper">
                     <table>
                         <thead>
                             <tr>
@@ -285,22 +316,31 @@ const AdminPanel = () => {
                                 <th>Precio</th>
                                 <th>Stock</th>
                                 <th>Categoría</th>
-                                <th>Visibilidad</th>
+                                <th>Estado</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             {products.map(product => (
                                 <tr key={product.Id}>
-                                    <td>{product.Id}</td>
-                                    <td>{product.Brand}</td>
-                                    <td>{product.Model}</td>
-                                    <td>{product.Description}</td>
-                                    <td>{product.Caracteristicas}</td>
-                                    <td>{product.Price}</td>
-                                    <td>{product.Stock}</td>
-                                    <td>{product.Category}</td>
-                                    <td>{product.isActive ? 'Habilitado' : 'Deshabilitado'}</td>
+                                    <td className="cell-id">#{product.Id}</td>
+                                    <td><span className="cell-brand">{product.Brand}</span></td>
+                                    <td><strong className="cell-model">{product.Model}</strong></td>
+                                    <td className="cell-desc" title={product.Description}>{product.Description}</td>
+                                    <td className="cell-specs" title={product.Caracteristicas}>{product.Caracteristicas}</td>
+                                    <td><span className="cell-price">{product.Price} €</span></td>
+                                    <td>
+                                      <span className={`cell-stock-badge ${Number(product.Stock) > 0 ? 'in-stock' : 'out-of-stock'}`}>
+                                        {product.Stock} ud.
+                                      </span>
+                                    </td>
+                                    <td><span className="cell-cat-tag">{product.Category}</span></td>
+                                    <td>
+                                      <span className={`status-pill ${product.isActive ? 'pill-enabled' : 'pill-disabled'}`}>
+                                        <span className="pill-dot"></span>
+                                        {product.isActive ? 'Habilitado' : 'Deshabilitado'}
+                                      </span>
+                                    </td>
                                     <td>
                                         <button className="btn-edit" onClick={() => openModal(product)}>Editar</button>
                                     </td>
@@ -308,6 +348,7 @@ const AdminPanel = () => {
                             ))}
                         </tbody>
                     </table>
+                    </div>
                 </div>
             )}
 

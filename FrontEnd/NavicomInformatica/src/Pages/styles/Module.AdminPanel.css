@@ -71,77 +71,312 @@
   box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
 }
 
-/* Subtab Filters */
-.subtab-buttons {
-  display: flex;
-  gap: 8px;
-  margin: 16px 0 20px;
-}
-
-.subtab-buttons button {
-  padding: 8px 18px;
-  font-size: 0.88rem;
-  font-weight: 600;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
+/* Modern Admin Section Card Container */
+.admin-section-card {
   background: #ffffff;
-  color: #475569;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  padding: 30px 32px 36px;
+  border-radius: 24px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.05);
+  margin-top: 16px;
 }
 
-.subtab-buttons button:hover {
-  border-color: #cbd5e1;
+/* Header Row & Titles */
+.admin-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
-.subtab-buttons .active {
-  background: #eff6ff !important;
-  color: var(--primary, #2563eb) !important;
-  border-color: var(--primary, #2563eb) !important;
-  font-weight: 700;
+.admin-header-titles {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-section-title {
+  font-size: 1.45rem !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+  margin: 0 !important;
+  letter-spacing: -0.025em;
+}
+
+.admin-section-desc {
+  font-size: 0.88rem;
+  color: #64748b;
+  margin: 4px 0 0 0;
 }
 
 /* Action: Añadir Producto */
 .btn-add {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   color: #ffffff;
-  padding: 10px 20px;
+  padding: 10px 22px;
   border: none;
   border-radius: 12px;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
-  transition: all 0.2s ease;
-  margin-bottom: 16px;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.32);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-add:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+  box-shadow: 0 8px 22px rgba(16, 185, 129, 0.42);
   filter: brightness(1.05);
 }
 
-/* Table Card Container */
+.btn-add-plus {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+/* Product Toolbar: Modern Segmented Switcher & Counts */
+.product-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+  gap: 14px;
+  background: #f8fafc;
+  padding: 10px 14px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+}
+
+.segmented-filter {
+  display: inline-flex;
+  background: #e2e8f0;
+  padding: 4px;
+  border-radius: 12px;
+  gap: 4px;
+}
+
+.segmented-btn {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 9px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #64748b;
+  background: transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.segmented-btn:hover {
+  color: #0f172a;
+}
+
+.segmented-btn.active {
+  background: #ffffff;
+  color: #0f172a;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-enabled {
+  background: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.22);
+}
+
+.dot-disabled {
+  background: #94a3b8;
+}
+
+.product-count-chip {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #64748b;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  padding: 5px 14px;
+  border-radius: 20px;
+}
+
+/* Table Responsive Wrapper & Cells */
+.table-responsive-wrapper {
+  overflow-x: auto;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+}
+
 .admin-panel table {
   width: 100%;
   border-collapse: collapse;
   background-color: #ffffff;
-  border-radius: 18px;
-  overflow: hidden;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 6px 20px -4px rgba(15, 23, 42, 0.05);
-  margin-top: 12px;
+  margin-top: 0;
+  border: none;
+  box-shadow: none;
 }
 
 .admin-panel th,
 .admin-panel td {
-  padding: 14px 18px;
+  padding: 14px 16px;
   text-align: left;
   border-bottom: 1px solid #f1f5f9;
+}
+
+.cell-id {
+  font-weight: 700;
+  color: #94a3b8;
+  font-size: 0.82rem;
+}
+
+.cell-brand {
+  font-weight: 700;
+  color: var(--primary, #2563eb);
+  font-size: 0.88rem;
+}
+
+.cell-model {
+  color: #0f172a;
+  font-size: 0.92rem;
+}
+
+.cell-desc,
+.cell-specs {
+  max-width: 170px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #64748b;
+  font-size: 0.84rem;
+}
+
+.cell-price {
+  font-weight: 800;
+  color: #0f172a;
+  font-size: 0.95rem;
+}
+
+.cell-stock-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.82rem;
+}
+
+.cell-stock-badge.in-stock {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.cell-stock-badge.out-of-stock {
+  background: #fef2f2;
+  color: #ef4444;
+}
+
+.cell-cat-tag {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  padding: 3px 10px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+/* Status Pill */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.pill-enabled {
+  background: #ecfdf5;
+  color: #059669;
+  border: 1px solid #a7f3d0;
+}
+
+.pill-disabled {
+  background: #f1f5f9;
+  color: #64748b;
+  border: 1px solid #e2e8f0;
+}
+
+.pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.pill-enabled .pill-dot {
+  background: #10b981;
+}
+
+.pill-disabled .pill-dot {
+  background: #94a3b8;
+}
+
+/* User Roles */
+.cell-email {
+  color: #475569;
+  font-size: 0.88rem;
+}
+
+.role-pill {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.role-admin {
+  background: #eef2ff;
+  color: #4f46e5;
+  border: 1px solid #c7d2fe;
+}
+
+.role-user {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+.select-role {
+  padding: 6px 12px;
+  border-radius: 9px;
+  border: 1px solid #cbd5e1;
+  font-weight: 600;
+  font-size: 0.86rem;
+  background-color: #f8fafc;
+  color: #0f172a;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.select-role:focus {
+  border-color: var(--primary, #2563eb);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
 .admin-panel th {
