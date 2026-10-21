@@ -1,4 +1,4 @@
-﻿using NavicomInformatica.Models;
+using NavicomInformatica.Models;
 using MailKit.Security;
 using MimeKit.Text;
 using MimeKit;
@@ -18,8 +18,39 @@ namespace NavicomInformatica.ServiceEmail
         }
         public void SendEmail(EmailDTO request)
         {
+            if (request == null || string.IsNullOrWhiteSpace(request.Para))
+            {
+                Console.WriteLine("EmailService: No se especificó destinatario (request.Para está vacío).");
+                return;
+            }
+
+            var host = _config["Email:Host"]
+                    ?? Environment.GetEnvironmentVariable("Email__Host")
+                    ?? "smtp.gmail.com";
+
+            var portStr = _config["Email:Port"]
+                       ?? Environment.GetEnvironmentVariable("Email__Port")
+                       ?? "587";
+            int.TryParse(portStr, out var port);
+            if (port <= 0) port = 587;
+
+            var userName = _config["Email:UserName"]
+                        ?? Environment.GetEnvironmentVariable("Email__UserName")
+                        ?? Environment.GetEnvironmentVariable("EMAIL_USER")
+                        ?? "ventas.navicominformatica@gmail.com";
+
+            var password = _config["Email:PassWord"]
+                        ?? Environment.GetEnvironmentVariable("Email__PassWord")
+                        ?? Environment.GetEnvironmentVariable("EMAIL_PASSWORD");
+
+            if (string.IsNullOrWhiteSpace(password))
+            {
+                Console.WriteLine("EmailService AVISO: No se ha configurado la contraseña de correo (Email__PassWord).");
+                throw new InvalidOperationException("La contraseña de correo (Email__PassWord) no está configurada en las variables de entorno de Vercel.");
+            }
+
             var email = new MimeMessage();
-            email.From.Add(MailboxAddress.Parse(_config.GetSection("Email:UserName").Value));
+            email.From.Add(new MailboxAddress("Navicom Informática", userName));
             email.To.Add(MailboxAddress.Parse(request.Para));
             email.Subject = request.Asunto;
             email.Body = new TextPart(TextFormat.Html)
@@ -28,13 +59,9 @@ namespace NavicomInformatica.ServiceEmail
             };
 
             using var smtp = new SmtpClient();
-            smtp.Connect(
-                _config.GetSection("Email:Host").Value,
-                Convert.ToInt32(_config.GetSection("Email:Port").Value),
-                SecureSocketOptions.StartTls
-                );
-            smtp.Authenticate(_config.GetSection("Email:UserName").Value, _config.GetSection("Email:PassWord").Value);
-            smtp.Send( email );
+            smtp.Connect(host, port, SecureSocketOptions.StartTls);
+            smtp.Authenticate(userName, password);
+            smtp.Send(email);
             smtp.Disconnect(true);
         }
     }

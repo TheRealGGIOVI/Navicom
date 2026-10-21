@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using NavicomInformatica.ServiceEmail;
 using NavicomInformatica.DTO;
 
@@ -16,10 +16,22 @@ namespace NavicomInformatica.Controllers
         }
 
         [HttpPost]
-        public IActionResult SendEmail(EmailDTO request)
+        public IActionResult SendEmail([FromBody] EmailDTO request)
         { 
-            _emailService.SendEmail(request);
-            return Ok();
+            try
+            {
+                _emailService.SendEmail(request);
+                return Ok(new { success = true, message = "Correo enviado con éxito." });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al enviar email: {ex.Message}");
+                return StatusCode(500, new
+                {
+                    error = "Error al enviar correo",
+                    message = ex.Message
+                });
+            }
         }
 
     }
