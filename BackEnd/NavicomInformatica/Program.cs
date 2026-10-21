@@ -24,6 +24,7 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+        builder.Configuration.AddJsonFile("appsettings.Local.json", optional: true, reloadOnChange: true);
         // Vercel (runtime "container") envía el tráfico al puerto $PORT; en local se usa 7069.
         var port = Environment.GetEnvironmentVariable("PORT") ?? "7069";
         builder.WebHost.UseUrls($"http://0.0.0.0:{port}");

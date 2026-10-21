@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import { USER_CART, UPDATE_QUANTITY_ENDPOINT, DELETE_PRODUCT_CART_ENDPOINT, BASE_IMAGE_URL, STRIPE} from "../../config";
 
 import { loadStripe } from "@stripe/stripe-js";
-const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PK);
+const stripeKey = import.meta.env.VITE_STRIPE_PK || import.meta.env.Stripe__PublishableKey;
+const stripePromise = loadStripe(stripeKey);
 
 
 import "./styles/Module.Carrito.css";

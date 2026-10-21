@@ -110,6 +110,17 @@ namespace NavicomInformatica.Controllers
         [HttpGet("success")]
         public async Task<IActionResult> Success([FromQuery] string sessionId)
         {
+            var secretKey = _stripe.SecretKey;
+            if (string.IsNullOrWhiteSpace(secretKey))
+            {
+                secretKey = Environment.GetEnvironmentVariable("Stripe__SecretKey")
+                         ?? Environment.GetEnvironmentVariable("STRIPE_SECRET_KEY");
+            }
+            if (!string.IsNullOrWhiteSpace(secretKey))
+            {
+                StripeConfiguration.ApiKey = secretKey;
+            }
+
             var sessionService = new SessionService();
             var session = await sessionService.GetAsync(sessionId, new SessionGetOptions
             {

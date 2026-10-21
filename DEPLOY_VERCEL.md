@@ -16,8 +16,9 @@ Vercel → Storage / Marketplace → Neon (o Railway/Supabase). La integración 
 |---|---|
 | `DATABASE_URL` | la inyecta la integración de Postgres (formato `postgres://...`) |
 | `JWT_KEY` | cadena larga aleatoria (mín. 32 caracteres). Obligatoria |
-| `Stripe__SecretKey` | clave secreta de Stripe (NUEVA, ver "Seguridad") |
+| `Stripe__SecretKey` | clave secreta de Stripe (`sk_test_...`, privada de tu cuenta de Stripe) |
 | `Stripe__Domain` | `https://tu-dominio.vercel.app` (sin barra final) |
+| `VITE_STRIPE_PK` | clave publicable de Stripe (`pk_test_...`, pública en frontend) |
 | `Email__PassWord` | contraseña de aplicación de Gmail (NUEVA) |
 | `SEED_ADMIN_PASSWORD` | contraseña de los dos admins iniciales |
 | `DB_INIT` | `true` SOLO en el primer despliegue (crea tablas y datos) |
