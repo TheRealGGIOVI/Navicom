@@ -56,4 +56,7 @@ function spaFallbackPlugin() {
 export default defineConfig({
   plugins: [react(), spaFallbackPlugin()],
   envPrefix: ['VITE_', 'Stripe__'],
+  esbuild: {
+    pure: ['console.log'],
+  },
 })
