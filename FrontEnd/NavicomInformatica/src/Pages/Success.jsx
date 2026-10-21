@@ -22,7 +22,8 @@ export default function SuccessPage() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (!sessionId || authLoading || !user || !user.Id) return;
+    const currentUserId = user?.Id || user?.id;
+    if (!sessionId || authLoading || !user || !currentUserId) return;
 
     const procesarPago = async () => {
       try {
@@ -38,7 +39,7 @@ export default function SuccessPage() {
         // };
         const body = {
           SessionId: sessionId,
-          UserId: user.Id.toString(),
+          UserId: currentUserId.toString(),
           Items: json.items.map(item => ({
             Nombre: item.productName,
             PrecioUnitario: item.unitAmount / 100,
@@ -61,6 +62,7 @@ export default function SuccessPage() {
 
         setCartCount(0);
         updateCartCount();
+        try { localStorage.removeItem("tempCart"); } catch {}
 
         const { amountTotal, currency, customerEmail, items } = json;
         fetch(EMAIL_URL, {
@@ -256,7 +258,10 @@ export default function SuccessPage() {
         ))}
       </ul>
 
-      <Link to="/" className="sp-button">Volver al inicio</Link>
+      <div style={{ display: 'flex', gap: '12px', marginTop: '25px', flexWrap: 'wrap' }}>
+        <Link to="/Perfil" className="sp-button">Ver en mi historial de pedidos</Link>
+        <Link to="/" className="sp-button" style={{ background: '#475569' }}>Volver al inicio</Link>
+      </div>
     </div>
   );
 }

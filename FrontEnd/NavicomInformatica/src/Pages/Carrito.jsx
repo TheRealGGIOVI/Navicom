@@ -169,7 +169,10 @@ function Carrito() {
       const r = await fetch(STRIPE, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ items })
+        body: JSON.stringify({ 
+          items,
+          origin: window.location.origin
+        })
       });
       const data = await r.json();
       if (!r.ok) {

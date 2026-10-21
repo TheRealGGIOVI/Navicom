@@ -11,14 +11,16 @@ const Perfil = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        if (!user) return;
+        const userId = user?.Id || user?.id;
+        if (!userId) return;
 
-        fetch(LIST_ORDERS + user.Id)
+        fetch(LIST_ORDERS + userId)
             .then(res => {
+                if (res.status === 404) return [];
                 if (!res.ok) throw new Error("Error al cargar pedidos");
                 return res.json();
             })
-            .then(setOrders)
+            .then(data => setOrders(Array.isArray(data) ? data : []))
             .catch(err => setError(err.message))
             .finally(() => setLoading(false));
     }, [user]);

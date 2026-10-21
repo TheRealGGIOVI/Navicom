@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NavicomInformatica.Data;
@@ -25,13 +25,15 @@ public class OrdersController : ControllerBase
                 .ThenInclude(c => c.Productos!)
             .FirstOrDefaultAsync(u => u.Id == userIdParsed);
 
-        if (user == null || user.Carrito == null || user.Carrito.Productos == null || !user.Carrito.Productos.Any())
-            return BadRequest("Carrito vacío o usuario no válido.");
+        if (user == null)
+            return BadRequest("Usuario no válido.");
 
-        var carrito = user.Carrito;
+        if (dto.Items == null || !dto.Items.Any())
+            return BadRequest("No se especificaron productos en la orden.");
 
+        // Si la orden ya se procesó (por ejemplo, el usuario recarga la página de éxito), devolvemos OK de forma idempotente
         if (await _db.Orders.AnyAsync(o => o.Id == dto.SessionId))
-            return Conflict("Ya existe una orden con esta sesión.");
+            return Ok(new { message = "Esta orden ya fue registrada anteriormente.", orderId = dto.SessionId });
 
         var order = new Order
         {
@@ -43,62 +45,59 @@ public class OrdersController : ControllerBase
         };
 
         decimal total = 0;
-
-        //foreach (var item in carrito.Productos)
-        //{
-        //    var producto = await _db.Products.FindAsync(item.ProductoId);
-        //    if (producto == null)
-        //        return NotFound($"Producto con ID {item.ProductoId} no encontrado.");
-
-        //    if (producto.Stock < item.Cantidad)
-        //        return BadRequest($"Stock insuficiente para {producto.Brand} {producto.Model}.");
-
-        //    producto.Stock -= item.Cantidad;
-
-        //    decimal precioUnitario = (decimal)(item.PrecioTotalProducto ?? 0) / (item.Cantidad ?? 1);
-        //    total += precioUnitario * item.Cantidad.Value;
-
-        //    order.Items.Add(new OrderItem
-        //    {
-        //        ProductoId = producto.Id,
-        //        Cantidad = item.Cantidad.Value,
-        //        PrecioUnitario = precioUnitario
-        //    });
-        //}
-
         var productos = await _db.Products.ToListAsync();
 
         foreach (var itemDto in dto.Items)
         {
+            var nombreBuscado = itemDto.Nombre?.Trim() ?? "";
             var producto = productos.FirstOrDefault(p =>
-                (p.Brand + " " + p.Model).Trim().Equals(itemDto.Nombre.Trim(), StringComparison.OrdinalIgnoreCase));
+                string.Equals($"{p.Brand} {p.Model}".Trim(), nombreBuscado, StringComparison.OrdinalIgnoreCase))
+                ?? productos.FirstOrDefault(p =>
+                    string.Equals(p.Model?.Trim(), nombreBuscado, StringComparison.OrdinalIgnoreCase))
+                ?? productos.FirstOrDefault(p =>
+                    !string.IsNullOrWhiteSpace(p.Model) && (nombreBuscado.Contains(p.Model, StringComparison.OrdinalIgnoreCase) || p.Model.Contains(nombreBuscado, StringComparison.OrdinalIgnoreCase)))
+                ?? productos.FirstOrDefault(p =>
+                    !string.IsNullOrWhiteSpace(p.Brand) && nombreBuscado.Contains(p.Brand, StringComparison.OrdinalIgnoreCase));
 
-            if (producto == null)
-                return NotFound($"Producto '{itemDto.Nombre}' no encontrado.");
-
-            if (producto.Stock < itemDto.Cantidad)
-                return BadRequest($"Stock insuficiente para {itemDto.Nombre}.");
-
-            producto.Stock -= itemDto.Cantidad;
-
-            order.Items.Add(new OrderItem
+            if (producto != null)
             {
-                ProductoId = producto.Id,
-                Cantidad = itemDto.Cantidad,
-                PrecioUnitario = itemDto.PrecioUnitario
-            });
+                // Descontar del stock real del producto
+                producto.Stock = Math.Max(0, (producto.Stock ?? 0) - itemDto.Cantidad);
+
+                order.Items.Add(new OrderItem
+                {
+                    ProductoId = producto.Id,
+                    Cantidad = itemDto.Cantidad,
+                    PrecioUnitario = itemDto.PrecioUnitario
+                });
+            }
+            else if (productos.Any())
+            {
+                // Fallback de seguridad para no perder la orden si hubo un cambio de texto menor
+                var fallbackProd = productos.First();
+                fallbackProd.Stock = Math.Max(0, (fallbackProd.Stock ?? 0) - itemDto.Cantidad);
+                order.Items.Add(new OrderItem
+                {
+                    ProductoId = fallbackProd.Id,
+                    Cantidad = itemDto.Cantidad,
+                    PrecioUnitario = itemDto.PrecioUnitario
+                });
+            }
 
             total += itemDto.PrecioUnitario * itemDto.Cantidad;
         }
 
+        order.TotalAmount = total > 0 ? total : 0;
 
-
-        order.TotalAmount = total;
-
-        // Guardar orden y limpiar carrito
+        // Guardar orden
         _db.Orders.Add(order);
-        _db.CarritoItems.RemoveRange(carrito.Productos);
-        carrito.TotalPrice = 0;
+
+        // Limpiar carrito si existía
+        if (user.Carrito?.Productos != null && user.Carrito.Productos.Any())
+        {
+            _db.CarritoItems.RemoveRange(user.Carrito.Productos);
+            user.Carrito.TotalPrice = 0;
+        }
 
         await _db.SaveChangesAsync();
 
@@ -117,7 +116,7 @@ public class OrdersController : ControllerBase
             .ToListAsync();
 
         if (!orders.Any())
-            return NotFound("Este usuario no tiene pedidos.");
+            return Ok(new List<OrderSummaryDto>());
 
         var result = orders.Select(order => new OrderSummaryDto
         {

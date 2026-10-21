@@ -41,9 +41,13 @@ namespace NavicomInformatica.Controllers
 
                 StripeConfiguration.ApiKey = secretKey;
 
-                var domain = !string.IsNullOrWhiteSpace(_stripe.Domain)
-                    ? _stripe.Domain.TrimEnd('/')
-                    : $"{Request.Scheme}://{Request.Host}";
+                var domain = !string.IsNullOrWhiteSpace(dto.Origin)
+                    ? dto.Origin.TrimEnd('/')
+                    : !string.IsNullOrWhiteSpace(_stripe.Domain)
+                        ? _stripe.Domain.TrimEnd('/')
+                        : Request.Headers.ContainsKey("Origin")
+                            ? Request.Headers["Origin"].ToString().TrimEnd('/')
+                            : $"{Request.Scheme}://{Request.Host}";
 
                 var lineItems = dto.Items.Select(p =>
                 {
@@ -159,6 +163,7 @@ namespace NavicomInformatica.Controllers
 
     public class CreateSessionDto
     {
+        public string? Origin { get; set; }
         public List<CartItemDto> Items { get; set; }
     }
 
