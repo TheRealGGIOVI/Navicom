@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from "../context/AuthProvider";
+import { useNotification } from "../context/NotificationContext";
 import { API_BASE_URL } from '../../config';
 import "./styles/Module.AdminPanel.css";
 
 const AdminPanel = () => {
     const { user, token } = React.useContext(AuthContext);
+    const { toast } = useNotification();
     const [users, setUsers] = useState([]);
     const [products, setProducts] = useState([]);
     const [error, setError] = useState(null);
@@ -79,7 +81,7 @@ const AdminPanel = () => {
             if (!response.ok) throw new Error('Error al actualizar el rol');
 
             const result = await response.json();
-            alert(result.message || 'Rol actualizado con éxito');
+            toast.success(result.message || 'Rol actualizado con éxito', '¡Actualizado!');
             fetchUsers();
         } catch (err) {
             console.error(err);
@@ -172,10 +174,10 @@ const AdminPanel = () => {
 
             if (contentType && contentType.includes("application/json")) {
                 const result = await response.json();
-                alert(result.message || 'Producto guardado con éxito');
+                toast.success(result.message || 'Producto guardado con éxito', '¡Guardado!');
             } else {
                 const text = await response.text();
-                alert(text || 'Producto guardado con éxito');
+                toast.success(text || 'Producto guardado con éxito', '¡Guardado!');
             }
 
             fetchProducts();

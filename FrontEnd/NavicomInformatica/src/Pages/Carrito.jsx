@@ -9,6 +9,8 @@ const stripeKey = import.meta.env.VITE_STRIPE_PK || import.meta.env.Stripe__Publ
 const stripePromise = loadStripe(stripeKey);
 
 
+import { useNotification } from "../context/NotificationContext";
+
 import "./styles/Module.Carrito.css";
 
 
@@ -22,6 +24,7 @@ const saveTempCart = (cart) => {
 };
 
 function Carrito() {
+  const { toast, showAlert } = useNotification();
   const [cart, setCart] = useState(getTempCart());
   const [total, setTotal] = useState(0);
   const { user } = useContext(AuthContext);
@@ -176,7 +179,11 @@ function Carrito() {
       });
       const data = await r.json();
       if (!r.ok) {
-        alert(data.message || data.error || "Error al procesar el pago con Stripe.");
+        showAlert({
+          type: "error",
+          title: "Error en el Pago",
+          message: data.message || data.error || "No se ha podido iniciar la sesión de Stripe."
+        });
         return;
       }
       const { sessionId } = data;
@@ -184,7 +191,11 @@ function Carrito() {
       await stripe.redirectToCheckout({ sessionId });
     } catch (err) {
       console.error("Error Stripe:", err);
-      alert("Error al iniciar el pago con Stripe: " + (err.message || err));
+      showAlert({
+        type: "error",
+        title: "Error de Pasarela",
+        message: "No se pudo conectar con Stripe: " + (err.message || err)
+      });
     }
   };
 

@@ -1,7 +1,10 @@
 import "./styles/Module.Contacto.css";
 import { EMAIL_URL } from "../../config";
 import { useState } from "react";
+import { useNotification } from "../context/NotificationContext";
+
 function Contacto() {
+  const { toast } = useNotification();
   const [form, setForm] = useState({
     name: "",
     surname: "",
@@ -38,9 +41,11 @@ function Contacto() {
         })
       });
       if (!res.ok) throw new Error("Error al enviar");
+      toast.success("¡Hemos recibido tu mensaje! Te responderemos lo antes posible.", "Mensaje enviado");
       setResult({ success: true, message: "¡Mensaje enviado!" });
       setForm({ name: "", surname: "", email: "", phone: "", subject: "", message: "" });
     } catch (err) {
+      toast.error("No se pudo enviar el mensaje: " + err.message, "Error al enviar");
       setResult({ success: false, message: err.message });
     } finally {
       setSending(false);

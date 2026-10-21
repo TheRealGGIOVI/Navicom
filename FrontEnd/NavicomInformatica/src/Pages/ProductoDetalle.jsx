@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
 import { CartContext } from "../context/CartContext";
+import { useNotification } from "../context/NotificationContext";
 import { ADD_CART_ENDPOINT, GET_PRODUCT_ENDPOINT, BASE_IMAGE_URL } from "../../config";
 import "./styles/Module.ProductoDetalle.css";
 
@@ -16,6 +17,7 @@ function ProductoDetalle() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { user, token } = useContext(AuthContext);
   const { updateCartCount } = useContext(CartContext);
+  const { toast } = useNotification();
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -53,17 +55,17 @@ function ProductoDetalle() {
 
   const addToCart = async (productId) => {
     if (product.stock === 0) {
-      alert("Este producto está agotado.");
+      toast.error("Este producto está actualmente agotado.", "Sin stock");
       return;
     }
 
     if (cantidad === 0) {
-      alert("Debe seleccionar al menos 1 unidad para añadir al carrito.");
+      toast.warning("Debe seleccionar al menos 1 unidad para añadir al carrito.", "Cantidad no válida");
       return;
     }
 
     if (cantidad > product.stock) {
-      alert(`Solo hay ${product.stock} unidades disponibles.`);
+      toast.warning(`Solo hay ${product.stock} unidades disponibles.`, "Stock limitado");
       return;
     }
 
@@ -89,10 +91,10 @@ function ProductoDetalle() {
         }
 
         const data = await response.json();
-        alert(data.message || "Producto añadido al carrito con éxito");
+        toast.success(data.message || `${product.brand} ${product.model} añadido al carrito`, "¡Añadido con éxito!");
       } catch (err) {
         console.error("Error al añadir al carrito:", err);
-        alert(err.message || "Error al añadir al carrito");
+        toast.error(err.message || "Error al añadir al carrito", "Error");
       }
     } else {
       const tempCart = getTempCart();
@@ -112,7 +114,7 @@ function ProductoDetalle() {
         });
       }
       saveTempCart(tempCart);
-      alert("Producto añadido al carrito temporal.");
+      toast.success(`${product.brand} ${product.model} añadido a tu carrito`, "¡Añadido!");
     }
     updateCartCount();
   };

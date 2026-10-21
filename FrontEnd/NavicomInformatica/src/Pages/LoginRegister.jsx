@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { validation } from "../utils/validationForm";
 import { LOGIN_ENDPOINT, REGISTER_ENDPOINT, EMAIL_URL } from "../../config";
 import { AuthContext } from "../context/AuthProvider";
+import { useNotification } from "../context/NotificationContext";
 import "./styles/Module.LoginRegister.css";
 const URL = window.location.origin;
 
@@ -39,6 +40,7 @@ function LoginRegister() {
   const [promesaError, setPromesaError] = useState(null);
   const [rememberMe, setRememberMe] = useState(false);
   const { login } = useContext(AuthContext);
+  const { toast } = useNotification();
   const navigate = useNavigate();
 
   const resetErrors = () => {
@@ -156,6 +158,7 @@ function LoginRegister() {
           localStorage.setItem('role', role);
 
           login(token, rememberMe);
+          toast.success("¡Bienvenido a Navicom!", "Sesión iniciada");
           
           // Redirigir según el rol
           if (role.toLowerCase() === 'admin') {
@@ -187,17 +190,19 @@ function LoginRegister() {
             console.error('Error:', error);
           });
 
-          console.log("Registro exitoso");
+          toast.success("Tu cuenta ha sido creada exitosamente. Inicia sesión para continuar.", "¡Registro completado!");
           setIsLogin(true);
         }
         setPromesaError(null);
         resetForm();
       } else {
         const errorData = await response.text();
+        toast.error(errorData || "Error en los datos facilitados", "Atención");
         setPromesaError(`${errorData || "Desconocido"}`);
       }
     } catch (error) {
       console.error(error);
+      toast.error(`${error}`, "Error de conexión");
       setPromesaError(`${error}`);
     } finally {
       setIsLoading(false);
