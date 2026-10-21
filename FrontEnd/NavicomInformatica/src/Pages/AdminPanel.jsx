@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from "../context/AuthProvider";
-import { useNotification } from "../context/NotificationContext";
+import { useNotification } from "../context/NotificationContext.jsx";
 import { API_BASE_URL } from '../../config';
 import "./styles/Module.AdminPanel.css";
 

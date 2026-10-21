@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { validation } from "../utils/validationForm";
 import { LOGIN_ENDPOINT, REGISTER_ENDPOINT, EMAIL_URL } from "../../config";
 import { AuthContext } from "../context/AuthProvider";
-import { useNotification } from "../context/NotificationContext";
+import { useNotification } from "../context/NotificationContext.jsx";
 import "./styles/Module.LoginRegister.css";
 const URL = window.location.origin;
 

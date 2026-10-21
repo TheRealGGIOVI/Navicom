@@ -9,7 +9,7 @@ const stripeKey = import.meta.env.VITE_STRIPE_PK || import.meta.env.Stripe__Publ
 const stripePromise = loadStripe(stripeKey);
 
 
-import { useNotification } from "../context/NotificationContext";
+import { useNotification } from "../context/NotificationContext.jsx";
 
 import "./styles/Module.Carrito.css";
 

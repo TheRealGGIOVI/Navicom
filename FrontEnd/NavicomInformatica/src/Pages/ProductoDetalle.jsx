@@ -2,7 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
 import { CartContext } from "../context/CartContext";
-import { useNotification } from "../context/NotificationContext";
+import { useNotification } from "../context/NotificationContext.jsx";
 import { ADD_CART_ENDPOINT, GET_PRODUCT_ENDPOINT, BASE_IMAGE_URL } from "../../config";
 import "./styles/Module.ProductoDetalle.css";
 

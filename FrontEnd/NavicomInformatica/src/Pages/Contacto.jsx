@@ -1,7 +1,7 @@
 import "./styles/Module.Contacto.css";
 import { EMAIL_URL } from "../../config";
 import { useState } from "react";
-import { useNotification } from "../context/NotificationContext";
+import { useNotification } from "../context/NotificationContext.jsx";
 
 function Contacto() {
   const { toast } = useNotification();
